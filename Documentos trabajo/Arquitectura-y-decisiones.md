@@ -171,7 +171,7 @@ El proveedor predeterminado es MiniMax, y un administrador puede seleccionar GPT
 para toda la aplicación si está configurado. La elección se persiste. Las claves
 del bot se separan de la clave del resumidor. `ReviewedAssistant` admite
 0–3 repasos configurables, dos por defecto, a cualquiera de los proveedores.
-Con repasos activados, un temporizador y una señal compartida limitan a
+Incluso con cero repasos, un temporizador y una señal compartida limitan a
 42 segundos toda la fase de generación: redacción y revisiones. Una carrera de
 promesas corta la espera incluso si un adaptador no atiende la señal. Si hay
 borrador o revisión válidos, se conserva la mejor versión disponible; si no
@@ -180,8 +180,8 @@ SQL quedan fuera de ese límite. El proxy web corta su petición a los 55 segund
 
 El adaptador MiniMax dispone además de un límite de 40 segundos compartido entre
 sus intentos y la lectura del cuerpo; OpenAI limita cada llamada a 45 segundos.
-En la composición actual, configurar cero repasos omite el decorador y conserva
-esos límites propios del adaptador. Si un repaso se corta, se devuelve el texto
+La composición mantiene el decorador también con cero repasos para aplicar
+el plazo global además de esos límites propios. Si un repaso se corta, se devuelve el texto
 disponible con consumo incierto y se mantiene la reserva conservadora en SQL;
 no se devuelve presupuesto potencialmente facturado.
 

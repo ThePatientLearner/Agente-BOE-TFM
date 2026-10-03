@@ -33,9 +33,9 @@ La presentación y la memoria se adjuntan también al código. Las copias para p
 
 La cuenta es exclusiva para demostrar el bot. Tiene los límites de un usuario normal y no permite administración ni estudio privado. Las cinco consultas diarias se comparten entre quienes usen esa cuenta. Si se agotan, la lectura pública y las fichas siguen disponibles; reservar consultas para la evaluación.
 
-## Lo que falta para cumplir todos los requisitos
+## Revisión y pasos personales para la entrega
 
-1. **Revisar el código publicado.** Abrir la copia pública del TFM y confirmar que representa el trabajo que vas a defender. La copia excluye el CV, los HTML personales, los datos, las claves y el historial original; incluye las pruebas, el backend, la web y estos documentos. El ZIP local reúne el mismo alcance. La accesibilidad se acredita en el informe de verificación.
+1. **Revisar los materiales preparados.** Abrir la copia pública del TFM y revisar el trabajo que vas a defender. La copia excluye el CV, los HTML personales, los datos, las claves y el historial original; incluye las pruebas, el backend, la web y estos documentos. El ZIP local reúne el mismo alcance. La accesibilidad se acredita en el informe de verificación.
 2. **Vídeo personal.** Grabar tu voz y la pantalla siguiendo el guion, publicarlo con acceso por enlace y comprobarlo sin sesión. Sustituir la línea de vídeo pendiente del README por su URL real.
 3. **Datos y envío.** Confirmar nombre completo y email de inscripción, copiar los enlaces finales al formulario de la lección Proyecto Final, enviar y guardar el justificante.
 

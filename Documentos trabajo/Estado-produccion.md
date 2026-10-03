@@ -7,7 +7,7 @@ Comprobación: **04/10/2026 00:38 CEST**. Este documento registra hechos observa
 | Elemento | Resultado observado |
 |---|---|
 | Repositorio local | `Agente BOE`, en la carpeta del proyecto autorizada por Roberto |
-| Checkout del VPS | `/opt/boe-inspector`, actualizado mediante `git pull --ff-only` a `d36c7ac3f2f6f4ddd2233750716f4da135a5e191` |
+| Código API comprobado en el VPS | `/opt/boe-inspector`, actualización operativa mediante `git pull --ff-only` a `d36c7ac3f2f6f4ddd2233750716f4da135a5e191`; las revisiones documentales posteriores no cambian ese runtime |
 | Árbol del VPS | Limpio después de la sincronización; se conservaron configuración y datos |
 | API | Servicio `app` sano; `/health` devuelve HTTP 200 y `{"status":"ok"}` |
 | Base de datos | Servicio `db` sano |
@@ -16,6 +16,8 @@ Comprobación: **04/10/2026 00:38 CEST**. Este documento registra hechos observa
 | Web | La web continúa en Vercel; la prueba Docker no sustituye ese despliegue |
 
 El despliegue final incorporó la corrección del plazo del chatbot y la poda de dependencias de desarrollo. Se reconstruyó exclusivamente `app` mediante `docker compose -f docker-compose.prod.yml up -d --build --no-deps app`. La API local y pública devolvieron HTTP 200, el servicio quedó `healthy` y los logs confirmaron migraciones al día y scheduler iniciado sin errores de arranque. Base de datos y túnel conservaron su continuidad. El árbol del VPS quedó limpio.
+
+Este registro corresponde a la comprobación operativa de las 00:38. El cierre documental se sincroniza después en `main`, sin otra reconstrucción de la API. El recibo de cierre local en `Privado/Comprobacion-final.json` recoge los commits finales y la verificación posterior de los archivos públicos.
 
 ## Datos y tareas activas
 

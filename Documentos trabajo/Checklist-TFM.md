@@ -15,26 +15,26 @@ Este documento distingue los materiales preparados de los requisitos que necesit
 | Estructura del proyecto | `README.md` y `Arquitectura-y-decisiones.md` | Preparado |
 | Funcionalidades principales | `README.md`, `Guia-evaluador.md`, memoria y presentación | Preparadas: memoria de 14 páginas y presentación de 15 diapositivas |
 | Usuario y contraseña de prueba si hay login | Cuenta `tfm_demo`; credenciales y límites en README y `Guia-evaluador.md` | Preparada en producción y comprobada; usuario sin administración ni acceso al estudio personal |
-| Código fuente en repositorio público de GitHub | Copia independiente: `https://github.com/ThePatientLearner/Agente-BOE-TFM` | Copia limpia validada con instalación, 316 pruebas, tipos, fronteras y builds; publicación y acceso anónimo pendientes de confirmación final |
-| Excepción de repositorio privado | El original `ThePatientLearner/BoeInspector` permanece privado | Se prepara una entrega pública independiente; no se solicita la excepción privada ni se conceden permisos desde esta verificación |
+| Código fuente en repositorio público de GitHub | Copia independiente: `https://github.com/ThePatientLearner/Agente-BOE-TFM` | **Cumplido**: repositorio público (`private: false`), README anónimo HTTP 200 y copia validada con 316 pruebas, tipos, fronteras y builds |
+| Excepción de repositorio privado | El original `ThePatientLearner/BoeInspector` permanece privado | No aplica a la entrega: se publicó una copia independiente de acceso público; no se abrió el original ni se necesitan permisos privados del evaluador |
 | Despliegue funcional recomendado | `https://agenteboe.com/`, API `https://api.agenteboe.com/health` | HTTP 200 y API saludable; revisión de VPS en `Estado-produccion.md` |
 | URL real en documentación | `README.md` | Incorporada |
-| Slides accesibles por URL pública o adjunto junto al código | `Presentacion-Agente-BOE.pptx` y `Presentacion-Agente-BOE.pdf` en `Documentos trabajo/` | Archivos finales adjuntos, 15 diapositivas/páginas; URL pública y acceso al repositorio pendientes de comprobación final |
+| Slides accesibles por URL pública o adjunto junto al código | `Presentacion-Agente-BOE.pptx` y `Presentacion-Agente-BOE.pdf` en `Documentos trabajo/` | **Cumplido**: 15 diapositivas/páginas adjuntas al repositorio público; descarga anónima HTTP 200 |
 | Referencia a slides en documentación | `README.md` | Enlaces a los archivos existentes incorporados y comprobados |
-| Vídeo de la propia explicación del alumno | Grabación de Roberto explicando el proyecto | **Pendiente personal obligatorio**; se prepara guion y recorrido de demostración |
+| Vídeo de la propia explicación del alumno | Grabación de Roberto explicando el proyecto | **Pendiente personal obligatorio**; guion y recorrido de demostración preparados |
 | Captura de pantalla durante la explicación en vídeo | Grabación de pantalla con la aplicación y presentación | **Pendiente personal obligatorio**; mostrar la cara es opcional |
 | URL pública del vídeo | Enlace YouTube, Drive u otro servicio accesible | **Pendiente** hasta grabar y publicar el vídeo; comprobar acceso sin iniciar sesión |
 | URL del vídeo añadida a documentación | `README.md` y ficha de entrega | **Pendiente** hasta disponer del enlace real |
-| Documentación, información de despliegue y slides dentro del directorio del código | README y `Documentos trabajo/` | Documentos incorporados; 46 enlaces locales revisados sin destinos ausentes; ZIP sanitizado en preparación |
+| Documentación, información de despliegue y slides dentro del directorio del código | README y `Documentos trabajo/` | Documentos incorporados al repositorio público; 55 enlaces locales revisados sin destinos ausentes; paquete local de entrega `Agente-BOE-TFM.zip`: generación final desde la copia limpia |
 | Envío mediante formulario de la lección Proyecto Final | Formulario del campus del máster | **Pendiente personal**; no hay prueba de envío |
 
 ## Campos que exige el formulario
 
 Copiar los valores finales desde la ficha de entrega, y revisar antes de enviar:
 
-- Nombre completo del alumno.
-- Email utilizado en la inscripción del máster.
-- URL del repositorio de GitHub accesible para el evaluador.
+- Nombre completo del alumno: **pendiente de confirmar su escritura exacta en la matrícula**.
+- Email utilizado en la inscripción del máster: **pendiente de facilitar por el alumno**.
+- URL del repositorio de GitHub accesible para el evaluador: `https://github.com/ThePatientLearner/Agente-BOE-TFM`.
 - URL de despliegue o publicación: `https://agenteboe.com/`.
 - URL de las slides o enlace al archivo adjunto en el repositorio.
 - URL pública del vídeo de explicación y pantalla.
@@ -57,3 +57,5 @@ El PDF sitúa el formulario en la descripción de la lección correspondiente al
 `Verificacion-tecnica.md` registra las **316 pruebas finales correctas** (237 del monolito y 79 de la web), TypeScript, fronteras entre módulos, compilaciones y consultas públicas realizadas. También incluye la instalación limpia del lock y el audit: 0 avisos de dependencias de producción y 2 moderados residuales de herramientas de desarrollo. No se afirma que el TFM esté entregado ni que los requisitos personales pendientes estén completados.
 
 La copia independiente del TFM también pasó esa validación completa, generó 156 páginas con la API disponible y completó el login/logout del asistente con una cuenta de usuario sin permisos de administración. La evidencia está en `Evidencias/copia-tfm-validacion.json` y no contiene rutas locales absolutas ni tokens. Se verificó que los ocho archivos personales excluidos y `.env` no están en esa copia.
+
+El repositorio público se comprobó el 4 de octubre de 2026; su commit inicial limpio es `70848e4b31a671f124ca92f94581fde9a16e925f`. Quedan pendientes la grabación y URL pública del vídeo propio, la confirmación del nombre de matrícula, el email de inscripción y el envío del formulario. Esos pasos no se dan por realizados.

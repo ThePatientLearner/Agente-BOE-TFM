@@ -2,7 +2,7 @@
 
 Fecha: **4 de octubre de 2026**, zona horaria Europe/Madrid. Comprobaciones iniciales ejecutadas entre las 00:04 y las 00:07 CEST; revisión de dependencias y nueva pasada de pruebas entre las 00:16 y las 00:20 CEST.
 
-Directorio verificado: `/Users/robertocasaban/dev/pluginSafari/claudeSafari/Agente BOE`.
+Directorio verificado: raíz del monorepo Agente BOE. La copia independiente de entrega se validó con su propia instalación de dependencias, como se documenta más abajo.
 
 Revisión de código al iniciar las comprobaciones: `3f8a2549705df71b11b758c38dc5ad47438bdf3f` ("Identificar las radiografías con logos animados"). Las comprobaciones se ejecutaron antes de incorporar los nuevos documentos de entrega del TFM. No se modificó el código de la aplicación durante esta validación.
 
@@ -96,7 +96,21 @@ Resultado observado a las 00:06 CEST:
 
 El repositorio original era **privado** en esta comprobación, aunque `AGENTS.md` describía un repositorio público. El PDF del TFM pide un repositorio público o una excepción privada justificada con acceso al evaluador. Este informe no acredita que dicha excepción esté concedida ni que se haya cambiado la visibilidad. Véase el estado final de ese requisito en `Checklist-TFM.md`.
 
-Para cumplir el requisito sin abrir el historial y los documentos personales del repositorio original, se preparó una copia independiente de entrega: `https://github.com/ThePatientLearner/Agente-BOE-TFM`. La copia limpia ha pasado la validación descrita a continuación; la publicación y el acceso anónimo deben confirmarse tras crear el repositorio. El original conserva su visibilidad privada.
+Para cumplir el requisito sin abrir el historial y los documentos personales del repositorio original, se publicó una copia independiente de entrega: [Agente-BOE-TFM](https://github.com/ThePatientLearner/Agente-BOE-TFM). El original conserva su visibilidad privada.
+
+Comprobación del repositorio de entrega realizada el 4 de octubre de 2026 a las 00:54 CEST:
+
+```json
+{
+  "full_name": "ThePatientLearner/Agente-BOE-TFM",
+  "private": false,
+  "default_branch": "main",
+  "initial_clean_commit": "70848e4b31a671f124ca92f94581fde9a16e925f",
+  "anonymous_readme_http_status": 200
+}
+```
+
+También se comprobó HTTP 200 en la descarga anónima de la presentación PDF, el PowerPoint y la memoria PDF alojados junto al código. El requisito de código público y presentación adjunta queda cumplido por esta copia. No se han concedido accesos al repositorio privado original.
 
 ## Reproducibilidad de los contenedores
 
@@ -164,14 +178,14 @@ Un build web posterior a las actualizaciones terminó correctamente sin definir 
 
 Comprobaciones programáticas realizadas sobre los archivos existentes:
 
-- [Memoria PDF](Memoria-Agente-BOE.pdf): 14 páginas, 488676 bytes.
+- [Memoria PDF](Memoria-Agente-BOE.pdf): 14 páginas, 488831 bytes.
 - [Presentación PDF](Presentacion-Agente-BOE.pdf): 15 páginas, 766156 bytes.
 - [Presentación PowerPoint](Presentacion-Agente-BOE.pptx): 15 diapositivas, 569612 bytes; contenedor ZIP de PowerPoint válido.
-- 46 enlaces locales de Markdown revisados en el README y los documentos de la raíz de `Documentos trabajo/`, sin destinos ausentes.
+- 55 enlaces locales de Markdown revisados en el README y los documentos de la raíz de `Documentos trabajo/`, sin destinos ausentes.
 - Extracción de texto de los dos PDF finales sin caracteres de sustitución (`U+FFFD`) ni marcadores `TODO`, `FIXME`, `INSERTAR` o `Lorem ipsum`.
 - No se encontraron enlaces HTTP mal formados en las anotaciones de los PDF. El PDF de la presentación y el PPTX no contienen hipervínculos incrustados; sus URL se muestran como texto y el README enlaza los archivos.
 
-Estas comprobaciones estructurales complementan la revisión visual de los documentos, no la sustituyen. La presencia del archivo local no acredita que su futura URL pública ya esté desplegada. La copia ZIP sanitizada se revisará cuando exista.
+Estas comprobaciones estructurales complementan la revisión visual de los documentos, no la sustituyen. Los tres archivos se encuentran también en el repositorio público y respondieron HTTP 200 sin autenticación. El paquete local de entrega se denomina `Agente-BOE-TFM.zip` y se genera al cierre desde la copia limpia validada, sin el historial ni los documentos personales del original. La validación siguiente corresponde a su copia fuente, no a una prueba de integridad del ZIP aún sin generar en el momento de esta revisión.
 
 ## Validación de la copia independiente del TFM
 
@@ -199,5 +213,7 @@ Las peticiones de autenticación utilizaron la API pública. No se enviaron preg
 En la primera prueba de login, usar `127.0.0.1` frente al origen anunciado por Next (`localhost`) produjo el rechazo de origen HTTP 403. La repetición con el mismo origen del servidor completó el recorrido. Next también avisó de múltiples lockfiles porque la copia estaba anidada en el repositorio original durante la comprobación, y recomendó el comando de salida standalone al arrancar mediante `next start`. Estos avisos no impidieron las compilaciones y peticiones registradas.
 
 La evidencia detallada, sin rutas locales absolutas ni tokens, está en `Evidencias/copia-tfm-validacion.json`. Estos resultados demuestran que excluir los documentos personales no impide instalar, probar, compilar ni servir el núcleo público y la autenticación del asistente BOE. Las rutas de estudio personal no forman parte del alcance de esa copia.
+
+La validación se completó antes de la publicación; posteriormente se confirmó el acceso público descrito arriba. Permanecen pendientes del alumno el vídeo con su propia explicación y captura de pantalla, su URL pública, la confirmación del nombre completo de matrícula, el email de inscripción y el formulario de entrega. Ninguna comprobación técnica los sustituye ni acredita que se haya enviado el TFM.
 
 No se han realizado una auditoría de penetración, una evaluación estadística de fidelidad de todos los resúmenes ni un benchmark de carga. Las 316 pruebas finales y las comprobaciones de tipos, fronteras y compilación tienen el alcance descrito arriba.

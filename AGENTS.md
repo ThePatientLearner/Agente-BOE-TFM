@@ -11,9 +11,10 @@ trabaja en él.
 
 ## 1. Dónde está todo
 
-- El repo vive en **`/opt/boe-inspector`**. Las sesiones suelen abrirse con el
-  directorio de trabajo en `/root`, que no es un repositorio. Si alguien dice
-  «haz el merge» o «arregla X» sin dar una ruta, se refiere a este repo.
+- En el VPS, el repo vive en **`/opt/boe-inspector`**. Las sesiones allí suelen
+  abrirse en `/root`, que no es un repositorio. En el Mac, la copia de trabajo
+  está en la subcarpeta **Agente BOE** del proyecto abierto en Codex; la ruta
+  anterior `~/dev/BoeInspector` es un enlace a esa misma copia.
 - Monorepo de npm workspaces con dos paquetes:
   - `@boe-inspector/monolith` (`apps/monolith`) — ingesta del BOE, resúmenes
     con IA, notificaciones y la API que sirve el catálogo.
@@ -35,10 +36,10 @@ tres líneas en un diff ilegible.
 ## 2. Arquitectura en un minuto
 
 Monolito modular con event bus en proceso. Cuatro módulos —`ingestion`,
-`summarization`, `notifications`, `catalog`— más `spending` (subvenciones) y
-`juego` (el marcador del juego de la web).
+`summarization`, `notifications`, `catalog`— más `spending` (subvenciones),
+`juego` (marcador), `electricidad` (cuentas y sesiones) y `assistant` (BoeBot).
 
-Los dos últimos viven fuera del bus: no emiten eventos ni se suscriben a
+Estos cuatro últimos viven fuera del bus: no emiten eventos ni se suscriben a
 ninguno, porque nada del BOE depende de que se ingieran subvenciones o de que
 alguien juegue una partida.
 
@@ -89,10 +90,11 @@ simplemente pasan a ser mentira.
 | `apps/web/src/lib/paises-fiscal.ts` | Comparativa internacional | Cambia la fiscalidad de un país |
 | `apps/monolith/src/shared/domain/comunidad.ts` | Quién gobierna cada CCAA y España | **Hay elecciones o se rompe una coalición** |
 
-Los revisa una pasada automática el día 5 de cada mes
-(`scripts/actualizar-datos.sh`), que sigue el skill
+El script `scripts/actualizar-datos.sh` sigue el skill
 `.grok/skills/actualizar-datos-radiografias/` y abre un PR. Nunca escribe en
-`main`.
+`main`. `scripts/crontab.txt` propone ejecutarlo el día 5 de cada mes; esa
+línea no estaba instalada en el crontab del VPS comprobado el 4 de octubre de
+2026. No dar por activa la revisión mensual sin verificar la instalación.
 
 ### Reglas al tocar esta zona
 
@@ -172,8 +174,8 @@ layout del sitio.
 
 Lee esto antes de ejecutar nada: la topología no es la que parece.
 
-- **Esta máquina ES el VPS de producción.** Los contenedores `app`, `db` y
-  `tunnel` corren aquí.
+- **En el VPS de producción** corren los contenedores `app`, `db` y `tunnel`.
+  La copia local del Mac no es ese servidor.
 - **`scripts/deploy-vps.sh` es Mac → VPS.** Desde el propio VPS no aplica.
 - **La web va por Vercel**, que despliega solo al hacer push a `main`. El
   servicio `web` no se levanta aquí.
@@ -181,8 +183,8 @@ Lee esto antes de ejecutar nada: la topología no es la que parece.
 
 ```bash
 cd /opt/boe-inspector
-docker compose -f docker-compose.prod.yml up -d --build app
-curl -s http://127.0.0.1:3001/health
+docker compose -f docker-compose.prod.yml up -d --build --no-deps app
+curl --fail --silent --show-error http://127.0.0.1:3001/health
 ```
 
 - **Nunca hagas `up -d --build` sin nombrar el servicio.** El `tunnel` está en

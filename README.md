@@ -387,9 +387,10 @@ La misma pasada revisa **quién gobierna cada comunidad autónoma y España**
 (`apps/monolith/src/shared/domain/comunidad.ts`), que es lo que se muestra junto
 a cada resumen: la comunidad afectada si la disposición es autonómica, y el
 Gobierno de España en todo lo demás. Ese bloque no caduca por una estadística
-anual sino por una elección o una ruptura de coalición, así que se comprueban
-los veinte todos los meses y `VERIFICADO_EL` sube aunque no se mueva nada: esa fecha sale a la web, y un PR de una línea al mes es además la
-prueba de que el cron sigue vivo.
+anual sino por una elección o una ruptura de coalición. En cada ejecución de
+la revisión se comprueban los veinte y se actualiza `VERIFICADO_EL` aunque no
+haya cambios; esa fecha aparece en la web. El resultado y los logs de cada
+ejecución permiten comprobar si la revisión se ha realizado.
 
 ```bash
 DRY_RUN=1 ./scripts/actualizar-datos.sh   # ensayo: ni push, ni PR, ni aviso
@@ -587,7 +588,7 @@ El adaptador OpenAI llama a Responses con `gpt-6-luna`,
 con salida máxima de 4000 tokens y hasta dos reintentos ante estados
 transitorios. Ambos pueden pasar por `ReviewedAssistant`: redacción más hasta
 `BOT_REVIEW_PASSES` repasos (2 por defecto, rango 0–3). Se suman los tokens de
-las pasadas. Con los repasos activados, la generación tiene un plazo total
+las pasadas. Incluso con cero repasos, la generación tiene un plazo total
 firme de **42 segundos**, compartido por la redacción y las revisiones: se
 propaga una señal de cancelación y se corta la espera aunque el adaptador no
 atienda esa señal a tiempo. Si ya hay una respuesta válida, se entrega la mejor

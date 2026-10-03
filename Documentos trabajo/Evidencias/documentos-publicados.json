@@ -5,19 +5,24 @@
       "url": "https://agenteboe.com/tfm/Presentacion-Agente-BOE.pdf",
       "bytes": 766156,
       "sha256_matches_local": true,
-      "noindex": true
+      "noindex": true,
+      "sha256": "2de87b58deeb7d99aff5b8707864470885663d6d781185b8ce2c8ba38dfbe4aa"
     },
     {
       "url": "https://agenteboe.com/tfm/Presentacion-Agente-BOE.pptx",
       "bytes": 569612,
       "sha256_matches_local": true,
-      "noindex": true
+      "noindex": true,
+      "sha256": "363ebfbb7d15e8a97e1ca340cd2b438807f2ff0b9139df27f3bcf6ed045c2000"
     },
     {
       "url": "https://agenteboe.com/tfm/Memoria-Agente-BOE.pdf",
       "bytes": 488809,
       "sha256_matches_local": true,
-      "noindex": true
+      "noindex": true,
+      "sha256": "c2f364bc5f9dae1bc089f45fec350a675add5c4c605df6f71adf8cf55333ef75"
     }
-  ]
+  ],
+  "scope": "Observación de los materiales del commit de código d36c7ac, antes del cierre documental. El recibo local Privado/Comprobacion-final.json verifica las versiones finales.",
+  "local_revision_compared": "d36c7ac3f2f6f4ddd2233750716f4da135a5e191"
 }
