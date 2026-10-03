@@ -1,0 +1,13 @@
+{
+  "apiCodeCommit": "d36c7ac3f2f6f4ddd2233750716f4da135a5e191",
+  "endpoint": "POST /api/assistant",
+  "requestStartedUTC": "2026-10-03T22:39:54.302000+00:00",
+  "requestCompletedUTC": "2026-10-03T22:40:19.628000+00:00",
+  "status": 200,
+  "apiResponseTimeMs": 25326.471865999978,
+  "measurementScope": "Tiempo del handler API registrado por Pino. No incluye la interacción anterior ni el transporte completo navegador-Vercel-API.",
+  "generationDeadlineMs": 42000,
+  "webProxyDeadlineMs": 55000,
+  "screenshot": "Capturas/08-bot-respuesta.jpg",
+  "observedSource": "BOE-A-2026-20528"
+}

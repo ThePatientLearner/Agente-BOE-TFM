@@ -1,0 +1,38 @@
+node_modules/
+dist/
+.next/
+out/
+
+.env
+.env.local
+.env.production
+
+*.log
+.DS_Store
+coverage/
+drizzle/meta/
+backups/
+img_capitanBoe.png
+
+# Documento de apoyo para presentaciones (no forma parte del servicio)
+presentacion.html
+arquitectura.html
+
+# Notas locales de operación / migración (no publicar)
+MIGRACION-NUBE.md
+
+# Credenciales del túnel Cloudflare: con este JSON cualquiera puede
+# levantar el túnel y suplantar api.agenteboe.com. Se copia por scp.
+deploy/cloudflared/*.json
+
+*.tsbuildinfo
+
+# Destino del despliegue: la IP no se publica.
+deploy/.vps-target
+
+# Construcción local del material de entrega y datos personales del formulario.
+/Documentos trabajo/.build/
+/Documentos trabajo/Privado/
+/Documentos trabajo/Requisitos-TFM.txt
+/Documentos trabajo/Agente-BOE-TFM.zip
+/Documentos trabajo/Video-Agente-BOE.*

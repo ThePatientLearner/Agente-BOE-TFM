@@ -1,0 +1,13 @@
+SMOKE_EXIT 0
+{"level":30,"time":1791066442348,"pid":1,"hostname":"465a3c251ee0","reqId":"req-1","req":{"method":"GET","url":"/health","host":"localhost:80","remoteAddress":"[direccion privada]"},"msg":"incoming request"}
+health 200 {"status":"ok"}
+dev dependency absent: vitest true
+dev dependency absent: @vitest/mocker true
+dev dependency absent: typescript true
+dev dependency absent: tsx true
+dev dependency absent: pino-pretty true
+dev dependency absent: drizzle-kit true
+migrations present: true
+env absent: true
+composition import: function migrations import: function
+{"level":30,"time":1791066442355,"pid":1,"hostname":"465a3c251ee0","reqId":"req-1","res":{"statusCode":200},"responseTime":5.278222999999798,"msg":"request completed"}

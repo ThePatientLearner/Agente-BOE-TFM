@@ -1,0 +1,143 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 886B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:22-alpine
+#2 DONE 0.7s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 214B done
+#3 DONE 0.0s
+
+#4 [build 1/7] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#4 resolve docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402 0.0s done
+#4 DONE 0.0s
+
+#5 [stage-1 2/5] WORKDIR /app
+#5 CACHED
+
+#6 [internal] load build context
+#6 transferring context: 5.46MB 0.1s done
+#6 DONE 0.2s
+
+#7 [build 2/7] WORKDIR /repo
+#7 CACHED
+
+#8 [build 3/7] COPY package.json package-lock.json* ./
+#8 DONE 0.1s
+
+#9 [build 4/7] COPY apps/web/package.json apps/web/
+#9 DONE 0.1s
+
+#10 [build 5/7] RUN npm ci --workspace @boe-inspector/web --include-workspace-root=false || npm install --workspace @boe-inspector/web
+#10 20.30
+#10 20.30 added 91 packages, and audited 93 packages in 20s
+#10 20.30
+#10 20.30 30 packages are looking for funding
+#10 20.30   run `npm fund` for details
+#10 20.40
+#10 20.40 6 vulnerabilities (3 moderate, 3 high)
+#10 20.40
+#10 20.40 To address issues that do not require attention, run:
+#10 20.40   npm audit fix
+#10 20.40
+#10 20.40 To address all issues (including breaking changes), run:
+#10 20.40   npm audit fix --force
+#10 20.40
+#10 20.40 Run `npm audit` for details.
+#10 20.40 npm notice
+#10 20.40 npm notice New major version of npm available! 10.9.9 -> 12.2.0
+#10 20.40 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+#10 20.40 npm notice To update run: npm install -g npm@12.2.0
+#10 20.40 npm notice
+#10 DONE 20.9s
+
+#11 [build 6/7] COPY apps/web apps/web
+#11 DONE 0.2s
+
+#12 [build 7/7] RUN npm run build --workspace @boe-inspector/web
+#12 0.485
+#12 0.485 > @boe-inspector/web@0.1.0 build
+#12 0.485 > next build
+#12 0.485
+#12 2.174 Attention: Next.js now collects completely anonymous telemetry regarding usage.
+#12 2.175 This information is used to shape Next.js' roadmap and prioritize features.
+#12 2.175 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+#12 2.175 https://nextjs.org/telemetry
+#12 2.175
+#12 2.320    ▲ Next.js 15.5.26
+#12 2.320
+#12 2.449    Creating an optimized production build ...
+#12 30.27  ✓ Compiled successfully in 22.6s
+#12 30.29    Linting and checking validity of types ...
+#12 45.62    Collecting page data ...
+#12 49.97    Generating static pages (0/19) ...
+#12 51.12    Generating static pages (4/19)
+#12 51.30    Generating static pages (9/19)
+#12 52.17    Generating static pages (14/19)
+#12 53.19  ✓ Generating static pages (19/19)
+#12 54.71    Finalizing page optimization ...
+#12 54.71    Collecting build traces ...
+#12 83.39
+#12 83.39 Route (app)                                 Size  First Load JS  Revalidate  Expire
+#12 83.39 ┌ ○ /                                    8.55 kB         115 kB          5m      1y
+#12 83.39 ├ ○ /_not-found                            990 B         104 kB
+#12 83.39 ├ ƒ /api/account/[action]                  160 B         103 kB
+#12 83.39 ├ ƒ /api/assistant                         160 B         103 kB
+#12 83.39 ├ ƒ /api/assistant/models                  160 B         103 kB
+#12 83.39 ├ ƒ /api/electricidad/[action]             160 B         103 kB
+#12 83.39 ├ ƒ /api/full-search                       160 B         103 kB
+#12 83.39 ├ ƒ /api/full-search/unlock                160 B         103 kB
+#12 83.39 ├ ƒ /api/juego/marcador                    160 B         103 kB
+#12 83.39 ├ ƒ /api/juego/partidas                    160 B         103 kB
+#12 83.39 ├ ƒ /api/press                             160 B         103 kB
+#12 83.39 ├ ƒ /api/review-status                     160 B         103 kB
+#12 83.39 ├ ● /d/[id]                               4.1 kB         107 kB
+#12 83.39 ├ ƒ /electricidad/[[...path]]              160 B         103 kB
+#12 83.39 ├ ƒ /electricidadTest/[[...path]]          160 B         103 kB
+#12 83.39 ├ ○ /icon.png                                0 B            0 B
+#12 83.39 ├ ○ /juego                               1.58 kB         104 kB
+#12 83.39 ├ ○ /legal                                 160 B         103 kB
+#12 83.39 ├ ○ /pensiones                           19.1 kB         135 kB
+#12 83.39 ├ ○ /privacidad                            160 B         103 kB
+#12 83.39 ├ ○ /quien-paga                          25.7 kB         142 kB
+#12 83.39 ├ ○ /robots.txt                            160 B         103 kB
+#12 83.39 ├ ○ /sitemap.xml                           160 B         103 kB          1h      1y
+#12 83.39 ├ ○ /subvenciones                        1.71 kB         112 kB          6h      1y
+#12 83.39 └ ● /subvenciones/[mes]                  1.71 kB         112 kB
+#12 83.39 + First Load JS shared by all             103 kB
+#12 83.39   ├ chunks/18-498168fb58dcd546.js        46.4 kB
+#12 83.39   ├ chunks/87c73c54-24122e7b92478d00.js  54.2 kB
+#12 83.39   └ other shared chunks (total)          1.97 kB
+#12 83.39
+#12 83.39
+#12 83.39 ○  (Static)   prerendered as static content
+#12 83.39 ●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+#12 83.39 ƒ  (Dynamic)  server-rendered on demand
+#12 83.39
+#12 DONE 83.6s
+
+#13 [stage-1 3/5] COPY --from=build /repo/apps/web/.next/standalone ./
+#13 DONE 0.5s
+
+#14 [stage-1 4/5] COPY --from=build /repo/apps/web/.next/static ./apps/web/.next/static
+#14 DONE 0.1s
+
+#15 [stage-1 5/5] COPY --from=build /repo/apps/web/public ./apps/web/public
+#15 DONE 0.1s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 5.3s done
+#16 exporting manifest sha256:ca3bd6a6b95d20916bf3da9f11f9c8113c2fc0977b74ebfdbf5e1cf237812f93 0.0s done
+#16 exporting config sha256:24e8889c973d36c22b2e02e235a299071635b1629c80dec87cc4250a55ba4ff9 0.0s done
+#16 exporting attestation manifest sha256:c23c243d7dd61a293067241989d995378a9080f715af3f261d099ac601934689 0.0s done
+#16 exporting manifest list sha256:d7c6d062e50e70cf550a71de2231bcf0a7f7a7f816711ccb9fff8625f60b7f65 0.0s done
+#16 naming to docker.io/library/boe-tfm-web-check:latest done
+#16 unpacking to docker.io/library/boe-tfm-web-check:latest
+#16 unpacking to docker.io/library/boe-tfm-web-check:latest 1.6s done
+#16 DONE 7.1s
+
+BUILD_EXIT 0

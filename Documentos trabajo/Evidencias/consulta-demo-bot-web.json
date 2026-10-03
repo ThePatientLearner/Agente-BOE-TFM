@@ -1,0 +1,24 @@
+{
+  "fecha": "2026-10-03T22:14:16.730175+00:00",
+  "pregunta": {
+    "entryId": "BOE-A-2026-19629",
+    "question": "¿Qué se aprueba en esta disposición?",
+    "history": []
+  },
+  "status": 200,
+  "elapsedMs": 36582,
+  "respuesta": {
+    "answer": "Esta disposición es una Resolución de la Secretaría General de Universidades, de 16 de septiembre de 2026, por la que se publica en el BOE el Acuerdo del Consejo de Ministros de 15 de septiembre de 2026 [1].\n\nEl Acuerdo aprueba el carácter oficial de diversos títulos de Máster Universitario y su inscripción en el Registro de Universidades, Centros y Títulos (RUCT) [1].\n\nAspectos principales que se aprueban:\n\n- Se establece el carácter oficial de los másteres, que pasan a ser títulos válidos en todo el territorio nacional con efectos académicos y administrativos [1].\n- Los planes de estudios han sido verificados por el Consejo de Universidades y, salvo los de universidades de la Iglesia Católica, cuentan con autorización de la comunidad autónoma correspondiente, conforme al artículo 8.2 de la Ley Orgánica 2/2023, de 22 de marzo, del Sistema Universitario, y al Real Decreto 822/2021, de 28 de septiembre [1].\n- Cada universidad deberá publicar posteriormente su plan de estudios en el BOE y en el diario oficial de la comunidad autónoma [1].\n- El diploma será expedido por el rector o rectora en nombre del Rey [1].\n- Se incluyen másteres de universidades civiles, másteres interuniversitarios y programas Erasmus Mundus con universidades europeas [1].",
+    "sources": [
+      {
+        "id": "BOE-A-2026-19629",
+        "title": "Decenas de nuevos másteres obtienen el reconocimiento oficial del Gobierno",
+        "officialUrl": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-19629",
+        "summaryUrl": "/d/BOE-A-2026-19629",
+        "publicationDate": "2026-09-22",
+        "lastOfficialUpdateAt": "2026-09-22"
+      }
+    ],
+    "contextEntryId": "BOE-A-2026-19629"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-10-04",
+  "artifacts": [
+    {
+      "url": "https://agenteboe.com/tfm/Presentacion-Agente-BOE.pdf",
+      "bytes": 766156,
+      "sha256_matches_local": true,
+      "noindex": true
+    },
+    {
+      "url": "https://agenteboe.com/tfm/Presentacion-Agente-BOE.pptx",
+      "bytes": 569612,
+      "sha256_matches_local": true,
+      "noindex": true
+    },
+    {
+      "url": "https://agenteboe.com/tfm/Memoria-Agente-BOE.pdf",
+      "bytes": 488809,
+      "sha256_matches_local": true,
+      "noindex": true
+    }
+  ]
+}

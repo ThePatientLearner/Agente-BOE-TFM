@@ -1,0 +1,31 @@
+{
+  "fechaUTC": "2026-10-03T22:37:24.870061+00:00",
+  "checks": [
+    {
+      "url": "https://api.agenteboe.com/health",
+      "status": 200,
+      "result": {
+        "status": "ok"
+      }
+    },
+    {
+      "url": "https://api.agenteboe.com/api/review-status",
+      "status": 200,
+      "result": {
+        "reviewing": false,
+        "nextReviewAt": "2026-10-04T06:30:00.000Z",
+        "serverTime": "2026-10-03T22:37:24.521Z",
+        "timeZone": "Europe/Madrid"
+      }
+    },
+    {
+      "url": "https://api.agenteboe.com/api/days",
+      "status": 200,
+      "result": {
+        "days": 15,
+        "entries": 73,
+        "lastPublication": "2026-10-03"
+      }
+    }
+  ]
+}

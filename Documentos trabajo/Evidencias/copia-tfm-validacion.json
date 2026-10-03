@@ -1,0 +1,142 @@
+{
+  "verifiedAt": "2026-10-04T00:41:50.963235+02:00",
+  "timezone": "Europe/Madrid",
+  "scope": "Copia TFM limpia, sin historial ni HTML personales, antes de publicar el repositorio independiente",
+  "targetRepository": "https://github.com/ThePatientLearner/Agente-BOE-TFM",
+  "targetRepositoryPublishedAtVerification": false,
+  "commands": [
+    {
+      "command": "npm ci",
+      "exitCode": 0,
+      "installedPackages": 210,
+      "auditedPackages": 213,
+      "moderateDevelopmentAdvisories": 2
+    },
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "monolith": {
+        "testFiles": 25,
+        "passedTests": 237,
+        "reportedDurationSeconds": 6.72
+      },
+      "web": {
+        "testFiles": 8,
+        "passedTests": 79,
+        "reportedDurationSeconds": 0.308
+      },
+      "totalPassedTests": 316
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "workspacesPassed": [
+        "monolith",
+        "web"
+      ]
+    },
+    {
+      "command": "npm run check:boundaries",
+      "exitCode": 0,
+      "modules": 127,
+      "dependencies": 409,
+      "violations": 0
+    },
+    {
+      "command": "API_URL=https://api.agenteboe.com npm run build --workspace @boe-inspector/web",
+      "exitCode": 0,
+      "staticPagesGenerated": 156,
+      "homeRouteSize": "8.56 kB",
+      "homeFirstLoadJS": "115 kB"
+    },
+    {
+      "command": "npm run build --workspace @boe-inspector/monolith",
+      "exitCode": 0
+    }
+  ],
+  "privacyChecks": {
+    "rootEnvAbsent": true,
+    "credentialsAndSessionTokensExcludedFromThisEvidence": true,
+    "personalFilesChecked": 8,
+    "allPersonalFilesAbsent": true,
+    "personalFilesAbsent": 8
+  },
+  "runtimeSmoke": [
+    {
+      "route": "/",
+      "status": 200,
+      "bytes": 255588
+    },
+    {
+      "route": "/subvenciones",
+      "status": 200,
+      "bytes": 88016
+    },
+    {
+      "route": "/pensiones",
+      "status": 200,
+      "bytes": 124161
+    },
+    {
+      "route": "/quien-paga",
+      "status": 200,
+      "bytes": 126010
+    },
+    {
+      "route": "/emblema-loop.mp4",
+      "status": 200,
+      "bytes": 917707
+    },
+    {
+      "route": "/juego/suscriban.html",
+      "status": 200,
+      "bytes": 294907
+    },
+    {
+      "route": "/d/BOE-A-2026-20528",
+      "status": 200,
+      "bytes": 44712
+    },
+    {
+      "route": "/api/account/me",
+      "authenticated": false,
+      "status": 401
+    },
+    {
+      "route": "/api/account/login",
+      "status": 200,
+      "sessionCookieReturned": true
+    },
+    {
+      "route": "/api/account/me",
+      "authenticated": true,
+      "status": 200,
+      "role": "student",
+      "studyAccess": false
+    },
+    {
+      "route": "/api/assistant/models",
+      "authenticated": true,
+      "status": 403,
+      "expectedAdminDenied": true
+    },
+    {
+      "route": "/api/account/logout",
+      "status": 200
+    },
+    {
+      "route": "/api/account/me",
+      "afterLogout": true,
+      "status": 401
+    }
+  ],
+  "runtimeSmokeNotes": [
+    "Servidor de producción local temporal iniciado y detenido tras la prueba.",
+    "API pública utilizada para el catálogo y el login/logout de la cuenta de demostración.",
+    "No se enviaron consultas a modelos ni se consumió cuota de IA.",
+    "Una primera prueba con 127.0.0.1 recibió403 de origen; al usar localhost, igual que el origen anunciado por Next, el login/logout pasó.",
+    "Next avisó de múltiples lockfiles por estar la copia anidada durante esta comprobación; la compilación y el núcleo pasaron.",
+    "next start emitió una recomendación para usar la salida standalone; las peticiones del smoke respondieron con los códigos registrados."
+  ],
+  "conclusion": "La exclusión de los HTML personales no impide instalar, probar, compilar ni servir el núcleo público y la autenticación del asistente BOE."
+}
