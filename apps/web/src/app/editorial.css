@@ -42,6 +42,7 @@
 .editorial-hero h1 em { font-style: normal; color: var(--gold-bright); }
 .hero-description { max-width: 36rem; margin: 1rem 0 1.3rem; font-size: 0.95rem; color: var(--muted); }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.3rem; }
+.editorial-hero-copy > h1 + .hero-actions { margin-top: 1.25rem; }
 .editorial-button { display: inline-flex; justify-content: center; align-items: center; gap: 1rem; min-height: 46px; padding: 0.65rem 1.2rem; border: 1px solid var(--gold); border-radius: 5px; background: var(--gold-bright); color: #101724; font: inherit; font-size: 0.85rem; font-weight: 650; text-decoration: none; cursor: pointer; transition: background 150ms ease, border-color 150ms ease; }
 .editorial-button:hover { background: #f3dfb8; }
 .editorial-button.secondary { background: transparent; color: var(--ink); border-color: var(--line); }
