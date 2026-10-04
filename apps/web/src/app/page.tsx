@@ -20,7 +20,6 @@ export default async function HomePage() {
         <div className="editorial-hero-copy">
           <p className="eyebrow">El BOE, en lenguaje claro</p>
           <h1 id="home-title">Resúmenes diarios del BOE.<br /><em>Descubre cómo te afecta.</em></h1>
-          <p className="hero-description">Vivienda, trabajo, impuestos. Encuentra qué cambia, lee lo esencial y contrástalo con el texto oficial.</p>
           <div className="hero-actions">
             <a href="#boe-diario" className="editorial-button hero-primary">{total > 0 ? `Ver ${total === 1 ? "la novedad" : `las ${total} novedades`} del último boletín` : "Ver las novedades"} <span aria-hidden="true">↓</span></a>
             <a href="#seguir-boe" className="text-link">Recibir avisos gratis <span aria-hidden="true">↗</span></a>
