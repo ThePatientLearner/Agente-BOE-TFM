@@ -570,6 +570,11 @@ Telegram abre por defecto [@FinanFocus](https://t.me/FinanFocus);
 El acceso no aparece en el menú ni se abre automáticamente. Las cuentas y
 cookies de sesión se comparten con electricidad, pero el alta pública solo
 autoriza el bot; el cuaderno conserva su aprobación específica (`study_access`).
+El alta del bot exige una contraseña de registro adicional a la contraseña
+personal. El servidor comprueba su hash scrypt en `BOT_REGISTRATION_CODE_HASH`;
+si falta la configuración o la contraseña es incorrecta, no crea la cuenta.
+La clave no se incluye en el código ni en la web. Los intentos se limitan a
+20 por hora y las cuentas existentes siguen entrando con su contraseña personal.
 La migración `0006_boe_assistant` conserva el acceso de los alumnos activos.
 
 La búsqueda se hace en PostgreSQL con un índice GIN en español y devuelve

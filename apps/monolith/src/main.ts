@@ -32,7 +32,7 @@ async function main(): Promise<void> {
   );
 
   const server = buildServer(app.catalog, app.spending, app.juego, app.registrarPartida, logger, {
-    accounts: new ElectricidadAccounts(database.db, process.env['ELECTRICIDAD_REGISTRATION_CODE_HASH']),
+    accounts: new ElectricidadAccounts(database.db, process.env['ELECTRICIDAD_REGISTRATION_CODE_HASH'], process.env['BOT_REGISTRATION_CODE_HASH']),
     assistant: app.assistant,
     fullSearchPassword: config.fullSearchPassword,
     readReviewStatus,

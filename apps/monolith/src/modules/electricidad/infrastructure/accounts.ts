@@ -28,7 +28,7 @@ const publicUser = (row: Record<string, unknown>): Account => ({ id: String(row.
 
 /** Cuentas independientes del BOE: solo utiliza el esquema electricidad. */
 export class ElectricidadAccounts implements Accounts {
-  constructor(private db: Database, private registrationCodeHash = '') {}
+  constructor(private db: Database, private registrationCodeHash = '', private botRegistrationCodeHash = '') {}
 
   // Un contador atómico persistente impide eludir el límite reiniciando el proceso.
   private async limit(key: string, maximum: number, seconds = 900) {
@@ -70,7 +70,11 @@ export class ElectricidadAccounts implements Accounts {
     });
     return { token, user: publicUser(row) };
   }
-  async registerPublic(name: unknown, offered: unknown) {
+  async registerPublic(name: unknown, offered: unknown, code: unknown) {
+    if (!this.botRegistrationCodeHash) throw new AccountError(503, 'El registro no está disponible temporalmente.');
+    // Validar también las llamadas directas a la API, antes de crear la cuenta.
+    await this.limit('public-registration-code', 20, 3600);
+    if (typeof code !== 'string' || code.length > 128 || !await verifyPassword(code, this.botRegistrationCodeHash)) throw new AccountError(403, 'La contraseña de registro no es correcta.');
     const display = username(name), secret = newPassword(offered, String(name ?? ''));
     // Comparte identidad y sesiones; el alta pública nunca concede el cuaderno.
     await this.limit('public-registration', 20, 3600);

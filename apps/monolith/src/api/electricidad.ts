@@ -16,7 +16,7 @@ export function registerElectricidad(app: FastifyInstance<RawServerDefault, RawR
         } else {
           switch (req.params.action) {
             case 'register':
-              if (area === 'account') { await accounts.registerPublic(body.username, body.password); return { message: 'Cuenta creada. Ya puedes entrar al asistente BOE.' }; }
+              if (area === 'account') { await accounts.registerPublic(body.username, body.password, body.code); return { message: 'Cuenta creada. Ya puedes entrar al asistente BOE.' }; }
               await accounts.register(body.username, body.password, body.code); return { message: 'Cuenta creada. Roberto debe aprobarla antes de que puedas entrar.' };
             case 'login': return await accounts.login(body.username, body.password);
             case 'logout': await accounts.logout(token); return { ok: true };

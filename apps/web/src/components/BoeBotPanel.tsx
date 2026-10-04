@@ -94,7 +94,7 @@ export default function BoeBotPanel({ entryId, telegramContactUrl, onClose }: { 
     if (register && password !== form.get('confirm')) { setError('Las contraseñas no coinciden.'); return; }
     setBusy(true); setError('');
     try {
-      if (register) await api('/api/account/register', { username, password });
+      if (register) await api('/api/account/register', { username, password, code: String(form.get('code') ?? '') });
       const data = await api('/api/account/login', { username, password });
       setUser(data.user);
     } catch (e) { if ((e as Error).name !== 'AbortError') setError((e as Error).message); }
@@ -165,11 +165,12 @@ export default function BoeBotPanel({ entryId, telegramContactUrl, onClose }: { 
           </section>
           <div className="boe-bot-access">
         <h3>{register ? 'Crea tu cuenta.' : 'Entra y pregunta.'}</h3>
-        <p className="boe-bot-auth-description">{register ? 'Elige tu usuario y una contraseña para acceder.' : 'Accede con tu usuario y contraseña.'} Dispones de 5 consultas al día.</p>
+        <p className="boe-bot-auth-description">{register ? 'Para registrarte necesitas la contraseña de registro, además de una contraseña personal para tu cuenta.' : 'Accede con tu usuario y contraseña.'} Dispones de 5 consultas al día.</p>
         <div className="boe-bot-auth-tabs"><button type="button" aria-pressed={!register} disabled={busy} onClick={() => { setRegister(false); setError(''); }}>Entrar</button><button type="button" aria-pressed={register} disabled={busy} onClick={() => { setRegister(true); setError(''); }}>Crear cuenta</button></div>
         <form onSubmit={authenticate} key={String(register)}>
+          {register && <><label htmlFor="bot-registration-code">Contraseña de registro</label><input id="bot-registration-code" name="code" type="password" autoComplete="off" aria-describedby="bot-registration-help" required maxLength={128} disabled={busy} /><p id="bot-registration-help" className="boe-bot-fine">Necesitas conocerla para crear tu cuenta.</p></>}
           <label htmlFor="bot-username">Nombre de usuario</label><input id="bot-username" name="username" autoComplete="username" required minLength={3} maxLength={40} disabled={busy} />
-          <label htmlFor="bot-password">Contraseña</label><input id="bot-password" name="password" type="password" autoComplete={register ? 'new-password' : 'current-password'} required minLength={register ? 8 : 1} maxLength={128} disabled={busy} />
+          <label htmlFor="bot-password">{register ? 'Contraseña de tu cuenta' : 'Contraseña'}</label><input id="bot-password" name="password" type="password" autoComplete={register ? 'new-password' : 'current-password'} required minLength={register ? 8 : 1} maxLength={128} disabled={busy} />
           {register && <><label htmlFor="bot-confirm">Repite la contraseña</label><input id="bot-confirm" name="confirm" type="password" autoComplete="new-password" required minLength={8} maxLength={128} disabled={busy} /></>}
           <button className="boe-bot-primary" disabled={busy}>{busy ? 'Un momento…' : register ? 'Crear cuenta y entrar' : 'Entrar al asistente'}</button>
         </form>

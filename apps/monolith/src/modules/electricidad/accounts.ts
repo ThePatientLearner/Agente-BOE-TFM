@@ -4,7 +4,7 @@ export class AccountError extends Error {
 }
 export interface Accounts {
   register(username: unknown, password: unknown, code: unknown): Promise<void>;
-  registerPublic(username: unknown, password: unknown): Promise<void>;
+  registerPublic(username: unknown, password: unknown, code: unknown): Promise<void>;
   login(username: unknown, password: unknown): Promise<{ token: string; user: Account }>;
   me(token: string): Promise<Account>;
   logout(token: string): Promise<void>;
