@@ -120,6 +120,7 @@ export function buildApplication(config: Config, logger: Logger, db: Database): 
       apiKey: config.botMinimaxApiKey,
       baseUrl: config.botMinimaxBaseUrl,
       model: config.botMinimaxModel,
+      onResponse: metadata => logger.info(metadata, 'MiniMax respondió al asistente'),
     })),
   ];
   const assistant = new AskBoe(catalog, {

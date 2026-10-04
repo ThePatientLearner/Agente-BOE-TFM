@@ -11,7 +11,7 @@ import { MinimaxAssistant } from './minimax-assistant.js';
 const options = { apiKey: 'k', baseUrl: 'https://api.minimax.io/v1', model: 'MiniMax-M3' };
 
 function respuestas(...items: Array<number | { text: string; tokens?: number }>) {
-  const fetchMock = vi.fn(async () => {
+  const fetchMock = vi.fn(async (_url: string, _init: RequestInit) => {
     const next = items.shift() ?? 500;
     if (typeof next === 'number') {
       return new Response(JSON.stringify({ error: { type: 'overloaded_error' }, request_id: 'abc123' }), { status: next });
@@ -41,6 +41,68 @@ describe('MinimaxAssistant', () => {
     const result = await new MinimaxAssistant(options).answer('contexto');
 
     expect(result).toEqual({ text: 'Hay un plazo de 30 días [1].', tokens: 1046 });
+  });
+
+  it('M3 contesta directamente y separa el razonamiento de la respuesta del ciudadano', async () => {
+    const fetchMock = respuestas({ text: 'Respuesta [1].', tokens: 100 });
+    await new MinimaxAssistant(options).answer('contexto');
+    expect(fetchMock.mock.calls[0]![0]).toBe('https://api.minimax.io/v1/chat/completions');
+    const body = JSON.parse(String(fetchMock.mock.calls[0]![1].body));
+    expect(body).toMatchObject({ model: 'MiniMax-M3', thinking: { type: 'disabled' }, reasoning_split: true, max_completion_tokens: 1600, temperature: 0.3 });
+    expect(body.max_tokens).toBeUndefined();
+  });
+
+  it.each(['MiniMax-M2.7', 'MiniMax-M3.1-Flash-Preview'])('no desactiva el razonamiento de %s, cuyo contrato es distinto', async model => {
+    const fetchMock = respuestas({ text: 'Respuesta [1].', tokens: 100 });
+    await new MinimaxAssistant({ ...options, model }).answer('contexto');
+    expect(JSON.parse(String(fetchMock.mock.calls[0]![1].body))).toMatchObject({ model, thinking: { type: 'adaptive' }, reasoning_split: true, max_completion_tokens: 4000 });
+  });
+
+  it('conserva las reglas de fuentes en los repasos sin poner la consulta en el mensaje de sistema', async () => {
+    const fetchMock = respuestas({ text: 'Respuesta [1].', tokens: 100 });
+    await new MinimaxAssistant(options).answer('Consulta privada', 'Revisa la respuesta y devuelve solo la corrección.');
+    const { messages } = JSON.parse(String(fetchMock.mock.calls[0]![1].body));
+    expect(messages[0].content).toContain('prioriza los fragmentos oficiales');
+    expect(messages[0].content).toContain('Revisa la respuesta');
+    expect(messages[0].content).not.toContain('Consulta privada');
+    expect(messages[1]).toEqual({ role: 'user', content: 'Consulta privada' });
+  });
+
+  it.each([
+    '<think>Razonamiento que no debe ver el usuario</think>Respuesta [1].',
+    '<thinking>Razonamiento interno</thinking>Respuesta [1].',
+    'Fragmento interno sin apertura</think>Respuesta [1].',
+  ])('solo entrega el texto final si el proveedor mezcla razonamiento en content', async text => {
+    respuestas({ text, tokens: 100 });
+    expect((await new MinimaxAssistant(options).answer('contexto')).text).toBe('Respuesta [1].');
+  });
+
+  it('rechaza un bloque de razonamiento inacabado en vez de mostrarlo como respuesta', async () => {
+    respuestas({ text: '<think>Texto interno que aún no es una respuesta', tokens: 100 });
+    await expect(new MinimaxAssistant(options).answer('contexto')).rejects.toThrow('más concreta');
+  });
+
+  it.each([
+    { model: 'MiniMax-M2.7' },
+    { base_resp: { status_code: 1008 } },
+    { choices: [{ finish_reason: 'length', message: { content: 'La ayuda tiene un plazo de…' } }] },
+  ])('no entrega respuestas de otro modelo, de error o truncadas aunque HTTP sea 200', async patch => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.json({
+      model: 'MiniMax-M3', choices: [{ finish_reason: 'stop', message: { content: 'Respuesta [1].' } }],
+      usage: { total_tokens: 100 }, ...patch,
+    })));
+    await expect(new MinimaxAssistant(options).answer('contexto')).rejects.toThrow(AssistantError);
+  });
+
+  it('el diagnóstico usa el modelo realmente devuelto y no incluye preguntas ni razonamiento', async () => {
+    const onResponse = vi.fn();
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.json({
+      model: 'MiniMax-M3', choices: [{ finish_reason: 'stop', message: { content: 'Respuesta [1].', reasoning_content: 'Privado' } }], usage: { total_tokens: 100 },
+    })));
+    await new MinimaxAssistant({ ...options, onResponse }).answer('Pregunta privada');
+    expect(onResponse).toHaveBeenCalledWith({ requestedModel: 'MiniMax-M3', returnedModel: 'MiniMax-M3', thinking: 'disabled', tokens: 100, durationMs: expect.any(Number) });
+    expect(JSON.stringify(onResponse.mock.calls)).not.toContain('Privad');
+    expect(JSON.stringify(onResponse.mock.calls)).not.toContain('Pregunta');
   });
 
   it('reintenta un 529 y acaba respondiendo', async () => {
@@ -120,12 +182,13 @@ describe('MinimaxAssistant', () => {
     await expect(new MinimaxAssistant(options).answer('c')).rejects.toThrow('más concreta');
   });
 
-  // Quedarse corto gastaría presupuesto que nadie cuenta y la cuota diaria
-  // dejaría de ser cierta, así que sin `usage` se estima POR ENCIMA.
-  it('sin usage estima los tokens por encima en vez de darlos por cero', async () => {
+  // Sin usage no se pueden conocer los tokens de razonamiento: conservar la
+  // reserva impide devolver presupuesto que puede haber sido facturado.
+  it('sin usage conserva la reserva en vez de liquidar con un coste incompleto', async () => {
     respuestas({ text: 'x'.repeat(100) });
     const result = await new MinimaxAssistant(options).answer('y'.repeat(100));
 
-    expect(result.tokens).toBe(100);
+    expect(result.tokens).toBeGreaterThanOrEqual(100);
+    expect(result.usageUncertain).toBe(true);
   });
 });

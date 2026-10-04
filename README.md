@@ -584,9 +584,19 @@ elegido carece de clave, se usa el primer proveedor habilitado.
 
 El adaptador OpenAI llama a Responses con `gpt-6-luna`,
 `reasoning.effort=high`, `max_output_tokens=2048` (incluye razonamiento) y
-`store=false`, sin herramientas ni búsqueda web. MiniMax utiliza su API HTTP
-con salida máxima de 4000 tokens y hasta dos reintentos ante estados
-transitorios. Ambos pueden pasar por `ReviewedAssistant`: redacción más hasta
+`store=false`, sin herramientas ni búsqueda web. MiniMax utiliza Chat
+Completions (`/v1/chat/completions`): M3 responde en modo directo
+(`thinking: disabled`), con temperatura 0,3 y hasta 1.600 tokens de salida;
+otros modelos mantienen razonamiento adaptativo y 4.000 tokens. Hay hasta dos
+reintentos ante errores transitorios. Se comprueban el modelo devuelto, los
+errores del proveedor y las respuestas incompletas. El razonamiento interno
+se separa y se elimina si aparece en el texto final. El diagnóstico registra
+modelo, modo, latencia y tokens, sin preguntas ni contexto.
+[Contrato oficial de MiniMax](https://platform.minimax.io/docs/api-reference/text-openai-api).
+Las instrucciones piden contestar primero lo esencial y normalmente usar
+60–120 palabras, con un objetivo máximo de 160. Si falta un dato concreto,
+se explica qué documento permitiría comprobarlo, sin añadir asuntos ajenos.
+Ambos pueden pasar por `ReviewedAssistant`: redacción más hasta
 `BOT_REVIEW_PASSES` repasos (2 por defecto, rango 0–3). Se suman los tokens de
 las pasadas. Incluso con cero repasos, la generación tiene un plazo total
 firme de **42 segundos**, compartido por la redacción y las revisiones: se

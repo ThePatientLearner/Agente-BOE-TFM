@@ -151,6 +151,15 @@ describe('ReviewedAssistant', () => {
     expect(model.answer.mock.calls[1]![1]).toContain('Revisas la respuesta');
   });
 
+  it('el repaso conserva pregunta y fuentes como objeto y no como JSON doblemente escapado', async () => {
+    const context = { question: '¿A quién afecta?', documents: [{ source: 1, officialExcerpts: 'Personas con discapacidad.' }], history: [] };
+    const model = inner([{ text: largo('Borrador [1]'), tokens: 100 }, { text: largo('Respuesta [1]'), tokens: 50 }]);
+    await new ReviewedAssistant(model, 1).answer(JSON.stringify(context));
+    const review = JSON.parse(model.answer.mock.calls[1]![0]);
+    expect(review.contexto).toEqual(context);
+    expect(review.respuestaARevisar).toContain('Borrador [1]');
+  });
+
   // El selector del administrador elige MODELO; que se repase o no es política
   // del servicio. Si el decorador cambiara el id, el selector no lo encontraría.
   it('conserva la identidad del modelo que envuelve', () => {
