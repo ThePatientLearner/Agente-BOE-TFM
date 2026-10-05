@@ -36,6 +36,7 @@ export default function BoeBotPanel({ entryId, telegramContactUrl, onClose }: { 
   const pending = useRef<AbortController | null>(null);
   const [user, setUser] = useState<User | null>(null), [checking, setChecking] = useState(true);
   const [register, setRegister] = useState(false), [busy, setBusy] = useState(false), [error, setError] = useState('');
+  const [thinking, setThinking] = useState(false);
   const [question, setQuestion] = useState(''), [messages, setMessages] = useState<Message[]>([]);
   // Solo el administrador elige la IA, y su elección vale para TODA la
   // aplicación. Para el resto `bots` se queda vacío y el selector no existe.
@@ -104,13 +105,13 @@ export default function BoeBotPanel({ entryId, telegramContactUrl, onClose }: { 
     e.preventDefault();
     const text = question.trim();
     if (text.length < 2 || busy) return;
-    setBusy(true); setError('');
+    setBusy(true); setThinking(true); setError('');
     try {
       const data = await api('/api/assistant', { question: text, ...(entryId ? { entryId } : {}), history: messages.slice(-4).map(m => ({ role: m.role, content: m.content.slice(0, 1000) })) });
       setMessages(previous => [...previous, { role: 'user', content: text } as Message, { role: 'assistant', content: data.answer, sources: data.sources, ...(user?.role === 'admin' && typeof data.model === 'string' ? { model: data.model } : {}) } as Message].slice(-16));
       setQuestion('');
     } catch (e) { if ((e as Error).name !== 'AbortError') setError((e as Error).message); }
-    finally { setBusy(false); }
+    finally { setBusy(false); setThinking(false); }
   }
   function showBots(models: Bot[] | undefined) {
     const available = (models ?? []).filter(m => m.enabled);
@@ -151,7 +152,7 @@ export default function BoeBotPanel({ entryId, telegramContactUrl, onClose }: { 
     catch (e) { setError((e as Error).message); }
     finally { setBusy(false); }
   }
-  return <dialog ref={dialog} className={`boe-bot-dialog${wide ? ' boe-bot-wide' : ''}`} aria-labelledby="boe-bot-title" onCancel={onClose} onClick={e => { if (e.target === dialog.current) onClose(); }}>
+  return <dialog ref={dialog} className={`boe-bot-dialog${wide ? ' boe-bot-wide' : ''}${thinking ? ' boe-bot-is-thinking' : ''}`} aria-labelledby="boe-bot-title" onCancel={onClose} onClick={e => { if (e.target === dialog.current) onClose(); }}>
     <div className="boe-bot-shell">
       <header className="boe-bot-header"><div className="boe-bot-mark"><BotLogo /></div><div><h2 id="boe-bot-title">BoeBot</h2><span>Pregunta. Entiende. Consulta la fuente.</span></div><button type="button" className="boe-bot-expand" onClick={toggleWide} aria-pressed={wide} aria-label={wide ? 'Reducir el asistente' : 'Ampliar el asistente'} title={wide ? 'Reducir' : 'Ampliar'}>{wide ? '⤡' : '⤢'}<span>{wide ? 'Reducir' : 'Ampliar'}</span></button><button type="button" className="boe-bot-close" autoFocus onClick={onClose} aria-label="Cerrar asistente">×</button></header>
       <div className="boe-bot-context"><span className="boe-bot-dot" />{entryId ? <>Sobre esta disposición <strong>{entryId}</strong></> : 'Consulta nuestro archivo de disposiciones'}</div>

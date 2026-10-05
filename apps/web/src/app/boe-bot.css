@@ -4,6 +4,53 @@
 @keyframes boe-bot-particle{0%,100%{opacity:.15;transform:translate(var(--x),var(--y)) scale(.65)}50%{opacity:.9;transform:translate(var(--x),calc(var(--y) - 6px)) scale(1.15)}}@keyframes boe-bot-aura{0%,100%{opacity:.4;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}
 @keyframes boe-bot-float{50%{transform:translateY(-2px)}}@keyframes boe-bot-blink{0%,43%,47%,100%{transform:scaleY(1)}45%{transform:scaleY(.15)}}
 .boe-bot-dialog{position:fixed;inset:0;margin:auto;padding:0;width:760px;height:min(820px,calc(100dvh - 48px));max-width:calc(100vw - 24px);max-height:calc(100dvh - 40px);border:1px solid #54617a;border-radius:22px;background:#101b2c;color:#f0eee7;box-shadow:0 20px 90px #0008;overflow:hidden;font:16px/1.6 system-ui}.boe-bot-dialog::backdrop{background:#050c1860}
+/* La corriente se limita al contorno: el centro queda transparente y no intercepta clics. */
+@property --boe-bot-current-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+.boe-bot-dialog {
+  --boe-bot-current-speed: 12s;
+  isolation: isolate;
+  border-color: #7898aa;
+  box-shadow: 0 20px 90px #0008, 0 0 22px #79d6ed24, 0 0 42px #e6cb9814;
+}
+@supports (mask-composite: exclude) or (-webkit-mask-composite: xor) {
+  .boe-bot-dialog::before, .boe-bot-dialog::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    padding: 2px;
+    border-radius: inherit;
+    pointer-events: none;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: boe-bot-electric-current var(--boe-bot-current-speed) linear infinite;
+  }
+  .boe-bot-dialog::before {
+    background: conic-gradient(from var(--boe-bot-current-angle, 0deg), transparent 0deg 35deg, #70cce7 72deg, #ddf8ff 85deg, transparent 100deg 210deg, #d8ad69 242deg, #fff0c2 255deg, transparent 270deg 360deg);
+    opacity: .9;
+  }
+  .boe-bot-dialog::after {
+    padding: 3px;
+    background: conic-gradient(from var(--boe-bot-current-angle, 0deg), transparent 0deg 78deg, #f0fcff 82deg, transparent 87deg 249deg, #fff7dc 253deg, transparent 258deg 360deg);
+    opacity: .65;
+    animation-direction: reverse;
+    animation-delay: -2s;
+  }
+}
+.boe-bot-dialog.boe-bot-is-thinking { --boe-bot-current-speed: 2.8s; }
+.boe-bot-is-thinking::before { opacity: 1; }
+.boe-bot-is-thinking::after { opacity: .85; }
+@keyframes boe-bot-electric-current { to { --boe-bot-current-angle: 360deg; } }
+@media (prefers-reduced-motion: reduce) {
+  .boe-bot-dialog::before, .boe-bot-dialog::after { animation: none; }
+  .boe-bot-dialog::after { display: none; }
+}
 .boe-bot-shell{display:flex;flex-direction:column;height:100%;max-height:100%;min-height:0}.boe-bot-header{display:flex;align-items:center;gap:12px;padding:17px 18px;border-bottom:1px solid #ffffff15;flex-shrink:0}.boe-bot-header h2{font:400 21px/1.2 Georgia,serif;margin:0 0 5px}.boe-bot-header span{font-size:13px;color:#a8b7ce}.boe-bot-mark{display:grid;place-items:center;width:44px;height:44px;background:#e5c48c12;border:1px solid #b2915a55;border-radius:14px;color:#e8c891;flex-shrink:0}.boe-bot-mark svg{width:36px;height:36px}.boe-bot-expand{margin-left:auto;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:6px 11px;border:1px solid #426281;border-radius:9px;background:#1a2d47;color:#dbe9f7;font:500 12px system-ui;cursor:pointer}.boe-bot-expand:hover{border-color:#88b6d0;background:#223b5a}.boe-bot-expand+.boe-bot-close{margin-left:4px}.boe-bot-close{margin-left:auto;background:transparent;color:#adbad0;border:0;font-size:28px;min-width:44px;min-height:44px;cursor:pointer}
 .boe-bot-context{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:10px 18px;background:#e2c89508;font-size:13px;color:#b9c7dc;flex-shrink:0}.boe-bot-context strong{font-weight:500;color:#e8c891}.boe-bot-dot{width:5px;height:5px;background:#d3b77f;border-radius:50%;flex-shrink:0}
 .boe-bot-auth{padding:28px;overflow-y:auto;overscroll-behavior:contain;min-height:0;flex:1}.boe-bot-kicker{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#dfc389;margin:0 0 10px}.boe-bot-auth h3,.boe-bot-welcome h3{font:400 25px/1.25 Georgia,serif;margin:0 0 12px}.boe-bot-auth-description,.boe-bot-intro>p{color:#c2cddd;font-size:16px;line-height:1.65}.boe-bot-auth-description{margin:0}.boe-bot-auth-tabs{display:flex;gap:6px;border-bottom:1px solid #ffffff18;margin:14px 0 10px}.boe-bot-auth-tabs button{background:none;border:0;border-bottom:2px solid transparent;color:#afbdd2;min-height:44px;padding:8px 15px;font:inherit;cursor:pointer}.boe-bot-auth-tabs button[aria-pressed=true]{color:#ead1a3;border-color:#d6b273}
