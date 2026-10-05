@@ -17,8 +17,7 @@ export default async function HomePage() {
   return (
     <>
       <section className="editorial-hero hero-impacto" aria-labelledby="home-title">
-        <div className="editorial-emblem"><HeroVideo /></div>
-        <ReviewCountdown />
+        <div className="editorial-emblem"><HeroVideo /><ReviewCountdown /></div>
         <div className="editorial-hero-copy">
           <p className="eyebrow">El BOE, en lenguaje claro</p>
           <h1 id="home-title">Resúmenes diarios del BOE.<br /><em>Descubre cómo te afecta.</em></h1>
@@ -27,6 +26,10 @@ export default async function HomePage() {
             <a href="#seguir-boe" className="text-link">Recibir avisos gratis <span aria-hidden="true">↗</span></a>
           </div>
           <p className="hero-assurance">Gratis · Sin registro para leer · Disposiciones generales</p>
+          <a href="#prensa" className="hero-press-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M5 5h15v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8h2V5Z" /><path d="M5 8v10M9 9h7M9 13h7M9 17h3" strokeLinecap="round" /></svg>
+            Ver la prensa <span aria-hidden="true">↓</span>
+          </a>
         </div>
         {latest && <HoyEnElBoe day={latest} />}
       </section>
@@ -60,7 +63,7 @@ export default async function HomePage() {
         </aside>
       </div>
       {/* La prensa acompaña al boletín; no va delante de él. */}
-      <Suspense fallback={<section className="press-placeholder" aria-label="Cargando titulares de España e internacionales">Consultando los titulares…</section>}>
+      <Suspense fallback={<section id="prensa" className="press-placeholder" aria-label="Cargando titulares de España e internacionales">Consultando los titulares…</section>}>
         <PressHeadlines />
       </Suspense>
       <GamePromo />

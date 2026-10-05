@@ -68,10 +68,11 @@ export function startScheduler(
   lookbackDays = 1,
 ): ReadReviewStatus {
   let running = false;
+  let reviewStartedAt: string | null = null;
   const nextReview = createNextReview(schedules, timeZone);
   const readReviewStatus: ReadReviewStatus = () => {
     const now = new Date();
-    return { reviewing: running, nextReviewAt: nextReview(now)?.toISOString() ?? null,
+    return { reviewing: running, reviewStartedAt, nextReviewAt: nextReview(now)?.toISOString() ?? null,
       serverTime: now.toISOString(), timeZone };
   };
   if (schedules.length === 0) {
@@ -108,6 +109,7 @@ export function startScheduler(
       return;
     }
     running = true;
+    reviewStartedAt = new Date().toISOString();
 
     try {
       const today = todayIn(timeZone);

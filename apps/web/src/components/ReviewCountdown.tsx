@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { formatReviewCountdown, readReviewSnapshot, remainingReviewMs, type ReviewSnapshot } from "@/lib/review-status";
+import { formatReviewCountdown, isReviewing, readReviewSnapshot, remainingReviewMs, type ReviewSnapshot } from "@/lib/review-status";
 
 export function ReviewCountdown() {
   const [snapshot, setSnapshot] = useState<ReviewSnapshot | null>(null);
@@ -9,14 +9,13 @@ export function ReviewCountdown() {
   const [unavailable, setUnavailable] = useState(false);
 
   useEffect(() => {
-    const mobile = window.matchMedia("(max-width: 720px)");
     let stopped = false;
     let pollTimer: ReturnType<typeof setTimeout> | undefined;
     let controller: AbortController | null = null;
     let fastUntil = 0;
 
     async function refresh() {
-      if (stopped || controller || document.hidden || !mobile.matches) return;
+      if (stopped || controller || document.hidden) return;
       clearTimeout(pollTimer);
       controller = new AbortController();
       const timeout = setTimeout(() => controller?.abort(), 7000);
@@ -39,7 +38,7 @@ export function ReviewCountdown() {
         }
         // Mantener consultas rápidas unos segundos tras el horario previsto:
         // el cron puede empezar después de la petición que cruza ese minuto.
-        delay = next.reviewing ? 3000 : receivedAt < fastUntil ? 1000
+        delay = isReviewing(next, receivedAt) ? 3000 : receivedAt < fastUntil ? 1000
           : Math.min(30_000, Math.max(1000, (next.remainingMs ?? 60_000) - 30_000));
       } catch {
         if (!stopped) setUnavailable(true);
@@ -51,41 +50,41 @@ export function ReviewCountdown() {
     }
 
     const tick = setInterval(() => {
-      if (!document.hidden && mobile.matches) setNow(performance.now());
+      if (!document.hidden) setNow(performance.now());
     }, 1000);
     const onVisibility = () => {
       clearTimeout(pollTimer);
-      if (!document.hidden && mobile.matches) {
+      if (!document.hidden) {
         setNow(performance.now());
         void refresh();
       }
     };
     void refresh();
     document.addEventListener("visibilitychange", onVisibility);
-    mobile.addEventListener("change", onVisibility);
     return () => {
       stopped = true;
       clearInterval(tick);
       clearTimeout(pollTimer);
       controller?.abort();
       document.removeEventListener("visibilitychange", onVisibility);
-      mobile.removeEventListener("change", onVisibility);
     };
   }, []);
 
   const stale = snapshot !== null && now - snapshot.receivedAt > 90_000;
-  const reviewing = !unavailable && !stale && snapshot?.reviewing === true;
+  const reviewing = !unavailable && !stale && snapshot !== null && isReviewing(snapshot, now);
   const remaining = snapshot ? remainingReviewMs(snapshot, now) : null;
-  const label = unavailable || stale ? "Estado no disponible" : reviewing ? "Revisando"
+  const label = unavailable || stale ? "Estado no disponible" : reviewing ? "Revisando BOE"
     : snapshot && remaining === null ? "Horario no disponible" : "Próxima revisión";
 
   return (
     <div className={`hero-review${reviewing ? " is-reviewing" : ""}`} title={snapshot ? `Horario del agente · ${snapshot.timeZone}` : undefined}>
-      {reviewing ? <span className="hero-review-spinner" aria-hidden="true" /> : (
-        <svg className="hero-review-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-          <circle cx="12" cy="12" r="9" /><path d="M12 6v6l4 2" strokeLinecap="round" />
+      <span className="hero-review-emblem" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.4">
+          <circle className="hero-review-orbit" cx="16" cy="16" r="14" strokeDasharray="58 30" />
+          <path d="M11 7h8l4 4v9a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z" /><path d="M19 7v5h4M12 13h4M12 17h5" strokeLinecap="round" />
+          <circle cx="23" cy="23" r="6" fill="#101b2c" /><path d="M23 19v4l3 1.5" strokeLinecap="round" />
         </svg>
-      )}
+      </span>
       <span className="hero-review-copy">
         <span className="hero-review-label" role="status">{label}</span>
         {!reviewing && !unavailable && !stale && (!snapshot || remaining !== null) && (

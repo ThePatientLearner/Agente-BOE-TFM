@@ -139,7 +139,7 @@ const baseOptions = {
 } as const;
 
 describe("estado público del scheduler", () => {
-  afterEach(() => vi.restoreAllMocks());
+  afterEach(() => { vi.useRealTimers(); vi.restoreAllMocks(); });
 
   function start(deps: SchedulerDeps) {
     const callbacks: Array<() => Promise<void>> = [];
@@ -173,7 +173,22 @@ describe("estado público del scheduler", () => {
     expect(read().nextReviewAt).not.toBeNull();
   });
 
-  it("no deja el spinner activo si una pasada lanza un error inesperado", async () => {
+  it("conserva el inicio confirmado al terminar y lo renueva solo con otra pasada", async () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-09-26T06:30:00Z"));
+    const { read, run } = start(makeDeps());
+    expect(read().reviewStartedAt).toBeNull();
+    const task = run();
+    expect(read().reviewStartedAt).toBe("2026-09-26T06:30:00.000Z");
+    await task;
+    vi.setSystemTime(new Date("2026-09-26T06:40:00Z"));
+    expect(read().reviewing).toBe(false);
+    expect(read().reviewStartedAt).toBe("2026-09-26T06:30:00.000Z");
+    await run();
+    expect(read().reviewStartedAt).toBe("2026-09-26T06:40:00.000Z");
+  });
+
+  it("libera el estado de trabajo si una pasada lanza un error inesperado", async () => {
     const deps = makeDeps();
     vi.mocked(deps.ingest.execute).mockRejectedValueOnce(new Error("Fallo de prueba"));
     const { read, run } = start(deps);

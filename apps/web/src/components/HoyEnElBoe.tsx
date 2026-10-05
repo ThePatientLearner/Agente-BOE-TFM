@@ -1,6 +1,7 @@
 import type { CatalogDay, CatalogEntry } from "@/lib/api";
 import { formatDate } from "@/lib/format";
 import { ImpactMeter } from "./ImpactMeter";
+import { BulletinImpact } from "./BulletinImpact";
 
 /**
  * «Hoy en el BOE»: lo que la portada promete —descubre cómo te afecta— dicho
@@ -20,9 +21,6 @@ function masImportante(entries: CatalogEntry[]): CatalogEntry | null {
 }
 
 export function HoyEnElBoe({ day }: { day: CatalogDay }) {
-  const total = day.entries.length;
-  const conImpacto = day.entries.filter((e) => e.impact !== null);
-  const relevantes = conImpacto.filter((e) => (e.impact ?? 0) >= 3).length;
   const destacada = masImportante(day.entries);
 
   return (
@@ -33,8 +31,7 @@ export function HoyEnElBoe({ day }: { day: CatalogDay }) {
         <h2 id="hoy-boe-title"><time dateTime={day.date}>{formatDate(day.date)}</time></h2>
       </header>
 
-      <p className="hoy-boe-cifras"><strong>{total}</strong> {total === 1 ? "disposición" : "disposiciones"}{" "}<span><strong>{relevantes}</strong> con impacto 3 o superior</span></p>
-      {conImpacto.length < total && <p className="hoy-boe-pending">{total - conImpacto.length} pendientes de valorar</p>}
+      <BulletinImpact entries={day.entries} />
       </div>
 
       {destacada && (
