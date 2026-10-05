@@ -26,11 +26,14 @@ export function BulletinImpact({ entries }: { entries: CatalogEntry[] }) {
       <div className="hoy-boe-donut" role="img" aria-label={`${total} ${total === 1 ? "disposición" : "disposiciones"} en el último boletín`} style={{ background: total ? `conic-gradient(${stops.join(", ")})` : "#28364a" }}>
         <span aria-hidden="true"><strong>{total}</strong><small>total</small></span>
       </div>
-      <ul className="hoy-boe-impact-legend" aria-label="Disposiciones por impacto">
-        {levels.map((level) => <li key={level.impact} className={level.count ? "has-entries" : undefined}>
-          <i style={{ background: level.color }} aria-hidden="true" /><span>{level.label}</span><strong>{level.count}</strong>
-        </li>)}
-      </ul>
+      <div className="hoy-boe-impact-key">
+        <p className="hoy-boe-impact-question">¿A cuánta gente impacta?</p>
+        <ul className="hoy-boe-impact-legend" aria-label="Disposiciones por impacto">
+          {levels.map((level) => <li key={level.impact} className={level.count ? "has-entries" : undefined}>
+            <i style={{ background: level.color }} aria-hidden="true" /><span>{level.label}</span><strong>{level.count}</strong>
+          </li>)}
+        </ul>
+      </div>
     </div>
   );
 }

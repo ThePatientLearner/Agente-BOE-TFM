@@ -51,7 +51,9 @@
 .hoy-boe-donut > span { position: relative; display: grid; justify-items: center; gap: .05rem; }
 .hoy-boe-donut strong { color: var(--ink); font: 500 1.35rem/1.1 var(--font-editorial); }
 .hoy-boe-donut small { color: var(--muted); font-size: .62rem; }
-.hoy-boe-impact-legend { display: grid; gap: .15rem; flex: 1; min-width: 0; margin: 0; padding: 0; list-style: none; }
+.hoy-boe-impact-key { flex: 1; min-width: 0; }
+.hoy-boe-impact-question { margin: 0 0 .4rem; color: var(--ink); font-size: .68rem; font-weight: 600; line-height: 1.35; }
+.hoy-boe-impact-legend { display: grid; gap: .15rem; min-width: 0; margin: 0; padding: 0; list-style: none; }
 .hoy-boe-impact-legend li { display: grid; grid-template-columns: 7px minmax(0, 1fr) auto; align-items: center; gap: .4rem; color: #b7c3d5; font-size: .7rem; line-height: 1.3; }
 .hoy-boe-impact-legend i { width: 7px; height: 7px; border-radius: 50%; }
 .hoy-boe-impact-legend strong { color: var(--muted); font-weight: 500; }
