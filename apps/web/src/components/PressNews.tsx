@@ -84,6 +84,12 @@ export function PressNews({ initialHeadlines }: { initialHeadlines: PressSnapsho
   return (
     <section className="press-section" id="prensa" aria-labelledby="press-heading">
       <div className="section-heading">
+        <a href="#inicio" className="editorial-button press-back-to-top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+            <path d="m6 12 6-6 6 6M12 6v13" />
+          </svg>
+          Volver al inicio
+        </a>
         <h2 id="press-heading">Principales Portadas</h2>
         <div className="press-refresh">
           {updating && <span className="press-refresh-spinner" aria-hidden="true" />}

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body className="editorial-theme">
+      <body className="editorial-theme" id="inicio">
         <a href="#contenido" className="skip-link">Saltar al contenido</a>
         <header className="site-header">
           <div className="header-inner">
