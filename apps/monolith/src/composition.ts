@@ -9,7 +9,7 @@
  * enterarse es peor que no arrancar.
  */
 import type { Config } from "./shared/config/config.js";
-import { AskBoe, MinimaxAssistant, OpenAiAssistant, PostgresAssistantSettings, PostgresBudget, ReviewedAssistant, type AssistantModel } from './modules/assistant/index.js';
+import { AskBoe, CachedOfficialTextReader, MinimaxAssistant, OpenAiAssistant, PostgresAssistantSettings, PostgresBudget, ReviewedAssistant, type AssistantModel } from './modules/assistant/index.js';
 import { BoeId } from './shared/domain/boe-id.js';
 import type { Database } from "./shared/db/connection.js";
 import type { Logger } from "./shared/logger/logger.js";
@@ -103,6 +103,7 @@ export function buildApplication(config: Config, logger: Logger, db: Database): 
 
   // ── Ingesta ────────────────────────────────────────────────────
   const entries = new PostgresEntryRepository(db);
+  const boeGateway = new BoeApiGateway();
   // ── Bots del asistente público ─────────────────────────────────
   // Cada uno se activa solo si tiene clave. El administrador elige en caliente
   // cuál responde a TODOS y la elección se guarda en assistant.settings;
@@ -115,7 +116,7 @@ export function buildApplication(config: Config, logger: Logger, db: Database): 
   const reviewed = (model: AssistantModel): AssistantModel =>
     new ReviewedAssistant(model, config.botReviewPasses);
   const bots: AssistantModel[] = [
-    reviewed(new OpenAiAssistant(config.botOpenaiApiKey)),
+    reviewed(new OpenAiAssistant(config.botOpenaiApiKey, metadata => logger.info(metadata, 'GPT respondió al asistente'))),
     reviewed(new MinimaxAssistant({
       apiKey: config.botMinimaxApiKey,
       baseUrl: config.botMinimaxBaseUrl,
@@ -123,14 +124,16 @@ export function buildApplication(config: Config, logger: Logger, db: Database): 
       onResponse: metadata => logger.info(metadata, 'MiniMax respondió al asistente'),
     })),
   ];
-  const assistant = new AskBoe(catalog, {
-    read: async id => {
-      const parsed = BoeId.create(id);
-      return parsed.ok ? (await entries.findById(parsed.value))?.rawText ?? null : null;
-    },
-  }, bots, config.botModel, new PostgresBudget(db, config.botDailyTokens), new PostgresAssistantSettings(db));
+  const assistant = new AskBoe(catalog, new CachedOfficialTextReader(async id => {
+    const parsed = BoeId.create(id);
+    if (!parsed.ok) return null;
+    const fresh = await boeGateway.fetchEntryContent(parsed.value, AbortSignal.timeout(5_000));
+    if (fresh.ok) return fresh.value.text;
+    // Una caída del BOE no impide leer la copia oficial de la ingesta.
+    return (await entries.findById(parsed.value))?.rawText ?? null;
+  }), bots, config.botModel, new PostgresBudget(db, config.botDailyTokens), new PostgresAssistantSettings(db));
   const ingest = new IngestDailyBulletin(
-    new BoeApiGateway(),
+    boeGateway,
     entries,
     eventBus,
     logger,

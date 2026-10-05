@@ -37,5 +37,5 @@ export interface BoeGateway {
    * (nunca un array vacío silencioso).
    */
   fetchDailySummary(date: IsoDate): Promise<Result<BoeSummaryItem[] | null>>;
-  fetchEntryContent(id: BoeId): Promise<Result<BoeEntryContent>>;
+  fetchEntryContent(id: BoeId, signal?: AbortSignal): Promise<Result<BoeEntryContent>>;
 }

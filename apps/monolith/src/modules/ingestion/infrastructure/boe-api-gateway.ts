@@ -45,10 +45,11 @@ export class BoeApiGateway implements BoeGateway {
     }
   }
 
-  async fetchEntryContent(id: BoeId): Promise<Result<BoeEntryContent>> {
+  async fetchEntryContent(id: BoeId, signal?: AbortSignal): Promise<Result<BoeEntryContent>> {
     try {
       const response = await fetch(
         `https://www.boe.es/diario_boe/xml.php?id=${encodeURIComponent(id.value)}`,
+        { signal: signal ?? AbortSignal.timeout(15_000) },
       );
       if (!response.ok) {
         return err(new Error(`Descarga de ${id.value} respondió ${response.status}`));
@@ -245,12 +246,16 @@ function extractBodyText(xml: string): string {
 
 function stripMarkup(fragment: string): string {
   return fragment
+    .replace(/<\/(?:p|h[1-6]|tr|table|li)>|<br\s*\/?\s*>/gi, '\n')
+    .replace(/<\/(?:td|th)>/gi, ' | ')
     .replace(/<[^>]+>/g, " ")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&amp;/g, "&")
     .replace(/&nbsp;| /g, " ")
-    .replace(/\s+/g, " ")
+    .replace(/[^\S\n]+/g, " ")
+    .replace(/ *\n */g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
     .trim();
 }
 

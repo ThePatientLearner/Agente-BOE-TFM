@@ -1,4 +1,5 @@
 export { AskBoe } from './application/ask-boe.js';
+export { CachedOfficialTextReader } from './infrastructure/cached-official-text-reader.js';
 export { ReviewedAssistant } from './application/reviewed-assistant.js';
 export { OpenAiAssistant } from './infrastructure/openai-assistant.js';
 export { MinimaxAssistant, type MinimaxAssistantOptions } from './infrastructure/minimax-assistant.js';

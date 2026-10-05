@@ -7,7 +7,7 @@ import { BoeBotContact } from './BoeBotContact';
 type User = { username: string; role: 'admin' | 'student' };
 type Bot = { id: string; label: string; enabled: boolean; selected: boolean };
 type Source = { id: string; title: string; officialUrl: string; summaryUrl: string; publicationDate: string; lastOfficialUpdateAt: string };
-type Message = { role: 'user' | 'assistant'; content: string; sources?: Source[]; model?: string };
+type Message = { id: number; role: 'user' | 'assistant'; content: string; sources?: Source[]; model?: string };
 function official(url: string) {
   try { const u = new URL(url); return u.protocol === 'https:' && (u.hostname === 'www.boe.es' || u.hostname === 'boe.es'); } catch { return false; }
 }
@@ -34,6 +34,8 @@ function passwordProblem(value: string, username?: string): string | null {
 export default function BoeBotPanel({ entryId, telegramContactUrl, onClose }: { entryId?: string; telegramContactUrl?: string; onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null), scroll = useRef<HTMLDivElement>(null);
   const pending = useRef<AbortController | null>(null);
+  // Al recortar el historial, cada respuesta conserva su identidad y sus fuentes nuevas empiezan plegadas.
+  const messageSequence = useRef(0);
   const [user, setUser] = useState<User | null>(null), [checking, setChecking] = useState(true);
   const [register, setRegister] = useState(false), [busy, setBusy] = useState(false), [error, setError] = useState('');
   const [thinking, setThinking] = useState(false);
@@ -80,13 +82,19 @@ export default function BoeBotPanel({ entryId, telegramContactUrl, onClose }: { 
 
   async function api(path: string, body: object) {
     pending.current = new AbortController();
-    const response = await fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: pending.current.signal });
-    const data = await response.json();
-    if (!response.ok) {
-      if (response.status === 401 && path === '/api/assistant') { setUser(null); setMessages([]); }
-      throw new Error(data.error ?? 'No se pudo completar la operación.');
+    const signal = path === '/api/assistant' ? AbortSignal.any([pending.current.signal, AbortSignal.timeout(58_000)]) : pending.current.signal;
+    try {
+      const response = await fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal });
+      const data = await response.json();
+      if (!response.ok) {
+        if (response.status === 401 && path === '/api/assistant') { setUser(null); setMessages([]); }
+        throw new Error(data.error ?? 'No se pudo completar la operación.');
+      }
+      return data;
+    } catch (e) {
+      if ((e as Error).name === 'TimeoutError') throw new Error('La consulta ha tardado demasiado. Tu pregunta sigue guardada; puedes volver a enviarla.');
+      throw e;
     }
-    return data;
   }
   async function authenticate(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -108,7 +116,9 @@ export default function BoeBotPanel({ entryId, telegramContactUrl, onClose }: { 
     setBusy(true); setThinking(true); setError('');
     try {
       const data = await api('/api/assistant', { question: text, ...(entryId ? { entryId } : {}), history: messages.slice(-4).map(m => ({ role: m.role, content: m.content.slice(0, 1000) })) });
-      setMessages(previous => [...previous, { role: 'user', content: text } as Message, { role: 'assistant', content: data.answer, sources: data.sources, ...(user?.role === 'admin' && typeof data.model === 'string' ? { model: data.model } : {}) } as Message].slice(-16));
+      if (typeof data.answer !== 'string' || !data.answer.trim()) throw new Error('No se ha recibido una respuesta completa. Tu pregunta sigue guardada; puedes volver a enviarla.');
+      const questionId = ++messageSequence.current, answerId = ++messageSequence.current;
+      setMessages(previous => [...previous, { id: questionId, role: 'user', content: text } as Message, { id: answerId, role: 'assistant', content: data.answer, sources: data.sources, ...(user?.role === 'admin' && typeof data.model === 'string' ? { model: data.model } : {}) } as Message].slice(-16));
       setQuestion('');
     } catch (e) { if ((e as Error).name !== 'AbortError') setError((e as Error).message); }
     finally { setBusy(false); setThinking(false); }
@@ -155,7 +165,8 @@ export default function BoeBotPanel({ entryId, telegramContactUrl, onClose }: { 
   return <dialog ref={dialog} className={`boe-bot-dialog${wide ? ' boe-bot-wide' : ''}${thinking ? ' boe-bot-is-thinking' : ''}`} aria-labelledby="boe-bot-title" onCancel={onClose} onClick={e => { if (e.target === dialog.current) onClose(); }}>
     <div className="boe-bot-shell">
       <header className="boe-bot-header"><div className="boe-bot-mark"><BotLogo /></div><div><h2 id="boe-bot-title">BoeBot</h2><span>Pregunta. Entiende. Consulta la fuente.</span></div><button type="button" className="boe-bot-expand" onClick={toggleWide} aria-pressed={wide} aria-label={wide ? 'Reducir el asistente' : 'Ampliar el asistente'} title={wide ? 'Reducir' : 'Ampliar'}>{wide ? '⤡' : '⤢'}<span>{wide ? 'Reducir' : 'Ampliar'}</span></button><button type="button" className="boe-bot-close" autoFocus onClick={onClose} aria-label="Cerrar asistente">×</button></header>
-      <div className="boe-bot-context"><span className="boe-bot-dot" />{entryId ? <>Sobre esta disposición <strong>{entryId}</strong></> : 'Consulta nuestro archivo de disposiciones'}</div>
+      <div className="boe-bot-context"><span className="boe-bot-dot" />{entryId ? <>Texto oficial · Solo <strong>{entryId}</strong></> : 'Archivo · Solo resúmenes de IA'}</div>
+      <p className="boe-bot-scope-note">{entryId ? 'Puedo leer el documento oficial de esta disposición. En textos extensos, busco los pasajes relevantes en todo su contenido. No consultaré otras normas.' : 'Aquí consulto solo resúmenes. Para leer un documento oficial, abre su ficha y pregunta desde allí.'}</p>
       {checking ? <p className="boe-bot-loading" role="status">Comprobando tu sesión…</p> : !user ? <div className="boe-bot-auth">
         {changed && <p className="boe-bot-done" role="status">Contraseña cambiada. Por seguridad se han cerrado todas tus sesiones: entra de nuevo con la contraseña nueva.</p>}
         <div className="boe-bot-auth-layout">
@@ -204,10 +215,10 @@ export default function BoeBotPanel({ entryId, telegramContactUrl, onClose }: { 
         <div className="boe-bot-messages" ref={scroll} role="log" aria-label="Conversación" aria-live="polite" aria-busy={busy}>
           {!messages.length && <div className="boe-bot-welcome">
             <div className="boe-bot-welcome-logo" aria-hidden="true"><span className="boe-bot-particles">{Array.from({ length: 8 }, (_, i) => <i key={i} />)}</span><BotLogo expressive /></div>
-            <h3>{entryId ? 'Leemos esta disposición contigo.' : 'El BOE, un poco más claro.'}</h3><p>{entryId ? 'Tus preguntas se referirán al documento que tienes abierto.' : 'Busca por tema, fecha o número de disposición.'}</p><div className="boe-bot-suggestions">{(entryId ? ['¿A quién afecta?', '¿Qué cambia?', '¿Qué plazos establece?', '¿Sigue vigente o ha sido derogada?'] : ['¿Qué se ha publicado hoy?', '¿Hay novedades sobre pensiones?', 'Busca disposiciones sobre vivienda', '¿Cómo sé si una norma ha sido derogada?']).map(text => <button key={text} type="button" onClick={() => setQuestion(text)}>{text}</button>)}</div>
+            <h3>{entryId ? 'Leemos esta disposición contigo.' : 'El BOE, un poco más claro.'}</h3><p>{entryId ? 'Pregunta por un artículo, un requisito o un plazo del documento abierto.' : 'Busca resúmenes por tema, fecha o número de disposición.'}</p><div className="boe-bot-suggestions">{(entryId ? ['¿A quién afecta?', '¿Qué cambia?', '¿Qué plazos establece?', '¿Sigue vigente o ha sido derogada?'] : ['¿Qué se ha publicado hoy?', '¿Hay novedades sobre pensiones?', 'Busca disposiciones sobre vivienda', '¿Cómo sé si una norma ha sido derogada?']).map(text => <button key={text} type="button" onClick={() => setQuestion(text)}>{text}</button>)}</div>
           </div>}
-          {messages.map((m, index) => <article className={`boe-bot-message ${m.role}`} key={index}><span className="boe-bot-message-label">{m.role === 'user' ? 'Tú' : 'Asistente · respuesta generada por IA'}</span>
-            {!!m.sources?.length && <details className="boe-bot-sources" open><summary>Fuentes oficiales ({m.sources.length})</summary><ol>{m.sources.map(source => <li key={source.id}>
+          {messages.map(m => <article className={`boe-bot-message ${m.role}`} key={m.id}><span className="boe-bot-message-label">{m.role === 'user' ? 'Tú' : 'Asistente · respuesta generada por IA'}</span>
+            {!!m.sources?.length && <details className="boe-bot-sources"><summary>Fuentes oficiales ({m.sources.length})</summary><ol>{m.sources.map(source => <li key={source.id}>
               {official(source.officialUrl) && <a href={source.officialUrl} target="_blank" rel="noopener noreferrer">BOE · {source.id} ↗</a>}
               <span>{source.title}</span><small>Publicado: {shortDate(source.publicationDate)} · Actualización registrada: {shortDate(source.lastOfficialUpdateAt)}</small>
               <a href={`/d/${source.id}`} className="boe-bot-source-summary">Ver ficha y resumen de IA</a>
@@ -218,7 +229,7 @@ export default function BoeBotPanel({ entryId, telegramContactUrl, onClose }: { 
                 en respuestas de la IA (llevan fuentes); los avisos fijos no lo necesitan. */}
             {user.role !== 'admin' && !!m.sources?.length && <p className="boe-bot-answer-disclaimer">Respuesta generada por IA, solo informativa: puede contener errores u omisiones, no es asesoramiento jurídico ni sustituye al texto oficial, y no respondemos de decisiones tomadas con ella. Si es importante, repite la pregunta para contrastar y comprueba siempre la fuente oficial. <a href="/legal">Aviso legal</a></p>}
           </article>)}
-          {busy && <p className="boe-bot-thinking" role="status"><BotThinking /><span>Consultando el archivo…</span></p>}
+          {busy && <p className="boe-bot-thinking" role="status"><BotThinking /><span>{entryId ? 'Leyendo esta disposición…' : 'Consultando el archivo…'}</span></p>}
         </div>
         <form className="boe-bot-compose" onSubmit={ask}><label className="boe-bot-sr-only" htmlFor="bot-question">Tu pregunta sobre el BOE</label><textarea id="bot-question" value={question} onChange={e => setQuestion(e.target.value)} maxLength={800} rows={2} required minLength={2} placeholder={entryId ? 'Pregunta sobre esta disposición…' : '¿Qué quieres saber del BOE?'} disabled={busy} /><button className="boe-bot-send" type="submit" disabled={busy || question.trim().length < 2} aria-label="Enviar pregunta">↑</button></form>
         <p className="boe-bot-footer-note">IA · Servicio no oficial. Solo el texto del BOE tiene validez legal. Preguntas y contexto breve enviados a MiniMax.</p>

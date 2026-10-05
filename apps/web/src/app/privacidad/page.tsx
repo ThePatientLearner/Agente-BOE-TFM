@@ -53,7 +53,7 @@ export default function PrivacidadPage() {
               <td>Prestación del servicio solicitado</td><td>Hasta la eliminación de la cuenta; sesiones de siete días</td>
             </tr>
             <tr>
-              <td>Asistente BOE</td><td>Pregunta, últimos cuatro mensajes y fragmentos públicos del BOE</td>
+              <td>Asistente BOE</td><td>Pregunta, últimos cuatro mensajes y resúmenes públicos. En la ficha de una disposición, su texto oficial o pasajes relevantes</td>
               <td>Responder con fuentes de nuestro archivo</td><td>Solicitud de la persona usuaria</td>
               <td>Conversación en memoria del navegador mientras el chat permanece abierto. No se guarda en nuestra base. Contadores de uso durante 30 días</td>
             </tr>

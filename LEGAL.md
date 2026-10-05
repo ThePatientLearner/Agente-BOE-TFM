@@ -219,7 +219,9 @@ Nuestra política al respecto:
 > de tratamiento de datos (DPA) con esas SCC, y guardar copia.
 
 El asistente conversacional es un tratamiento distinto: envía a su proveedor (MiniMax por defecto, OpenAI como alternativa) la
-pregunta, como máximo cuatro mensajes anteriores y fragmentos del BOE. La web
+pregunta, como máximo cuatro mensajes anteriores y resúmenes públicos. Desde
+la ficha de una disposición también envía el texto oficial de esa única norma
+o sus pasajes relevantes si es extensa; desde la portada no carga textos oficiales. La web
 informa de ese envío antes de usarlo. No envía usuario, contraseña ni sesión;
 las conversaciones no se persisten en nuestra base ni en los registros de
 petición. `store: false` desactiva el almacenamiento de respuestas solicitado

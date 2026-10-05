@@ -83,7 +83,7 @@ export class AskBoe {
         return { answer: 'No he encontrado disposiciones que respondan a esa consulta en nuestro archivo. Prueba con un tema más concreto, una fecha (AAAA-MM-DD) o el identificador BOE. Esto no significa que no exista una norma sobre ese tema.', sources: [] };
       }
       const input = await buildContext(entries, request, this.texts);
-      if (Buffer.byteLength(input) > 32_000) throw new AssistantError(400, 'La consulta es demasiado amplia. Acorta la pregunta.');
+      if (Buffer.byteLength(input) > (request.entryId ? 64_000 : 32_000)) throw new AssistantError(400, 'La consulta es demasiado amplia. Acorta la pregunta.');
       // Un byte por token es una cota conservadora. La reserva incluye las
       // instrucciones y el máximo de salida Y razonamiento que declara el
       // modelo elegido, que con los repasos activados cuenta las tres pasadas.

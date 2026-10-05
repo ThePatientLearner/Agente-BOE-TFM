@@ -578,9 +578,10 @@ La clave no se incluye en el código ni en la web. Los intentos se limitan a
 La migración `0006_boe_assistant` conserva el acceso de los alumnos activos.
 
 La búsqueda se hace en PostgreSQL con un índice GIN en español y devuelve
-hasta seis disposiciones por relevancia. Se recuperan hasta dos textos
-oficiales persistidos a través de un puerto de lectura compuesto con ingesta;
-se seleccionan fragmentos localmente.
+hasta seis disposiciones por relevancia. Desde el menú principal, el asistente
+consulta únicamente sus resúmenes de IA: no carga textos oficiales, incluso
+si se escribe un identificador BOE en la pregunta. Para leer el documento
+hay que abrir su ficha. El alcance se muestra antes y después de iniciar sesión.
 El modelo se elige entre los proveedores configurados: MiniMax-M3 por
 defecto (`BOT_MODEL=minimax`) y OpenAI como alternativa. El administrador
 puede cambiar esa elección para toda la aplicación; se guarda en
@@ -614,15 +615,25 @@ Si un repaso se corta y su consumo es incierto, se conserva la reserva de tokens
 para no devolver presupuesto potencialmente facturado. Sin documentos
 encontrados no hay llamada a IA.
 En una ficha, el servidor toma su identificador y consulta exclusivamente
-esa disposición. El navegador nunca aporta el texto oficial como contexto.
+esa disposición. Descarga su XML oficial con un plazo de cinco segundos;
+si el BOE falla, usa el texto guardado durante la ingesta. Una caché de quince
+minutos conserva como máximo doce documentos públicos, sin preguntas ni sesiones.
+Se preservan artículos, párrafos y filas de tablas. Los textos de hasta 40.000
+caracteres y 48 KB viajan completos; para textos mayores se buscan pasajes en
+TODO el documento, sin cortar su final ni sus anexos. Una pregunta por número
+de artículo prioriza ese artículo. El contexto indica si contiene texto completo
+o pasajes; si no se obtiene texto, se informa del fallo sin fingir lectura.
+El navegador nunca aporta el texto oficial como contexto.
 
 Las fuentes verificadas, sus fechas y los enlaces oficiales van antes de la
-respuesta de IA. El bot explica lo disponible en el archivo; no asegura
+respuesta de IA, en un desplegable plegado por defecto que puede abrirse manualmente. El bot explica lo disponible en el archivo; no asegura
 vigencia actual ni recuentos exhaustivos a partir de seis resultados.
 No se conservan conversaciones: se mantienen en memoria mientras el chat
 está abierto; al cerrar, cambiar de ficha o salir se descartan. Al modelo
 viajan como máximo cuatro mensajes anteriores, de 1000 caracteres cada uno.
-Las preguntas están limitadas a 800 caracteres y el contexto a 32 KB.
+Las preguntas están limitadas a 800 caracteres y el contexto a 32 KB en el
+archivo; en una ficha de disposición admite hasta 64 KB para su
+único documento oficial. La cuota incluye el contexto enviado a la IA.
 
 Configurar `BOT_MINIMAX_API_KEY` y/o `BOT_OPENAI_API_KEY` en el `.env` del VPS
 y desplegar primero el servicio `app`: su arranque aplica la migración y habilita el permiso de estudio

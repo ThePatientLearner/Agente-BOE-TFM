@@ -30,6 +30,10 @@ describe('asistente: contexto y coste', () => {
     expect(s.getEntry).toHaveBeenCalledWith(entry.id); expect(s.retrieve).not.toHaveBeenCalled();
     const context = JSON.parse(s.answer.mock.calls[0]![0]);
     expect(context.scope).toContain('exclusivamente'); expect(context.documents).toHaveLength(1);
+    expect(s.read).toHaveBeenCalledExactlyOnceWith(entry.id);
+    expect(context.mode).toBe('entry-document');
+    expect(context.documents[0].officialExcerpts).toContain('Texto oficial');
+    expect(context.documents[0].officialTextCoverage).toBe('complete');
     expect(result.sources[0]?.officialUrl).toBe(entry.officialHtmlUrl);
   });
   it('cuenta la consulta sin gastar tokens de IA si no hay resultados', async () => {
@@ -40,6 +44,25 @@ describe('asistente: contexto y coste', () => {
   it('un identificador explícito usa acceso directo en vez de una búsqueda amplia', async () => {
     const s = setup(); await s.ask.execute('user', { question: `Explica ${entry.id}`, history: [] });
     expect(s.getEntry).toHaveBeenCalledWith(entry.id); expect(s.retrieve).not.toHaveBeenCalled();
+    expect(s.read).not.toHaveBeenCalled();
+    expect(JSON.parse(s.answer.mock.calls[0]![0]).documents[0].officialExcerpts).toBeNull();
+  });
+  it('desde el archivo no lee ningún texto oficial aunque haya varios resultados', async () => {
+    const s = setup(); s.retrieve.mockResolvedValue([entry, { ...entry, id: 'BOE-A-2026-124' }]);
+    await s.ask.execute('user', { question: 'Ayudas vivienda', history: [] });
+    expect(s.read).not.toHaveBeenCalled();
+    const context = JSON.parse(s.answer.mock.calls[0]![0]);
+    expect(context.mode).toBe('archive-summaries');
+    expect(context.documents.every((d: { officialExcerpts: null }) => d.officialExcerpts === null)).toBe(true);
+    expect(context.scope).toContain('abrir la ficha');
+  });
+  it('no finge leer el documento ni gasta IA cuando falta su texto oficial', async () => {
+    const s = setup(); s.read.mockResolvedValue(null);
+    await expect(s.ask.execute('user', { question: 'Artículo 8', entryId: entry.id, history: [] })).rejects.toThrow('No se ha podido leer');
+    expect(s.answer).not.toHaveBeenCalled();
+    expect(s.budget.reserve).not.toHaveBeenCalled();
+    s.read.mockResolvedValue('Documento recuperado.');
+    await expect(s.ask.execute('user', { question: 'Artículo 8', entryId: entry.id, history: [] })).resolves.toHaveProperty('contextEntryId', entry.id);
   });
   it('la fecha solicitada limita los resultados y no arrastra el tema anterior', async () => {
     const s = setup(); await s.ask.execute('user', { question: 'Qué se ha publicado el 2026-09-01', history: [{ role: 'user', content: 'Pensiones' }] });
