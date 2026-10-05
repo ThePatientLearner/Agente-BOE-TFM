@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { EntryBrowser } from "@/components/EntryBrowser";
 import { HeroVideo } from "@/components/HeroVideo";
+import { ReviewCountdown } from "@/components/ReviewCountdown";
 import { HoyEnElBoe } from "@/components/HoyEnElBoe";
 import { GamePromo } from "@/components/GamePromo";
 import { PressHeadlines } from "@/components/PressHeadlines";
@@ -17,6 +18,7 @@ export default async function HomePage() {
     <>
       <section className="editorial-hero hero-impacto" aria-labelledby="home-title">
         <div className="editorial-emblem"><HeroVideo /></div>
+        <ReviewCountdown />
         <div className="editorial-hero-copy">
           <p className="eyebrow">El BOE, en lenguaje claro</p>
           <h1 id="home-title">Resúmenes diarios del BOE.<br /><em>Descubre cómo te afecta.</em></h1>
