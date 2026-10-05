@@ -137,3 +137,32 @@
   .boe-bot-messages{min-height:200px}
   .boe-bot-auth{flex-shrink:0;overflow:visible}
 }
+
+/* Dar presencia al estado de espera sin ocupar la zona donde se escribe. */
+.boe-bot-thinking {
+  --boe-bot-thinking-size: 128px;
+  justify-content: center;
+  gap: 24px;
+  min-height: 170px;
+  max-width: 42rem;
+  margin: 20px auto 24px;
+  padding: 20px 24px;
+  border: 1px solid #91c6df35;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #1a2d46, #132137);
+  color: #e9d4ab;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.boe-bot-thinking > span:last-child { min-width: 0; overflow-wrap: anywhere; }
+.boe-bot-thinking .boe-bot-atom { width: var(--boe-bot-thinking-size); height: var(--boe-bot-thinking-size); isolation: isolate; }
+.boe-bot-thinking .boe-bot-atom::before { content: ""; position: absolute; inset: -8px; z-index: -1; border-radius: 50%; background: radial-gradient(circle, #91c6df16, #e8c8910d 45%, transparent 70%); pointer-events: none; }
+.boe-bot-thinking .boe-bot-atom-orbits { width: 100%; height: 100%; }
+.boe-bot-thinking .boe-bot-atom > .boe-bot-logo-thinking { width: calc(var(--boe-bot-thinking-size) * .47); height: calc(var(--boe-bot-thinking-size) * .47); }
+@media (max-width: 600px) {
+  .boe-bot-thinking { --boe-bot-thinking-size: 96px; gap: 16px; min-height: 130px; margin: 16px auto; padding: 16px; font-size: 18px; }
+}
+@media (max-width: 360px), (max-height: 480px) {
+  .boe-bot-thinking { --boe-bot-thinking-size: 84px; gap: 12px; min-height: 114px; padding: 14px; font-size: 18px; }
+}

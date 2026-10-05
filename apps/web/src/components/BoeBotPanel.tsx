@@ -218,7 +218,7 @@ export default function BoeBotPanel({ entryId, telegramContactUrl, onClose }: { 
                 en respuestas de la IA (llevan fuentes); los avisos fijos no lo necesitan. */}
             {user.role !== 'admin' && !!m.sources?.length && <p className="boe-bot-answer-disclaimer">Respuesta generada por IA, solo informativa: puede contener errores u omisiones, no es asesoramiento jurídico ni sustituye al texto oficial, y no respondemos de decisiones tomadas con ella. Si es importante, repite la pregunta para contrastar y comprueba siempre la fuente oficial. <a href="/legal">Aviso legal</a></p>}
           </article>)}
-          {busy && <p className="boe-bot-thinking" role="status"><BotThinking />Consultando el archivo…</p>}
+          {busy && <p className="boe-bot-thinking" role="status"><BotThinking /><span>Consultando el archivo…</span></p>}
         </div>
         <form className="boe-bot-compose" onSubmit={ask}><label className="boe-bot-sr-only" htmlFor="bot-question">Tu pregunta sobre el BOE</label><textarea id="bot-question" value={question} onChange={e => setQuestion(e.target.value)} maxLength={800} rows={2} required minLength={2} placeholder={entryId ? 'Pregunta sobre esta disposición…' : '¿Qué quieres saber del BOE?'} disabled={busy} /><button className="boe-bot-send" type="submit" disabled={busy || question.trim().length < 2} aria-label="Enviar pregunta">↑</button></form>
         <p className="boe-bot-footer-note">IA · Servicio no oficial. Solo el texto del BOE tiene validez legal. Preguntas y contexto breve enviados a MiniMax.</p>
