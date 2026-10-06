@@ -54,6 +54,7 @@ export class NotifyEntry {
       shortPhrase,
       impact,
       officialUrl: officialHtmlUrl,
+      lastOfficialUpdateAt: event.payload.lastOfficialUpdateAt,
       summaryUrl: `${this.publicWebUrl}/d/${entryId}`,
       // Se resuelve al enviar, no al resumir: así una notificación reenviada
       // tras un cambio de gobierno sale con el dato de hoy.

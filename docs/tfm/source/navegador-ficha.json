@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-06T06:44:53.959Z",
+  "errors": [],
+  "checks": [
+    "login local",
+    "practice question visible",
+    "entryId query returns simulated original-2015 fragment",
+    "sources expanded"
+  ],
+  "note": "Comprobación adicional tras corregir el adaptador demo; no generación real de IA."
+}

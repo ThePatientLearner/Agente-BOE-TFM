@@ -238,6 +238,8 @@ describe("PostgresCatalogProjection", () => {
   const summarized = summaryGenerated({
     entryId: "BOE-A-2026-16758",
     publicationDate: day("2026-08-01"),
+    lastOfficialUpdateAt: day("2026-08-04"),
+    department: "COMUNIDAD AUTÓNOMA DE CATALUÑA",
     title: "Resolución ISP/1933/2026",
     plainTitle: "Cambios de horario para camiones de mercancías peligrosas",
     shortPhrase: "Se modifican las restricciones de circulación.",

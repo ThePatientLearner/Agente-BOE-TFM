@@ -1,0 +1,29 @@
+{
+  "checked_at": "2026-10-06T06:46:58.792Z",
+  "scope": "Lectura pública y login/logout de la cuenta dedicada, sin consultas de IA.",
+  "https://agenteboe.com": {
+    "status": 200
+  },
+  "https://agenteboe.com/electricidad": {
+    "status": 200,
+    "accountForm": true
+  },
+  "https://api.agenteboe.com/health": {
+    "status": 200,
+    "health": {
+      "status": "ok"
+    }
+  },
+  "publicDemoLogin": {
+    "status": 200,
+    "role": "student",
+    "studyAccess": false,
+    "httpOnly": true
+  },
+  "publicDemoMe": {
+    "status": 200
+  },
+  "publicDemoLogout": {
+    "status": 200
+  }
+}

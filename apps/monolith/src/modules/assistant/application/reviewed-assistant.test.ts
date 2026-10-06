@@ -5,6 +5,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { AssistantModel } from '../domain/assistant.js';
 import { ReviewedAssistant } from './reviewed-assistant.js';
+import { ELECTRICIDAD_REVIEW_INSTRUCTIONS, ELECTRICIDAD_TUTOR_INSTRUCTIONS } from '../domain/study-course.js';
 
 function inner(answers: Array<{ text: string; tokens: number } | Error>): AssistantModel & { answer: ReturnType<typeof vi.fn> } {
   let call = 0;
@@ -20,6 +21,12 @@ const largo = (texto: string) => texto.padEnd(60, ' .');
 afterEach(() => vi.useRealTimers());
 
 describe('ReviewedAssistant', () => {
+  it('repasa las respuestas del tutor conservando el método de cálculo y las reglas didácticas', async () => {
+    const model = inner([{ text: largo('Cálculo paso a paso'), tokens: 100 }, { text: largo('Cálculo revisado'), tokens: 50 }]);
+    await new ReviewedAssistant(model, 1).answer(JSON.stringify({ question: 'Calcula la tensión' }), ELECTRICIDAD_TUTOR_INSTRUCTIONS);
+    expect(model.answer.mock.calls[0]![1]).toBe(ELECTRICIDAD_TUTOR_INSTRUCTIONS);
+    expect(model.answer.mock.calls[1]![1]).toBe(ELECTRICIDAD_REVIEW_INSTRUCTIONS);
+  });
   it('redacta y repasa dos veces: tres llamadas en total', async () => {
     const model = inner([
       { text: largo('Borrador'), tokens: 100 },

@@ -1,9 +1,0 @@
-{
-  "repository": "https://github.com/ThePatientLearner/Agente-BOE-TFM",
-  "private": false,
-  "default_branch": "main",
-  "anonymous_readme_http": 200,
-  "checked_at": "2026-10-03T22:57:37.804301+00:00",
-  "observed_initial_commit": "70848e4b31a671f124ca92f94581fde9a16e925f",
-  "scope": "Comprobación de publicación inicial; el cierre posterior solo actualiza documentación."
-}

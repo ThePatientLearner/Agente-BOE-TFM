@@ -1,4 +1,5 @@
 import type { AssistantModel, ModelAnswer } from '../domain/assistant.js';
+import { ELECTRICIDAD_REVIEW_INSTRUCTIONS, ELECTRICIDAD_TUTOR_INSTRUCTIONS } from '../domain/study-course.js';
 
 /**
  * Envuelve cualquier modelo y le hace repasar su propia respuesta antes de
@@ -85,7 +86,7 @@ export class ReviewedAssistant implements AssistantModel {
         try {
           const reviewed = await withinDeadline(() => this.inner.answer(
             JSON.stringify({ contexto: context, respuestaARevisar: text, repaso: pass, de: this.passes }),
-            REVIEW_INSTRUCTIONS, requestSignal,
+            instructions === ELECTRICIDAD_TUTOR_INSTRUCTIONS ? ELECTRICIDAD_REVIEW_INSTRUCTIONS : REVIEW_INSTRUCTIONS, requestSignal,
           ), requestSignal);
           // Los tokens del repaso se cobran aunque su texto se descarte: el
           // proveedor ya los ha facturado.

@@ -19,9 +19,11 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const demo = process.env.TFM_DEMO === 'true';
   return (
     <html lang="es">
       <body className="editorial-theme" id="inicio">
+        {demo && <aside style={{ padding: '12px 20px', background: '#fff0bf', color: '#30280e', textAlign: 'center' }}><strong>DEMO LOCAL TFM</strong> · Datos de ejemplo y proveedor IA simulado. Sin base de datos, cron ni notificaciones. <a href="/electricidad/cuenta">Entrar al curso</a></aside>}
         <a href="#contenido" className="skip-link">Saltar al contenido</a>
         <header className="site-header">
           <div className="header-inner">
@@ -50,10 +52,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <nav><a href="/legal">Aviso legal</a> · <a href="/privacidad">Privacidad</a> · <a href="/juego">El juego</a></nav>
           <ContactButton />
         </footer>
-        <SubscribePrompt />
+        {!demo && <SubscribePrompt />}
         <BoeBot telegramContactUrl={process.env.BOT_TELEGRAM_CONTACT_URL} />
-        <Analytics />
-        <EngagementAnalytics />
+        {!demo && <Analytics />}
+        {!demo && <EngagementAnalytics />}
       </body>
     </html>
   );

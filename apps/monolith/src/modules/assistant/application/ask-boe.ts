@@ -2,6 +2,8 @@ import { searchTerms, type CatalogReadModel } from '../../catalog/index.js';
 import { daysBefore, isoDate, todayIn } from '../../../shared/domain/iso-date.js';
 import { AssistantError, type AssistantModel, type AssistantSettings, type ChatAnswer, type ChatRequest, type OfficialTextReader, type UsageBudget } from '../domain/assistant.js';
 import { buildContext } from './context.js';
+import { buildStudyContext } from './study-context.js';
+import { ELECTRICIDAD_TUTOR_INSTRUCTIONS, type StudyCourse } from '../domain/study-course.js';
 
 const DEROGACION = /\b(derog|vigen)/i;
 const COMO_COMPROBAR_DEROGACION = 'Este servicio no puede comprobar si una norma sigue vigente o ha sido derogada: resume lo que se publicó, no su situación actual. Para saberlo, abre su ficha oficial en el BOE y mira el apartado «Análisis», dentro de «Referencias posteriores»: ahí constan las normas que la derogan o la modifican. Si me preguntas desde la ficha de una disposición, te digo además lo que su propio texto establece sobre su entrada en vigor y su duración.';
@@ -21,6 +23,8 @@ export class AskBoe {
     private readonly budget: UsageBudget,
     /** Lo que eligió el administrador. Manda sobre BOT_MODEL y vale para todos. */
     private readonly settings: AssistantSettings,
+    /** Material curado inyectado al componer la aplicación, no desde HTTP. */
+    private readonly studyCourse?: StudyCourse,
   ) {}
 
   /** Lo que el selector del administrador necesita saber. Sin claves ni URLs. */
@@ -45,12 +49,23 @@ export class AskBoe {
     return this.models.find(m => m.id === chosen && m.enabled) ?? this.models.find(m => m.enabled);
   }
 
-  async execute(userId: string, request: ChatRequest, isAdmin = false): Promise<ChatAnswer> {
+  async execute(userId: string, request: ChatRequest, isAdmin = false, studyAccess = false): Promise<ChatAnswer> {
+    if (request.study && !isAdmin && !studyAccess) throw new AssistantError(403, 'Necesitas acceso aprobado al curso para usar el tutor de electricidad.');
+    if (request.study && request.entryId) throw new AssistantError(400, 'Selecciona un apartado del curso o una disposición del BOE.');
     const model = await this.resolve();
     if (!model?.enabled) throw new AssistantError(503, 'El asistente está en preparación. Vuelve a intentarlo más tarde.');
     if (this.active.has(userId) || this.active.size >= 3) throw new AssistantError(429, 'Hay una consulta en curso. Espera unos instantes.');
     this.active.add(userId);
     try {
+      if (request.study) {
+        const { input, sources } = buildStudyContext(this.studyCourse, request);
+        if (Buffer.byteLength(input) > 32_000) throw new AssistantError(400, 'La consulta es demasiado amplia. Acorta la pregunta.');
+        const reserved = Buffer.byteLength(input) + Buffer.byteLength(ELECTRICIDAD_TUTOR_INSTRUCTIONS) + model.reserveTokens;
+        const reservation = await this.budget.reserve(userId, reserved, isAdmin);
+        const result = await model.answer(input, ELECTRICIDAD_TUTOR_INSTRUCTIONS);
+        if (!result.usageUncertain) await this.budget.settle(reservation, reserved, result.tokens);
+        return { answer: result.text, sources, ...(isAdmin ? { model: model.label } : {}) };
+      }
       let entries;
       if (request.entryId) {
         const entry = await this.catalog.getEntry(request.entryId);

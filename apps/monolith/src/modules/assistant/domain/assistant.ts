@@ -7,10 +7,13 @@ export class AssistantError extends Error {
   constructor(readonly status: number, message: string, readonly detail?: string) { super(message); }
 }
 export interface ChatTurn { role: 'user' | 'assistant'; content: string }
-export interface ChatRequest { question: string; entryId?: string; history: ChatTurn[] }
+export interface StudyTopic { sectionId: string; cardId?: string }
+export interface ChatRequest { question: string; entryId?: string; history: ChatTurn[]; study?: StudyTopic }
 export interface Source {
   id: string; title: string; officialUrl: string; summaryUrl: string;
   publicationDate: string; lastOfficialUpdateAt: string;
+  /** Los apuntes explican el curso; no son el texto oficial de una norma. */
+  kind?: 'course' | 'official';
 }
 export interface ChatAnswer { answer: string; sources: Source[]; contextEntryId?: string; model?: string }
 export interface ModelAnswer {

@@ -52,6 +52,7 @@ export class SummarizeEntry {
       summaryGenerated({
         entryId,
         publicationDate: event.payload.publicationDate,
+        lastOfficialUpdateAt: event.payload.lastOfficialUpdateAt,
         department: event.payload.department,
         title,
         plainTitle: draft.value.plainTitle,

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ELECTRICIDAD_API, PRIVATE_HEADERS, SESSION_COOKIE } from '@/lib/electricidad-auth';
+import { hasAllowedOrigin } from '@/lib/request-origin';
 export function createAccountProxy(area: 'electricidad' | 'account') {
 return async function proxy(request: NextRequest, context: { params: Promise<{ action: string }> }) {
   const { action } = await context.params;
@@ -7,7 +8,7 @@ return async function proxy(request: NextRequest, context: { params: Promise<{ a
   if (!allowed.includes(action)) return NextResponse.json({ error: 'No encontrado.' }, { status: 404, headers: PRIVATE_HEADERS });
   let body: string | undefined;
   if (request.method === 'POST') {
-    if (request.headers.get('origin') !== request.nextUrl.origin) return NextResponse.json({ error: 'Origen no permitido.' }, { status: 403, headers: PRIVATE_HEADERS });
+    if (!hasAllowedOrigin(request)) return NextResponse.json({ error: 'Origen no permitido.' }, { status: 403, headers: PRIVATE_HEADERS });
     if (!request.headers.get('content-type')?.startsWith('application/json')) return NextResponse.json({ error: 'Formato no permitido.' }, { status: 415, headers: PRIVATE_HEADERS });
     body = await request.text();
     if (Buffer.byteLength(body) > 4096) return NextResponse.json({ error: 'Petición demasiado grande.' }, { status: 413, headers: PRIVATE_HEADERS });

@@ -11,6 +11,8 @@ export type SummaryGenerated = DomainEvent<
   {
     entryId: string;
     publicationDate: IsoDate;
+    /** Fecha del documento oficial, conservada también en los reintentos. */
+    lastOfficialUpdateAt: IsoDate;
     /**
      * Departamento emisor, literal del BOE. Viaja aquí porque es lo que
      * identifica a la comunidad autónoma afectada ("COMUNIDAD AUTÓNOMA DE

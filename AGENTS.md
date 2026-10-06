@@ -1,5 +1,7 @@
 # Instrucciones para agentes
 
+> En la copia académica `Agente-BOE-TFM`, usa `npm run demo:tfm` para evaluar el recorrido. Las secciones de operación describen el proyecto original: los destinos, secretos y scripts privados de despliegue se excluyen de la entrega. Los PDF vigentes están en `output/pdf`.
+
 Lo que hay que saber antes de tocar este repositorio, y que no se deduce
 leyendo el código. Si eres una IA trabajando aquí, lee esto entero primero:
 casi todo lo de abajo son cosas que ya han roto algo alguna vez.

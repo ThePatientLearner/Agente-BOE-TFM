@@ -138,6 +138,7 @@ export class ResumePendingEntries {
     props: {
       id: { value: string };
       publicationDate: IsoDate;
+      lastOfficialUpdateAt: IsoDate;
       department: string;
       title: string;
       officialHtmlUrl: string;
@@ -154,6 +155,7 @@ export class ResumePendingEntries {
       summaryGenerated({
         entryId: props.id.value,
         publicationDate: props.publicationDate,
+        lastOfficialUpdateAt: props.lastOfficialUpdateAt,
         department: props.department,
         title: props.title,
         plainTitle: summary.plainTitle,

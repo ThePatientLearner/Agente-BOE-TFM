@@ -1,0 +1,1646 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-06T06:56:42+00:00",
+  "selection": "git ls-files --cached --others --exclude-standard; allowlist export_tfm.py",
+  "file_count": 327,
+  "total_bytes": 12918993,
+  "excluded_candidate_count": 73,
+  "manifest_excluded_from_hashes": "tfm-manifest.json",
+  "files": [
+    {
+      "path": ".dockerignore",
+      "bytes": 172,
+      "sha256": "f992a56e3825f2a6a9441eb1557e7b414f53049179acef60ccb93921052379c1"
+    },
+    {
+      "path": ".env.example",
+      "bytes": 5351,
+      "sha256": "047679f71caa5378629dd1f8026b0de16e0d678073baaefdb062bf3ade38bbc5"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 52,
+      "sha256": "4ffdca6ceb874e3facde39ac539f0c09bb97e8fbcd8a1424e6972b47d0bfd482"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 901,
+      "sha256": "3312e548f2263007afd6d758cf5dd2bb33b6cb96c28c4375620867995d7595ce"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 12743,
+      "sha256": "b0f2435afea560a8424fafac848a7067aee57fea7c90ca363a30a241ff7a3f7e"
+    },
+    {
+      "path": "LEGAL.md",
+      "bytes": 18513,
+      "sha256": "0c62fb5d68a7e4e16697303f76f811a391b6b765b0a72c3d513e90113a31dc97"
+    },
+    {
+      "path": "README.md",
+      "bytes": 10403,
+      "sha256": "ff37fdeff935c65042c1cdce668929da4ba62a0dae951e02aa5b01925fe6031e"
+    },
+    {
+      "path": "apps/monolith/.dependency-cruiser.cjs",
+      "bytes": 3365,
+      "sha256": "d7a791ac3e4d7630a2f7bb95fdca999b011b29320a6d1237769b152ce960d83a"
+    },
+    {
+      "path": "apps/monolith/Dockerfile",
+      "bytes": 1922,
+      "sha256": "7852d018c2e9f77ce9d5432cfa142fca69c57cd7514268d4ee308ba7490312cc"
+    },
+    {
+      "path": "apps/monolith/drizzle.config.ts",
+      "bytes": 293,
+      "sha256": "ac6399cdcf645142e5b4804885a27cff994c1b1a488725f4c397e3c97daeb566"
+    },
+    {
+      "path": "apps/monolith/drizzle/0000_lethal_infant_terrible.sql",
+      "bytes": 1850,
+      "sha256": "07a5077b875cf7b5e7768d742ad6eed383e25a4282796e127f04b96579a22b70"
+    },
+    {
+      "path": "apps/monolith/drizzle/0001_calm_karen_page.sql",
+      "bytes": 1550,
+      "sha256": "ef33c4d22348d1339c44e3c39a6ad84986a9f7d84f2c4ab34eabfa0fd0cf5b59"
+    },
+    {
+      "path": "apps/monolith/drizzle/0002_rainy_gorilla_man.sql",
+      "bytes": 924,
+      "sha256": "7786585fc6e12787cd2f64f8e98cd6c337698193227619b371b9ee2406747a4c"
+    },
+    {
+      "path": "apps/monolith/drizzle/0003_concesiones_sector.sql",
+      "bytes": 1063,
+      "sha256": "64032e5a89eb999ac438bbb6501cd5f4addef25100f4b57bbb8d39f515eb6dce"
+    },
+    {
+      "path": "apps/monolith/drizzle/0004_juego_partidas.sql",
+      "bytes": 879,
+      "sha256": "fe361d56f04a447a8b4af60763687e7998a7e5670314f13535292285c2bcb5d1"
+    },
+    {
+      "path": "apps/monolith/drizzle/0005_electricidad_accounts.sql",
+      "bytes": 871,
+      "sha256": "cded254c526df530c1bd535d5b302bd0570125306db65e7c1ac61d3305aed032"
+    },
+    {
+      "path": "apps/monolith/drizzle/0006_boe_assistant.sql",
+      "bytes": 766,
+      "sha256": "c128842aa063f052df579d1cb8685abdf567d691da406618b28e445ea021dbd2"
+    },
+    {
+      "path": "apps/monolith/drizzle/0007_assistant_settings.sql",
+      "bytes": 151,
+      "sha256": "ef20e7bd1dd4394ef7ae6af1170917e4242b90fa7ea7a06168a457e9b29af6e4"
+    },
+    {
+      "path": "apps/monolith/package.json",
+      "bytes": 1896,
+      "sha256": "a245e7a11dd249f0ff2f23b3c56ddf9a0b7d61533e9503f99b4cd23a20eb19f2"
+    },
+    {
+      "path": "apps/monolith/src/api/assistant.test.ts",
+      "bytes": 5719,
+      "sha256": "3659d2d01d15f766d0bac1bfe2d81ded7b04178103417f9cf3b8afff8e03d817"
+    },
+    {
+      "path": "apps/monolith/src/api/assistant.ts",
+      "bytes": 4874,
+      "sha256": "0a9bcd57fced842b4cda9d751a1e9256fffa543bb302906645820dc54cfa80a3"
+    },
+    {
+      "path": "apps/monolith/src/api/electricidad.test.ts",
+      "bytes": 1145,
+      "sha256": "9f8f03aece03c7d9e12cef8be82b8f7e1c69ede02ac34faf32b05463869b2fc6"
+    },
+    {
+      "path": "apps/monolith/src/api/electricidad.ts",
+      "bytes": 2531,
+      "sha256": "7d8dfec5eed6846401ee6d3c65c2e230e5949dfbf124c6ae6421f96887d2c712"
+    },
+    {
+      "path": "apps/monolith/src/api/server.test.ts",
+      "bytes": 11802,
+      "sha256": "23745cd286e1d14ae9f1973f77e1e2be6d2fe4d1bd861280e2bb010894f5ee4c"
+    },
+    {
+      "path": "apps/monolith/src/api/server.ts",
+      "bytes": 14176,
+      "sha256": "bcd667782c81bb78bb8dc5a07178ab0d95fb81ab8c9b8ff3f68433bd6fa3aceb"
+    },
+    {
+      "path": "apps/monolith/src/cli/create-electricidad-admin.ts",
+      "bytes": 1140,
+      "sha256": "0c6a483589f1b6763017bc8e647196a919c8591983be7781b0079dae84f7face"
+    },
+    {
+      "path": "apps/monolith/src/cli/daily-report.ts",
+      "bytes": 2396,
+      "sha256": "9806fb20428be1ffa7e69cddf904fa28a6b0826173a1d275c4fd030bf5cf478d"
+    },
+    {
+      "path": "apps/monolith/src/cli/find-latest-day.ts",
+      "bytes": 1055,
+      "sha256": "a751b5a40a523e04e24a866848c62dc1f5d9142b6355faeb18d562d5cc031642"
+    },
+    {
+      "path": "apps/monolith/src/cli/ingest-concesiones-only.ts",
+      "bytes": 1963,
+      "sha256": "346641a5c3d19f08d505f9dcafcaaaa63ce84116b1fb49ae260bf0da1c7e91bc"
+    },
+    {
+      "path": "apps/monolith/src/cli/ingest-subvenciones.ts",
+      "bytes": 4290,
+      "sha256": "7640fabe269608ba7d8bb605c3f210f0904ca2748e2d9fcb567f2e73f5e9310d"
+    },
+    {
+      "path": "apps/monolith/src/cli/migrate-db.ts",
+      "bytes": 788,
+      "sha256": "da0a44f744204ac3fda3ccca4e8288a2d1ee4ac74b79c97d6737aee2a2dc6b21"
+    },
+    {
+      "path": "apps/monolith/src/cli/notify-subvenciones.ts",
+      "bytes": 4295,
+      "sha256": "6f6c71041598c561756183fbb65929b0e4c764a059d662889481d2d12bace318"
+    },
+    {
+      "path": "apps/monolith/src/cli/probe-latest.ts",
+      "bytes": 4538,
+      "sha256": "3dfca0f1080db970c2ab929801714b6c776b683c2ff7cc6b30a6c4b245dbf52e"
+    },
+    {
+      "path": "apps/monolith/src/cli/report-directas.ts",
+      "bytes": 3825,
+      "sha256": "2d71a55ffc2d8c076b15d8d94f51ebf0c6340dab3a41b053639bb1ed44f55b31"
+    },
+    {
+      "path": "apps/monolith/src/cli/resummarize.ts",
+      "bytes": 5393,
+      "sha256": "e9f79d679d11a01f9d0cdfc6b139e8a84051f16c4c852d84b88e3a8f323dec1d"
+    },
+    {
+      "path": "apps/monolith/src/cli/run-ingestion.ts",
+      "bytes": 2949,
+      "sha256": "5deb4d6e0d9ebe46702ebf59f0594d3f76f06697c8e748fb356392a292e3fab9"
+    },
+    {
+      "path": "apps/monolith/src/cli/test-notifiers.ts",
+      "bytes": 3867,
+      "sha256": "95b1c2e0e063ae37b34cf6db236c5e88cf3429aeca5a96870df11a8a3ec2cf75"
+    },
+    {
+      "path": "apps/monolith/src/cli/tfm-demo.ts",
+      "bytes": 531,
+      "sha256": "8817c05b2e2269f44e4dde8bce903d4b6d8692635984db9cb98e63bf23bb19e1"
+    },
+    {
+      "path": "apps/monolith/src/composition.ts",
+      "bytes": 10106,
+      "sha256": "1810ea08a09214a8102f3cfdaf2e155807978e5c71e46f473acb64a5301a35c3"
+    },
+    {
+      "path": "apps/monolith/src/demo/official-text-fixtures.ts",
+      "bytes": 1747,
+      "sha256": "ee626b7c6fa5c6f7816d49aa14a063d9d8709d6fe3fd4e03057f642d3e78c45f"
+    },
+    {
+      "path": "apps/monolith/src/demo/tfm-server.test.ts",
+      "bytes": 4801,
+      "sha256": "c5ca94a0ee373ecc392e212e6203649bc847340ec5e178371c4331fb34f110f8"
+    },
+    {
+      "path": "apps/monolith/src/demo/tfm-server.ts",
+      "bytes": 8484,
+      "sha256": "e2cabcc226109dab2dda40d9c0c5bbd474fb0fa6bef533a32e6349e7f03fe401"
+    },
+    {
+      "path": "apps/monolith/src/main.ts",
+      "bytes": 2249,
+      "sha256": "988095cf5832bd6e4aaec34cd140918bf7736f008a97503abdcb626a1e4b4df6"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/application/ask-boe.test.ts",
+      "bytes": 13682,
+      "sha256": "77bdbe043ff71ba856021e580122c70226d4cb05acf68971b4c031d8b6ea2648"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/application/ask-boe.ts",
+      "bytes": 8756,
+      "sha256": "07d8f73489bbe8464d784fb19d0a8e19e6614d2561ad8816851b8dc70f239025"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/application/context.test.ts",
+      "bytes": 3706,
+      "sha256": "e4c17d01cb1e9d75cef5e9d78c0c5a501d58d1dbf9a0a5a736b656342094b99b"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/application/context.ts",
+      "bytes": 4802,
+      "sha256": "ed49d10945cc1806132fe5f9fa9821c8b5b5855afc64a8938095d43b8f063821"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/application/reviewed-assistant.test.ts",
+      "bytes": 8636,
+      "sha256": "be072bc1e8c73566bc4765299275a06c2763f3737162c41dc9b4f08d108d8e77"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/application/reviewed-assistant.ts",
+      "bytes": 6222,
+      "sha256": "2c2489eecc4a40d84b24b3984719f698ee44e1945bc6201cac0327de4a84964d"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/application/study-context.test.ts",
+      "bytes": 7131,
+      "sha256": "725933f9cc5f7b5e8339e0c584e2e8768c85b037f9ecc37e5424ab74e9a375ab"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/application/study-context.ts",
+      "bytes": 4891,
+      "sha256": "8c38ee0a824daf2e18d50f319f685aa78d121931aabaca244f5eb42a6a2ce2c6"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/domain/assistant.ts",
+      "bytes": 2730,
+      "sha256": "cb36b84a0e8251b564dba34e06713bc9c7b7d022dccabd6098ac657ace0059e0"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/domain/study-course.ts",
+      "bytes": 3177,
+      "sha256": "fbfa8f88b43bdc8085e467aeab26c17f7f4cec81ac06fbf5bf8885ac8a98fd6c"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/index.ts",
+      "bytes": 863,
+      "sha256": "2ba838e11cb9ac82aba95386dd6595856310cd3b9fc9e17ce616ceb5b0b0fdd1"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/infrastructure/cached-official-text-reader.test.ts",
+      "bytes": 1867,
+      "sha256": "db0732899222d1cb1b356dfb6e2b35360fef14b1c342b7f339219e016463f352"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/infrastructure/cached-official-text-reader.ts",
+      "bytes": 1324,
+      "sha256": "28a79d86a0d072e7cf648c7a9858498ca411d458127619671025d51da8158fb5"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/infrastructure/electricidad-course.ts",
+      "bytes": 311226,
+      "sha256": "31301cf5fb62accd67565632e0cd78281d595de72cf4639027e5b4e3abf6be0d"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/infrastructure/minimax-assistant.test.ts",
+      "bytes": 10519,
+      "sha256": "ecc91ba17def4652009e711a1f3f0b3dc0b1ec59559a9c98c73a9a44762354c4"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/infrastructure/minimax-assistant.ts",
+      "bytes": 11339,
+      "sha256": "c67d1edb4b731796b247a225f117a0eabd7bc85620802ddbb6d55dc5061f13f1"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/infrastructure/openai-assistant.test.ts",
+      "bytes": 3462,
+      "sha256": "4ebbc0847cb657cbc67005131b7036d7a354d2cf1928cc8ab4786dddf9c7bf51"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/infrastructure/openai-assistant.ts",
+      "bytes": 5952,
+      "sha256": "769b90b980af7a5dc71e1670c8c9bd1f2de2a552338cf33016c71150d01ae95d"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/infrastructure/postgres-budget.ts",
+      "bytes": 2707,
+      "sha256": "a56c8acd8f22a7e7620678aea547835c2cb446164f53e2f302a29a09819cf28f"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/infrastructure/postgres-settings.ts",
+      "bytes": 1034,
+      "sha256": "f1a9131d83081df2dfdb8e223846bf5864bf0ca12b129ead24dbe14450e759fb"
+    },
+    {
+      "path": "apps/monolith/src/modules/assistant/infrastructure/schema.ts",
+      "bytes": 844,
+      "sha256": "74f4b6653930602f5830952774d3b849e54bee00595014053115859943e59637"
+    },
+    {
+      "path": "apps/monolith/src/modules/catalog/application/queries.ts",
+      "bytes": 3711,
+      "sha256": "1ef1498a4e66d645a910562e2c4dc6d323f95f694b4559ebca50e16686f8400d"
+    },
+    {
+      "path": "apps/monolith/src/modules/catalog/application/search-terms.test.ts",
+      "bytes": 647,
+      "sha256": "ce9c2376e5652d7b74ede8666f11abdbb8585763703cdf4edc09b5a5b32cc562"
+    },
+    {
+      "path": "apps/monolith/src/modules/catalog/application/search-terms.ts",
+      "bytes": 1020,
+      "sha256": "2d3fe260d4cca1744671c731eb636fe694011eb4b92ea60e03847f5ab781655b"
+    },
+    {
+      "path": "apps/monolith/src/modules/catalog/index.ts",
+      "bytes": 446,
+      "sha256": "fcef96ef2aaafa56f0b768b2be597c0811606ebef97e9a44d67eed9e920b47cf"
+    },
+    {
+      "path": "apps/monolith/src/modules/catalog/infrastructure/in-memory-catalog-projection.ts",
+      "bytes": 5752,
+      "sha256": "9f29a07bc1d2618ac09e4e71f2345a1c7a887ed4ce121d041eb5e58e205554bb"
+    },
+    {
+      "path": "apps/monolith/src/modules/catalog/infrastructure/postgres-catalog-projection.ts",
+      "bytes": 10745,
+      "sha256": "2bf365119a958342b9a3f1a513616e5c7c8563d5f363d25548c648e3b58852b2"
+    },
+    {
+      "path": "apps/monolith/src/modules/catalog/infrastructure/schema.ts",
+      "bytes": 1880,
+      "sha256": "8b5850894861a74ef9d7beaf60dcf476c4d289a2159954e433d6523dbc1eccc4"
+    },
+    {
+      "path": "apps/monolith/src/modules/electricidad/accounts.ts",
+      "bytes": 834,
+      "sha256": "a2c308272248e077a1dd70d94da50611bda3f0d72303d2a1b502e8b22781c106"
+    },
+    {
+      "path": "apps/monolith/src/modules/electricidad/index.ts",
+      "bytes": 144,
+      "sha256": "3a8ace65dc89eec1785b5bf962f3f9a4a1007e4ac6a3fcf3852d3ed581094d1f"
+    },
+    {
+      "path": "apps/monolith/src/modules/electricidad/infrastructure/accounts.test.ts",
+      "bytes": 2900,
+      "sha256": "4d12655fb8e03f5ccbd24236a7feaba1b1fe61fa52ae09b4b8504cccef0d1e2d"
+    },
+    {
+      "path": "apps/monolith/src/modules/electricidad/infrastructure/accounts.ts",
+      "bytes": 9250,
+      "sha256": "4ed9e598a93055bd37dca4af7646ccc710d5eb153ed9218cac1250f702b63b1b"
+    },
+    {
+      "path": "apps/monolith/src/modules/electricidad/infrastructure/password.test.ts",
+      "bytes": 685,
+      "sha256": "a950937c0d60d95ca72df0c828e76d8e8f31433de87c20b5b7b2c7bb6bad58a4"
+    },
+    {
+      "path": "apps/monolith/src/modules/electricidad/infrastructure/password.ts",
+      "bytes": 798,
+      "sha256": "09b12e679a534055c81c4d5e345b47e0512b800af1c77957d24c723a6509a390"
+    },
+    {
+      "path": "apps/monolith/src/modules/electricidad/infrastructure/schema.ts",
+      "bytes": 1312,
+      "sha256": "833de0ffd4e9a7f995e990ed2abfa55966c411e97e5f4c11f5fb9b1089f83e9e"
+    },
+    {
+      "path": "apps/monolith/src/modules/electricidad/password-policy.test.ts",
+      "bytes": 2739,
+      "sha256": "566626d3d66c70e75c9230a6149bb59227d153c556f5fdc3fc0e660258c2e3ee"
+    },
+    {
+      "path": "apps/monolith/src/modules/electricidad/password-policy.ts",
+      "bytes": 4057,
+      "sha256": "e783d47bf7ed61eab49b68916acbc028f260a24aa3fcf7ca8cb8e0df123d75b7"
+    },
+    {
+      "path": "apps/monolith/src/modules/ingestion/application/ingest-daily-bulletin.test.ts",
+      "bytes": 3422,
+      "sha256": "ca86a7b4794dae0d3fc00f3cf5c6a8ba488c6afc5263a512134b15d825c3a33f"
+    },
+    {
+      "path": "apps/monolith/src/modules/ingestion/application/ingest-daily-bulletin.ts",
+      "bytes": 4680,
+      "sha256": "23195d026523099c7c0585670f96bd966b6092b27ba4c1df1a6d87d74810e6b6"
+    },
+    {
+      "path": "apps/monolith/src/modules/ingestion/application/track-entry-progress.ts",
+      "bytes": 2287,
+      "sha256": "1f5b9f51eb96841846b22868065f938a50b655de601c674a29f7cae29a5602d3"
+    },
+    {
+      "path": "apps/monolith/src/modules/ingestion/domain/boe-entry.ts",
+      "bytes": 2179,
+      "sha256": "c482b794853af4caa05f6a71eaaf834eef7ccd688aaf17015642a0fdc18f4e29"
+    },
+    {
+      "path": "apps/monolith/src/modules/ingestion/domain/boe-gateway.ts",
+      "bytes": 1507,
+      "sha256": "8d81e354a37cdfb00c2509c6c3dd078cf475ecee8c5775c8610c2c1152a9c72c"
+    },
+    {
+      "path": "apps/monolith/src/modules/ingestion/domain/entry-repository.ts",
+      "bytes": 348,
+      "sha256": "abc73ce968f4609350a0bf8646aa7c1688042c369f9355870206d04fc23e7c96"
+    },
+    {
+      "path": "apps/monolith/src/modules/ingestion/domain/events.ts",
+      "bytes": 1066,
+      "sha256": "2eec595f0f3c69036cf4040378fef7791fbc8330bd4e768ceb64541ea8a7b79e"
+    },
+    {
+      "path": "apps/monolith/src/modules/ingestion/index.ts",
+      "bytes": 884,
+      "sha256": "26c616967ffa98bd251b999d98446b5932eb9f6716685a0e3ae4d3e98a633457"
+    },
+    {
+      "path": "apps/monolith/src/modules/ingestion/infrastructure/boe-api-gateway.test.ts",
+      "bytes": 8146,
+      "sha256": "a462a8de1addcbaef1a7901c1775f7a39de1641e73c59e0c4f07e389c40a37bd"
+    },
+    {
+      "path": "apps/monolith/src/modules/ingestion/infrastructure/boe-api-gateway.ts",
+      "bytes": 10067,
+      "sha256": "668d4590e201948d9660414c09a8de1dd50f7eea45c81acc0e89e31d37aa5372"
+    },
+    {
+      "path": "apps/monolith/src/modules/ingestion/infrastructure/boe-document.test.ts",
+      "bytes": 1831,
+      "sha256": "2121c5e89d122a28a30b191e4f5fe6146839b6aef1e08bc6f6a8d4d5522cda18"
+    },
+    {
+      "path": "apps/monolith/src/modules/ingestion/infrastructure/in-memory-entry-repository.ts",
+      "bytes": 1087,
+      "sha256": "9e1d975f1af2dbbdeafd0484bd479cc30d8c7ab2e06fea14d50e8c6b8f9f0f74"
+    },
+    {
+      "path": "apps/monolith/src/modules/ingestion/infrastructure/postgres-entry-repository.ts",
+      "bytes": 3432,
+      "sha256": "a6a39676b48668489bd9c34d398efd514fc6ddba7ea938e37f09038c5f3b462e"
+    },
+    {
+      "path": "apps/monolith/src/modules/ingestion/infrastructure/schema.ts",
+      "bytes": 1182,
+      "sha256": "4ff66b116631ad7d5a2d6289d2cf151efd478886d35e999aebc6b99fca7621dc"
+    },
+    {
+      "path": "apps/monolith/src/modules/juego/application/queries.ts",
+      "bytes": 567,
+      "sha256": "ae2c7e724ada7b487129f711c45adcd5c00b34c69add9dde2ad23b701fcf346f"
+    },
+    {
+      "path": "apps/monolith/src/modules/juego/application/registrar-partida.test.ts",
+      "bytes": 4005,
+      "sha256": "837a7b27b4f646243d6ffed11dbbbadf61832ac4f6c2a5dbdb3e0e07974df1fe"
+    },
+    {
+      "path": "apps/monolith/src/modules/juego/application/registrar-partida.ts",
+      "bytes": 3034,
+      "sha256": "c21a8e599cc0e62d92f78abc6c1b822103300a12c178f9b47de216091bcfecf1"
+    },
+    {
+      "path": "apps/monolith/src/modules/juego/domain/contador.ts",
+      "bytes": 580,
+      "sha256": "66eddc6e9de4830bbf45d800764fb6700e2be05b91cd1f6a8797d470e975d187"
+    },
+    {
+      "path": "apps/monolith/src/modules/juego/domain/partida-repository.ts",
+      "bytes": 967,
+      "sha256": "c2cee0dba4913b4438e01a978054f9875c491521194f192730452b6a12547c41"
+    },
+    {
+      "path": "apps/monolith/src/modules/juego/domain/partida.test.ts",
+      "bytes": 3375,
+      "sha256": "e12de46df6630d33dc07abeebfec1ace6a742466aca215422f97f09bd1bbffc1"
+    },
+    {
+      "path": "apps/monolith/src/modules/juego/domain/partida.ts",
+      "bytes": 6358,
+      "sha256": "536e4ded80fc33eee7b918cf30f49e178edef31e6e3cad39c8cf6c1e26422fef"
+    },
+    {
+      "path": "apps/monolith/src/modules/juego/index.ts",
+      "bytes": 1109,
+      "sha256": "f22e0213f2b2b89cc4de062835502d309aaa958ee45f36e553f88f67dfb8fbfc"
+    },
+    {
+      "path": "apps/monolith/src/modules/juego/infrastructure/in-memory-partida-repository.ts",
+      "bytes": 1501,
+      "sha256": "75972253a1d065e997810b6dd67e6fb4d72396ffaef26bfca2c89f9664884551"
+    },
+    {
+      "path": "apps/monolith/src/modules/juego/infrastructure/postgres-partida-repository.ts",
+      "bytes": 3088,
+      "sha256": "0ec3c5a10b034c077b71cffcce79d3dcac25ae6b6b69a5bd378457277cdf84ef"
+    },
+    {
+      "path": "apps/monolith/src/modules/juego/infrastructure/schema.ts",
+      "bytes": 1693,
+      "sha256": "094293381265cc39333756a0304c73c49c8a985c6d917e08325c9048542fa6a6"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/application/notify-entry.test.ts",
+      "bytes": 4699,
+      "sha256": "6c9ffabc6cf13d5db0ba82cdae42a2a0cabc389f5bb79ded14f4a04246baa681"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/application/notify-entry.ts",
+      "bytes": 3580,
+      "sha256": "c7a760ebf26bd9719128a8eeb6d6e39d88e84a7e5dcab314ccfe79b01b3bc3cb"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/application/publish-day-digest.test.ts",
+      "bytes": 5876,
+      "sha256": "6c01c0c1f667680a51677104df7822ff124450c195db4bdc5123b20599af854c"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/application/publish-day-digest.ts",
+      "bytes": 5304,
+      "sha256": "4a045f1c29382fe8cac5d37d1b36923d4daffe18ec6f214cd3bd1912fdd34e47"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/domain/alerter.ts",
+      "bytes": 663,
+      "sha256": "12fdc190acd5eeca3bf17831b05076d14eb51ce3d91e02ef188c6524dffe9103"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/domain/events.ts",
+      "bytes": 611,
+      "sha256": "9cf460650fc30bff8c66253101b74c6fef532411c9c684f6c141fdb1bb0d8656"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/domain/notification-log.ts",
+      "bytes": 476,
+      "sha256": "f7a473b3dfa9892a89a9d7d1477a918c4346d2cb09e9dd90a1cbb33829cfeb3d"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/domain/notifier.ts",
+      "bytes": 2295,
+      "sha256": "6cbfab6435209db0efcbe242e75951099257d5d281ddcc5bb9d8d4b3b34d0558"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/index.ts",
+      "bytes": 1118,
+      "sha256": "3fdcc6b199dd7545bf17bd168116e452ee8d4b4b84fb8ac644299284411cdd43"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/infrastructure/console-notifier.ts",
+      "bytes": 778,
+      "sha256": "2e2e781e9f7e6ba886199ce6a2510573379e5b708e6b136bafc63638d202a477"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/infrastructure/discord-notifier.ts",
+      "bytes": 1919,
+      "sha256": "5d8272c00731edc40fe8806d66bee153cd7aff023c7b56a91b8f920c59027647"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/infrastructure/in-memory-notification-log.ts",
+      "bytes": 614,
+      "sha256": "fb5d8fb0e3a3cf7a779146c3df206d7173d3f0c829fa0991b3fd949b373bb263"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/infrastructure/notifiers.test.ts",
+      "bytes": 2120,
+      "sha256": "a95954495a2d5c1d3fb12fd60c65cf679dc3ff35521148169ef7f399d0cce463"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/infrastructure/postgres-notification-log.ts",
+      "bytes": 1633,
+      "sha256": "f715841369e732ff32b4a27ab225355d2394f4ece24141457e8daca68833bcfd"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/infrastructure/schema.ts",
+      "bytes": 549,
+      "sha256": "9eda51289c3b4555027976f4f06411140d0bc50e9f530b4c4b4e2c79610f6476"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/infrastructure/telegram-notifier.ts",
+      "bytes": 2360,
+      "sha256": "5a04de31a330f44cffb6f784a3bb140348511c9327ef03246627a394bd627eca"
+    },
+    {
+      "path": "apps/monolith/src/modules/notifications/infrastructure/telegram-private-alerter.ts",
+      "bytes": 1957,
+      "sha256": "fb65508e93c13891a6bd4be1226981af64ad0f007267ade95d86ac039c18b5fd"
+    },
+    {
+      "path": "apps/monolith/src/modules/spending/application/ingest-concesiones.ts",
+      "bytes": 1764,
+      "sha256": "6b7432922830ffb623a9e3e3594b72a8f5930bcb3a3f60699b9ee31131ed1972"
+    },
+    {
+      "path": "apps/monolith/src/modules/spending/application/ingest-convocatorias.ts",
+      "bytes": 2809,
+      "sha256": "c180827b15013b5215f7e979f6bec8f0157f46c55d9dc1dc9226ab5365e8e42f"
+    },
+    {
+      "path": "apps/monolith/src/modules/spending/application/queries.ts",
+      "bytes": 3731,
+      "sha256": "b50c7652c0f6376a94cf3f0b9243a4b46916c82ddaa68d2431ec6b008c1efaef"
+    },
+    {
+      "path": "apps/monolith/src/modules/spending/domain/bdns-gateway.ts",
+      "bytes": 1265,
+      "sha256": "a4b0c78f56c7844a7c709a3988ebc0cd721d44babd720f837b12ffee8208d069"
+    },
+    {
+      "path": "apps/monolith/src/modules/spending/domain/concesion-repository.ts",
+      "bytes": 1985,
+      "sha256": "ce766535a260ff51bb4a0e53791d3e14b91e3a5cd749f262324338fb12f7b78c"
+    },
+    {
+      "path": "apps/monolith/src/modules/spending/domain/concesion.ts",
+      "bytes": 567,
+      "sha256": "c067851476a3916ef6226667070a7c1e504771f4c6b92c77b3d8f1415489b5b4"
+    },
+    {
+      "path": "apps/monolith/src/modules/spending/domain/convocatoria-repository.ts",
+      "bytes": 962,
+      "sha256": "42566a8b54a9a62a72b9f82785e59d73cea6b88dde72731066434c1bff2d6011"
+    },
+    {
+      "path": "apps/monolith/src/modules/spending/domain/convocatoria.test.ts",
+      "bytes": 1050,
+      "sha256": "bda4eb4dd367b054efe77f28ad29eb1dc4d4eed5bc98b48cfe85a8d196eef47b"
+    },
+    {
+      "path": "apps/monolith/src/modules/spending/domain/convocatoria.ts",
+      "bytes": 2055,
+      "sha256": "f44ca1d9299ef2eed22ae8cb9a4f793a23d16993b842cacaea7a63c211d3681c"
+    },
+    {
+      "path": "apps/monolith/src/modules/spending/domain/sector-beneficiario.test.ts",
+      "bytes": 1734,
+      "sha256": "5cdf04c958257da8c0f58bcf8a32816020e96f50eb02afdb9f31776ec6881794"
+    },
+    {
+      "path": "apps/monolith/src/modules/spending/domain/sector-beneficiario.ts",
+      "bytes": 2251,
+      "sha256": "833ca71dc3127935e70ee0511c81fd1ee64be7344831c204e92b1254365b23d5"
+    },
+    {
+      "path": "apps/monolith/src/modules/spending/index.ts",
+      "bytes": 1431,
+      "sha256": "e2fd58544a0e5267e2fbe7b2f86e8601b06d1f90394c7dc0bb857ec3e5590090"
+    },
+    {
+      "path": "apps/monolith/src/modules/spending/infrastructure/bdns-api-gateway.ts",
+      "bytes": 7862,
+      "sha256": "79af0c9f840afab0564233abc4ec7c7147d3ccf738d521ae78a4bfda397142bf"
+    },
+    {
+      "path": "apps/monolith/src/modules/spending/infrastructure/postgres-convocatoria-repository.ts",
+      "bytes": 12853,
+      "sha256": "7d6b092b4c02b19fbddc658e57ecb58fb6d6bd6dbd72b5b620ea7fa13b80b9fb"
+    },
+    {
+      "path": "apps/monolith/src/modules/spending/infrastructure/schema.ts",
+      "bytes": 3578,
+      "sha256": "4dba2de997dbab29db48e27909b7e8b1ab39410e0a7febeaeb6320bde599bd06"
+    },
+    {
+      "path": "apps/monolith/src/modules/summarization/application/summarize-entry.test.ts",
+      "bytes": 1961,
+      "sha256": "1c22a2534c65321d1bb5934f13f38f867b0a4975d88e2f93465597b91a49fd10"
+    },
+    {
+      "path": "apps/monolith/src/modules/summarization/application/summarize-entry.ts",
+      "bytes": 2256,
+      "sha256": "d61771b23718f293034aaa0b2c5a1dbc38e5569b1f49400e5369e15648b14db9"
+    },
+    {
+      "path": "apps/monolith/src/modules/summarization/domain/events.ts",
+      "bytes": 1351,
+      "sha256": "3e2a4d5f39b8560183e1275e1697a4b99726b3ebba8eb921997d7e2a52cbdc9c"
+    },
+    {
+      "path": "apps/monolith/src/modules/summarization/domain/summarizer.ts",
+      "bytes": 743,
+      "sha256": "267a6cdc5b7fb31a311f68274bfa420bf4082065a2b97186f485d7103c58e08c"
+    },
+    {
+      "path": "apps/monolith/src/modules/summarization/domain/summary-repository.ts",
+      "bytes": 185,
+      "sha256": "840a4fe7e1fa630446b918407c56cfba2dac189d864fc40f2e5dbc4c39286abc"
+    },
+    {
+      "path": "apps/monolith/src/modules/summarization/domain/summary.ts",
+      "bytes": 1453,
+      "sha256": "1b6b38f0b291153fb8aed27df1833f2fdb7e28a7dafb7414b6ffbc0ed99d4b9d"
+    },
+    {
+      "path": "apps/monolith/src/modules/summarization/index.ts",
+      "bytes": 714,
+      "sha256": "e28cb135806d54f59ac405e002587e47b691bdebc8bf5cf769609f1b16d12d36"
+    },
+    {
+      "path": "apps/monolith/src/modules/summarization/infrastructure/http-summarizer.ts",
+      "bytes": 12278,
+      "sha256": "fedc9c536a67712a2d66bdf0783942d0c0afbec5a353396b32701df86add65dc"
+    },
+    {
+      "path": "apps/monolith/src/modules/summarization/infrastructure/in-memory-summary-repository.ts",
+      "bytes": 556,
+      "sha256": "8d8e2056e8b2cea971b26df5159ad2d7e49f38c9eb3f348a55d1996a3b377898"
+    },
+    {
+      "path": "apps/monolith/src/modules/summarization/infrastructure/postgres-summary-repository.ts",
+      "bytes": 2104,
+      "sha256": "c047a30c0d89b7b301275339e9c2f8da9ff18eaf1f72ed2b384bc7a8bf02a578"
+    },
+    {
+      "path": "apps/monolith/src/modules/summarization/infrastructure/schema.ts",
+      "bytes": 863,
+      "sha256": "ca6cadab3c1ddca6cab690351b372f3a2a99db2b1f29adfd33a95234f2d851bd"
+    },
+    {
+      "path": "apps/monolith/src/postgres-adapters.integration.test.ts",
+      "bytes": 16716,
+      "sha256": "589c1e1106c9d24bc83a93c5d3d1567db2ec23589a9b880b3d056cb60279b766"
+    },
+    {
+      "path": "apps/monolith/src/scheduler/cron.test.ts",
+      "bytes": 10839,
+      "sha256": "e3aa62209e41fc9f40208d6fd8f4c7fb04f1d62cc4c00ae929c525ff1d5b902f"
+    },
+    {
+      "path": "apps/monolith/src/scheduler/cron.ts",
+      "bytes": 14405,
+      "sha256": "446a378584cca8d5fe1d9045dfff2bb2c6b13415795e8223a541b4f9a6b28ad1"
+    },
+    {
+      "path": "apps/monolith/src/scheduler/daily-report.test.ts",
+      "bytes": 4718,
+      "sha256": "69637d9d16db3dc769adc845d882ee45fe499f8c8d633466d2b076322577016c"
+    },
+    {
+      "path": "apps/monolith/src/scheduler/daily-report.ts",
+      "bytes": 4048,
+      "sha256": "9e6a983010d6266cf6672031189dee779ddf8ad57a4311e2aecb82a1da43c3af"
+    },
+    {
+      "path": "apps/monolith/src/scheduler/day-digest.test.ts",
+      "bytes": 2924,
+      "sha256": "64a1d623096232168f60031ddc905093dac4c35740fd46780fd74fd496f73ced"
+    },
+    {
+      "path": "apps/monolith/src/scheduler/day-digest.ts",
+      "bytes": 2045,
+      "sha256": "dd84e953c0964f474fed18db1f7da63026c0bea07ccead5d01825e7eb363ea28"
+    },
+    {
+      "path": "apps/monolith/src/scheduler/resume-pending.test.ts",
+      "bytes": 8011,
+      "sha256": "588b07422030964d369ccf9c67037be90e84e246e7dcfaeea4eb23a7277d91a1"
+    },
+    {
+      "path": "apps/monolith/src/scheduler/resume-pending.ts",
+      "bytes": 6391,
+      "sha256": "41c2388620bf9809801439ac467dc6531d9c5461440b5d4bfec83a686ade9529"
+    },
+    {
+      "path": "apps/monolith/src/scheduler/review-clock.test.ts",
+      "bytes": 1611,
+      "sha256": "b7530045f45c89b1a0726627b2303d5281cb193bf2093571b78af5f118710c33"
+    },
+    {
+      "path": "apps/monolith/src/scheduler/review-clock.ts",
+      "bytes": 1645,
+      "sha256": "990a0ed782ae734181f36835299bcbd04ffc8888ba97830a1626c43ea2a049dc"
+    },
+    {
+      "path": "apps/monolith/src/shared/config/config.ts",
+      "bytes": 6181,
+      "sha256": "89823c7b9af7f78490d67a51ecbbb9602a506f3fb2f387979e5f4e334fc7b000"
+    },
+    {
+      "path": "apps/monolith/src/shared/db/connection.ts",
+      "bytes": 1103,
+      "sha256": "04331741d4631d70ca7f1427d254107efdfae06d6bfe0c19a6405e70c02abd6a"
+    },
+    {
+      "path": "apps/monolith/src/shared/db/migrate.ts",
+      "bytes": 758,
+      "sha256": "74da87fdfff0308ab869aa838ed4562f2ffb3eeffaee92dfaa7f2bd34fa64d8a"
+    },
+    {
+      "path": "apps/monolith/src/shared/domain/boe-id.test.ts",
+      "bytes": 683,
+      "sha256": "af64c8ef10cba8b55dff71aec2649613bee94d89376febf3bfcbb79c748cb778"
+    },
+    {
+      "path": "apps/monolith/src/shared/domain/boe-id.ts",
+      "bytes": 745,
+      "sha256": "c65cb7410a7b313a70d20399fc2247e5b199f5992b7f789ca8cdceca7bfa77de"
+    },
+    {
+      "path": "apps/monolith/src/shared/domain/comunidad.test.ts",
+      "bytes": 7522,
+      "sha256": "8be87a925458662a1c1ae93b2ce025ec6cac7df130f06ca4e0799b2022bca9bc"
+    },
+    {
+      "path": "apps/monolith/src/shared/domain/comunidad.ts",
+      "bytes": 12449,
+      "sha256": "0a315fcb873e9d0f348579cf7d0bbc3f3f03a75d317cf96c516a0fd9a8f2ac93"
+    },
+    {
+      "path": "apps/monolith/src/shared/domain/iso-date.test.ts",
+      "bytes": 1351,
+      "sha256": "5188022c95bc332c3e4803b72098de5bfe68fa22b31f74a038e13ddbfe608cbc"
+    },
+    {
+      "path": "apps/monolith/src/shared/domain/iso-date.ts",
+      "bytes": 1911,
+      "sha256": "4bcf1f53b51458ce756f81d5a0c4d4135a688020311b138effafd342b77f1a87"
+    },
+    {
+      "path": "apps/monolith/src/shared/domain/result.ts",
+      "bytes": 470,
+      "sha256": "cf63742413eb918d51f70aac71b85715c50d4726d6c6ba8373e32fd3f5364750"
+    },
+    {
+      "path": "apps/monolith/src/shared/domain/review-status.ts",
+      "bytes": 433,
+      "sha256": "e85d8d66200efe81070dad176708eba0b0fda5c453882629fa3a4dca0fff61f8"
+    },
+    {
+      "path": "apps/monolith/src/shared/event-bus/domain-event.ts",
+      "bytes": 484,
+      "sha256": "e4485b5c84d6887dd52eaf23b50f8b831b1aa351b7b55010fd867fe30941120a"
+    },
+    {
+      "path": "apps/monolith/src/shared/event-bus/event-bus.ts",
+      "bytes": 585,
+      "sha256": "08977041d48e2e513bcd413bebcb2a7e3cc22804e43051a85c2ef4ac41d262f1"
+    },
+    {
+      "path": "apps/monolith/src/shared/event-bus/in-memory-event-bus.test.ts",
+      "bytes": 1478,
+      "sha256": "972e1d3e412db95047e3e00e8485ff6bbc4eee2c58ee3d46c0ca1e465161da62"
+    },
+    {
+      "path": "apps/monolith/src/shared/event-bus/in-memory-event-bus.ts",
+      "bytes": 1217,
+      "sha256": "600e9f7954308769c6c99f1b6f9b1504f610a721caffce6e8a4c898dd7c364a1"
+    },
+    {
+      "path": "apps/monolith/src/shared/logger/logger.ts",
+      "bytes": 338,
+      "sha256": "289e2d94f4d4adc64ca1e8dd8808e94b92bbc19fcaf268c9dc4e8368523e1d5c"
+    },
+    {
+      "path": "apps/monolith/tsconfig.json",
+      "bytes": 203,
+      "sha256": "c70c5bd922c03e1589f409308351717b194e31d7cfb79db91181ccf6722ac283"
+    },
+    {
+      "path": "apps/monolith/vitest.config.ts",
+      "bytes": 323,
+      "sha256": "f5f0c707eeba451cb45d628503c8f7b6977967e6dc62bc8cfae8da37e71211e4"
+    },
+    {
+      "path": "apps/monolith/vitest.integration.config.ts",
+      "bytes": 453,
+      "sha256": "6ba9d2b819bc7c0e0604f39ba349c3def976145b88b275fda36cd7afd4ed401c"
+    },
+    {
+      "path": "apps/web/Dockerfile",
+      "bytes": 847,
+      "sha256": "71edf849eec9c28454949475597b26a61419f0eef94dfec9eb0914ada8be66d7"
+    },
+    {
+      "path": "apps/web/next-env.d.ts",
+      "bytes": 262,
+      "sha256": "85ae5aee75f011967cf2d25cbc342f62d69314e9d925f7f4aa3456fc2cffcca6"
+    },
+    {
+      "path": "apps/web/next.config.ts",
+      "bytes": 2065,
+      "sha256": "bde2edb5ea9a69eaf7f0738c6b40d567f692f91ba0a01ccb99dc66f37b766cda"
+    },
+    {
+      "path": "apps/web/package.json",
+      "bytes": 576,
+      "sha256": "1ace921d9c0e8a6c071a800497878ba66dbab34ebdf2a7ea5a320b4be5b83119"
+    },
+    {
+      "path": "apps/web/private/electricidad-account.html",
+      "bytes": 18662,
+      "sha256": "72ac53d96d75ae7ea7a43d2c30f8e7a0156d9e26ec64c9cd54fae40f27ee317b"
+    },
+    {
+      "path": "apps/web/private/electricidad-tutor.css",
+      "bytes": 21381,
+      "sha256": "65ac749df061ef260fd3f113cfeafddd453bd996281cb8997bb0bcb01a5a4db3"
+    },
+    {
+      "path": "apps/web/private/electricidad-tutor.js",
+      "bytes": 21137,
+      "sha256": "26348306845f54d62657ec4201a3025e0446946fafcc483ad997f0d4f35580a0"
+    },
+    {
+      "path": "apps/web/private/electricidad/index.html",
+      "bytes": 1431894,
+      "sha256": "eaa275482d92d605e055655e5e5fa0a17f6cc84b669e9d5de9c5d65b595f8318"
+    },
+    {
+      "path": "apps/web/private/electricidadTest/index.html",
+      "bytes": 209107,
+      "sha256": "b531e91ba0f7ffaaa47e361f7381cd0a43297bceb291e44af2c8e93e4591e18e"
+    },
+    {
+      "path": "apps/web/public/emblema-loop.mp4",
+      "bytes": 917707,
+      "sha256": "48f6916f755b795a306e1a9e2cc4a9a29898e2111c5d9d8f3b0f2d22e49a57bc"
+    },
+    {
+      "path": "apps/web/public/emblema-poster.jpg",
+      "bytes": 106567,
+      "sha256": "9f71ba7a4b1f96f2110a544a1986576010cbdd8a14bae2eb1ad4ebdd2695d9b3"
+    },
+    {
+      "path": "apps/web/public/icons/electricidad.svg",
+      "bytes": 434,
+      "sha256": "a9874b907883e369770acfa57c819254879ad1fc805b2205ea3bb0805b4deb4c"
+    },
+    {
+      "path": "apps/web/public/juego/cara.png",
+      "bytes": 71656,
+      "sha256": "8021f7421193a3738c52e764b67be4c3cdf7c42ba9aa1d0e91648f3e46b264f3"
+    },
+    {
+      "path": "apps/web/public/juego/suscriban.html",
+      "bytes": 294907,
+      "sha256": "9c8db016cf0b6050f5b4e22abdf115d0f8882bf07b8d80dc72a2b9d2d8cd822a"
+    },
+    {
+      "path": "apps/web/src/app/api/account/[action]/route.ts",
+      "bytes": 206,
+      "sha256": "5ec7d073632f12949b8e916ee476c97954bf7c73ec2b1328eb8b550d3f7ac525"
+    },
+    {
+      "path": "apps/web/src/app/api/assistant/models/route.ts",
+      "bytes": 2247,
+      "sha256": "aa752cd5c2c79ff45916ede37848bf96b67f58bbd04d3aa48530a2a40014ef49"
+    },
+    {
+      "path": "apps/web/src/app/api/assistant/route.test.ts",
+      "bytes": 2315,
+      "sha256": "16fcf48b433545bb9d44dcebcf9c692ab380514c7e1c362c62a31ceea94d389a"
+    },
+    {
+      "path": "apps/web/src/app/api/assistant/route.ts",
+      "bytes": 1732,
+      "sha256": "2e10e9dda77cf4581758a05918e6ed8d1ff80c73ad5da4f742357f70c8e7ee80"
+    },
+    {
+      "path": "apps/web/src/app/api/electricidad/[action]/route.test.ts",
+      "bytes": 1338,
+      "sha256": "bece280a85dbf14aa5ccbb14b165aa9594281a32c8020935319f8264ba321ec9"
+    },
+    {
+      "path": "apps/web/src/app/api/electricidad/[action]/route.ts",
+      "bytes": 211,
+      "sha256": "13379d0939917b2c5d4010772ee97900c77a04751f7d8f39e1f39c4c9beab9be"
+    },
+    {
+      "path": "apps/web/src/app/api/full-search/route.ts",
+      "bytes": 1212,
+      "sha256": "59321c8f89a167b45d3d5cfcf251b6c9af5b3c1afb7988c682446751c389205c"
+    },
+    {
+      "path": "apps/web/src/app/api/full-search/unlock/route.ts",
+      "bytes": 1255,
+      "sha256": "d96ef524e3d912a1ba1fb73edf89eabe059e98ebbb04b58c88544d6420b1bc06"
+    },
+    {
+      "path": "apps/web/src/app/api/juego/marcador/route.ts",
+      "bytes": 916,
+      "sha256": "136752509e7a35bb61e9f25322ac22225ec83b7f3f554040a8eb37c29ff5b108"
+    },
+    {
+      "path": "apps/web/src/app/api/juego/partidas/route.ts",
+      "bytes": 1335,
+      "sha256": "fceaaa114d2db528cba00d346ecf48b53fc1c4f96eafaf94b495ab51c3be2907"
+    },
+    {
+      "path": "apps/web/src/app/api/press/route.ts",
+      "bytes": 360,
+      "sha256": "c69324cdad3e5747e319c77c6f814786f454b004b0a5e18845ff2c6055259283"
+    },
+    {
+      "path": "apps/web/src/app/api/review-status/route.ts",
+      "bytes": 598,
+      "sha256": "f8f042367ff3ff044f0a917f9d2b74eeb86437d8d9d518c1366d33b50c1ff12d"
+    },
+    {
+      "path": "apps/web/src/app/boe-bot.css",
+      "bytes": 23363,
+      "sha256": "222ba582281fb0d609e098d9dc20d49b78d1b19656b7d2e1d05129e1debfc20c"
+    },
+    {
+      "path": "apps/web/src/app/d/[id]/page.tsx",
+      "bytes": 7106,
+      "sha256": "54fe2993f4c50e585b01222bc4f43fe4eac3dedad5f446072afe8d087ed6ba71"
+    },
+    {
+      "path": "apps/web/src/app/editorial.css",
+      "bytes": 33368,
+      "sha256": "1c8b09e48c9e2f604e1f60b9a2f6043b35ad721debb14b6827b528d7e7541e04"
+    },
+    {
+      "path": "apps/web/src/app/electricidad/[[...path]]/route.ts",
+      "bytes": 367,
+      "sha256": "3dc5c490df3821a4e9f73c027522df9e9402df0419934e16fd701e26c165b2cd"
+    },
+    {
+      "path": "apps/web/src/app/electricidadTest/[[...path]]/route.ts",
+      "bytes": 371,
+      "sha256": "5d530627adc9db194e79060fc5d2537b3c7cc5f49588bceda2b70c996ef54fd7"
+    },
+    {
+      "path": "apps/web/src/app/globals.css",
+      "bytes": 249017,
+      "sha256": "5f8f17460894b4addc180ea0ac3215520e5194998ca252155421416fd1614705"
+    },
+    {
+      "path": "apps/web/src/app/icon.png",
+      "bytes": 148044,
+      "sha256": "d3845cde9b5e172764de8c93196c2f50dd9af227a4ea0605b1340e989b679c56"
+    },
+    {
+      "path": "apps/web/src/app/juego/page.tsx",
+      "bytes": 3296,
+      "sha256": "b4b7427435a00b3e7f4b2f3ec4a74c708bb4396c24b1f73beef32b0f252bb3f9"
+    },
+    {
+      "path": "apps/web/src/app/layout.tsx",
+      "bytes": 4384,
+      "sha256": "131e834edc872c9a54937473551ff64cbc2d2da3bd8a7597b8d2613f644f7f13"
+    },
+    {
+      "path": "apps/web/src/app/legal/page.tsx",
+      "bytes": 6387,
+      "sha256": "1f21ac5a571f367c49b7614bfa9364816f0830c0e93ece3a1bcb6a3b629a4d3a"
+    },
+    {
+      "path": "apps/web/src/app/page.tsx",
+      "bytes": 4616,
+      "sha256": "6d62f4854b5a71d565bf547e63ff8cc14d25219cc1edb467d22077afd7716c8c"
+    },
+    {
+      "path": "apps/web/src/app/pensiones/page.tsx",
+      "bytes": 976,
+      "sha256": "64bc2842b9b9d43d5bfb9831df6e0b6057f6ea0920fb80d71b1b037b86751b11"
+    },
+    {
+      "path": "apps/web/src/app/portada.css",
+      "bytes": 15824,
+      "sha256": "a2041e9221c82598f6223e1776d0df667e56fc646325b3fce7c696d8d9cfb0c6"
+    },
+    {
+      "path": "apps/web/src/app/privacidad/page.tsx",
+      "bytes": 12979,
+      "sha256": "ff7be89d81006b4723551306e74092bf5cd65b3a2260abb018d276b108100abd"
+    },
+    {
+      "path": "apps/web/src/app/quien-paga/page.tsx",
+      "bytes": 981,
+      "sha256": "67acf323924d0b2e20b0d5478f4599de0d9251f3ccfe68ce962f54c8b8ed6bc4"
+    },
+    {
+      "path": "apps/web/src/app/robots.ts",
+      "bytes": 456,
+      "sha256": "3231d153ecdba0528c3cc6d54fbc495239f68e0ebbbbc308f5c592e9216cf7a6"
+    },
+    {
+      "path": "apps/web/src/app/sitemap.ts",
+      "bytes": 1392,
+      "sha256": "c5c597ae281cda53aa98a1a1b2d0708b8fbe95db36efc473988f6029b6c3d249"
+    },
+    {
+      "path": "apps/web/src/app/subvenciones/[mes]/page.tsx",
+      "bytes": 2546,
+      "sha256": "4c95ecf00d0b844663e3ad6f2a0eeeae5aac2a33b2d4844ca3897f4da489e721"
+    },
+    {
+      "path": "apps/web/src/app/subvenciones/page.tsx",
+      "bytes": 1532,
+      "sha256": "db70e2ef574806342b12af3d8d38bdb654b98a95eb9775be931bd70efed3c222"
+    },
+    {
+      "path": "apps/web/src/components/BoeBot.tsx",
+      "bytes": 1197,
+      "sha256": "a3604910378f80ebed516192a44bd8cdc3a6398da61bc2addc462ce16322abc9"
+    },
+    {
+      "path": "apps/web/src/components/BoeBotContact.tsx",
+      "bytes": 1755,
+      "sha256": "34633a457df979aae5ab503a9fb1414cd6f6df3555cb8ef0c6835bfaaeaba049"
+    },
+    {
+      "path": "apps/web/src/components/BoeBotLogo.tsx",
+      "bytes": 2524,
+      "sha256": "cc3a036d01791189d21f3806341a667b4dbcea19ec5ab26e8c8421eb4e655417"
+    },
+    {
+      "path": "apps/web/src/components/BoeBotPanel.tsx",
+      "bytes": 20902,
+      "sha256": "207d1926dabd73fdc65293ad540b3fc7108092085b9fd945a050e640c1352a65"
+    },
+    {
+      "path": "apps/web/src/components/BulletinImpact.tsx",
+      "bytes": 1932,
+      "sha256": "fb378547dc72a069874f103b66cc4df28d31332b090e5a3ffb7d5fc80e4bb816"
+    },
+    {
+      "path": "apps/web/src/components/ComingSoonButton.tsx",
+      "bytes": 1455,
+      "sha256": "45304ae0102ac5118727196928a0cdfdb48a34d6af368ea9c587195ed5a1e5cf"
+    },
+    {
+      "path": "apps/web/src/components/ContactButton.tsx",
+      "bytes": 2294,
+      "sha256": "c5624824cc56501755c881fae772033adeb48f96a2b73c9182b0d49fd8c13865"
+    },
+    {
+      "path": "apps/web/src/components/EdadPensiones.tsx",
+      "bytes": 6604,
+      "sha256": "3e28de14b8c0c368686d265ab4562c30a0f4357800c02be21ec543623e8efc6e"
+    },
+    {
+      "path": "apps/web/src/components/EngagementAnalytics.tsx",
+      "bytes": 1470,
+      "sha256": "b76fdf3578780be4fd0dd8234d3bcebbbf33bb6431572a762d5d9c76969830ba"
+    },
+    {
+      "path": "apps/web/src/components/EntryBrowser.tsx",
+      "bytes": 23162,
+      "sha256": "1e6ac21bb01b3ba832487b3e7900e8ddc33a033b2442f5f260fd62137c23089e"
+    },
+    {
+      "path": "apps/web/src/components/FiestaCalculadora.tsx",
+      "bytes": 47979,
+      "sha256": "66f2dbfb5c779429ffaafeac16c1d8bbe1ae58245db2563bb951ed8989acaa31"
+    },
+    {
+      "path": "apps/web/src/components/FiestaGraficos.tsx",
+      "bytes": 71955,
+      "sha256": "b214213b8d86d1b868582f5f00bee1de06923eef00694bc0536065ae2c67518b"
+    },
+    {
+      "path": "apps/web/src/components/FiestaModoCalculo.tsx",
+      "bytes": 2026,
+      "sha256": "3c863dd3d8eb6ffedeebfc6816b79d865f3122bec9f3c302d28f4f46e0cd69cd"
+    },
+    {
+      "path": "apps/web/src/components/GamePromo.tsx",
+      "bytes": 515,
+      "sha256": "8f6975c6a19ead51331fb1d5d4f76e329568e524c43bb832c7d5f4bc73374239"
+    },
+    {
+      "path": "apps/web/src/components/GobiernoBadge.tsx",
+      "bytes": 1991,
+      "sha256": "98eacc6693c16f574e13c9d8ff56d33ca9ef3aec0b9255f7f68120187394c862"
+    },
+    {
+      "path": "apps/web/src/components/HeroVideo.tsx",
+      "bytes": 1912,
+      "sha256": "50bde00af778f2c6b8cbe692546615b99cb08fb06797c3c28a526a19f614f654"
+    },
+    {
+      "path": "apps/web/src/components/HoyEnElBoe.tsx",
+      "bytes": 2521,
+      "sha256": "25aa5d4b7b0eb450cd0cbf9336ced94bab7d84685fcdcdfaaac2415ea0571c79"
+    },
+    {
+      "path": "apps/web/src/components/ImpactMeter.tsx",
+      "bytes": 1121,
+      "sha256": "7a5734d5924bc042ab8a9d97f345d9abf6929642d411435b57ea16cb0c608ad6"
+    },
+    {
+      "path": "apps/web/src/components/IndiceInforme.tsx",
+      "bytes": 3449,
+      "sha256": "b47a0cc4aad2366c3e0d5d7b09c241df6beb823b51c7c9a54127dd8443213194"
+    },
+    {
+      "path": "apps/web/src/components/JuegoCabecera.tsx",
+      "bytes": 3943,
+      "sha256": "3e4c1b2c49bd5c42e9d56ae1caede67292f4734032f12bdbb053fe3024f5d849"
+    },
+    {
+      "path": "apps/web/src/components/JuegoMarco.tsx",
+      "bytes": 2551,
+      "sha256": "ef9c09c7b8e7c7dd31b9dfae0cebfcbf9dfbc179b0daba1a47d1d79d739ff93b"
+    },
+    {
+      "path": "apps/web/src/components/MayoresDirectas.tsx",
+      "bytes": 2132,
+      "sha256": "b72bc823b0e229ecf370a0b61e3644d3bf1df99569e8a6d87d8df449cb964e62"
+    },
+    {
+      "path": "apps/web/src/components/NavegadorPeriodos.tsx",
+      "bytes": 3197,
+      "sha256": "4e25328af9efdc932108e1796b649d78c8d819591376a780d1370efbab8f7f07"
+    },
+    {
+      "path": "apps/web/src/components/PanelFiesta.tsx",
+      "bytes": 18497,
+      "sha256": "7cfcbbd1178f5338ad97661f8cb6b9303138e162b3a4ce72fc52f5e2563aff88"
+    },
+    {
+      "path": "apps/web/src/components/PanelPensiones.tsx",
+      "bytes": 13692,
+      "sha256": "bd104424bb669b6c6dbdae269433f0374b56bfc5f86c94470a80b1df3e239203"
+    },
+    {
+      "path": "apps/web/src/components/PanelSubvenciones.tsx",
+      "bytes": 10606,
+      "sha256": "6895df19116683f973f1670274ec81cab56d75726806012ef7322e16f4d17a96"
+    },
+    {
+      "path": "apps/web/src/components/PensionesGraficos.tsx",
+      "bytes": 111987,
+      "sha256": "7539e9be447a7637a9c496f4451288e7bf1781ebc745b123a08c24a1863bdcee"
+    },
+    {
+      "path": "apps/web/src/components/PressCards.tsx",
+      "bytes": 2043,
+      "sha256": "64ead1ff944bf84bf67a9c18e1df08526578194c09a1b45bdbcc415742f3023e"
+    },
+    {
+      "path": "apps/web/src/components/PressHeadlines.tsx",
+      "bytes": 207,
+      "sha256": "644e31738bc966cd7c8bb4eb9e99f3357f9b6e7de61d3ceccdc5ed8e167ee8e9"
+    },
+    {
+      "path": "apps/web/src/components/PressNews.tsx",
+      "bytes": 4870,
+      "sha256": "ab98559d25462a434601ea50fdef27109aa6abeb947c8cce5036f5c783ff9de3"
+    },
+    {
+      "path": "apps/web/src/components/PressTabs.tsx",
+      "bytes": 1937,
+      "sha256": "ce1f40b2c5a73f3e91f40e9d2fa4a7155e85821efe7f1bd9e59b7b5815901a8d"
+    },
+    {
+      "path": "apps/web/src/components/PrintSummaryButton.tsx",
+      "bytes": 895,
+      "sha256": "aa4e2fd2ab2697bce62c351d7889fe81de7653487e261e8245ce9aaf01ebcca5"
+    },
+    {
+      "path": "apps/web/src/components/PromoSubvenciones.tsx",
+      "bytes": 2718,
+      "sha256": "67f9de22b95cf643a27f37cdeec0a4c0dba2be1eff76fa84af038ce262f46393"
+    },
+    {
+      "path": "apps/web/src/components/RepartoBarra.tsx",
+      "bytes": 8552,
+      "sha256": "822328c220c50ef058951adcfcc4376bbe89e57fcd2ac6b3b5665a35dca452a7"
+    },
+    {
+      "path": "apps/web/src/components/ReviewCountdown.tsx",
+      "bytes": 4297,
+      "sha256": "dfe8a0880225715164db7b6a5683d607df311a6861ea3c83ae2b831d5235f6e8"
+    },
+    {
+      "path": "apps/web/src/components/ShareDato.tsx",
+      "bytes": 12029,
+      "sha256": "b61939ec5ca35c23a7a4c1cb0714f0c29695e186638a0f234ed286d7833f2355"
+    },
+    {
+      "path": "apps/web/src/components/ShareSummaryButton.tsx",
+      "bytes": 3530,
+      "sha256": "d911b3c52234dd7bbbf4056f287aac2c8e98e019b2be94addeb2da5bb0445520"
+    },
+    {
+      "path": "apps/web/src/components/SiteMenu.tsx",
+      "bytes": 9090,
+      "sha256": "01aafd63cc621c1093650bb7e57de4d27b7c2e71d566ff5912f95fa0d45d1ec9"
+    },
+    {
+      "path": "apps/web/src/components/SubscribePanel.tsx",
+      "bytes": 960,
+      "sha256": "b76b3df818cdf37132533c16732095dd8dbc50ba8bd25795b4b8ec199512d002"
+    },
+    {
+      "path": "apps/web/src/components/SubscribePrompt.tsx",
+      "bytes": 6686,
+      "sha256": "ea022c00258f2df6b82932b58a7acff0da0601fe003f21cde38555e992838f39"
+    },
+    {
+      "path": "apps/web/src/components/TopicLogo.tsx",
+      "bytes": 1750,
+      "sha256": "24cf29535dc8ba2d50fe93728e8173330f13bb84ec71c35a0b2b08a98e97d953"
+    },
+    {
+      "path": "apps/web/src/components/VerRestoInforme.tsx",
+      "bytes": 3231,
+      "sha256": "c3b5170ee58f824b970a6aa06b00292fdcd3741badd9fd042ca0f6649f305a77"
+    },
+    {
+      "path": "apps/web/src/lib/account-proxy.ts",
+      "bytes": 2703,
+      "sha256": "7bcf813d46dcf6e9350b53583d7f53aeed3055762150a6859de48b2f676f5ded"
+    },
+    {
+      "path": "apps/web/src/lib/api.ts",
+      "bytes": 6833,
+      "sha256": "76a3c0a11aa9086ab100b8c569c4faa8f589155467d40d96fd4357a2507a99ad"
+    },
+    {
+      "path": "apps/web/src/lib/datos.test.ts",
+      "bytes": 23585,
+      "sha256": "e835dc2c6f8f3cae6e3dc8939dc12746bba3799c42ab8be6aec78e5019764747"
+    },
+    {
+      "path": "apps/web/src/lib/electricidad-auth.test.ts",
+      "bytes": 7058,
+      "sha256": "41be9a7f7a3780b88a396ec15f00fce832905c651c5ac1963052b09d22b195bc"
+    },
+    {
+      "path": "apps/web/src/lib/electricidad-auth.ts",
+      "bytes": 7019,
+      "sha256": "02e6e2228dbe287521bb2e2f72a1e43be18cb2e701469bd67e15b65f6af2f57a"
+    },
+    {
+      "path": "apps/web/src/lib/fiesta-calc.ts",
+      "bytes": 16855,
+      "sha256": "67ab3a55e1e6ad016a166f131513671711959d42d1f3bdab373966c4dfa01d09"
+    },
+    {
+      "path": "apps/web/src/lib/fiesta-data.ts",
+      "bytes": 38744,
+      "sha256": "87862f703befbc8b9254f3ddfd2be645d29927db0d4092ce6de0db6670a159b4"
+    },
+    {
+      "path": "apps/web/src/lib/format.ts",
+      "bytes": 1331,
+      "sha256": "d52020b2982f2cd59cd49be20eabbd3b0e28ed1a3b7b95d0f4f4fab9fbf71e12"
+    },
+    {
+      "path": "apps/web/src/lib/legal.ts",
+      "bytes": 1332,
+      "sha256": "4831d00f5259b6d121a07d3d02ad1020eb846fac1167ffe8ccc03d41d7d628f6"
+    },
+    {
+      "path": "apps/web/src/lib/paises-fiscal.ts",
+      "bytes": 36904,
+      "sha256": "9bcb939400381b5099e139e08a1dce155b8ae87734ec5a8833a272adb2cbbe30"
+    },
+    {
+      "path": "apps/web/src/lib/pensiones-data.ts",
+      "bytes": 41160,
+      "sha256": "8c64129ccc7bbbe07f85e9eb65277aed6bd6b9696915d14003752b508edb060b"
+    },
+    {
+      "path": "apps/web/src/lib/press-feed.test.ts",
+      "bytes": 4293,
+      "sha256": "1fb8ccc4aba62ef3e83e483a376fdde86363f9a5d4c8b0f593b472f27172626c"
+    },
+    {
+      "path": "apps/web/src/lib/press-feed.ts",
+      "bytes": 2628,
+      "sha256": "d7b843ffdc90df3d5b5e60ab2289d700dcfbb9f6d9ede98e185c16395b7b63c5"
+    },
+    {
+      "path": "apps/web/src/lib/press-refresh.test.ts",
+      "bytes": 1275,
+      "sha256": "9f7a078575af1b77a05d78e1b2077ea623de62afdf7384020c794d28509bd977"
+    },
+    {
+      "path": "apps/web/src/lib/press-refresh.ts",
+      "bytes": 748,
+      "sha256": "c15adf7b0d863890fefde2734920ec49a9048901d368448ed7b5c25e06fdbfdd"
+    },
+    {
+      "path": "apps/web/src/lib/press.ts",
+      "bytes": 2412,
+      "sha256": "f6f01f44e353d5c6dec8fdcbdcfb85f22c0c3f44428d6fa33ac2bf013155b5fc"
+    },
+    {
+      "path": "apps/web/src/lib/related-entries.test.ts",
+      "bytes": 1610,
+      "sha256": "b9bc7a7b6478428a222c683dd16aa8767ee69829e3122640b45081741fe6257f"
+    },
+    {
+      "path": "apps/web/src/lib/related-entries.ts",
+      "bytes": 1417,
+      "sha256": "beec028610c233ca493d3cf69b9d7853feea2799ecfbbaf5155d2175964d1eb1"
+    },
+    {
+      "path": "apps/web/src/lib/request-origin.test.ts",
+      "bytes": 793,
+      "sha256": "2cb9d8c0cdd8f38d98bade20461d5726e61136192e7ecc2ccf3abff85b6881b6"
+    },
+    {
+      "path": "apps/web/src/lib/request-origin.ts",
+      "bytes": 496,
+      "sha256": "09973bd12cefa03b39e58ff327b7f918697d8b2a29d2fceb71bc48dc61b1737d"
+    },
+    {
+      "path": "apps/web/src/lib/review-status.test.ts",
+      "bytes": 2579,
+      "sha256": "16f44af5d057a9ea15fb61ed99b9a79811bf99043cc9c7861f418eb26f8fb8b6"
+    },
+    {
+      "path": "apps/web/src/lib/review-status.ts",
+      "bytes": 2397,
+      "sha256": "7537f5c6d85f6e3be0e85d23c78a459cdac7d9bcd07a6bf8503a994d29e8c95c"
+    },
+    {
+      "path": "apps/web/tsconfig.json",
+      "bytes": 566,
+      "sha256": "b826fe242b9d74286940e2ad3ad419e6eb7f53d83284e873d9b79c4588688d61"
+    },
+    {
+      "path": "apps/web/vitest.config.ts",
+      "bytes": 580,
+      "sha256": "a7f2a814bdd2a0a26946e7463be3a627062a2158a9859ab26f84f716f3f1a3d3"
+    },
+    {
+      "path": "docker-compose.yml",
+      "bytes": 1212,
+      "sha256": "37d3093cf21ce4868e1529966aa1d97aef51ca11856f4bfaa83ec6673f2f1239"
+    },
+    {
+      "path": "docs/tfm/capturas/01-portada-publica.png",
+      "bytes": 693925,
+      "sha256": "170274930e5faeb212e30e992dc17b028729543743a73ae692450b2cc7e4d021"
+    },
+    {
+      "path": "docs/tfm/capturas/02-ficha-publica.png",
+      "bytes": 273932,
+      "sha256": "37e14b13eec41cf22c367f7eda555b2ea5badc473ef7762cb6d87193826ca0a0"
+    },
+    {
+      "path": "docs/tfm/capturas/03-movil-publico.png",
+      "bytes": 233348,
+      "sha256": "52ff6a8dc80f7bb9f980a563c0ad45f35200b4cd076b9af6400c4b053c0aebd8"
+    },
+    {
+      "path": "docs/tfm/capturas/04-acceso-demo.png",
+      "bytes": 338153,
+      "sha256": "1c412a1aef6f6f10b9018f5d322e7bd905650d498929eb4cf871cd3b1c1520d0"
+    },
+    {
+      "path": "docs/tfm/capturas/05-bot-demo.png",
+      "bytes": 330096,
+      "sha256": "8c7404434f837b07041c8e17cef542ced85fde4e5284b9a86be8bf94db66f5a2"
+    },
+    {
+      "path": "docs/tfm/capturas/06-electricidad-demo.png",
+      "bytes": 423314,
+      "sha256": "b04dc47607e5d6badb7b1b44282063c20576df06d61ed38fb06652d3c72c54ed"
+    },
+    {
+      "path": "docs/tfm/capturas/07-tutor-demo.png",
+      "bytes": 206564,
+      "sha256": "d194457d602b9c7f2406f8a885529c71406ddc02d595f784ded862c3fdfc408a"
+    },
+    {
+      "path": "docs/tfm/capturas/08-test-demo.png",
+      "bytes": 184110,
+      "sha256": "262ee6d656bad5015ea23b05e2e5fe1f6f6c5b33a0d39e20efe7e2b2374c5d43"
+    },
+    {
+      "path": "docs/tfm/capturas/09-simulacros-demo.png",
+      "bytes": 225402,
+      "sha256": "bbfca342bed4750144e151402b6f316c7f960948fb928d32081b4068ad16383e"
+    },
+    {
+      "path": "docs/tfm/capturas/10-estudio-movil-demo.png",
+      "bytes": 138138,
+      "sha256": "67eb2f42068606041c81a577e75afbeff1023e1f9961099ee36a2c699ffeee5d"
+    },
+    {
+      "path": "docs/tfm/capturas/11-resultado-demo.png",
+      "bytes": 166720,
+      "sha256": "467f99c98db2efa11694d703e355880c5c2566813bfcc1dcc0e34aab4e2d101b"
+    },
+    {
+      "path": "docs/tfm/capturas/12-ficha-bot-demo.png",
+      "bytes": 206453,
+      "sha256": "8d6dae9985d515e47703f66341b9837ff89d336ecadd0032c7f0d05a4e01f7ed"
+    },
+    {
+      "path": "docs/tfm/capturas/13-detalle-tutor-demo.png",
+      "bytes": 30421,
+      "sha256": "4ad85a5188973fbb733736bccd9cca867a3480bcb9922a72c56743a22c4cc3a2"
+    },
+    {
+      "path": "docs/tfm/capturas/14-detalle-bot-demo.png",
+      "bytes": 52350,
+      "sha256": "0afe3c77c4099c64f00fe463258059fff48ba72a8fbe8748bee87971ff514ef6"
+    },
+    {
+      "path": "docs/tfm/source/capturas-publicas.json",
+      "bytes": 666,
+      "sha256": "7aca29d51413ff429d643c11e19900220c91f4d5c916cb622f086808e470cfb5"
+    },
+    {
+      "path": "docs/tfm/source/capturas.json",
+      "bytes": 2090,
+      "sha256": "f694c79c76eae5ea4c2d67c77c0902ed578f914d0899efdf8c4acbde530d3996"
+    },
+    {
+      "path": "docs/tfm/source/copia-publica.json",
+      "bytes": 13967,
+      "sha256": "b9ef6cc6face61bbcbb1703a6a740aafc03b2e35cdece99d7d0b45f5e6c91eab"
+    },
+    {
+      "path": "docs/tfm/source/documentos-verificados.json",
+      "bytes": 1242,
+      "sha256": "098b6331a37fed763a6113cfe915d995ba66984091c5cb0ba58ac7c62e54e6cc"
+    },
+    {
+      "path": "docs/tfm/source/entrega.json",
+      "bytes": 732,
+      "sha256": "973ccd416f0556fe6d14ef652918fb3495fe1bc2e416b5b9a594f439f598148f"
+    },
+    {
+      "path": "docs/tfm/source/guia.json",
+      "bytes": 24345,
+      "sha256": "5d8db71242e4455ed2108f38eda0d7b419c9f0b085e0ca91352139ddc4060c48"
+    },
+    {
+      "path": "docs/tfm/source/memoria.json",
+      "bytes": 63513,
+      "sha256": "722e8e86d4b76d5a36a5f94441b01806b8e94bf022c6cbd1e4fae82c51b32fe5"
+    },
+    {
+      "path": "docs/tfm/source/navegador-ficha.json",
+      "bytes": 309,
+      "sha256": "b44335cb81d43c23bdfbb693d96268b050205cc6d9379531ba70d15d91093452"
+    },
+    {
+      "path": "docs/tfm/source/navegador.json",
+      "bytes": 1163,
+      "sha256": "cbbd21be8f3fbcd20e3f939af15527c0c784b8b6bbdf8c3fc3eb4a45983c6e2e"
+    },
+    {
+      "path": "docs/tfm/source/servicio-publico.json",
+      "bytes": 593,
+      "sha256": "0763fd53c2d20f15f7b17622db7fff2e7471134f1bdc5dec78c3bff9a0c44d6c"
+    },
+    {
+      "path": "docs/tfm/source/slides.json",
+      "bytes": 6018,
+      "sha256": "bde8c1a292f4940b2a34dfd9f2c9e4e95d9de499ffb315999f1e3081a310200b"
+    },
+    {
+      "path": "docs/tfm/source/verificacion.json",
+      "bytes": 22251,
+      "sha256": "94117ae70a9557499d41b6d97cb48431f266279fa1a2f38df7704151849f128d"
+    },
+    {
+      "path": "output/pdf/Guia-Evaluacion-Grabacion-Entrega.pdf",
+      "bytes": 98328,
+      "sha256": "7dc966f4de5ebf14426c3b8d6c02f976cbc1a0cda7774416d4ea295c06a04c1d"
+    },
+    {
+      "path": "output/pdf/Memoria-Agente-BOE.pdf",
+      "bytes": 2851527,
+      "sha256": "73dd31514764ab06f2f33b436d2014d62bbc1464a639867fd60ef6a71b5ceda0"
+    },
+    {
+      "path": "output/pdf/Presentacion-Agente-BOE.pdf",
+      "bytes": 937134,
+      "sha256": "cbbe3d3e405c5109bdd24698db151818ea180461e1e5a75ef6ac8a9df4e9934b"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 176287,
+      "sha256": "8f8dc738531236251227918a623081cbcccd210f2bfb19485884a8627fd02c31"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1739,
+      "sha256": "6b35fbd3b8afb033664e665c78107ed3736990e6d26eae1dc64398ea413ade88"
+    },
+    {
+      "path": "scripts/build_tfm_docs.py",
+      "bytes": 13357,
+      "sha256": "4dd50234db412f07632d035042b04cfc761f5d4e28e91a0be32f5b857e518449"
+    },
+    {
+      "path": "scripts/export_tfm.py",
+      "bytes": 10772,
+      "sha256": "916ffa6e2988928af5d227362b40118ac6374d3e9abb54c257bbd97f0f7bcf54"
+    },
+    {
+      "path": "scripts/generate-electricidad-context.mjs",
+      "bytes": 2935,
+      "sha256": "d25f7d3c577a2d830672a9d7d1ee9e052a6d1127baa83c3a0a9307ed9f30c879"
+    },
+    {
+      "path": "scripts/test-electricidad-accounts.mjs",
+      "bytes": 4887,
+      "sha256": "586945e5a40a6bf360ccc46046a1350e511271deef7bd7a27703fe8eb57a46ad"
+    },
+    {
+      "path": "scripts/tfm-demo.mjs",
+      "bytes": 3758,
+      "sha256": "75e2b8dde933389c608155dbbace5f2f105a46baf52b53e07c37e8e214919224"
+    },
+    {
+      "path": "tsconfig.base.json",
+      "bytes": 361,
+      "sha256": "cce0b79af37a3b221ee74f69cb0fea34dd33da9e09405b16eb5d1014b62ff76e"
+    }
+  ]
+}

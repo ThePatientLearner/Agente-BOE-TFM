@@ -1,9 +1,0 @@
-/app/apps/web/server.js true
-/app/apps/web/public/emblema-loop.mp4 true
-/app/apps/web/public/juego/suscriban.html true
-/app/apps/web/private/electricidad-account.html true
-/app/apps/web/private/electricidad/index.html true
-/app/apps/web/private/electricidadTest/index.html true
-root env absent: true
-web env absent: true
-git absent: true

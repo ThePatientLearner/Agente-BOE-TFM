@@ -1,0 +1,429 @@
+{
+  "schema_version": 1,
+  "title": "Verificación de la copia pública de entrega",
+  "fecha_verificacion": "2026-10-06T08:50:49+02:00",
+  "repositorio": "Agente-BOE-TFM",
+  "estado": "validacion_copia_publica_completada",
+  "publicacion": "Copia de trabajo exportada; esta comprobación no realiza commit ni push y no acredita por sí sola publicación remota.",
+  "entorno": {
+    "node": "v26.8.1",
+    "npm": "11.19.0",
+    "sistema": "macOS local",
+    "variables": "Solo PATH, HOME, CI, NO_COLOR y npm_config_userconfig=/dev/null; sin cargar .env ni configuración npm de usuario."
+  },
+  "instalacion": {
+    "comando": "npm ci --ignore-scripts --no-audit --no-fund",
+    "codigo_salida": 0,
+    "node_modules_previo": false,
+    "paquetes_instalados": 210,
+    "scripts_dependencias_ejecutados": false,
+    "lockfile_modificado": false,
+    "advertencias": "Dos dependencias transitivas obsoletas de esbuild-kit; instalación terminada correctamente. No se actualizan dependencias."
+  },
+  "identidad_fuentes": {
+    "archivos_fuente_comparados": 260,
+    "diferencias": [],
+    "node_modules_existia": false,
+    "lock_sha256": "8f8dc738531236251227918a623081cbcccd210f2bfb19485884a8627fd02c31",
+    "sha256_fuentes": "03e8680842476a9a3f69b7bbf6d92059fe1c4107c61d27ad55cf2949b9d71f12",
+    "metodo": "SHA-256 de concatenar ruta UTF-8, byte NUL, contenido y byte NUL por archivo, ordenados por ruta relativa.",
+    "ambito": "monolith/src, web/src, web/private, package.json, package-lock.json, next.config.ts y tfm-demo.mjs."
+  },
+  "tests": {
+    "comando": "npm test",
+    "codigo_salida": 0,
+    "casos": 414,
+    "ficheros": 44,
+    "fallos": 0,
+    "omitidos": 0,
+    "workspaces": [
+      {
+        "nombre": "monolith",
+        "casos": 319,
+        "ficheros": 35
+      },
+      {
+        "nombre": "web",
+        "casos": 95,
+        "ficheros": 9
+      }
+    ],
+    "por_archivo": [
+      {
+        "archivo": "apps/monolith/src/api/assistant.test.ts",
+        "casos": 17,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/api/electricidad.test.ts",
+        "casos": 1,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/api/server.test.ts",
+        "casos": 17,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/demo/tfm-server.test.ts",
+        "casos": 3,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/assistant/application/ask-boe.test.ts",
+        "casos": 24,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/assistant/application/context.test.ts",
+        "casos": 7,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/assistant/application/reviewed-assistant.test.ts",
+        "casos": 16,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/assistant/application/study-context.test.ts",
+        "casos": 12,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/assistant/infrastructure/cached-official-text-reader.test.ts",
+        "casos": 4,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/assistant/infrastructure/minimax-assistant.test.ts",
+        "casos": 26,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/assistant/infrastructure/openai-assistant.test.ts",
+        "casos": 5,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/catalog/application/search-terms.test.ts",
+        "casos": 2,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/electricidad/infrastructure/accounts.test.ts",
+        "casos": 10,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/electricidad/infrastructure/password.test.ts",
+        "casos": 1,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/electricidad/password-policy.test.ts",
+        "casos": 11,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/ingestion/application/ingest-daily-bulletin.test.ts",
+        "casos": 4,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/ingestion/infrastructure/boe-api-gateway.test.ts",
+        "casos": 10,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/ingestion/infrastructure/boe-document.test.ts",
+        "casos": 2,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/juego/application/registrar-partida.test.ts",
+        "casos": 8,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/juego/domain/partida.test.ts",
+        "casos": 13,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/notifications/application/notify-entry.test.ts",
+        "casos": 8,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/notifications/application/publish-day-digest.test.ts",
+        "casos": 15,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/notifications/infrastructure/notifiers.test.ts",
+        "casos": 2,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/spending/domain/convocatoria.test.ts",
+        "casos": 4,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/spending/domain/sector-beneficiario.test.ts",
+        "casos": 6,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/modules/summarization/application/summarize-entry.test.ts",
+        "casos": 1,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/scheduler/cron.test.ts",
+        "casos": 16,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/scheduler/daily-report.test.ts",
+        "casos": 8,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/scheduler/day-digest.test.ts",
+        "casos": 7,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/scheduler/resume-pending.test.ts",
+        "casos": 7,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/scheduler/review-clock.test.ts",
+        "casos": 9,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/shared/domain/boe-id.test.ts",
+        "casos": 7,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/shared/domain/comunidad.test.ts",
+        "casos": 27,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/shared/domain/iso-date.test.ts",
+        "casos": 6,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/monolith/src/shared/event-bus/in-memory-event-bus.test.ts",
+        "casos": 3,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/web/src/app/api/assistant/route.test.ts",
+        "casos": 3,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/web/src/app/api/electricidad/[action]/route.test.ts",
+        "casos": 2,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/web/src/lib/datos.test.ts",
+        "casos": 37,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/web/src/lib/electricidad-auth.test.ts",
+        "casos": 14,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/web/src/lib/press-feed.test.ts",
+        "casos": 15,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/web/src/lib/press-refresh.test.ts",
+        "casos": 4,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/web/src/lib/related-entries.test.ts",
+        "casos": 4,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/web/src/lib/request-origin.test.ts",
+        "casos": 4,
+        "resultado": "correcto"
+      },
+      {
+        "archivo": "apps/web/src/lib/review-status.test.ts",
+        "casos": 12,
+        "resultado": "correcto"
+      }
+    ],
+    "recuento": "Una única ejecución en la copia exportada; no suma el resultado de la copia original."
+  },
+  "tipos": {
+    "comando": "npm run typecheck",
+    "codigo_salida": 0,
+    "workspaces": 2
+  },
+  "fronteras": {
+    "comando": "npm run check:boundaries",
+    "codigo_salida": 0,
+    "modulos": 134,
+    "dependencias": 432,
+    "infracciones": 0
+  },
+  "build_monolith": {
+    "comando": "npm run build --workspace @boe-inspector/monolith",
+    "codigo_salida": 0
+  },
+  "build_web": {
+    "repetido": false,
+    "motivo": "Las fuentes relevantes exportadas coinciden con la copia ya compilada; se conserva la evidencia del build web aislado de verificacion.json (19 páginas)."
+  },
+  "demo_runtime": {
+    "fecha": "2026-10-06T08:52:11+02:00",
+    "estado": "correcto",
+    "comando": "npm run demo:tfm",
+    "base_web": "http://127.0.0.1:3100",
+    "base_api": "http://127.0.0.1:3101",
+    "tipo": "Prueba HTTP real de launcher, Next.js y API en memoria de la copia exportada. No es una prueba visual ni una llamada a IA real.",
+    "comprobaciones": [
+      {
+        "recorrido": "Portada Next.js con aviso demo",
+        "estado_http": 200,
+        "resultado": "correcto"
+      },
+      {
+        "recorrido": "Asistente sin sesión",
+        "estado_http": 401,
+        "resultado": "acceso denegado esperado"
+      },
+      {
+        "recorrido": "Cuaderno sin sesión",
+        "estado_http": 200,
+        "resultado": "pantalla de cuenta; no entrega cuaderno"
+      },
+      {
+        "recorrido": "Login mediante proxy Next y cookie de sesión",
+        "estado_http": 200,
+        "resultado": "alumno; permiso estudio; cookie HttpOnly y SameSite Strict; token no expuesto en JSON"
+      },
+      {
+        "recorrido": "BoeBot en archivo",
+        "estado_http": 200,
+        "resultado": "respuesta identificada como simulada"
+      },
+      {
+        "recorrido": "Ficha BOE-A-2015-10565",
+        "estado_http": 200,
+        "resultado": "página servida"
+      },
+      {
+        "recorrido": "BoeBot desde ficha BOE-A-2015-10565",
+        "estado_http": 200,
+        "resultado": "fragmento parcial local, límite explícito y fuente de la ficha"
+      },
+      {
+        "recorrido": "Ficha BOE-A-2015-10566",
+        "estado_http": 200,
+        "resultado": "página servida"
+      },
+      {
+        "recorrido": "BoeBot desde ficha BOE-A-2015-10566",
+        "estado_http": 200,
+        "resultado": "fragmento parcial local, límite explícito y fuente de la ficha"
+      },
+      {
+        "recorrido": "Cuaderno autorizado",
+        "estado_http": 200,
+        "resultado": "material y contexto del tutor; aviso demo"
+      },
+      {
+        "recorrido": "Simulacros autorizados",
+        "estado_http": 200,
+        "resultado": "material y aviso demo"
+      },
+      {
+        "recorrido": "Tutor con contexto del curso",
+        "estado_http": 200,
+        "resultado": "respuesta simulada y referencia al material"
+      },
+      {
+        "recorrido": "Administración con cuenta alumno",
+        "estado_http": 403,
+        "resultado": "acceso denegado esperado"
+      },
+      {
+        "recorrido": "Origen externo en proxy",
+        "estado_http": 403,
+        "resultado": "acceso denegado esperado"
+      },
+      {
+        "recorrido": "Asistente después de cerrar sesión",
+        "estado_http": 401,
+        "resultado": "acceso denegado esperado"
+      }
+    ],
+    "notas": [
+      "Credenciales de cuenta local deliberadamente pública; cookies y tokens no guardados en evidencia.",
+      "Proceso conservado activo para revisión o grabación."
+    ]
+  },
+  "limites": [
+    "No se cargan secretos de producción.",
+    "No se ejecutan PostgreSQL, migraciones, IA real, notificaciones ni cron.",
+    "No se modifican fuentes, lockfile ni estado remoto. La instalación y la compilación crean solo dependencias y salidas locales.",
+    "Esta verificación no mide rendimiento ni certifica exactitud jurídica."
+  ],
+  "paragraphs": [
+    "La copia de entrega se instaló desde cero con npm ci y scripts de dependencias desactivados: no había node_modules. Se instalaron 210 paquetes sin modificar el lockfile.",
+    "En la copia exportada pasaron 414 pruebas en 44 archivos, la comprobación de tipos de ambos workspaces, las fronteras modulares y la compilación del monolito. Las 260 fuentes comparadas coinciden con la copia de desarrollo verificada.",
+    "El lanzador npm run demo:tfm arrancó desde la copia exportada. Se comprobaron por HTTP la portada, el acceso por cookie, ambas fichas y sus respuestas simuladas, el cuaderno y los simulacros, el tutor y las denegaciones de administración, origen externo y sesión cerrada. El proceso se conserva abierto para la demostración; estas comprobaciones no evalúan un proveedor de IA real."
+  ],
+  "table": {
+    "headers": [
+      "Comprobación",
+      "Resultado",
+      "Alcance"
+    ],
+    "rows": [
+      [
+        "Instalación limpia",
+        "Correcta",
+        "210 paquetes; sin scripts de dependencias."
+      ],
+      [
+        "Tests",
+        "414 / 414",
+        "319 monolito; 95 web."
+      ],
+      [
+        "Tipos y fronteras",
+        "Correctos",
+        "2 workspaces; 0 infracciones."
+      ],
+      [
+        "Build monolito",
+        "Correcto",
+        "TypeScript; no arranca servicios."
+      ],
+      [
+        "Demo local",
+        "Correcta",
+        "Arranque y 15 comprobaciones HTTP de acceso, fichas y tutor."
+      ]
+    ]
+  }
+}

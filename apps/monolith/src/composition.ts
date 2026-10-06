@@ -9,7 +9,7 @@
  * enterarse es peor que no arrancar.
  */
 import type { Config } from "./shared/config/config.js";
-import { AskBoe, CachedOfficialTextReader, MinimaxAssistant, OpenAiAssistant, PostgresAssistantSettings, PostgresBudget, ReviewedAssistant, type AssistantModel } from './modules/assistant/index.js';
+import { AskBoe, CachedOfficialTextReader, electricidadCourse, MinimaxAssistant, OpenAiAssistant, PostgresAssistantSettings, PostgresBudget, ReviewedAssistant, type AssistantModel } from './modules/assistant/index.js';
 import { BoeId } from './shared/domain/boe-id.js';
 import type { Database } from "./shared/db/connection.js";
 import type { Logger } from "./shared/logger/logger.js";
@@ -131,7 +131,7 @@ export function buildApplication(config: Config, logger: Logger, db: Database): 
     if (fresh.ok) return fresh.value.text;
     // Una caída del BOE no impide leer la copia oficial de la ingesta.
     return (await entries.findById(parsed.value))?.rawText ?? null;
-  }), bots, config.botModel, new PostgresBudget(db, config.botDailyTokens), new PostgresAssistantSettings(db));
+  }), bots, config.botModel, new PostgresBudget(db, config.botDailyTokens), new PostgresAssistantSettings(db), electricidadCourse);
   const ingest = new IngestDailyBulletin(
     boeGateway,
     entries,

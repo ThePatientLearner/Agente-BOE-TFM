@@ -113,6 +113,7 @@ async function main(): Promise<void> {
         summaryGenerated({
           entryId: rawId,
           publicationDate: props.publicationDate,
+          lastOfficialUpdateAt: props.lastOfficialUpdateAt,
           department: props.department,
           title: props.title,
           plainTitle: draft.value.plainTitle,

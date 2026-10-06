@@ -1,0 +1,143 @@
+{
+  "slides": [
+    {
+      "title": "AgenteBOE",
+      "eyebrow": "MÁSTER DE DESARROLLO CON IA · BIG SCHOOL",
+      "dark": true,
+      "bullets": [
+        "Información oficial del BOE, explicada con IA y vinculada a su fuente.",
+        "Electricidad como módulo complementario: estudio, práctica y tutor dentro de la misma plataforma.",
+        "Roberto Casabán · Trabajo final de máster"
+      ],
+      "callout": "Código, aplicación, evidencia y documentación reproducible"
+    },
+    {
+      "title": "Facilitar la primera lectura del BOE",
+      "bullets": [
+        "Organizar las disposiciones por boletín y ofrecer un punto de entrada claro.",
+        "Resumir sin perder el documento oficial ni ocultar que la explicación utiliza IA.",
+        "Permitir preguntas sobre el archivo o la ficha abierta."
+      ],
+      "callout": "La fuente oficial sigue siendo la referencia."
+    },
+    {
+      "title": "De un boletín a una ficha con fuentes",
+      "image": "docs/tfm/capturas/02-ficha-publica.png",
+      "bullets": [
+        "Publicación, documento e identificación del BOE.",
+        "Resumen estructurado e impacto orientativo.",
+        "Captura del servicio público; lectura sin sesión."
+      ]
+    },
+    {
+      "title": "Una arquitectura modular",
+      "diagram": "architecture"
+    },
+    {
+      "title": "Eventos, persistencia y recuperación",
+      "bullets": [
+        "Ingesta y resumen publican eventos; catálogo y notificaciones reaccionan a ellos.",
+        "Cada módulo posee sus datos. El catálogo se suscribe antes que el resumidor.",
+        "La recuperación revisa estados pendientes. El bus en memoria deja ventanas de fallo."
+      ],
+      "callout": "No se afirma procesamiento transaccional exactamente una vez."
+    },
+    {
+      "title": "La IA recibe un contexto delimitado",
+      "bullets": [
+        "Resumen diario: texto oficial → salida estructurada → revisión.",
+        "BoeBot en el archivo: hasta seis resultados del catálogo, a partir de sus resúmenes.",
+        "BoeBot en una ficha: texto oficial recuperado o almacenado.",
+        "Tutor de Electricidad: material del curso seleccionado por identificadores válidos."
+      ],
+      "callout": "Las revisiones del modelo no certifican exactitud ni vigencia."
+    },
+    {
+      "title": "Una conversación que muestra sus fuentes",
+      "image": "docs/tfm/capturas/14-detalle-bot-demo.png",
+      "bullets": [
+        "Cuenta y límites de uso.",
+        "Contexto y referencias visibles.",
+        "Demo local: respuesta controlada, identificada como simulada."
+      ]
+    },
+    {
+      "title": "Cuentas compartidas, permisos específicos",
+      "bullets": [
+        "La consulta pública no requiere iniciar sesión.",
+        "El asistente requiere una cuenta activa; el curso exige además permiso de estudio.",
+        "El servidor decide el acceso antes de devolver los HTML privados.",
+        "El alumno de la demo no dispone de administración."
+      ],
+      "callout": "El progreso de Electricidad se guarda por cuenta en ese navegador."
+    },
+    {
+      "title": "Electricidad amplía AgenteBOE",
+      "image": "docs/tfm/capturas/06-electricidad-demo.png",
+      "bullets": [
+        "Área de estudio dentro del mismo servicio.",
+        "57 secciones, 224 fichas y 39 fórmulas.",
+        "Comparte sesión, autorización y asistente."
+      ]
+    },
+    {
+      "title": "Practicar y revisar los errores",
+      "image": "docs/tfm/capturas/11-resultado-demo.png",
+      "bullets": [
+        "1.271 preguntas en el cuaderno.",
+        "Ocho simulacros: 200 preguntas en total.",
+        "Autoevaluación local: no certificación ni control antifraude."
+      ]
+    },
+    {
+      "title": "Un tutor que conoce el tema abierto",
+      "image": "docs/tfm/capturas/13-detalle-tutor-demo.png",
+      "bullets": [
+        "Explicaciones y ejemplos vinculados al apartado.",
+        "El servidor comprueba el contexto solicitado.",
+        "Captura de la demo con proveedor simulado."
+      ]
+    },
+    {
+      "title": "Dos entornos para evaluar el proyecto",
+      "bullets": [
+        "Servicio público: agenteboe.com, con el catálogo del servicio existente.",
+        "Demo local: npm run demo:tfm; catálogo de ejemplo, sin base de datos ni claves de IA.",
+        "Cuenta local: alumno_demo / AulaLocal!2026-TFM.",
+        "Código y los tres PDF en el repositorio público Agente-BOE-TFM."
+      ],
+      "callout": "El entorno de demostración no arranca ingesta, cron ni avisos."
+    },
+    {
+      "title": "Verificación de la versión entregada",
+      "bullets": [
+        "414 pruebas aprobadas en 44 archivos.",
+        "TypeScript correcto y 0 infracciones entre módulos.",
+        "API y web compilan; 19 páginas estáticas generadas.",
+        "Demo local de cuentas, ficha BOE y tutor con respuestas simuladas."
+      ],
+      "callout": "Validación local: sin integrar PostgreSQL ni invocar IA o canales reales."
+    },
+    {
+      "title": "Límites concretos, siguientes pasos claros",
+      "bullets": [
+        "Información: el resumen puede errar; el archivo no garantiza exhaustividad ni vigencia.",
+        "Operación: reforzar trazabilidad, reconciliación y recuperación de eventos.",
+        "Calidad: evaluar fidelidad con casos de referencia y ampliar revisión de accesibilidad.",
+        "Electricidad: revisar contenido y experiencia de aprendizaje con usuarios."
+      ],
+      "callout": "La documentación distingue lo implementado de lo propuesto."
+    },
+    {
+      "title": "Una plataforma principal y una ampliación",
+      "dark": true,
+      "bullets": [
+        "AgenteBOE: fuente oficial → explicación → consulta y distribución.",
+        "Electricidad: estudio y tutor integrados con autorización propia.",
+        "Aplicación: https://agenteboe.com/",
+        "Código: github.com/ThePatientLearner/Agente-BOE-TFM"
+      ],
+      "callout": "Gracias · Demostración y preguntas"
+    }
+  ]
+}

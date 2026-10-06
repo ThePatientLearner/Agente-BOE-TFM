@@ -48,7 +48,7 @@ function id(raw: string): BoeId {
 const HOY = day("2026-08-10");
 const AYER = day("2026-08-09");
 
-function entry(rawId: string, publicationDate: IsoDate): BoeEntry {
+function entry(rawId: string, publicationDate: IsoDate, lastOfficialUpdateAt = publicationDate): BoeEntry {
   return BoeEntry.ingest({
     id: id(rawId),
     publicationDate,
@@ -59,7 +59,7 @@ function entry(rawId: string, publicationDate: IsoDate): BoeEntry {
     officialPdfUrl: "https://www.boe.es/boe/dias/pdf",
     officialXmlUrl: null,
     rawText: "El texto oficial completo de la disposición.",
-    lastOfficialUpdateAt: publicationDate,
+    lastOfficialUpdateAt,
   });
 }
 
@@ -175,6 +175,19 @@ describe("ResumePendingEntries", () => {
     // Discord NO recibe un segundo mensaje.
     expect(sut.discord.enviados).toHaveLength(1);
     // Y no se ha vuelto a gastar un token de IA.
+    expect(sut.summarizer.llamadas).toBe(1);
+  });
+
+  it("preserva la fecha oficial tanto al resumir como al reintentar la notificación", async () => {
+    const updated = day("2026-08-12");
+    await sut.entries.save(entry("BOE-A-2026-00007", HOY, updated));
+    sut.telegram.caido = true;
+    await sut.resume.execute(HOY);
+    expect(sut.discord.enviados[0]?.lastOfficialUpdateAt).toBe(updated);
+
+    sut.telegram.caido = false;
+    await sut.resume.execute(HOY);
+    expect(sut.telegram.enviados[0]?.lastOfficialUpdateAt).toBe(updated);
     expect(sut.summarizer.llamadas).toBe(1);
   });
 

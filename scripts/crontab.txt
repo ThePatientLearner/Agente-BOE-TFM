@@ -1,4 +1,0 @@
-0 10 * * * cd /opt/boe-inspector && COMPOSE=docker-compose.prod.yml ./scripts/backup-db.sh >> /var/log/boe-backup.log 2>&1
-30 10 * * * { echo "=== $(date -Is) · purga de dumps de mas de 30 dias ==="; find /opt/boe-inspector/backups -name "boe-*.sql.gz" -mtime +30 -print -delete; } >> /var/log/boe-backup.log 2>&1
-0 8 * * 1 cd /opt/boe-inspector && ./scripts/subvenciones-semanal.sh >> /var/log/boe-subvenciones.log 2>&1
-0 6 5 * * cd /opt/boe-inspector && ./scripts/actualizar-datos.sh >> /var/log/boe-datos.log 2>&1

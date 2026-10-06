@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ELECTRICIDAD_API, PRIVATE_HEADERS, SESSION_COOKIE } from '@/lib/electricidad-auth';
+import { hasAllowedOrigin } from '@/lib/request-origin';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 // Con los repasos activados el monolito hace hasta tres llamadas seguidas al
@@ -9,7 +10,7 @@ export const maxDuration = 60;
 
 export async function POST(request: NextRequest) {
   const error = (message: string, status: number) => NextResponse.json({ error: message }, { status, headers: PRIVATE_HEADERS });
-  if (request.headers.get('origin') !== request.nextUrl.origin) return error('Origen no permitido.', 403);
+  if (!hasAllowedOrigin(request)) return error('Origen no permitido.', 403);
   const token = request.cookies.get(SESSION_COOKIE)?.value;
   if (!token) return error('Inicia sesión para hablar con el asistente.', 401);
   if (!request.headers.get('content-type')?.startsWith('application/json')) return error('Formato no permitido.', 415);

@@ -50,9 +50,10 @@ async function main(): Promise<void> {
     const message = {
       title: "PRUEBA · Nuevos horarios para camiones con mercancías peligrosas en Cataluña",
       shortPhrase:
-        "Mensaje de prueba de BOE Inspector. Si lo estás leyendo, el canal está bien configurado.",
+        "Mensaje de prueba de BOE Inspector. La fecha mostrada es ilustrativa. Si lo estás leyendo, el canal está bien configurado.",
       impact: 3,
       officialUrl: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-16758",
+      lastOfficialUpdateAt: "2000-01-01",
       summaryUrl: `${config.publicWebUrl}/d/BOE-A-2026-16758`,
       // Con comunidad a propósito: la prueba también sirve para ver cómo
       // queda la línea de "quién gobierna" en cada canal.

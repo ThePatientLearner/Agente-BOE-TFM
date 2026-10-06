@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { setTimeout as wait } from 'node:timers/promises';
 import { AssistantError, type AssistantModel, type ModelAnswer } from '../domain/assistant.js';
 import { INSTRUCTIONS } from './openai-assistant.js';
+import { ELECTRICIDAD_REVIEW_INSTRUCTIONS, ELECTRICIDAD_TUTOR_INSTRUCTIONS } from '../domain/study-course.js';
 
 /**
  * Adapter de MiniMax para el bot público. Comparte las INSTRUCTIONS con el
@@ -100,8 +101,10 @@ export class MinimaxAssistant implements AssistantModel {
 
   async answer(input: string, instructions = MINIMAX_INSTRUCTIONS, signal?: AbortSignal): Promise<ModelAnswer> {
     const started = Date.now();
-    // Los repasos conservan las reglas de fuentes y claridad de la redacción.
-    const system = `${instructions === MINIMAX_INSTRUCTIONS ? instructions : `${MINIMAX_INSTRUCTIONS}\n${instructions}`}\n${STYLE_EXAMPLES}`;
+    // El tutor y su repaso tienen reglas didácticas propias. En el bot público
+    // los repasos siguen conservando las restricciones del archivo del BOE.
+    const study = instructions === ELECTRICIDAD_TUTOR_INSTRUCTIONS || instructions === ELECTRICIDAD_REVIEW_INSTRUCTIONS;
+    const system = study ? instructions : `${instructions === MINIMAX_INSTRUCTIONS ? instructions : `${MINIMAX_INSTRUCTIONS}\n${instructions}`}\n${STYLE_EXAMPLES}`;
     // M3.1 y M2.x tienen otro contrato: no enviarles un parámetro que ignoran
     // o rechazan. Nunca cambiar de modelo silenciosamente.
     const direct = this.options.model.toLowerCase() === 'minimax-m3';

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ELECTRICIDAD_API, PRIVATE_HEADERS, SESSION_COOKIE } from '@/lib/electricidad-auth';
+import { hasAllowedOrigin } from '@/lib/request-origin';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
@@ -24,7 +25,7 @@ export async function GET(request: NextRequest) {
 /** Cambia la IA de toda la aplicación. El monolito exige sesión de admin. */
 export async function POST(request: NextRequest) {
   const error = (message: string, status: number) => NextResponse.json({ error: message }, { status, headers: PRIVATE_HEADERS });
-  if (request.headers.get('origin') !== request.nextUrl.origin) return error('Origen no permitido.', 403);
+  if (!hasAllowedOrigin(request)) return error('Origen no permitido.', 403);
   const token = request.cookies.get(SESSION_COOKIE)?.value;
   if (!token) return error('No disponible.', 401);
   const body = await request.text();

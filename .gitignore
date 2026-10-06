@@ -36,3 +36,6 @@ deploy/.vps-target
 /Documentos trabajo/Requisitos-TFM.txt
 /Documentos trabajo/Agente-BOE-TFM.zip
 /Documentos trabajo/Video-Agente-BOE.*
+
+# Intermedios de la nueva entrega y pruebas de navegador (no publicar).
+/tmp/

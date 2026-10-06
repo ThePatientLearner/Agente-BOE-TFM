@@ -42,6 +42,7 @@ function event(impact: number, department = "MINISTERIO DE HACIENDA") {
   return summaryGenerated({
     entryId: `BOE-A-2026-0000${impact}`,
     publicationDate: day("2026-08-07"),
+    lastOfficialUpdateAt: day("2026-08-09"),
     department,
     title: "Título oficial larguísimo",
     plainTitle: "Título claro",
@@ -120,6 +121,12 @@ describe("NotifyEntry · umbral de impacto", () => {
 
     expect(notifier.sent[0]?.title).toBe("Título claro");
     expect(notifier.sent[0]?.summaryUrl).toBe("https://agenteboe.com/d/BOE-A-2026-00004");
+  });
+
+  it("transporta la fecha oficial sin sustituirla por la de publicación o envío", async () => {
+    const { bus, notifier } = setup(3);
+    await bus.publish(event(4));
+    expect(notifier.sent[0]?.lastOfficialUpdateAt).toBe("2026-08-09");
   });
 
   it("adjunta quién gobierna cuando la disposición es autonómica", async () => {

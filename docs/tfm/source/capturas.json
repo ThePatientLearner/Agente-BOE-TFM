@@ -1,0 +1,43 @@
+{
+  "sections": [
+    {
+      "title": "Anexo visual 1. Catálogo público",
+      "page_break": true,
+      "paragraphs": [
+        "Capturas obtenidas el 6 de octubre de 2026, sin iniciar sesión ni enviar consultas al proveedor de IA. Acreditan la vista observada, no la operación continua del servicio."
+      ],
+      "image": "docs/tfm/capturas/01-portada-publica.png",
+      "caption": "Portada de https://agenteboe.com/. Proyecto principal: consulta de publicaciones del BOE."
+    },
+    {
+      "title": "Anexo visual 2. Fuente y ficha",
+      "image": "docs/tfm/capturas/02-ficha-publica.png",
+      "caption": "Servicio público: [ficha BOE-A-2026-20587](https://agenteboe.com/d/BOE-A-2026-20587). Captura sin sesión del 6 de octubre de 2026."
+    },
+    {
+      "title": "Anexo visual 3. Asistente de demostración",
+      "image": "docs/tfm/capturas/05-bot-demo.png",
+      "caption": "Entorno local de evaluación. La respuesta del proveedor está simulada; no representa una generación real de MiniMax u OpenAI."
+    },
+    {
+      "title": "Anexo visual 4. Electricidad integrado",
+      "image": "docs/tfm/capturas/06-electricidad-demo.png",
+      "caption": "Curso servido después del login con permiso de estudio. Material real del complemento en la demo local."
+    },
+    {
+      "title": "Anexo visual 5. Tutor contextual",
+      "image": "docs/tfm/capturas/07-tutor-demo.png",
+      "caption": "Tutor dentro del curso, con respuesta de demostración identificada como simulada."
+    },
+    {
+      "title": "Anexo visual 6. Autoevaluación",
+      "image": "docs/tfm/capturas/11-resultado-demo.png",
+      "caption": "Corrección de un intento local de diez preguntas. Las respuestas en blanco y la opción elegida forman parte de una prueba de interfaz, no de una evaluación del alumno."
+    },
+    {
+      "title": "Anexo visual 7. Simulacros",
+      "image": "docs/tfm/capturas/09-simulacros-demo.png",
+      "caption": "Selector de ocho simulacros: cuatro de cuarenta preguntas básicas y cuatro de diez de especialista. Demo local autenticada."
+    }
+  ]
+}

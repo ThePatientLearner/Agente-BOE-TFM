@@ -1,0 +1,601 @@
+{
+  "title": "AgenteBOE",
+  "subtitle": "Memoria técnica y manual de uso: información oficial, resúmenes con IA y módulo complementario de Electricidad",
+  "program": "Máster de desarrollo con IA BIG school",
+  "document_date": "2026-10-06",
+  "sections": [
+    {
+      "title": "1. Resumen del proyecto",
+      "paragraphs": [
+        "AgenteBOE es un servicio web independiente que obtiene disposiciones del Boletín Oficial del Estado, conserva su texto y metadatos, genera resúmenes con inteligencia artificial y los presenta junto a los enlaces oficiales. El catálogo web, el asistente conversacional y los avisos de Telegram y Discord ofrecen distintas formas de acceder a la misma información. El texto publicado por el BOE sigue siendo la referencia oficial.",
+        "El proyecto principal es AgenteBOE. Electricidad se integra como un complemento ya implementado dentro del mismo servicio: comparte cuentas y sesiones, exige autorización específica y ofrece un curso privado con ejercicios, simulacros y un tutor contextual. Su inclusión permite demostrar cómo se amplía la plataforma sin mezclar el flujo editorial del BOE con las funciones de estudio.",
+        "La solución combina un monolito modular en TypeScript, una API Fastify, una base de datos PostgreSQL y un frontend Next.js. Un bus de eventos conecta la ingesta, la generación de resúmenes, la proyección del catálogo y las notificaciones. El asistente recupera información del archivo antes de consultar al modelo; no realiza una búsqueda libre por Internet ni garantiza conocer la situación jurídica actual de una norma.",
+        "Esta memoria se apoya en el código inspeccionado, sus instrucciones de trabajo y los resultados documentados de verificación. Distingue comportamiento implementado, configuración por defecto y estado de los servicios externos. No atribuye autoría histórica, horas invertidas o resultados de impacto que no estén acreditados.",
+        "El autor identificado en la entrega es Roberto Casabán. La memoria explica el estado del proyecto preparado para evaluación y las decisiones que pueden comprobarse en su código. La ayuda de IA empleada en esta preparación se declara expresamente; no se inventa una cronología de desarrollo ni se atribuye a una sola herramienta todo el trabajo histórico."
+      ]
+    },
+    {
+      "title": "2. Necesidad, usuarios y alcance",
+      "paragraphs": [
+        "La necesidad principal es facilitar una primera lectura de las disposiciones generales sin separar el resumen de su fuente. La aplicación organiza las publicaciones por boletín, permite filtrarlas y ofrece una explicación en lenguaje claro. La escala de impacto orienta la exploración; es una clasificación producida por el sistema, no una categoría oficial ni una valoración jurídica vinculante.",
+        "Los usuarios del catálogo pueden consultar fichas y abrir el documento oficial sin iniciar sesión. Los usuarios del asistente necesitan una cuenta activa. El administrador controla el proveedor del bot y los permisos de estudio. Los alumnos autorizados acceden al complemento Electricidad para estudiar, practicar y conservar su progreso local.",
+        "El alcance central comprende ingesta de la Sección I por defecto, resumen estructurado con revisión, catálogo consultable, notificaciones configurables y asistente con fuentes. Se añaden paneles de subvenciones, radiografías fiscales y de pensiones, titulares de prensa y un juego. Estos componentes amplían la experiencia de la web, pero no intervienen todos en el flujo de publicación del BOE.",
+        "No se promete cobertura de todo el ordenamiento, consulta exhaustiva de vigencia, asesoramiento jurídico, notificación infalible o disponibilidad continua. El complemento Electricidad es educativo y no certifica instalaciones ni cualificaciones profesionales. Estas delimitaciones forman parte del producto y de su explicación académica."
+      ]
+    },
+    {
+      "title": "3. Requisitos de la entrega académica",
+      "paragraphs": [
+        "El documento Requisitos-TFM.pdf solicita un README completo, código accesible en GitHub, una presentación y un vídeo de explicación propia con captura de pantalla. Recomienda desplegar el proyecto cuando sea posible. Admite un repositorio privado si se justifica y se facilita acceso al profesor. No establece una extensión de memoria, una duración concreta de vídeo o una rúbrica adicional.",
+        "La entrega utiliza el repositorio público ThePatientLearner/Agente-BOE-TFM, una copia depurada del proyecto. El repositorio operativo ThePatientLearner/BoeInspector conserva su privacidad. Esta reedición incorpora el código del complemento Electricidad: sus HTML permanecen dentro de private y el servidor exige sesión y permiso para servirlos en la aplicación. Que el evaluador pueda inspeccionar el código fuente público no convierte esos documentos en rutas web públicas.",
+        "La documentación para lectura humana se entrega en tres PDF: memoria técnica y manual, presentación, y guía de evaluación y grabación. README mantiene las instrucciones de instalación y los enlaces necesarios junto al código. Los materiales anteriores no se usan como prueba de que esta nueva versión esté desplegada o haya superado sus verificaciones.",
+        "Roberto Casabán realizará la grabación. La presentación y el guion facilitan ese trabajo, pero no sustituyen el vídeo propio. El correo de matrícula se introduce en el formulario del máster y no se publica en el repositorio. La fecha límite se consulta en el temario, puesto que el PDF de requisitos no la fija."
+      ],
+      "table": {
+        "headers": [
+          "Requisito",
+          "Material o acción",
+          "Estado de referencia"
+        ],
+        "rows": [
+          [
+            "README completo",
+            "Descripción, stack, instalación, estructura, funciones y acceso de demostración.",
+            "README de la copia de entrega."
+          ],
+          [
+            "Código en GitHub",
+            "ThePatientLearner/Agente-BOE-TFM; copia pública depurada con Electricidad.",
+            "Enlace y revisión en la ficha final."
+          ],
+          [
+            "Despliegue",
+            "https://agenteboe.com; web existente, separada del entorno local de evaluación.",
+            "Disponibilidad no equivale a identidad de versión."
+          ],
+          [
+            "Presentación",
+            "PDF adjunto al código y enlazado desde la documentación.",
+            "Material de la reedición."
+          ],
+          [
+            "Vídeo propio",
+            "Explicación y captura de catálogo, asistente y complemento Electricidad.",
+            "Grabación pendiente del alumno."
+          ],
+          [
+            "Acceso de evaluación",
+            "Cuenta limitada del modo local; instrucciones en README y guía.",
+            "Sin credenciales administrativas."
+          ],
+          [
+            "Formulario",
+            "Datos de matrícula y enlaces comprobados de código, web, slides y vídeo.",
+            "Completar tras grabar y publicar el vídeo."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "4. Arquitectura general y stack",
+      "paragraphs": [
+        "El repositorio es un monorepo de npm workspaces con dos aplicaciones. apps/monolith concentra lógica de negocio, adaptadores externos, persistencia, planificación y API. apps/web contiene la interfaz Next.js y los proxies de sesión. La web consume la API del monolito; no conecta directamente con PostgreSQL.",
+        "El monolito utiliza puertos e implementaciones intercambiables. Los casos de uso reciben interfaces para acceder al BOE, generar texto, almacenar datos o enviar avisos. composition.ts decide las implementaciones concretas y comparte esa composición con la ejecución normal y las herramientas de línea de comandos.",
+        "El arranque valida la configuración, abre la base, aplica migraciones y solo después compone los módulos y abre la API. La persistencia de producción depende de PostgreSQL; los adaptadores en memoria se utilizan en pruebas. El bus es local al proceso y no es un servicio externo de mensajería.",
+        "Las versiones de la tabla representan las familias declaradas en package.json; la instalación concreta queda fijada por package-lock.json. No se presentan como una recomendación de versiones universal. Node.js 22 o superior es el requisito declarado por el proyecto.",
+        "El enfoque elegido mantiene un único backend desplegable para reducir coordinación operativa y conserva separación lógica mediante módulos. La web se despliega por separado porque su generación de páginas y su proxy de sesión tienen un ciclo distinto. Esta combinación permite probar adaptadores sin proveedores reales, a cambio de asumir que el bus y la concurrencia en memoria pertenecen a una única instancia."
+      ],
+      "table": {
+        "headers": [
+          "Componente",
+          "Tecnología declarada",
+          "Responsabilidad"
+        ],
+        "rows": [
+          [
+            "Lenguaje y ejecución",
+            "TypeScript 5.7; Node.js >=22",
+            "Tipos, casos de uso, API y herramientas."
+          ],
+          [
+            "Frontend",
+            "Next.js 15.5; React 19",
+            "Páginas, catálogo, cuenta y asistente."
+          ],
+          [
+            "API",
+            "Fastify 5; Zod 3",
+            "Rutas HTTP y validación de datos."
+          ],
+          [
+            "Persistencia",
+            "PostgreSQL 16; Drizzle ORM",
+            "Esquemas por módulo y migraciones SQL."
+          ],
+          [
+            "Planificación y registro",
+            "node-cron; Pino",
+            "Pasadas programadas y diagnóstico."
+          ],
+          [
+            "Pruebas",
+            "Vitest; dependency-cruiser",
+            "Comportamiento y fronteras de módulos."
+          ],
+          [
+            "IA",
+            "Adaptadores HTTP MiniMax y OpenAI",
+            "Resúmenes y asistente con configuración separada."
+          ],
+          [
+            "Operación",
+            "Docker Compose; Vercel; túnel de API",
+            "Entorno local y topología de publicación."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "5. Módulos y fronteras de responsabilidad",
+      "paragraphs": [
+        "Los cuatro módulos del flujo editorial son ingestion, summarization, notifications y catalog. Se comunican mediante eventos con los campos necesarios para sus consumidores. La duplicación de título, departamento o enlaces en esos eventos permite evitar que un módulo consulte directamente las tablas de otro.",
+        "catalog mantiene una proyección de lectura desnormalizada: copia los datos que la web necesita para responder sin unir repositorios internos. Las fuentes de verdad continúan en los módulos responsables. spending y juego no dependen del bus editorial; assistant recupera mediante puertos de lectura y electricidad administra identidad y permisos.",
+        "Las reglas de dependency-cruiser comprueban fronteras de importación. Son una protección útil frente a acoplamientos accidentales, aunque no demuestran por sí solas ausencia de toda dependencia conceptual. La API puede escribir en los casos de uso de cuentas, asistente y juego; la publicación del BOE sigue entrando por los procesos de ingesta y sus eventos."
+      ],
+      "table": {
+        "headers": [
+          "Módulo",
+          "Responsabilidad principal",
+          "Relación con el flujo BOE"
+        ],
+        "rows": [
+          [
+            "ingestion",
+            "Sumario, documentos, metadatos y estado por disposición.",
+            "Publica EntryIngested."
+          ],
+          [
+            "summarization",
+            "Generación y almacenamiento del resumen.",
+            "Consume ingesta; publica SummaryGenerated."
+          ],
+          [
+            "notifications",
+            "Avisos por canal y registro de envíos.",
+            "Consume resúmenes y publica su finalización."
+          ],
+          [
+            "catalog",
+            "Proyección para catálogo, búsqueda y fichas.",
+            "Escucha ingesta y resúmenes."
+          ],
+          [
+            "assistant",
+            "Recuperación de contexto, modelos, ajustes y presupuesto.",
+            "Consulta puertos del catálogo y texto oficial."
+          ],
+          [
+            "electricidad",
+            "Cuentas, sesiones, permisos y límites de acceso.",
+            "Identidad compartida; complemento privado."
+          ],
+          [
+            "spending",
+            "Convocatorias y concesiones de subvenciones.",
+            "Ingesta propia por CLI; fuera del bus BOE."
+          ],
+          [
+            "juego",
+            "Validación básica de partidas y ranking.",
+            "Fuera del bus; escritura desde la API."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "6. Modelo de datos y persistencia",
+      "paragraphs": [
+        "El identificador natural con formato BOE-letra-año-número relaciona una disposición, su resumen y su ficha de catálogo. ingestion conserva publicación, sección, departamento, título, URLs oficiales, texto, fecha de actualización y estado de procesamiento. summarization conserva el título llano, frase breve, puntos, impacto, modelo y fecha de generación.",
+        "El catálogo duplica campos de ambos módulos para atender lectura, navegación y recuperación del asistente. Puede contener una disposición sin resumen: sus campos generados son nulos hasta que llega el evento correspondiente. Esto permite mostrar el documento oficial aunque la IA se retrase o falle.",
+        "Las notificaciones registran resultado por disposición y canal. Las cuentas almacenan hashes de contraseña y de sesión, estado y permiso de estudio; los presupuestos del asistente se conservan en tablas independientes. Las migraciones versionadas describen la evolución del esquema. Las copias lógicas de PostgreSQL son distintas de las copias JSON del progreso del cuaderno, que sigue siendo local al navegador.",
+        "La separación de esquemas representa una frontera de diseño dentro de una misma base. No equivale a desplegar bases físicamente independientes ni a usar credenciales distintas por cada módulo. El aislamiento efectivo debe evaluarse también en la configuración de operación, que no se expone en la documentación académica."
+      ],
+      "table": {
+        "headers": [
+          "Datos",
+          "Campos o elementos representativos",
+          "Uso"
+        ],
+        "rows": [
+          [
+            "Disposición",
+            "ID, publicación, texto, URLs, actualización, estado.",
+            "Fuente persistida del procesamiento."
+          ],
+          [
+            "Resumen",
+            "Título llano, puntos, impacto, modelo, fecha.",
+            "Contenido derivado, identificado como IA."
+          ],
+          [
+            "Catálogo",
+            "Documento y resumen proyectados en una tabla.",
+            "Lectura web y búsqueda."
+          ],
+          [
+            "Envío",
+            "Disposición, canal, fecha, éxito.",
+            "Reintento selectivo y trazabilidad."
+          ],
+          [
+            "Cuenta y sesión",
+            "Identidad, hashes, rol, estado, study_access.",
+            "Autorización de bot y cuaderno."
+          ],
+          [
+            "Presupuesto",
+            "Día, cuenta, consultas, tokens y última consulta.",
+            "Límites persistentes del asistente."
+          ],
+          [
+            "Estudio local",
+            "Respuestas, notas, lectura, intentos y copias JSON.",
+            "Continuidad del complemento Electricidad."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "7. Ingesta desde la fuente oficial",
+      "paragraphs": [
+        "BoeApiGateway consulta la API de datos abiertos del BOE para obtener el sumario de una fecha. IngestDailyBulletin filtra las secciones configuradas, con Sección I como valor por defecto. Para cada identificador nuevo descarga el XML oficial, extrae el cuerpo, almacena la disposición y emite EntryIngested. Un 404 de sumario se interpreta como ausencia de boletín para esa fecha, no como una disposición vacía [F1].",
+        "El parser recorre la estructura del sumario sin asumir una única combinación de objetos y arrays. Hereda sección y departamento, reconoce identificadores de disposición y compara lo extraído con los identificadores presentes en el documento. Si detecta que ha perdido elementos, devuelve un error en lugar de anunciar silenciosamente cero novedades.",
+        "El extractor elige el bloque texto más largo del XML para evitar confundir referencias breves con el cuerpo principal. Conserva saltos de párrafo y separadores de celdas, lo que ayuda al asistente a reconocer artículos y tablas. La elección del bloque sigue siendo una heurística frente a posibles cambios de formato. Los errores de descarga o extracción se registran y se contabilizan para permitir diagnóstico y recuperación.",
+        "La comprobación de existencia evita procesar de nuevo documentos ya guardados en una ejecución ordinaria. Esto también significa que la ingesta diaria no es un servicio de vigilancia continua de cambios sobre todo documento anterior. Además, si falta una fecha de actualización válida en el XML, el adaptador utiliza la fecha del día; esa salida de respaldo no demuestra una actualización oficial y se recoge como limitación de metadatos."
+      ]
+    },
+    {
+      "title": "8. Bus de eventos y orden de composición",
+      "paragraphs": [
+        "InMemoryEventBus entrega cada evento secuencialmente en el orden de suscripción. Si un manejador lanza un error, el bus lo registra y continúa con los demás. Esa decisión evita que una excepción bloquee todos los consumidores, pero obliga a conservar estado y disponer de recuperación de trabajo incompleto.",
+        "El orden de catalog y summarization es relevante. El catálogo debe escuchar EntryIngested antes de que el resumidor lo procese, porque el resumidor puede emitir SummaryGenerated dentro de ese mismo manejador. Si el catálogo todavía no hubiera creado la fila, el resumen llegaría a una proyección inexistente. composition.ts registra primero el catálogo para conservar ese orden.",
+        "La secuencia prevista es: persistir la disposición, crear su proyección, generar y guardar el resumen, actualizar el catálogo y notificar los canales aplicables. TrackEntryProgress mantiene las transiciones de la disposición a partir de los eventos. El bus no conserva una cola duradera ni un historial de eventos completo que pueda reproducirse automáticamente tras cualquier fallo.",
+        "La recuperación se apoya en los repositorios y los estados pendientes. ResumePendingEntries puede reemitir el evento de ingesta o el de resumen generado según lo que ya esté guardado. Es una estrategia específica de este monolito, no una garantía transaccional entre todos sus pasos. Una evolución hacia mayor concurrencia o requisitos de entrega más fuertes debería estudiar una bandeja de eventos persistente y reconciliación de proyecciones."
+      ]
+    },
+    {
+      "title": "9. Resúmenes con IA en dos pasadas",
+      "paragraphs": [
+        "HttpSummarizer implementa redacción y revisión. La primera petición solicita un JSON con título comprensible, frase breve, puntos esenciales e impacto de uno a cinco. El código valida la estructura con Zod y rechaza determinados alfabetos inesperados. La segunda petición devuelve el borrador junto al texto oficial para revisar fidelidad, idioma, precisión y claridad.",
+        "La configuración por defecto de la versión inspeccionada es MiniMax-M3 sobre la API de MiniMax. Las variables del proveedor permiten cambiar base, modelo y clave, pero el adaptador construye una ruta HTTP concreta; no se debe afirmar compatibilidad automática con cualquier proveedor solo por compartir algunos campos de respuesta. Una sustitución requiere comprobar el contrato real del adaptador.",
+        "La redacción admite hasta dos intentos. La revisión es opcional y, si falla, se conserva el borrador que superó la validación de formato. Por tanto, dos pasadas describen la estrategia prevista, no una garantía de que cada resumen publicado haya recibido dos respuestas satisfactorias. Las validaciones sintácticas y una autorrevisión del modelo tampoco equivalen a revisión jurídica humana.",
+        "El texto inicial se limita a 400.000 caracteres y el contexto de revisión a 120.000. Los documentos mayores se recortan, lo que puede excluir anexos o disposiciones finales. El resumen se almacena con el modelo y su fecha. Regenerar tras cambiar el prompt es una operación explícita; no se sobrescriben automáticamente todos los resúmenes anteriores."
+      ]
+    },
+    {
+      "title": "10. Notificaciones e idempotencia con límites",
+      "paragraphs": [
+        "notifications publica en Telegram y Discord cuando existen sus credenciales de configuración. Si no hay canales configurados, la composición utiliza un notificador de consola. El umbral por defecto es impacto tres: las entradas por debajo permanecen disponibles en la web y finalizan su etapa de notificación sin envío público.",
+        "Antes de enviar, NotifyEntry consulta si existe un envío satisfactorio para esa disposición y canal. Si Telegram fue correcto y Discord falló, una reanudación ordinaria puede recuperar solo Discord. La restricción de unicidad del registro y las comprobaciones de estado reducen duplicados. El parte del día utiliza también un registro para evitar publicarlo en cada pasada programada.",
+        "El diseño no debe describirse como exactamente una entrega bajo cualquier fallo. La petición al proveedor y la escritura de su resultado son operaciones separadas: una interrupción después de que el canal acepte el mensaje y antes de registrar el éxito deja una ventana de repetición. Tampoco un envío marcado como correcto demuestra que cada suscriptor lo haya leído.",
+        "Los formatos de Telegram y Discord colocan el enlace al texto oficial antes de la explicación generada, incluyen su fecha de actualización recibida desde la ingesta y avisan del uso de IA y del carácter no oficial. El canal de consola registra el mensaje como datos estructurados para desarrollo. Las regresiones de formato forman parte de la verificación de la entrega. Las alertas de operación utilizan un destino privado distinto de los canales públicos, para separar diagnóstico y publicaciones a suscriptores."
+      ]
+    },
+    {
+      "title": "11. Planificación, reintentos y operación",
+      "paragraphs": [
+        "El planificador utiliza por defecto una pasada a las 08:30 y reintentos a las 10:00 y 12:00, en Europe/Madrid. Son valores de configuración del código, no una certificación de que esos horarios estén activos en un servidor concreto. Cada pasada combina nueva ingesta y recuperación del trabajo que quedó pendiente.",
+        "La recuperación consulta entradas pendientes y resumidas antes de publicar eventos. Si encuentra un resumen ya guardado cuyo estado no avanzó, puede continuar desde ese resumen. El lookback configurado por defecto revisa también el día anterior, para cubrir publicación tardía o una interrupción de la jornada previa. La recuperación de periodos antiguos debe planificarse expresamente para evitar una avalancha de avisos.",
+        "El estado de revisión se expone mediante una ruta de lectura y alimenta la cuenta atrás de la web. Consultar ese estado no lanza una ingesta. El servidor también ofrece health, que confirma respuesta del proceso; ese endpoint por sí solo no demuestra éxito reciente del cron, fidelidad de los resúmenes o disponibilidad de todos los proveedores.",
+        "El repositorio incorpora registros, parte diario, herramientas de reprocesamiento y copias lógicas de PostgreSQL. Resummarize utiliza un flujo separado para actualizar resúmenes y catálogo sin componer los notificadores públicos. Cualquier comando operativo debe ejecutarse conociendo su entorno y sus efectos: ingest y notify:test pueden efectuar peticiones reales y enviar mensajes."
+      ]
+    },
+    {
+      "title": "12. Manual del catálogo y las fichas",
+      "paragraphs": [
+        "La portada permite explorar el BOE diario mediante tarjetas agrupadas por boletín. La API devuelve hasta quince días disponibles y la interfaz presenta inicialmente dos, con opción de mostrar más. El buscador local filtra el conjunto descargado por texto, fechas e impacto; no debe confundirse con una consulta de todo el archivo. Los temas y la explicación de los niveles de impacto facilitan decidir qué abrir.",
+        "La búsqueda completa es un acceso separado protegido por configuración del servidor. Tras desbloquearla, la web consulta la API con los filtros y un límite de resultados. Ese mecanismo no es la misma sesión que utiliza el asistente. Si falta configuración o el acceso no es válido, debe mostrarse un error en lugar de simular una búsqueda exhaustiva.",
+        "Al abrir una disposición, la ficha muestra publicación, actualización, departamento y acceso al texto oficial HTML y PDF. Después aparece el resumen, claramente identificado como IA. Se puede desplegar el título literal, imprimir o compartir la ficha y seguir lecturas relacionadas. Si aún no existe resumen, se indica que está pendiente y se mantiene el enlace oficial.",
+        "El recorrido recomendado es localizar un tema, abrir la ficha, leer el resumen como orientación y contrastar los detalles relevantes en el documento oficial. Una etiqueta de impacto o un resultado de búsqueda no sustituye esa comprobación. Las lecturas relacionadas se calculan por coincidencias temáticas en el catálogo disponible; no pretenden representar todas las relaciones jurídicas entre normas."
+      ]
+    },
+    {
+      "title": "13. Asistente: recuperación, modelos y revisión",
+      "paragraphs": [
+        "El asistente es una función distinta del resumidor diario. AskBoe recupera hasta seis disposiciones mediante búsqueda de texto en PostgreSQL y un índice GIN en español. También resuelve un identificador explícito o una fecha y utiliza el historial reciente para continuaciones de la pregunta. La recuperación depende del contenido del catálogo, no de una búsqueda libre por Internet.",
+        "Desde el menú general, el contexto incluye únicamente metadatos y resúmenes generados del archivo. Aunque el usuario escriba un identificador BOE, ese modo no descarga el texto oficial. Para preguntar por artículos o detalles de una disposición debe abrirse su ficha y consultar desde ella. Esta separación evita presentar una orientación basada en resúmenes como si el modelo hubiera leído una norma completa.",
+        "En una ficha, el servidor comprueba que el contexto corresponde a una sola disposición e intenta descargar su XML oficial con un plazo de cinco segundos; ante fallo puede usar el texto oficial guardado en la ingesta. Una caché conserva como máximo doce documentos públicos durante quince minutos, sin preguntas ni sesiones. La caché acota memoria y tráfico; no acredita que cada consulta haya descargado una versión nueva.",
+        "Si el documento cabe en 40.000 caracteres y 48.000 bytes, el contexto aporta su texto completo. Si no cabe, selecciona pasajes buscando en todo su contenido, incluidos anexos y artículos finales; una pregunta por un artículo concreto lo prioriza. El contexto indica si la cobertura es completa o parcial. Cuando no puede obtener texto, devuelve un error reconocible y no simula haberlo leído.",
+        "La configuración por defecto del bot es MiniMax-M3, con OpenAI como alternativa habilitada solo si dispone de clave. El ajuste persistido permite elegir el proveedor para toda la aplicación desde la cuenta administrativa autorizada. Si el seleccionado no está habilitado, se resuelve el primero disponible; no es una conmutación automática ante cualquier error de red. Resumidor y bot utilizan adaptadores y claves independientes.",
+        "ReviewedAssistant aplica una redacción y hasta tres repasos configurables, dos por defecto. El límite de 42 segundos se impone al conjunto de llamadas del modelo, incluso con cero repasos. La recuperación previa de datos queda fuera de ese plazo. Si falla un repaso se conserva la mejor respuesta disponible; si la redacción inicial no produjo respuesta no se inventa una salida. Los tokens de todas las pasadas forman parte del presupuesto.",
+        "Las fuentes proporcionadas por el servidor aparecen antes de la respuesta y pueden desplegarse para consultar fechas y enlaces. Sin resultados no se llama al modelo, aunque cuenta la consulta. El servicio aclara que la ausencia en el archivo no prueba inexistencia de una norma y que no comprueba automáticamente su vigencia. La autorrevisión por IA no constituye una verificación independiente."
+      ],
+      "table": {
+        "headers": [
+          "Modo",
+          "Material enviado al modelo",
+          "Límite de interpretación"
+        ],
+        "rows": [
+          [
+            "Menú general",
+            "Resúmenes y metadatos recuperados del catálogo.",
+            "No se ha cargado texto oficial."
+          ],
+          [
+            "Ficha BOE",
+            "Texto oficial del documento abierto; completo o pasajes seleccionados.",
+            "Solo esa disposición; sin certificación de vigencia."
+          ],
+          [
+            "Tutor Electricidad",
+            "Fichas didácticas curadas seleccionadas en el servidor.",
+            "Apuntes y enlaces; no lectura oficial implícita."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "14. Cuenta, permisos y uso del asistente",
+      "paragraphs": [
+        "El botón del asistente abre el acceso o el chat. El alta de una cuenta exige nombre de usuario, contraseña personal y una contraseña de registro validada en el servidor. Sin configuración del acceso al registro, el alta queda deshabilitada. El resultado es una cuenta activa para el bot con study_access desactivado: crear la cuenta no concede automáticamente permiso para el curso de Electricidad.",
+        "Las contraseñas se derivan con scrypt y una sal aleatoria. Los tokens de sesión son aleatorios y PostgreSQL conserva sus hashes. La web utiliza una cookie HttpOnly, SameSite Strict y Secure en producción; las sesiones tienen una duración de siete días. El bloqueo y los cambios sensibles revocan sesiones según el caso. Los proxies verifican el origen en solicitudes de escritura; los privilegios se obtienen de una sesión validada y no del JSON enviado por el cliente.",
+        "El uso ordinario admite cinco consultas al día por cuenta, separadas por al menos diez segundos. Hay topes globales de 200 consultas diarias y un presupuesto de tokens configurable. Las reservas se realizan mediante transacciones PostgreSQL y bloqueo asesor, por lo que un reinicio no borra el consumo. Los contadores se refieren al día de Europe/Madrid y se depuran después de treinta días.",
+        "La administración queda exenta de las cuotas diarias, pero mantiene una consulta activa por cuenta y un máximo de tres consultas simultáneas por proceso. Este último límite es local: si se desplegaran varias instancias no sería por sí solo un semáforo global. La cuenta que puede cambiar el modelo está restringida además en las rutas; la entrega no publica sus credenciales.",
+        "Una pregunta admite de dos a 800 caracteres. Se envían como máximo cuatro mensajes previos de hasta 1.000 caracteres cada uno. El contexto está limitado a 32.000 bytes en el menú y tutor, y a 64.000 en la ficha oficial. La aplicación mantiene el historial de chat en la interfaz, sin persistir conversaciones en su base; cambiar de contexto o iniciar un chat nuevo reinicia ese historial. Cerrar un panel no debe confundirse con borrar los datos del navegador.",
+        "Las preguntas, el historial acotado y el material seleccionado llegan al proveedor que responde. Las claves, contraseña, sesión e identidad de la cuenta no se incorporan al contexto. Si una llamada o repaso acaba con consumo incierto, el presupuesto conserva la reserva: una interrupción local no demuestra que el proveedor no haya procesado la petición. El parámetro store: false del adaptador OpenAI no promete retención cero por parte del proveedor.",
+        "Para usarlo, se entra con una cuenta de evaluación o una cuenta activa, se formula una pregunta concreta y se revisan las fuentes desplegables. Si la duda trata de un artículo, se abre primero la ficha correcta. Una cuota agotada o un fallo de proveedor se presenta como tal. Reintentar conviene después de leer el estado mostrado, sin interpretar un mensaje de error como respuesta al contenido."
+      ]
+    },
+    {
+      "title": "15. Electricidad como complemento integrado",
+      "paragraphs": [
+        "Electricidad es un área privada ya incorporada a AgenteBOE. Sus rutas /electricidad y /electricidadTest utilizan la misma identidad y cookie que el asistente, con un permiso de estudio separado. Next.js comprueba la sesión y el permiso antes de entregar los HTML guardados en apps/web/private; estos archivos no deben colocarse en public ni tratarse como un sitio abierto independiente.",
+        "El registro específico del curso valida un código de invitación en el servidor y deja la cuenta pendiente. La administración puede aprobar o bloquear; aprobar concede study_access y bloquear revoca acceso. La ruta falla cerrada si no puede confirmar el permiso. Una cuenta activa del bot sin estudio conserva acceso a Mi cuenta para cerrar sesión o cambiar de cuenta, y recibe una explicación al intentar abrir el curso.",
+        "Las métricas siguientes se han extraído de los HTML privados realmente integrados, no del paquete externo preparado previamente. El material de estudio cuenta con 57 secciones, 224 fichas, 1.271 preguntas y 39 fórmulas. Los ocho simulacros reúnen 200 preguntas en total. Las variantes de estudio utilizan 858 valores distintos de concept, por lo que no se deben presentar como 1.271 conceptos independientes.",
+        "El complemento reutiliza un cuaderno HTML autónomo como antecedente técnico y añade identidad, control de acceso y tutor contextual dentro de AgenteBOE. La interfaz incorpora objetivos por sección, ejemplos, preguntas para recordar sin mirar, diccionario, fórmulas y sugerencias de sesión. Sus resultados se conservan localmente; no sincroniza respuestas entre dispositivos ni constituye una evaluación supervisada.",
+        "El código del curso se incluye para que el evaluador pueda inspeccionarlo. private es la ubicación que evita servirlo como un recurso estático abierto: la confidencialidad del texto fuente publicado y la autorización de rutas son propiedades distintas. El proyecto utiliza esta última para gestionar el acceso a la experiencia web y a las consultas reales del tutor."
+      ],
+      "table": {
+        "headers": [
+          "Elemento del complemento",
+          "Cantidad o comportamiento"
+        ],
+        "rows": [
+          [
+            "Secciones",
+            "57: 52 ITC y 5 bloques complementarios."
+          ],
+          [
+            "Fichas",
+            "224 apartados de estudio."
+          ],
+          [
+            "Banco de estudio",
+            "1.271 preguntas; 858 identificadores de concepto."
+          ],
+          [
+            "Fórmulas",
+            "39 fichas con unidades y ejemplos."
+          ],
+          [
+            "Simulacros",
+            "8: cuatro de básica y cuatro de generadoras."
+          ],
+          [
+            "Banco de examen",
+            "200 preguntas en total: 4 × 40 y 4 × 10."
+          ],
+          [
+            "Identidad",
+            "Cuenta compartida con bot; permiso study_access separado."
+          ],
+          [
+            "Progreso",
+            "Local al navegador, con claves segregadas por cuenta de alumno."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "16. Manual del complemento Electricidad",
+      "paragraphs": [
+        "Con una cuenta autorizada, el alumno abre /electricidad y elige una sección. El índice muestra el ámbito del tema, sus objetivos y las fichas relacionadas. El flujo propone entender, recordar sin mirar, hacer un test y revisar errores. La lectura tranquila reduce elementos secundarios; el diccionario ayuda a localizar conceptos y las fórmulas reúnen unidades, aplicación y ejemplos.",
+        "Las tandas seleccionan diez preguntas del apartado. Primero priorizan las menos vistas; intentan diversificar conceptos y admiten un máximo de dos cálculos. La selección de fallos favorece los pendientes, pero respeta las mismas restricciones. Cuando el banco se agota pueden reaparecer preguntas; variar su orden no convierte el material en un examen nuevo o validado externamente.",
+        "Antes de entregar se puede responder, dejar en blanco, marcar para volver o consultar ayuda. Los cálculos permiten escribir operaciones o declarar que se han hecho en papel. La opción elegida y esa declaración sirven para estimar puntuación, pero la aplicación no comprende ni valida el procedimiento. Tras entregar se muestra la respuesta esperada, su explicación y referencias; los ajustes parciales requieren revisión manual.",
+        "Las tarjetas de memoria activa ocultan primero la respuesta y piden intentar recordarla. El usuario indica después si la recordó. El plan aumenta los intervalos a uno, tres, siete y catorce días cuando se acierta; un fallo propone volver a revisarla a los diez minutos. Es una regla de programación basada en autodeclaración, no una medición objetiva de conocimiento.",
+        "En /electricidadTest se elige entre ocho simulacros: cuatro de básica, con cuarenta preguntas y ciento veinte minutos, y cuatro de generadoras, con diez preguntas y treinta minutos. El modo simulacro conserva el plazo al cambiar de pestaña o cerrar la página; el modo práctica permite pausa. Estos parámetros pertenecen al banco de preparación y se deben contrastar con las instrucciones de la convocatoria real.",
+        "BoeBot puede explicar una ficha o ayudar a revisar una respuesta. En práctica, una consulta asociada a la pregunta se registra como ayuda. Durante un simulacro sin pausa en marcha, la interfaz bloquea el tutor. Es una medida de coherencia del ejercicio en el cliente, no un sistema antifraude: quien controla el navegador puede inspeccionar respuestas o usar ayudas externas.",
+        "Guardar copia exporta un JSON del módulo utilizado. Estudio y simulacros se exportan por separado para conservar ambos. Importar reemplaza el progreso compatible tras confirmación. Iniciar sesión en otro navegador no recupera automáticamente los datos anteriores. Las claves de los alumnos se separan por identificador; la administración conserva las claves históricas del cuaderno.",
+        "Antes de cambiar de equipo conviene exportar, comprobar que el archivo existe e importar en el navegador de destino. Las copias contienen progreso y anotaciones, por lo que no se adjuntan sin revisar a una entrega pública. En un dispositivo compartido, cerrar sesión protege la entrega de la página, pero no elimina por sí mismo el almacenamiento local."
+      ]
+    },
+    {
+      "title": "17. Tutor de Electricidad: integración y fuentes",
+      "paragraphs": [
+        "El tutor no es un chatbot independiente incrustado en el HTML. Comparte la ruta del asistente y su sesión, proveedor seleccionado, política de revisión y presupuesto. La API exige study_access o privilegio administrativo antes de aceptar una consulta de estudio y vuelve a comprobar ese permiso dentro del caso de uso. También rechaza una petición que intente combinar a la vez una ficha BOE y un apartado de estudio.",
+        "El navegador envía identificadores del apartado y, opcionalmente, de la ficha abierta, además de pregunta e historial. No suministra el texto del curso como una fuente confiable. buildStudyContext comprueba esos identificadores contra la copia curada generada en el servidor. Una ficha que no pertenece al apartado produce error, evitando atribuir a un contenido distinto la explicación solicitada.",
+        "La recuperación prioriza la ficha abierta y el apartado, y puede añadir hasta dos fundamentos relacionados. Selecciona como máximo cinco fichas, con un máximo de 3.500 caracteres por texto. Si la consulta abarca el curso completo ordena las fichas por coincidencias con la pregunta y el último mensaje del alumno. Es una selección léxica sencilla, transparente y acotada, sin base vectorial.",
+        "Las fuentes distinguen apuntes del curso y referencias oficiales. Los enlaces oficiales admitidos por el servidor deben ser HTTPS de boe.es y se eliminan duplicados. El contexto aclara que un enlace no significa que se haya descargado su contenido ni comprobado su vigencia. Así se puede citar el apartado didáctico que sustenta una explicación sin presentarlo como una cita normativa.",
+        "Las instrucciones piden explicar datos, unidades, fórmula, sustitución y resultado en los cálculos. Si falta información, el tutor debe indicarla; si el alumno pide practicar, se solicita primero su intento. El repaso específico revisa unidades y aritmética, conserva pasos educativos y elimina detalles normativos ausentes. Son instrucciones del sistema sometidas a límites de los modelos, no garantías matemáticas ni profesionales.",
+        "El panel ofrece preguntas de apoyo, ajuste de tamaño del texto, ampliación, copia de conversación y nuevo chat con confirmación. Cambiar de ficha modifica el contexto y reinicia el historial para no arrastrar una explicación a otro tema. Ante un fallo conserva la pregunta para reintentar. El tutor necesita la aplicación conectada y no funciona como IA dentro de un HTML abierto sin servidor."
+      ],
+      "table": {
+        "headers": [
+          "Capa",
+          "Decisión implementada",
+          "Propósito"
+        ],
+        "rows": [
+          [
+            "Ruta y caso de uso",
+            "Verifican sesión y permiso de estudio.",
+            "No aceptar autorización del navegador."
+          ],
+          [
+            "Contexto",
+            "IDs contra copia curada; máximo cinco fichas.",
+            "Explicación vinculada a material conocido."
+          ],
+          [
+            "Referencias",
+            "Apuntes separados de enlaces oficiales.",
+            "Evitar apariencia de validación normativa."
+          ],
+          [
+            "Modelo",
+            "Mismo proveedor y revisiones; instrucciones docentes.",
+            "Reutilizar infraestructura con un alcance educativo."
+          ],
+          [
+            "Interfaz",
+            "Ayuda registrada; bloqueo durante simulacro.",
+            "Distinguir práctica asistida y sin ayudas."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "18. Otras funciones y datos editoriales",
+      "paragraphs": [
+        "spending obtiene datos de la Base de Datos Nacional de Subvenciones mediante su propio adaptador y herramientas de ingesta. Los paneles muestran cobertura y periodos disponibles, convocatorias y agregados. No se debe convertir un presupuesto de convocatoria en gasto ejecutado ni interpretar un subconjunto ingerido como un total nacional completo. La cobertura disponible es parte de la interpretación.",
+        "Las radiografías fiscales y de pensiones utilizan datos curados en el repositorio, no cifras generadas por el modelo. La tabla de gobiernos también es un dato curado y se resuelve al servir la respuesta para no fijarlo dentro de un resumen permanente. Estas fuentes requieren revisión periódica y conservan fechas y referencias; las pruebas de invariantes detectan inconsistencias, pero no actualizan por sí solas el contenido.",
+        "La portada incorpora titulares RSS en pestañas España e Internacional. El lector limita el tamaño y tiempo de petición, comprueba fechas y dominios y conserva resultados recientes ante fallos parciales. Las pestañas reutilizan datos ya obtenidos. Es un servicio de enlaces a noticias, separado de los documentos oficiales y de la generación de sus resúmenes.",
+        "El juego se ejecuta en el cliente y envía el resultado a la API. La validación descarta valores imposibles y el límite por dirección reduce abusos, pero no prueba que la partida sea auténtica. El contador visual incorpora un valor inicial de cortesía; ese sumando no debe incluirse en estadísticas de partidas reales. Los informes de uso deben consultar los datos efectivamente registrados.",
+        "La interfaz incorpora controles de teclado, estados, preferencias de movimiento reducido y componentes de diálogo. Esta memoria describe medidas observables, no certifica conformidad WCAG. Tampoco convierte eventos de analítica, como llegar al final visible de una ficha, en prueba de comprensión o lectura completa."
+      ]
+    },
+    {
+      "title": "19. Instalación local y reproducción técnica",
+      "paragraphs": [
+        "El entorno de desarrollo requiere Node.js 22 o superior, npm y PostgreSQL 16; Docker Compose permite disponer de la base local. Desde la raíz se instalan las dependencias con npm ci. La configuración se prepara a partir del archivo de ejemplo y se mantiene fuera del control de versiones. No se deben copiar credenciales de producción a una demostración ni publicar los valores reales.",
+        "Para desarrollo completo, docker compose up -d db levanta PostgreSQL del compose local. npm run dev inicia el monolito y npm run dev:web inicia la web. El monolito migra antes de abrir la API. En apps/web/.env.local se configura API_URL, utilizada solo por el servidor de Next.js; no debe asumirse que un archivo .env de la raíz se aplica automáticamente a ambos procesos.",
+        "La generación real de resúmenes requiere una clave del proveedor. El bot tiene configuración y claves independientes. Los canales se activan solo si se configuran sus credenciales. Para pruebas unitarias no se necesitan llamadas al BOE, a la IA o a canales: los tests utilizan dobles y adaptadores de prueba. Las verificaciones de integración deben ejecutarse contra una base aislada y se distinguen en el informe.",
+        "Los comandos probe, ingest, resummarize y notify:test tienen efectos diferentes. Probe consulta servicios externos; ingest puede publicar avisos; resummarize actualiza resúmenes sin componer los canales; notify:test envía mensajes de prueba. No son pasos inocuos de una instalación y no se han ejecutado contra servicios reales solo para fabricar una evidencia académica.",
+        "El compose de desarrollo publica servicios locales y no debe trasladarse sin más al servidor de producción. La documentación de entrega separa instalación, demostración y operación. Las instrucciones históricas que situaban la API en un Mac no describen la topología de producción recogida en las instrucciones actuales del proyecto.",
+        "Al modificar los contenidos del curso, node scripts/generate-electricidad-context.mjs regenera la copia curada que utiliza el tutor en el servidor. El script extrae las fichas, normaliza texto, conserva referencias y valida identificadores; no incluye el banco de preguntas ni datos de usuarios. Debe ejecutarse antes de compilar la API para evitar una discrepancia entre el contenido visible y el contexto del tutor."
+      ],
+      "table": {
+        "headers": [
+          "Objetivo",
+          "Comando desde la raíz",
+          "Alcance"
+        ],
+        "rows": [
+          [
+            "Instalar",
+            "npm ci",
+            "Dependencias del lockfile."
+          ],
+          [
+            "Base local",
+            "docker compose up -d db",
+            "Solo desarrollo; requiere Docker."
+          ],
+          [
+            "API en desarrollo",
+            "npm run dev",
+            "Configuración y base válidas."
+          ],
+          [
+            "Web en desarrollo",
+            "npm run dev:web",
+            "Frontend con API_URL configurada."
+          ],
+          [
+            "Regenerar contexto de estudio",
+            "node scripts/generate-electricidad-context.mjs",
+            "Tras modificar las fichas del curso."
+          ],
+          [
+            "Pruebas unitarias",
+            "npm test",
+            "Ambos workspaces; sin envíos reales."
+          ],
+          [
+            "Tipos",
+            "npm run typecheck",
+            "Comprobación TypeScript."
+          ],
+          [
+            "Fronteras",
+            "npm run check:boundaries",
+            "Dependencias del monolito."
+          ],
+          [
+            "Integración PostgreSQL",
+            "npm run test:integration --workspace @boe-inspector/monolith",
+            "Base aislada; no es script raíz."
+          ],
+          [
+            "Build de web",
+            "npm run build --workspace @boe-inspector/web",
+            "Puede consultar la API durante prerenderizado."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "20. Verificación y evidencia reproducible",
+      "paragraphs": [
+        "La verificación separa pruebas unitarias, tipos, fronteras, compilación y observación de la interfaz. Cada clase de evidencia responde a una pregunta distinta: un test de selección de fuentes no acredita la disponibilidad del proveedor, y una compilación correcta no acredita exactitud del contenido generado.",
+        "El informe de verificación que acompaña a la entrega recoge comandos, entorno, recuentos y resultados reales. Los tests del monolito cubren, entre otros aspectos, parsing, resúmenes, reanudación, cuotas, formatos de notificación y autorización. Los de la web cubren proxies, acceso privado, prensa, datos y componentes lógicos. Las fronteras se comprueban sobre las dependencias del monolito.",
+        "No se atribuye a una prueba simulada un envío real a Telegram ni una respuesta real de MiniMax. Tampoco se utiliza la base de producción para demostrar un resultado sin necesidad. Las capturas de una demostración aislada se identifican como tales y no representan volumen real de usuarios, consultas o publicaciones del servicio.",
+        "La revisión visual debe incluir portada, ficha con enlace oficial, fuentes del asistente, acceso al complemento, rechazo de un usuario sin permiso y corrección de una tanda. La evaluación completa de accesibilidad, seguridad y calidad jurídica del contenido permanece fuera de lo que demuestran las pruebas funcionales incluidas.",
+        "La versión final se verifica después de incorporar las correcciones de notificación y el modo local. Los resultados de la revisión inicial de una rama anterior no sustituyen a esta ejecución. El informe identifica sus comandos y alcance; si una prueba no se ha ejecutado, se declara pendiente en lugar de inferir su éxito a partir de otra."
+      ]
+    },
+    {
+      "title": "21. Demostración aislada para evaluación",
+      "paragraphs": [
+        "El modo de demostración local acompaña a la copia académica para mostrar las funciones sin contratar un proveedor de IA, activar canales de avisos ni acceder a la base operativa. npm run demo arranca la API en 127.0.0.1:3101 y la web en 127.0.0.1:3100; demo:api y demo:web permiten iniciarlas por separado. Su cuenta de alumno tiene permiso de estudio y no concede administración. Las instrucciones de acceso limitadas se recogen en README y en la guía de evaluación.",
+        "El entorno utiliza como ejemplos los textos originales publicados en 2015 de la Ley 39/2015 y la Ley 40/2015, enlazados respectivamente a BOE-A-2015-10565 y BOE-A-2015-10566. Sus resúmenes y respuestas están explícitamente simulados; no se presentan como una lectura consolidada ni como confirmación de vigencia. La interfaz permite recorrer catálogo, ficha, sesión y curso; una captura de ese modo demuestra integración, no que un proveedor real haya producido el texto.",
+        "La API de demostración conserva cuentas, sesiones y ranking en memoria: reiniciarla borra ese estado. El progreso del curso sigue guardado en el navegador. El arranque local aísla la web de archivos .env operativos y desactiva las consultas de prensa y la analítica del recorrido. No configura PostgreSQL, cron ni notificaciones. Esa separación evita efectos externos y hace explícito qué parte no se está probando.",
+        "El recorrido de catálogo consiste en abrir un boletín, filtrar, entrar en una ficha y localizar primero el enlace oficial, después el resumen. El recorrido del bot muestra una pregunta, la distinción entre alcance general y ficha, y sus fuentes. Cuando la escena use una respuesta simulada debe conservarse visible su indicación en la pantalla y en la narración.",
+        "En Electricidad se inicia sesión, se abre una ficha, se hace una consulta al tutor, se resuelve una tanda y se revisa una respuesta. A continuación se muestra una tarjeta de memoria y un simulacro, explicando el bloqueo del tutor durante el modo sin pausa. La exportación de una copia cierra el flujo y evidencia que el progreso no depende de una sincronización con PostgreSQL.",
+        "La defensa alterna interfaz y código en puntos concretos: composition.ts para el orden de eventos; el adaptador de BOE para las fuentes; study-context.ts para el tutor; y las pruebas para autorización y regresiones. Se evita recorrer todos los archivos sin relación con lo que se acaba de enseñar. El guion deja margen a la explicación propia del alumno y no inventa experiencias personales.",
+        "Antes de grabar conviene reiniciar el entorno según sus instrucciones, usar datos de prueba y comprobar el micrófono, el tamaño de letra y la legibilidad de las fuentes. La grabación debe incluir voz propia y captura de pantalla; mostrar el rostro es opcional según los requisitos. La revisión final del vídeo comprueba sonido, enlaces y ausencia de datos privados antes de añadir su URL pública a la entrega."
+      ]
+    },
+    {
+      "title": "22. Transparencia, privacidad y fuentes",
+      "paragraphs": [
+        "La IA forma parte del producto: genera resúmenes y respuestas del bot. También se ha utilizado asistencia de Codex para inspeccionar el repositorio, contrastar documentación y preparar esta entrega. Son usos distintos. Esta fase documenta el estado observado y los materiales de explicación; no inventa la historia completa del desarrollo ni atribuye todo el código preexistente a una única sesión o herramienta.",
+        "El diseño sitúa las fuentes oficiales antes de la explicación derivada y avisa de que el servicio es independiente. Las condiciones del BOE requieren, entre otros aspectos, atribución, identificación de adaptaciones y ausencia de apariencia oficial; también tratan la conservación de metadatos y datos personales. Estas son referencias de diseño, no una declaración de cumplimiento jurídico integral [F2].",
+        "LEGAL.md se identifica expresamente como un borrador y contiene aspectos que necesitan revisión. Esta memoria no lo transforma en un dictamen legal. El envío del texto del BOE para resumir y el envío de preguntas del usuario al asistente son flujos diferentes: el segundo puede contener información introducida por la persona. La política debe corresponder al proveedor realmente habilitado y sus condiciones, sin prometer retención cero a partir de un único parámetro de API.",
+        "La documentación académica omite IP de infraestructura, configuración real, tokens, códigos de invitación y cuentas personales. README y la guía incluyen solo el acceso limitado destinado a la demostración. La cuenta local no accede a producción. La publicación de código para evaluación no sustituye la identificación de licencias del software, las condiciones de fuentes reutilizadas o la procedencia del material didáctico.",
+        "El borrador LEGAL.md contiene obligaciones previstas que no constituyen evidencia de implementación. Por ejemplo, no se ha acreditado una clasificación automática de datos personales con noindex en todas las fichas públicas. Las cabeceras de privacidad de las rutas del curso sí forman parte de su servidor. Esta distinción evita confundir una intención documental con una garantía aplicada.",
+        "El contenido eléctrico es material de preparación con referencias, no un texto normativo oficial. Las normas UNE remitidas no se reproducen íntegramente y los materiales de terceros no se presentan como escritos o validados por el autor sin evidencia. Cada requisito de instalación o convocatoria debe contrastarse en la fuente aplicable; esta memoria no evalúa ni certifica la exactitud normativa de todas las preguntas.",
+        "[F1] Agencia Estatal Boletín Oficial del Estado. API de datos abiertos y documentación de acceso. https://www.boe.es/datosabiertos/api/",
+        "[F2] Agencia Estatal Boletín Oficial del Estado. Aviso legal y condiciones de reutilización. https://www.boe.es/informacion/aviso_legal/index.php",
+        "[F3] Evidencia primaria de implementación: package.json; apps/monolith/src/composition.ts; apps/monolith/src/shared/config/config.ts; apps/monolith/src/modules; apps/web/src/app y apps/web/src/lib. Las rutas se interpretan desde la raíz del repositorio.",
+        "[F4] Evidencia del complemento: apps/web/private/electricidad/index.html; apps/web/private/electricidadTest/index.html; apps/web/private/electricidad-tutor.js; apps/web/src/lib/electricidad-auth.ts; scripts/generate-electricidad-context.mjs; apps/monolith/src/modules/assistant/application/study-context.ts. Los recuentos proceden de los datos realmente integrados.",
+        "Las fuentes web F1 y F2 se consultaron el 06/10/2026. La información del producto se fundamenta en el código inspeccionado y en el informe de verificación de la entrega, no en las secciones históricas del README que contradicen la implementación actual."
+      ]
+    },
+    {
+      "title": "23. Despliegue y entrega al evaluador",
+      "paragraphs": [
+        "La topología de producción documentada separa la web en Vercel del monolito y PostgreSQL en un servidor, con un túnel que publica la API. La construcción de la web y el despliegue del backend son operaciones distintas. La existencia de un commit, una copia pública o un build local no demuestra que ambos servicios estén ejecutando esa misma revisión.",
+        "https://agenteboe.com corresponde al servicio existente y se ha consultado en modo lectura durante la preparación. La entrega actualiza la copia académica pública en https://github.com/ThePatientLearner/Agente-BOE-TFM. No afirma que las nuevas correcciones o el modo de demostración se hayan desplegado en el entorno operativo. El manifiesto final identifica enlaces y alcance verificados.",
+        "El evaluador puede revisar primero la portada pública y las fichas, leer los tres PDF y consultar el código de la copia pública. El modo local demuestra además el asistente y Electricidad con una cuenta limitada y respuestas simuladas explícitas. El acceso de demostración del servicio existente no concede por sí solo estudio; para reproducir el curso completo se usa el entorno indicado en README.",
+        "Los HTML de Electricidad se mantienen en private y se entregan a través de rutas que comprueban sesión y permiso. La copia académica conserva esa integración: no crea un sitio abierto independiente del cuaderno. El tutor usa el mismo contrato de aplicación y el material curado del servidor, con proveedores reales en la configuración normal y un adaptador de demostración en el recorrido local.",
+        "La presentación y la guía ordenan la defensa alrededor del problema, la ingesta, las fuentes, la transformación con IA y la experiencia de usuario. El complemento se muestra después como ampliación real de la plataforma. El vídeo debe grabarlo el alumno y publicarlo con acceso verificable; su URL se añade a README y al formulario junto al resto de enlaces. Hasta entonces no se presenta como un requisito completado."
+      ]
+    },
+    {
+      "title": "24. Limitaciones y evolución priorizada",
+      "paragraphs": [
+        "El límite informativo principal es que un resumen o una respuesta puede ser incorrecto o incompleto. La revisión por el mismo modelo no ofrece contraste independiente. El menú se apoya en resúmenes de hasta seis resultados; la ficha puede seleccionar pasajes de un solo documento; el tutor emplea apuntes. Ninguno de esos alcances equivale a consultar todo el ordenamiento o certificar vigencia.",
+        "En operación, el bus en memoria, las escrituras separadas y los proveedores externos dejan ventanas de recuperación y posibles duplicados. Deben medirse y vigilarse; no basta con afirmar idempotencia. La actualización de datos curados y la semántica de fechas de respaldo también necesitan control editorial para que una aplicación que sigue funcionando no muestre información envejecida como actual.",
+        "En Electricidad, el usuario puede inspeccionar respuestas y modificar el progreso local. La cuenta controla acceso al recurso y al tutor, pero no convierte los resultados en certificaciones antifraude. Los intervalos de repaso se basan en autodeclaración y los cálculos necesitan revisión del procedimiento. El contenido requiere contraste con fuentes y formación apropiadas; la aplicación no habilita para ejecutar trabajos reales.",
+        "La demostración aislada favorece una evaluación reproducible sin cuentas de proveedores ni envíos, pero no mide latencia, coste real o fidelidad del modelo. Los tests de acceso y contrato tampoco equivalen a una auditoría de seguridad completa. La accesibilidad, los proveedores, los datos curados y los borradores legales requieren revisiones específicas que no se han sustituido por una certificación genérica.",
+        "Las mejoras prioritarias son reforzar reconciliación y trazabilidad de eventos, diferenciar metadatos oficiales de valores de respaldo, evaluar fidelidad de resúmenes con un conjunto de referencia y mantener sincronizadas configuración y política de privacidad. Después conviene ampliar auditoría de accesibilidad, pruebas de integración aisladas y revisión especializada del complemento educativo.",
+        "La aportación demostrable es una plataforma integrada: obtiene información oficial, la transforma de forma identificable, conserva fuentes, permite consulta y distribuye avisos; además, incorpora un área de estudio privada con autorización propia. La defensa debe explicar ese funcionamiento real y sus decisiones, con evidencia de pruebas y sin convertir posibilidades futuras en funciones ya entregadas."
+      ]
+    }
+  ],
+  "author": "Roberto Casabán",
+  "date": "2026-10-06",
+  "revision": "Reedición AgenteBOE con complemento Electricidad integrado"
+}

@@ -17,6 +17,9 @@ export class DiscordNotifier implements Notifier {
     const gobierno = lineaGobierno(message.gobierno);
 
     const content = [
+      `📄 Texto oficial: <${message.officialUrl}>`,
+      `Última actualización del texto oficial: ${message.lastOfficialUpdateAt}`,
+      "",
       `**${message.title}**`,
       `\`${impactDots(message.impact)}\` impacto ${message.impact}/5`,
       "",
@@ -24,7 +27,6 @@ export class DiscordNotifier implements Notifier {
       "",
       gobierno,
       "",
-      `📄 Texto oficial: <${message.officialUrl}>`,
       `📝 Resumen completo: ${message.summaryUrl}`,
       "",
       "-# ℹ️ Resumen generado por IA · Servicio no oficial · Solo el texto del BOE tiene validez legal.",

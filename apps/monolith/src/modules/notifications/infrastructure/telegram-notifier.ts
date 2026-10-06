@@ -23,6 +23,9 @@ export class TelegramNotifier implements Notifier {
     const gobierno = lineaGobierno(message.gobierno);
 
     const text = [
+      `📄 Texto oficial: ${message.officialUrl}`,
+      `Última actualización del texto oficial: ${escapeHtml(message.lastOfficialUpdateAt)}`,
+      "",
       `<b>${escapeHtml(message.title)}</b>`,
       `<code>${impactDots(message.impact)}</code> impacto ${message.impact}/5`,
       "",
@@ -30,7 +33,6 @@ export class TelegramNotifier implements Notifier {
       "",
       escapeHtml(gobierno),
       "",
-      `📄 Texto oficial: ${message.officialUrl}`,
       `📝 Resumen completo: ${message.summaryUrl}`,
       "",
       "ℹ️ Resumen generado por IA · Servicio no oficial · Solo el texto del BOE tiene validez legal.",

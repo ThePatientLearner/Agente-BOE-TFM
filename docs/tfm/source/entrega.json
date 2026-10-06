@@ -1,0 +1,13 @@
+{
+  "revision_date": "2026-10-06",
+  "project": "AgenteBOE",
+  "complement": "Electricidad integrado",
+  "repository_url": "https://github.com/ThePatientLearner/Agente-BOE-TFM",
+  "deployment_url": "https://agenteboe.com/",
+  "slides_url": "https://github.com/ThePatientLearner/Agente-BOE-TFM/blob/main/output/pdf/Presentacion-Agente-BOE.pdf",
+  "video_url": null,
+  "video_status": "El autor realizará y publicará la grabación con voz propia y pantalla.",
+  "academic_submission": "Pendiente: confirmar datos académicos y enviar el formulario del campus tras incorporar el vídeo.",
+  "production_code_updated": false,
+  "delivery_code": "Copia académica pública depurada con demo aislada y corrección de notificaciones."
+}

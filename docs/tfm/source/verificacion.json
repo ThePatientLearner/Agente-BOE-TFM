@@ -1,0 +1,580 @@
+{
+  "schema_version": 1,
+  "proyecto": "AgenteBOE — monorepo BoeInspector",
+  "fecha_verificacion": "2026-10-06T08:44:45+02:00",
+  "alcance": "Verificación local del código; no es certificación de producción, seguridad, exactitud jurídica ni rendimiento.",
+  "entorno": {
+    "node": "v26.8.1",
+    "npm": "11.19.0",
+    "vitest": "3.2.7",
+    "next": "15.5.26",
+    "sistema": "macOS local; no VPS"
+  },
+  "controles": {
+    "se_leyo_AGENTS_y_LEGAL": true,
+    "se_leyo_env": false,
+    "se_uso_base_produccion": false,
+    "se_ejecutaron_llamadas_IA_reales": false,
+    "se_enviaron_notificaciones": false,
+    "se_ejecuto_cron": false,
+    "se_desplego": false,
+    "se_hizo_commit_o_push": false,
+    "entorno_comandos": "Variables heredadas excluidas; solo PATH, HOME y CI para tests/typecheck/boundaries. Build en copia temporal sin .env y con fetch desactivado."
+  },
+  "hallazgos": [
+    {
+      "id": "NOTIF-01",
+      "tipo": "defecto_confirmado",
+      "estado": "corregido_localmente_con_regresion",
+      "descripcion": "El enlace oficial aparece después de la frase generada por IA en las notificaciones individuales, contrario a AGENTS.md §6.",
+      "evidencias": [
+        {
+          "archivo": "apps/monolith/src/modules/notifications/infrastructure/telegram-notifier.ts",
+          "linea_base": 29
+        },
+        {
+          "archivo": "apps/monolith/src/modules/notifications/infrastructure/discord-notifier.ts",
+          "linea_base": 23
+        }
+      ]
+    },
+    {
+      "id": "NOTIF-02",
+      "tipo": "defecto_confirmado",
+      "estado": "corregido_localmente_con_regresion",
+      "descripcion": "El contrato NotificationMessage no transporta la fecha de última actualización oficial; los adaptadores no la muestran.",
+      "evidencias": [
+        {
+          "archivo": "apps/monolith/src/modules/notifications/domain/notifier.ts",
+          "linea_base": 4
+        }
+      ]
+    },
+    {
+      "id": "PRIV-01",
+      "tipo": "limitacion_de_alcance",
+      "estado": "documentar",
+      "descripcion": "No se ha localizado un mecanismo automático de detección de datos personales y noindex por disposición en el modelo/catálogo/ruta d/[id]. No afirmar cumplimiento total del checklist de LEGAL.md.",
+      "evidencias": [
+        {
+          "archivo": "LEGAL.md",
+          "seccion": "6. Checklist de implementación"
+        },
+        {
+          "archivo": "apps/web/src/app/d/[id]/page.tsx",
+          "linea_base": 50
+        }
+      ]
+    }
+  ],
+  "no_verificado": [
+    "Integración con PostgreSQL real y migraciones",
+    "Recorrido completo de consultas autenticadas en producción; solo se comprobaron login, me y logout sin IA",
+    "Llamadas reales a MiniMax/OpenAI",
+    "Entrega real de Telegram/Discord",
+    "Tareas programadas desplegadas",
+    "Cobertura porcentual de código",
+    "Latencia, carga, disponibilidad y rendimiento",
+    "Calidad factual de todos los resúmenes y conformidad jurídica integral"
+  ],
+  "modificaciones_verificacion": [
+    "docs/tfm/source/verificacion.json",
+    "apps/monolith/src/modules/notifications/infrastructure/notifiers.test.ts",
+    "apps/monolith/src/modules/summarization/application/summarize-entry.test.ts",
+    "apps/monolith/src/modules/notifications/application/notify-entry.test.ts",
+    "apps/monolith/src/scheduler/resume-pending.test.ts"
+  ],
+  "estado": "verificacion_local_completada",
+  "baseline_antiguo": {
+    "base": {
+      "branch": "prensa-desplegable",
+      "commit": "5c3fb6509278c590c5e6b4b7643004ec52083331",
+      "arbol_inicial_limpio": true
+    },
+    "verificacion": {
+      "tests": {
+        "comando": "npm test",
+        "resultado": "correcto",
+        "codigo_salida": 0,
+        "ficheros": 33,
+        "casos": 308,
+        "fallos": 0,
+        "omitidos": 0,
+        "workspaces": [
+          {
+            "nombre": "@boe-inspector/monolith",
+            "ficheros": 25,
+            "casos": 229
+          },
+          {
+            "nombre": "@boe-inspector/web",
+            "ficheros": 8,
+            "casos": 79
+          }
+        ],
+        "limites": "Suite existente con dobles de prueba; excluye postgres-adapters.integration.test.ts. No equivale a 308 recorridos end-to-end ni mide calidad factual de resúmenes."
+      },
+      "tipos": {
+        "comando": "npm run typecheck",
+        "resultado": "correcto",
+        "codigo_salida": 0,
+        "workspaces": 2
+      },
+      "fronteras": {
+        "comando": "npm run check:boundaries",
+        "resultado": "correcto",
+        "codigo_salida": 0,
+        "modulos": 126,
+        "dependencias": 408,
+        "infracciones": 0
+      },
+      "build_web": {
+        "comando": "npm run build --workspace @boe-inspector/web",
+        "resultado": "correcto",
+        "condiciones": "Snapshot sin secretos; fetch desactivado y API_URL apuntando a loopback sin servicio. No valida datos reales de catálogo ni de RSS.",
+        "codigo_salida": 0,
+        "paginas_estaticas_generadas": 19
+      }
+    }
+  },
+  "base_actual": {
+    "branch": "tfm-agente-boe-electricidad",
+    "commit": "fa2125eeaffd56be0c5532f158b422404cd6978b",
+    "cambios_locales_no_commiteados": true,
+    "nota": "Commit de partida más cambios locales de esta entrega; no se ha realizado commit ni push."
+  },
+  "baseline_main_actual": {
+    "comando": "npm test",
+    "resultado": "correcto",
+    "casos": 402,
+    "ficheros": 40,
+    "monolith": {
+      "casos": 311,
+      "ficheros": 32
+    },
+    "web": {
+      "casos": 91,
+      "ficheros": 8
+    },
+    "nota": "Medido antes de corrección de notificaciones y antes de cambios demo."
+  },
+  "correccion_notificaciones": {
+    "casos_nuevos": 5,
+    "rojo_previo": {
+      "casos_ejecutados": 18,
+      "fallos": 5,
+      "correctos": 13
+    },
+    "verde_posterior": {
+      "casos_ejecutados": 18,
+      "fallos": 0,
+      "correctos": 18
+    },
+    "tipos_tras_correccion": "correcto",
+    "sin_migracion_de_base": true,
+    "sin_notificaciones_reales": true,
+    "sin_desplegar": true
+  },
+  "dependencias": {
+    "comando": "npm ci --ignore-scripts --no-audit --no-fund",
+    "resultado": "correcto",
+    "codigo_salida": 0,
+    "package_lock_modificado": false,
+    "nota": "Instalación según el lock actual, sin ejecutar scripts de paquetes."
+  },
+  "verificacion_final": {
+    "tests": {
+      "comando": "npm test",
+      "resultado": "correcto",
+      "codigo_salida": 0,
+      "casos": 414,
+      "ficheros": 44,
+      "fallos": 0,
+      "omitidos": 0,
+      "workspaces": [
+        {
+          "nombre": "@boe-inspector/monolith",
+          "ficheros": 35,
+          "casos": 319,
+          "fallos": 0
+        },
+        {
+          "nombre": "@boe-inspector/web",
+          "ficheros": 9,
+          "casos": 95,
+          "fallos": 0
+        }
+      ],
+      "por_archivo": [
+        {
+          "archivo": "apps/monolith/src/api/assistant.test.ts",
+          "casos": 17,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/api/electricidad.test.ts",
+          "casos": 1,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/api/server.test.ts",
+          "casos": 17,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/demo/tfm-server.test.ts",
+          "casos": 3,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/assistant/application/ask-boe.test.ts",
+          "casos": 24,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/assistant/application/context.test.ts",
+          "casos": 7,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/assistant/application/reviewed-assistant.test.ts",
+          "casos": 16,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/assistant/application/study-context.test.ts",
+          "casos": 12,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/assistant/infrastructure/cached-official-text-reader.test.ts",
+          "casos": 4,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/assistant/infrastructure/minimax-assistant.test.ts",
+          "casos": 26,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/assistant/infrastructure/openai-assistant.test.ts",
+          "casos": 5,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/catalog/application/search-terms.test.ts",
+          "casos": 2,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/electricidad/infrastructure/accounts.test.ts",
+          "casos": 10,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/electricidad/infrastructure/password.test.ts",
+          "casos": 1,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/electricidad/password-policy.test.ts",
+          "casos": 11,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/ingestion/application/ingest-daily-bulletin.test.ts",
+          "casos": 4,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/ingestion/infrastructure/boe-api-gateway.test.ts",
+          "casos": 10,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/ingestion/infrastructure/boe-document.test.ts",
+          "casos": 2,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/juego/application/registrar-partida.test.ts",
+          "casos": 8,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/juego/domain/partida.test.ts",
+          "casos": 13,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/notifications/application/notify-entry.test.ts",
+          "casos": 8,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/notifications/application/publish-day-digest.test.ts",
+          "casos": 15,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/notifications/infrastructure/notifiers.test.ts",
+          "casos": 2,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/spending/domain/convocatoria.test.ts",
+          "casos": 4,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/spending/domain/sector-beneficiario.test.ts",
+          "casos": 6,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/modules/summarization/application/summarize-entry.test.ts",
+          "casos": 1,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/scheduler/cron.test.ts",
+          "casos": 16,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/scheduler/daily-report.test.ts",
+          "casos": 8,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/scheduler/day-digest.test.ts",
+          "casos": 7,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/scheduler/resume-pending.test.ts",
+          "casos": 7,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/scheduler/review-clock.test.ts",
+          "casos": 9,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/shared/domain/boe-id.test.ts",
+          "casos": 7,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/shared/domain/comunidad.test.ts",
+          "casos": 27,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/shared/domain/iso-date.test.ts",
+          "casos": 6,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/monolith/src/shared/event-bus/in-memory-event-bus.test.ts",
+          "casos": 3,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/web/src/app/api/assistant/route.test.ts",
+          "casos": 3,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/web/src/app/api/electricidad/[action]/route.test.ts",
+          "casos": 2,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/web/src/lib/datos.test.ts",
+          "casos": 37,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/web/src/lib/electricidad-auth.test.ts",
+          "casos": 14,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/web/src/lib/press-feed.test.ts",
+          "casos": 15,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/web/src/lib/press-refresh.test.ts",
+          "casos": 4,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/web/src/lib/related-entries.test.ts",
+          "casos": 4,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/web/src/lib/request-origin.test.ts",
+          "casos": 4,
+          "resultado": "correcto"
+        },
+        {
+          "archivo": "apps/web/src/lib/review-status.test.ts",
+          "casos": 12,
+          "resultado": "correcto"
+        }
+      ],
+      "recuento": "Una única pasada final de la suite. No suma ejecuciones previas ni cuenta cada aserción como test.",
+      "limites": "Incluye pruebas unitarias y composición en memoria con dobles; no incluye PostgreSQL real ni llamadas IA o notificaciones reales."
+    },
+    "tipos": {
+      "comando": "npm run typecheck",
+      "resultado": "correcto",
+      "codigo_salida": 0,
+      "workspaces": 2
+    },
+    "fronteras": {
+      "comando": "npm run check:boundaries",
+      "resultado": "correcto",
+      "codigo_salida": 0,
+      "modulos": 134,
+      "dependencias": 432,
+      "infracciones": 0
+    },
+    "build_web": {
+      "comando": "npm run build --workspace @boe-inspector/web",
+      "resultado": "correcto",
+      "codigo_salida": 0,
+      "paginas_estaticas_generadas": 19,
+      "next": "15.5.26",
+      "condiciones": "Copia aislada del frontend final, incluidas las ramas condicionales demo y el helper de origen local; dependencias alineadas al lock. Sin archivos .env; fetch bloqueado; API_URL en loopback sin servicio; telemetría desactivada. Compilación en configuración normal, no despliegue. Posteriormente solo cambió el fixture del backend demo y su test; no se repitió el build web porque sus fuentes no cambiaron.",
+      "limites": "No se prerenderizaron disposiciones ni meses de datos reales al estar la API desactivada. No valida contenido remoto, RSS, disponibilidad ni rendimiento."
+    },
+    "diff": {
+      "comando": "git diff --check",
+      "resultado": "correcto"
+    },
+    "lockfile": {
+      "modificado": false
+    },
+    "build_monolith": {
+      "comando": "npm run build --workspace @boe-inspector/monolith",
+      "resultado": "correcto",
+      "codigo_salida": 0,
+      "condiciones": "Compilación TypeScript local después del caso de ficha de la demo, sin arrancar la aplicación ni cargar .env."
+    }
+  },
+  "title": "AgenteBOE · Verificación técnica",
+  "regresiones_nuevas": {
+    "total_casos": 12,
+    "notificaciones": 5,
+    "demo_api_memoria": 3,
+    "origen_demo_local": 4,
+    "nota": "Estos 12 casos están incluidos dentro de los 414; no deben volver a sumarse."
+  },
+  "seguridad_publicacion": {
+    "alcance": "Revisión de archivos versionados más cambios nuevos inspeccionados; detección heurística sin mostrar valores sensibles. No se leyó .env real.",
+    "ficheros_versionados": 360,
+    "textos_versionados_escaneados": 338,
+    "secretos_reales_reconocibles_detectados": 0,
+    "candidatos_clasificados": "Valores de desarrollo local, fixtures de tests, variables de entorno, ejemplos de despliegue, numeración ITC y coordenadas SVG. Las credenciales de demo local son deliberadamente públicas y no crean cuentas en PostgreSQL.",
+    "limite": "No constituye garantía absoluta de ausencia de secretos. Excluir artefactos operativos y personales antes de publicar.",
+    "excluir": [
+      "deploy/",
+      "docker-compose.prod.yml",
+      "Documentos trabajo/",
+      "apps/web/public/cv/",
+      "apps/web/public/tfm/ anterior",
+      "node_modules/",
+      ".next/",
+      "dist/",
+      "backups/",
+      "tmp/",
+      ".env salvo .env.example",
+      "logs operativos",
+      ".git/",
+      "notas de trabajo antiguas y scripts de operación no necesarios para evaluar"
+    ]
+  },
+  "revision_guia": {
+    "archivo": "docs/tfm/source/guia.json",
+    "correcciones_verificadas": [
+      "200 preguntas en total entre los ocho simulacros",
+      "Evento SummaryGenerated",
+      "Alias demo:tfm existente en package.json"
+    ],
+    "limite": "No verifica disponibilidad futura de enlaces, cuenta pública o cuotas del proveedor."
+  },
+  "paragraphs": [
+    "La verificación local del 6 de octubre de 2026 se realizó sobre la rama tfm-agente-boe-electricidad, a partir de fa2125e y con los cambios de esta entrega. La pasada final de npm test terminó con 414 casos correctos en 44 archivos: 319 en el monolito y 95 en la web. No se suman ejecuciones repetidas ni resultados de la copia antigua.",
+    "Se corrigieron dos defectos observados en las notificaciones: el texto generado precedía al enlace oficial y no se mostraba la fecha de actualización del documento. La fecha viaja ahora desde la ingesta por el evento de resumen y los reintentos; Telegram y Discord muestran fuente y fecha antes del contenido generado. Cinco regresiones nuevas fallaron antes de la corrección y pasaron después. No se enviaron mensajes reales.",
+    "La comprobación de tipos pasó en ambos workspaces y dependency-cruiser no detectó infracciones en 134 módulos y 432 dependencias. El monolito compiló después del último cambio de la demo. La compilación web también pasó y generó 19 páginas estáticas en una copia sin .env y con conexiones fetch bloqueadas; sus fuentes no cambiaron después. Esos resultados confirman la compilación, no el contenido de un catálogo de producción ni la calidad factual de la IA.",
+    "Las pruebas de demo y origen local añaden siete casos, ya incluidos en los 414. Incluyen el recorrido de ambas fichas con fragmentos oficiales parciales y una respuesta identificada como simulada. La demo usa cuentas y datos en memoria y un proveedor simulado. No se ejecutaron integración con PostgreSQL, migraciones, planificadores, generación IA real ni notificaciones de producción. Tampoco se midieron carga, latencia, disponibilidad o cobertura porcentual; no se acredita un mecanismo automático de noindex por datos personales.",
+    "La revisión en navegador recorrió acceso, consulta simulada, curso, tutor, respuesta de test, corrección y cierre de sesión. No aparecieron errores JavaScript en los recorridos registrados y el curso no desbordó horizontalmente a 390 píxeles. Son comprobaciones funcionales acotadas, no una certificación de accesibilidad. La web y el health público respondieron HTTP 200; también funcionaron login, me y logout de tfm_demo, sin enviar consultas de IA. La cuenta pública confirmó rol student y ausencia de permiso de estudio. Evidencias: navegador.json, navegador-ficha.json y servicio-publico.json.",
+    "La copia pública depurada se instaló por separado desde cero, sin modificar el lockfile. Repitió las 414 pruebas, tipos, fronteras y compilación del monolito; sus 260 archivos de aplicación comparados coincidieron con la versión revisada. El lanzador de esa copia superó además 15 comprobaciones HTTP de cuentas, fichas, asistente, curso, tutor y restricciones. Esta repetición verifica la exportación y no aumenta el número de casos unitarios. Evidencia: copia-publica.json."
+  ],
+  "table": {
+    "headers": [
+      "Comprobación",
+      "Resultado",
+      "Alcance"
+    ],
+    "rows": [
+      [
+        "Tests monolito",
+        "319 / 319; 35 archivos",
+        "Casos de uso, adaptadores simulados, API inyectada y demo en memoria."
+      ],
+      [
+        "Tests web",
+        "95 / 95; 9 archivos",
+        "Datos, utilidades, autorización, proxies y origen local."
+      ],
+      [
+        "Tipos",
+        "Correcto en ambos workspaces",
+        "npm run typecheck."
+      ],
+      [
+        "Fronteras",
+        "0 infracciones",
+        "134 módulos; 432 dependencias."
+      ],
+      [
+        "Build monolito",
+        "Correcto",
+        "Compilación TypeScript local, sin arrancar servicios."
+      ],
+      [
+        "Build web",
+        "Correcto; 19 páginas estáticas",
+        "Snapshot aislado, sin .env, API ni RSS reales."
+      ],
+      [
+        "Regresiones nuevas",
+        "12 incluidas en el total",
+        "5 de notificaciones; 3 de demo; 4 de origen local."
+      ],
+      [
+        "Fuera de esta verificación",
+        "Declarado expresamente",
+        "PostgreSQL real, IA real, envíos, cron, producción y rendimiento."
+      ],
+      [
+        "Navegador y acceso",
+        "Recorridos locales y login público correctos",
+        "Chrome 154; sin preguntas reales a proveedores."
+      ]
+    ]
+  },
+  "huella_fuentes_verificados": {
+    "algoritmo": "sha256",
+    "ambito": "Fuentes monolith/src, web/src, web/private, package.json, lock, next.config.ts y tfm-demo.mjs ordenados por ruta relativa.",
+    "valor": "03e8680842476a9a3f69b7bbf6d92059fe1c4107c61d27ad55cf2949b9d71f12",
+    "metodo": "SHA-256 de la concatenación ruta UTF-8 + byte NUL + contenido + byte NUL, por archivo ordenado por ruta relativa.",
+    "archivos": 260
+  }
+}

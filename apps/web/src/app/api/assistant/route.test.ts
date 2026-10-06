@@ -20,4 +20,11 @@ describe('proxy del bot', () => {
     expect(await response.json()).toEqual({ answer: 'Texto [1]', sources: [] });
     expect(response.headers.get('cache-control')).toContain('no-store');
   });
+  it('transmite los IDs del curso al tutor sin exponer la sesión', async () => {
+    const fetcher = vi.fn().mockResolvedValue(Response.json({ answer: 'Ejemplo del curso [1]', sources: [] })); vi.stubGlobal('fetch', fetcher);
+    const req = new NextRequest('https://agenteboe.com/api/assistant', { method: 'POST', headers: { Origin: 'https://agenteboe.com', Cookie: 'electricidad_session=token', 'Content-Type': 'application/json' }, body: JSON.stringify({ question: '¿Cómo calculo la intensidad?', study: { sectionId: 'fund', cardId: 'ohm' }, history: [] }) });
+    const response = await POST(req);
+    expect(JSON.parse(fetcher.mock.calls[0]![1].body).study).toEqual({ sectionId: 'fund', cardId: 'ohm' });
+    expect(await response.text()).not.toContain('token');
+  });
 });

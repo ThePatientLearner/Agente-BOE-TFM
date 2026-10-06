@@ -1,0 +1,432 @@
+{
+  "title": "AgenteBOE · Guía de evaluación y defensa",
+  "sections": [
+    {
+      "title": "1. Empieza aquí",
+      "paragraphs": [
+        "Esta entrega tiene un proyecto principal, AgenteBOE, y una ampliación integrada, Electricidad. La memoria explica el diseño y sus límites. La presentación sirve de apoyo visual. Esta guía permite probar la aplicación, preparar la explicación personal y reunir los enlaces del formulario académico.",
+        "La web pública muestra el servicio en funcionamiento. La demo local permite recorrer el catálogo, la autenticación, el asistente y el área de estudio sin aportar claves de IA ni una base de datos. Sus respuestas se identifican como simuladas y no deben presentarse como resultados de un modelo real.",
+        "El material nuevo de referencia está en output/pdf dentro del repositorio público. Los PDF publicados con anterioridad bajo agenteboe.com/tfm pueden corresponder a otra edición: utiliza los enlaces de esta guía y del README de la entrega."
+      ],
+      "table": {
+        "headers": [
+          "Material",
+          "Dónde encontrarlo"
+        ],
+        "rows": [
+          [
+            "Código y README",
+            "https://github.com/ThePatientLearner/Agente-BOE-TFM"
+          ],
+          [
+            "Aplicación pública",
+            "https://agenteboe.com/"
+          ],
+          [
+            "Memoria actual",
+            "output/pdf/Memoria-Agente-BOE.pdf"
+          ],
+          [
+            "Presentación actual",
+            "output/pdf/Presentacion-Agente-BOE.pdf"
+          ],
+          [
+            "Esta guía",
+            "output/pdf/Guia-Evaluacion-Grabacion-Entrega.pdf"
+          ],
+          [
+            "Vídeo del autor",
+            "Pendiente de grabación y publicación por Roberto Casabán."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "2. Qué se está evaluando",
+      "paragraphs": [
+        "AgenteBOE obtiene disposiciones de la Sección I del BOE, genera resúmenes estructurados con IA, proyecta un catálogo y distribuye avisos configurables. La web permite consultar las fichas y sus fuentes. BoeBot responde desde el archivo o desde el documento abierto; el alcance concreto cambia según el contexto.",
+        "Electricidad amplía la plataforma con estudio y práctica. Se sirve tras verificar una sesión y un permiso de estudio. El tutor utiliza el contexto del cuaderno, mientras que tests y simulacros ofrecen autoevaluación. El progreso se conserva en el navegador por usuario, sin sincronización entre dispositivos.",
+        "La entrega contiene el código del módulo complementario en apps/web/private. El nombre de esa carpeta describe cómo se sirve en la aplicación; el código fuente sí se incluye para poder evaluarlo. Los HTML no se han trasladado al directorio estático public."
+      ],
+      "table": {
+        "headers": [
+          "Entorno",
+          "Qué demuestra",
+          "Límite"
+        ],
+        "rows": [
+          [
+            "Web pública",
+            "Catálogo desplegado, fuentes y funciones disponibles.",
+            "La disponibilidad se observa en un momento; el backend desplegado no se identifica con cada cambio local."
+          ],
+          [
+            "Demo local",
+            "Recorrido completo, cuentas, permisos, cuaderno y tutor.",
+            "Catálogo de ejemplo, memoria volátil y proveedor simulado."
+          ],
+          [
+            "Código y pruebas",
+            "Casos de uso, contratos, validaciones y cambios de esta edición.",
+            "Las pruebas no certifican fidelidad jurídica, seguridad total ni disponibilidad futura."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "3. Arrancar la demo local",
+      "paragraphs": [
+        "Requisitos: Git, Node.js 22 o posterior y npm. Se necesita conexión para descargar las dependencias. Después, la demostración utiliza la API de prueba local. Ejecuta los siguientes comandos desde una carpeta de trabajo; no es necesario crear un archivo .env.",
+        "git clone https://github.com/ThePatientLearner/Agente-BOE-TFM.git\ncd Agente-BOE-TFM\nnpm ci\nnpm run demo:tfm",
+        "Espera al mensaje de disponibilidad de Next.js y abre http://127.0.0.1:3100. La API de demostración escucha en 127.0.0.1:3101. El lanzador prepara una copia temporal del frontend y usa únicamente adaptadores de demostración: no arranca la composición de producción, el planificador ni los notificadores.",
+        "El catálogo de ejemplo emplea referencias oficiales reales a las leyes 39/2015 y 40/2015, publicadas el 2 de octubre de 2015. Los textos breves y las respuestas están etiquetados como demostración. Esa fecha identifica la publicación de los documentos originales, no su última reforma ni su vigencia actual.",
+        "Para detener la demo, pulsa Ctrl+C en la terminal. Los datos de la API viven en memoria y se reinician al volver a arrancar. El progreso de Electricidad, como en la aplicación, pertenece al almacenamiento del navegador: una ventana privada ayuda a preparar un recorrido limpio."
+      ],
+      "table": {
+        "headers": [
+          "Acceso local",
+          "Valor"
+        ],
+        "rows": [
+          [
+            "Aplicación",
+            "http://127.0.0.1:3100"
+          ],
+          [
+            "Usuario",
+            "alumno_demo"
+          ],
+          [
+            "Contraseña",
+            "AulaLocal!2026-TFM"
+          ],
+          [
+            "Permisos",
+            "Asistente y estudio. Sin administración."
+          ],
+          [
+            "IA",
+            "Proveedor simulado. Sin clave ni coste de generación."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "4. Recorrido del núcleo AgenteBOE",
+      "paragraphs": [
+        "Empieza en la portada. Identifica el boletín mostrado, localiza una disposición y abre su ficha. Señala el título oficial, el enlace a boe.es, la fecha visible y la separación entre fuente y resumen generado. Explica que la clasificación de impacto pertenece al sistema y no al BOE.",
+        "En la web pública puedes recorrer los boletines y filtros disponibles. En la demo hay un catálogo pequeño y controlado: no lo presentes como cobertura de todos los boletines. Abre la fuente oficial si tienes conexión y comprueba que el identificador coincide con el de la ficha.",
+        "Abre BoeBot e inicia sesión con la cuenta de demostración adecuada al entorno. En la demo local formula una pregunta breve sobre la disposición y muestra la respuesta identificada como ejemplo. Explica qué datos recibe realmente el asistente en producción: resúmenes en el contexto de archivo y texto oficial en el de una ficha.",
+        "Termina este recorrido señalando que una respuesta con fuentes sigue necesitando contraste. El sistema facilita la lectura; la documentación no lo presenta como asesor jurídico ni como buscador exhaustivo de legislación vigente."
+      ],
+      "table": {
+        "headers": [
+          "Acción",
+          "Resultado que debes observar"
+        ],
+        "rows": [
+          [
+            "Abrir portada",
+            "Boletín o catálogo visible, con aviso del carácter independiente del servicio."
+          ],
+          [
+            "Abrir una ficha",
+            "Fuente oficial identificable y contenido generado diferenciado."
+          ],
+          [
+            "Abrir el asistente",
+            "Acceso mediante cuenta; la lectura pública no exige sesión."
+          ],
+          [
+            "Consultar en demo",
+            "Respuesta de ejemplo explícita, sin presentarla como salida real de IA."
+          ],
+          [
+            "Cerrar sesión",
+            "Las funciones privadas vuelven a exigir autenticación."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "5. Recorrido del complemento Electricidad",
+      "paragraphs": [
+        "Con la demo local arrancada, abre /electricidad. Sin sesión aparece el acceso a la cuenta. Entra como alumno_demo: esta cuenta tiene permiso de estudio, por lo que se mostrará el cuaderno y la identificación del usuario. La cuenta pública de producción tfm_demo no posee ese permiso.",
+        "Selecciona una sección del cuaderno, abre una ficha y muestra su explicación, fórmulas o preguntas de repaso. El contenido integra 57 secciones, 224 fichas, 1.271 preguntas y 39 fórmulas. Estos recuentos describen el material incluido y no una homologación académica o profesional.",
+        "Abre BoeBot desde esa sección. El panel identifica el tema consultado. Utiliza una sugerencia o una duda breve para mostrar la interacción. En la demo el proveedor devuelve un ejemplo controlado; en producción el servidor construye el contexto con material del curso, sin aceptar como autoridad cualquier texto enviado por el navegador.",
+        "Haz un test corto y muestra la corrección. Las respuestas y el progreso se procesan en el navegador. Muestra después /electricidadTest y selecciona un simulacro: hay ocho, con 200 preguntas en total (cuatro de 40 básicas y cuatro de 10 de especialista). Para la defensa basta un fragmento; no es necesario completar un examen entero.",
+        "Distingue práctica y evaluación personal. Durante un simulacro sin ayudas, el tutor puede quedar deshabilitado. La presencia de soluciones en el cliente y el almacenamiento local impiden tratar la puntuación como certificación o sistema antifraude."
+      ],
+      "table": {
+        "headers": [
+          "Aspecto",
+          "Qué explicar al profesor"
+        ],
+        "rows": [
+          [
+            "Integración",
+            "Misma plataforma y sesión; permiso de estudio adicional."
+          ],
+          [
+            "Tutor contextual",
+            "Dudas sobre el tema abierto. La demo simula la generación."
+          ],
+          [
+            "Persistencia",
+            "Progreso local por cuenta en ese navegador; no sincronizado."
+          ],
+          [
+            "Autorización",
+            "El servidor comprueba el permiso antes de devolver los HTML."
+          ],
+          [
+            "Propósito",
+            "Estudiar y practicar. No emitir certificados ni validar instalaciones reales."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "6. Acceso al servicio público",
+      "paragraphs": [
+        "La portada, el catálogo y las fichas de https://agenteboe.com/ se consultan sin sesión. La cuenta dedicada que ya figura en la documentación del servicio permite demostrar el asistente con permisos de usuario normal. No es una cuenta de administración ni habilita Electricidad.",
+        "Usuario: tfm_demo\nContraseña: Lectura del boletin TFM 2026!",
+        "Las cinco consultas diarias de esa cuenta se comparten entre todas las personas que la utilicen. Una consulta real puede consumir cuota del servicio. Para repetir tomas, ensayar o evaluar Electricidad, utiliza la demo local, que no depende de ese límite ni genera llamadas de pago.",
+        "Si el servicio público no responde durante la defensa, muestra la demo local y declara el cambio de entorno. No presentes una respuesta simulada como resultado en vivo del proveedor. Las capturas de la memoria indican su procedencia."
+      ]
+    },
+    {
+      "title": "7. Verificación técnica y lectura del código",
+      "paragraphs": [
+        "La memoria incorpora el resultado final de las comprobaciones de esta edición, con sus límites. La evidencia estructurada está en docs/tfm/source/verificacion.json y en los registros de validación adjuntos. El número de pruebas debe leerse con esa evidencia; no se suman pasadas repetidas de la misma suite.",
+        "Los comandos de comprobación habituales son npm test, npm run typecheck y npm run check:boundaries. El monolito se compila con npm run build --workspace @boe-inspector/monolith. La compilación de la web debe usar una API local controlada si se quieren incluir datos de catálogo.",
+        "Para entender el diseño, empieza en composition.ts, sigue EntryIngested y SummaryGenerated y revisa los puertos de cada módulo. Después consulta las rutas API del asistente y de las cuentas, y el control de acceso de electricidad-auth.ts. La demo construye sus adaptadores por separado y evita arrancar el servicio de producción."
+      ],
+      "table": {
+        "headers": [
+          "Ruta desde la raíz",
+          "Responsabilidad"
+        ],
+        "rows": [
+          [
+            "apps/monolith/src/composition.ts",
+            "Composición de módulos y suscripción a eventos."
+          ],
+          [
+            "apps/monolith/src/modules",
+            "Ingesta, resumen, catálogo, avisos, asistente y módulos adicionales."
+          ],
+          [
+            "apps/monolith/src/api",
+            "Contratos HTTP y comprobaciones de permisos."
+          ],
+          [
+            "apps/web/src/app",
+            "Páginas Next.js y proxies del servidor."
+          ],
+          [
+            "apps/web/src/lib/electricidad-auth.ts",
+            "Sesión, permiso de estudio y entrega de HTML privados."
+          ],
+          [
+            "apps/web/private",
+            "Cuaderno, simulacros y cliente del tutor."
+          ],
+          [
+            "docs/tfm/source y scripts/build_tfm_docs.py",
+            "Contenido y generación reproducible de los PDF."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "8. Preparar la grabación",
+      "paragraphs": [
+        "La grabación corresponde al autor y debe incluir su propia explicación y captura de pantalla. Mostrar la cara es opcional según el documento de requisitos. Este guion es un apoyo para comprender y exponer el trabajo; evita leerlo literalmente sin revisar lo que vas a defender.",
+        "Como propuesta de edición, prepara entre 10 y 15 minutos. No es una duración exigida por el máster: el PDF de requisitos no fija una. Ajusta el ritmo al contenido y a las instrucciones de tu edición del curso.",
+        "Antes de grabar: arranca la demo, abre la presentación PDF, prepara una ficha del BOE y una sección de Electricidad, comprueba el micrófono y realiza una toma de 20 segundos. Usa un navegador limpio, un tamaño de texto legible y cierra terminales o paneles que muestren configuración personal.",
+        "Reserva la mayor parte de la explicación para el problema, el flujo BOE, el diseño y la evidencia. Electricidad debe ocupar un bloque final claramente identificado como ampliación. El vídeo no necesita enseñar todas las páginas ni todo el código."
+      ],
+      "table": {
+        "headers": [
+          "Bloque orientativo",
+          "Duración",
+          "Pantalla"
+        ],
+        "rows": [
+          [
+            "Problema y propuesta",
+            "1-2 min",
+            "Presentación, primeras diapositivas."
+          ],
+          [
+            "Demostración AgenteBOE",
+            "3-4 min",
+            "Portada, ficha, fuente y BoeBot."
+          ],
+          [
+            "Arquitectura y pruebas",
+            "2-3 min",
+            "Diagrama, código breve e informe."
+          ],
+          [
+            "Electricidad como extra",
+            "2-3 min",
+            "Acceso, cuaderno, tutor y simulacro."
+          ],
+          [
+            "Límites y cierre",
+            "1-2 min",
+            "Presentación y enlaces de entrega."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "9. Guion de explicación sugerido",
+      "paragraphs": [
+        "Apertura. «Presento AgenteBOE, una aplicación que facilita la lectura de disposiciones del Boletín Oficial del Estado. El proyecto conserva la relación con la fuente oficial y utiliza IA para ofrecer una primera explicación. Además, incorpora un área de estudio de Electricidad como ampliación de la misma plataforma». Adapta estas palabras a tu forma de hablar.",
+        "Problema y alcance. Explica por qué organizas el contenido por boletines y fichas y qué puede hacer un visitante sin cuenta. Muestra una disposición y localiza el documento oficial antes de comentar el resumen. Distingue el texto del BOE de la interpretación generada.",
+        "Demostración. Recorre el catálogo, abre una ficha y utiliza el asistente. Di en voz alta si estás en producción o en la demo local. Si utilizas la demo: «Esta respuesta está simulada para que el recorrido sea reproducible y no necesite una clave; el código del proveedor real está incluido y el servicio público usa la integración real».",
+        "Diseño. Con el diagrama, sigue la ingesta y EntryIngested; después, el alta del catálogo y la generación del resumen; y finalmente SummaryGenerated, la actualización del catálogo y los avisos. Explica por qué los módulos poseen sus datos y se comunican mediante contratos. Señala que el bus está en memoria y que la recuperación de pendientes no equivale a una garantía transaccional de procesamiento exactamente una vez.",
+        "IA. Describe la estructura del resumen y sus revisiones, y los tres contextos del asistente. Explica una limitación concreta: la información recuperada puede ser incompleta y la revisión del mismo modelo no es una comprobación independiente de verdad jurídica.",
+        "Ampliación. Abre Electricidad dentro de la demo. Explica el permiso de estudio, muestra una ficha y el tutor contextual, y termina con un test o la selección de simulacro. Aclara que el progreso permanece en el navegador y que el material es de aprendizaje.",
+        "Evidencia y cierre. Muestra el informe final de pruebas y explica qué se comprobó y qué quedó fuera, sin atribuirte métricas de usuarios o experimentos que no se realizaron. Termina con la aportación del proyecto y una mejora prioritaria. Presenta los enlaces a código, web y documentación."
+      ]
+    },
+    {
+      "title": "10. Preguntas de defensa y puntos clave",
+      "table": {
+        "headers": [
+          "Pregunta posible",
+          "Respuesta que debes poder desarrollar"
+        ],
+        "rows": [
+          [
+            "¿Por qué un monolito modular?",
+            "Permite un único despliegue del backend con fronteras entre responsabilidades. La separación por puertos facilita cambiar adaptadores y probar casos de uso sin servicios reales."
+          ],
+          [
+            "¿Cómo evitas perder la fuente?",
+            "Identificadores del BOE, metadatos y URL se conservan; la interfaz distingue fuente oficial de contenido generado. Los avisos corregidos sitúan el enlace y la fecha antes de la explicación."
+          ],
+          [
+            "¿El bot conoce toda la legislación?",
+            "No. Depende del archivo, del documento abierto o del curso. Ni el catálogo ni el modelo garantizan exhaustividad o vigencia."
+          ],
+          [
+            "¿Por qué Electricidad pertenece al TFM?",
+            "Es una ampliación de AgenteBOE: utiliza cuentas, autorización y asistente contextual dentro de la misma plataforma; no sustituye su objetivo principal."
+          ],
+          [
+            "¿La demo prueba el modelo real?",
+            "No. Prueba el recorrido con respuestas controladas. La implementación del proveedor y el servicio desplegado se documentan por separado."
+          ],
+          [
+            "¿Los tests certifican seguridad?",
+            "No. Comprueban comportamientos concretos, contratos y regresiones. La memoria indica las validaciones realizadas y las que no se han ejecutado."
+          ],
+          [
+            "¿Cómo has utilizado IA al desarrollar?",
+            "Distingue asistencia de desarrollo y documentación de la IA del producto. Explica revisiones y verificaciones concretas; no inventes un historial completo que no esté documentado."
+          ],
+          [
+            "¿Qué mejorarías primero?",
+            "Trazabilidad y recuperación del flujo de eventos, evaluación de fidelidad con un conjunto de referencia y revisión de contenido y accesibilidad."
+          ]
+        ]
+      },
+      "paragraphs": []
+    },
+    {
+      "title": "11. Incidencias habituales durante la demo",
+      "table": {
+        "headers": [
+          "Síntoma",
+          "Actuación"
+        ],
+        "rows": [
+          [
+            "No abre 127.0.0.1:3100",
+            "Revisa la terminal y espera a que Next anuncie disponibilidad. Confirma Node y npm. Si un puerto está ocupado, detén la instancia anterior que hayas iniciado."
+          ],
+          [
+            "El login falla",
+            "Usa alumno_demo con AulaLocal!2026-TFM en la demo local. Las credenciales de producción son distintas. Mantén 127.0.0.1 como origen durante todo el recorrido."
+          ],
+          [
+            "La cuenta no accede a Electricidad",
+            "La cuenta tfm_demo del servicio público solo tiene bot. Para el módulo utiliza la cuenta de la demo local, que sí tiene permiso de estudio."
+          ],
+          [
+            "La respuesta parece repetida",
+            "Es esperable en la demo: el proveedor está simulado. No es una medición de la calidad de la IA real."
+          ],
+          [
+            "Quedan respuestas de un ensayo",
+            "Abre una ventana privada nueva para el navegador. Reiniciar la API no borra automáticamente el progreso local del cuaderno."
+          ],
+          [
+            "No funciona una fuente externa",
+            "Conserva el identificador y enlace, comprueba la conectividad y continúa con el material local. No sustituyas la fuente por una referencia inventada."
+          ]
+        ]
+      },
+      "paragraphs": []
+    },
+    {
+      "title": "12. Ficha de entrega y acciones personales",
+      "paragraphs": [
+        "El requisito académico de repositorio público se resuelve con la copia de entrega Agente-BOE-TFM. El original de desarrollo conserva su privacidad. La presentación está adjunta al código y tiene una URL pública; no se necesita una excepción de acceso privado para evaluarla.",
+        "Antes del envío, confirma que Roberto Casabán coincide con el nombre completo de la matrícula e introduce el correo de inscripción directamente en el formulario. No hace falta publicar ese correo en GitHub. La URL del formulario y la fecha límite deben consultarse en el campus: no aparecen concretadas en el PDF facilitado.",
+        "Graba y publica el vídeo con acceso mediante enlace. Ábrelo sin iniciar sesión para comprobar que el profesor puede verlo. Añade la URL real al README y al formulario. La preparación de esta entrega no equivale al envío del formulario y no incluye una grabación que todavía no se ha realizado."
+      ],
+      "table": {
+        "headers": [
+          "Campo",
+          "Valor o acción"
+        ],
+        "rows": [
+          [
+            "Nombre",
+            "Roberto Casabán. Confirmar nombre completo de matrícula."
+          ],
+          [
+            "Email",
+            "Correo utilizado en la inscripción; introducir en el campus."
+          ],
+          [
+            "Repositorio",
+            "https://github.com/ThePatientLearner/Agente-BOE-TFM"
+          ],
+          [
+            "Despliegue",
+            "https://agenteboe.com/"
+          ],
+          [
+            "Presentación PDF",
+            "[Abrir la presentación pública en GitHub](https://github.com/ThePatientLearner/Agente-BOE-TFM/blob/main/output/pdf/Presentacion-Agente-BOE.pdf)"
+          ],
+          [
+            "Vídeo",
+            "Pendiente: grabar, publicar y copiar el enlace público real."
+          ],
+          [
+            "Credenciales",
+            "Demo local: alumno_demo / AulaLocal!2026-TFM. Servicio público, solo bot: tfm_demo / Lectura del boletin TFM 2026!"
+          ],
+          [
+            "Envío",
+            "Formulario de la lección Proyecto Final. Guardar justificante al enviarlo."
+          ]
+        ]
+      },
+      "bullets": [
+        "Revisar los tres PDF y ejecutar el recorrido local antes de grabar.",
+        "Comprobar los enlaces de código, aplicación, presentación y vídeo sin depender de la sesión personal.",
+        "Confirmar los datos académicos y enviar el formulario desde el campus.",
+        "Conservar el ZIP, el vídeo y el justificante de envío."
+      ]
+    }
+  ]
+}

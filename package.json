@@ -7,6 +7,10 @@
     "apps/*"
   ],
   "scripts": {
+    "demo": "node scripts/tfm-demo.mjs",
+    "demo:tfm": "node scripts/tfm-demo.mjs",
+    "demo:api": "node scripts/tfm-demo.mjs api",
+    "demo:web": "node scripts/tfm-demo.mjs web",
     "dev": "npm run dev --workspace @boe-inspector/monolith",
     "dev:web": "npm run dev --workspace @boe-inspector/web",
     "probe": "npm run probe --workspace @boe-inspector/monolith",

@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-06",
+  "environment": "Demo local en 127.0.0.1:3100; Chrome headless real",
+  "note": "Estas comprobaciones UI son independientes de los casos unitarios; no se suman a su recuento.",
+  "runs": [
+    {
+      "date": "2026-10-06T06:41:36.732Z",
+      "browser": "154.0.8037.97",
+      "errors": [],
+      "requestOrigins": [
+        "http://127.0.0.1:3100"
+      ],
+      "checks": [
+        "anonymous account screen",
+        "login student",
+        "private course rendered",
+        "assistant simulated response"
+      ]
+    },
+    {
+      "date": "2026-10-06T06:40:52.931Z",
+      "errors": [],
+      "mobileHorizontalOverflow": false,
+      "checks": [
+        "course section",
+        "tutor simulated response",
+        "expand tutor",
+        "practice test",
+        "exam selector",
+        "mobile course 390px"
+      ]
+    },
+    {
+      "date": "2026-10-06T06:41:36.957Z",
+      "errors": [],
+      "checks": [
+        "answer practice question",
+        "submit attempt",
+        "result visible",
+        "localStorage namespaced by demo user",
+        "logout",
+        "exam access denied after logout"
+      ]
+    }
+  ]
+}

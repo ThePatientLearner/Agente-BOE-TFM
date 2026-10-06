@@ -33,6 +33,7 @@ const fetchSource = unstable_cache(async (source: PressSource) => {
 }, ["press-sections-v2"], { revalidate: PRESS_REFRESH_MS / 1000 });
 
 export async function fetchPressHeadlines() {
+  if (process.env.TFM_DEMO === 'true') return PRESS_SOURCES.map(source => ({ source, headline: null, checkedAt: null }));
   return Promise.all(PRESS_SOURCES.map(async (source) => {
     try {
       const result = await fetchSource(source);

@@ -8,6 +8,8 @@ export interface NotificationMessage {
   /** Impacto en el ciudadano, 1-5; se pinta como ●●●○○. */
   readonly impact: number;
   readonly officialUrl: string;
+  /** Fecha ISO del texto oficial; no la de generación ni la de envío. */
+  readonly lastOfficialUpdateAt: string;
   readonly summaryUrl: string;
   /** Quién gobierna lo que toca: la comunidad afectada, o el Estado. */
   readonly gobierno: GobiernoView;
