@@ -4,7 +4,7 @@ import { todayIn } from '../../../shared/domain/iso-date.js';
 import { AssistantError, type UsageBudget } from '../domain/assistant.js';
 
 /** Consultas al día por cuenta (el administrador no tiene límite). */
-export const DAILY_QUERIES = 5;
+export const DAILY_QUERIES = 10;
 
 export class PostgresBudget implements UsageBudget {
   constructor(private readonly db: Database, private readonly dailyTokens: number) {}

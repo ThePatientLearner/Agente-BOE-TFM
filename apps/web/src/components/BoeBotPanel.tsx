@@ -177,7 +177,7 @@ export default function BoeBotPanel({ entryId, telegramContactUrl, onClose }: { 
           </section>
           <div className="boe-bot-access">
         <h3>{register ? 'Crea tu cuenta.' : 'Entra y pregunta.'}</h3>
-        <p className="boe-bot-auth-description">{register ? 'Para registrarte necesitas la contraseña de registro, además de una contraseña personal para tu cuenta.' : 'Accede con tu usuario y contraseña.'} Dispones de 5 consultas al día.</p>
+        <p className="boe-bot-auth-description">{register ? 'Para registrarte necesitas la contraseña de registro, además de una contraseña personal para tu cuenta.' : 'Accede con tu usuario y contraseña.'} Dispones de 10 consultas al día.</p>
         <div className="boe-bot-auth-tabs"><button type="button" aria-pressed={!register} disabled={busy} onClick={() => { setRegister(false); setError(''); }}>Entrar</button><button type="button" aria-pressed={register} disabled={busy} onClick={() => { setRegister(true); setError(''); }}>Crear cuenta</button></div>
         <form onSubmit={authenticate} key={String(register)}>
           {register && <><label htmlFor="bot-registration-code">Contraseña de registro</label><input id="bot-registration-code" name="code" type="password" autoComplete="off" aria-describedby="bot-registration-help" required maxLength={128} disabled={busy} /><p id="bot-registration-help" className="boe-bot-fine">Necesitas conocerla para crear tu cuenta.</p></>}
@@ -192,7 +192,7 @@ export default function BoeBotPanel({ entryId, telegramContactUrl, onClose }: { 
         </div>
       </div> : <>
         <div className="boe-bot-account"><span>Hola, {user.username}</span><button type="button" disabled={busy} onClick={() => { setMessages([]); setQuestion(''); setError(''); }}>Nueva consulta</button><button type="button" aria-pressed={profile} disabled={busy} onClick={() => { setProfile(p => !p); setError(''); }}>Editar perfil</button><button type="button" disabled={busy} onClick={logout}>Salir</button></div>
-        <div className="boe-bot-quota">{user.role === 'admin' ? 'Administrador · Consultas ilimitadas' : '5 consultas al día · Se renuevan a medianoche (Madrid)'}</div>
+        <div className="boe-bot-quota">{user.role === 'admin' ? 'Administrador · Consultas ilimitadas' : '10 consultas al día · Se renuevan a medianoche (Madrid)'}</div>
         {user.role === 'admin' && bots.length > 1 && <div className="boe-bot-model">
           <label htmlFor="bot-model">IA para toda la web</label>
           <select id="bot-model" value={bot} disabled={busy} onChange={e => void chooseBot(e.target.value)}>

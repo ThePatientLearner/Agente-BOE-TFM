@@ -86,7 +86,7 @@ En [agenteboe.com](https://agenteboe.com/), abrir BoeBot → Entrar:
 - Usuario: `tfm_demo`
 - Contraseña: `Lectura del boletin TFM 2026!`
 
-Es una cuenta dedicada ya documentada para evaluación, con cinco consultas
+Es una cuenta dedicada ya documentada para evaluación, con diez consultas
 ordinarias diarias compartidas entre sus usuarios. **No tiene administración ni
 permiso de Electricidad**. Para demostrar el complemento y repetir ensayos sin
 consumir cuota, usar la cuenta de la demo local. Las credenciales de un entorno

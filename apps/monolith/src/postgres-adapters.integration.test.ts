@@ -14,13 +14,14 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { createDatabase, type Database, type DatabaseHandle } from "./shared/db/connection.js";
 import { runMigrations } from "./shared/db/migrate.js";
 import { BoeId } from "./shared/domain/boe-id.js";
-import { isoDate, type IsoDate } from "./shared/domain/iso-date.js";
+import { isoDate, todayIn, type IsoDate } from "./shared/domain/iso-date.js";
 import { InMemoryEventBus } from "./shared/event-bus/in-memory-event-bus.js";
 import { BoeEntry, entryIngested, PostgresEntryRepository } from "./modules/ingestion/index.js";
 import { PostgresSummaryRepository, summaryGenerated } from "./modules/summarization/index.js";
 import { PostgresNotificationLog } from "./modules/notifications/index.js";
 import { PostgresCatalogProjection } from "./modules/catalog/index.js";
 import { PostgresConvocatoriaRepository, urlOficialDe } from "./modules/spending/index.js";
+import { PostgresBudget } from "./modules/assistant/infrastructure/postgres-budget.js";
 
 const logger = pino({ level: "silent" });
 
@@ -64,7 +65,7 @@ afterAll(async () => {
 beforeEach(async () => {
   await db.execute(
     sql.raw(
-      "truncate ingestion.entries, summarization.summaries, notifications.notification_log, catalog.entries, spending.convocatorias restart identity",
+      "truncate ingestion.entries, summarization.summaries, notifications.notification_log, catalog.entries, spending.convocatorias, assistant.usage restart identity",
     ),
   );
 });
@@ -101,6 +102,38 @@ function anEntry(rawId = "BOE-A-2026-16758"): BoeEntry {
 }
 
 // ── ingestion ────────────────────────────────────────────────────
+
+describe("PostgresBudget", () => {
+  it("permite la décima consulta y rechaza la undécima sin consumir cuota global", async () => {
+    const budget = new PostgresBudget(db, 200_000);
+    const today = todayIn("Europe/Madrid");
+    await db.execute(sql`INSERT INTO assistant.usage (bucket,day,requests,tokens) VALUES ('user:quota-test',${today},9,900)`);
+
+    await expect(budget.reserve("quota-test", 100)).resolves.toBe(`${today}|user:quota-test`);
+    const afterTenth = await db.execute(sql`SELECT bucket,requests,tokens FROM assistant.usage WHERE day=${today} ORDER BY bucket`);
+    expect(afterTenth.map(row => ({ bucket: row.bucket, requests: Number(row.requests), tokens: Number(row.tokens) }))).toEqual([
+      { bucket: "global", requests: 1, tokens: 100 },
+      { bucket: "user:quota-test", requests: 10, tokens: 1000 },
+    ]);
+
+    await expect(budget.reserve("quota-test", 100)).rejects.toMatchObject({
+      status: 429,
+      message: "Has utilizado tus 10 consultas de hoy. Podrás volver a preguntar mañana (hora de Madrid).",
+    });
+    expect(await db.execute(sql`SELECT bucket,requests,tokens FROM assistant.usage WHERE day=${today} ORDER BY bucket`)).toEqual(afterTenth);
+  });
+
+  it("renueva la cuota al cambiar el día de Madrid y mantiene al administrador sin límite", async () => {
+    const budget = new PostgresBudget(db, 200_000);
+    const today = todayIn("Europe/Madrid");
+    await db.execute(sql`INSERT INTO assistant.usage (bucket,day,requests,tokens) VALUES ('user:quota-test',${today}::date - 1,10,1000)`);
+    await expect(budget.reserve("quota-test", 100)).resolves.toBe(`${today}|user:quota-test`);
+    await db.execute(sql`UPDATE assistant.usage SET requests=10 WHERE bucket='user:quota-test' AND day=${today}`);
+    await expect(budget.reserve("quota-test", 100, true)).resolves.toBe("admin");
+    const current = await db.execute(sql`SELECT requests FROM assistant.usage WHERE bucket='user:quota-test' AND day=${today}`);
+    expect(Number(current[0]!.requests)).toBe(10);
+  });
+});
 
 describe("PostgresEntryRepository", () => {
   it("guarda y recupera una disposición sin perder ningún campo", async () => {

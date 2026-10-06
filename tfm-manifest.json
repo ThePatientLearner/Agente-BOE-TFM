@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "created_at": "2026-10-06T06:56:42+00:00",
+  "created_at": "2026-10-06T08:58:22+00:00",
   "selection": "git ls-files --cached --others --exclude-standard; allowlist export_tfm.py",
   "file_count": 327,
-  "total_bytes": 12918993,
-  "excluded_candidate_count": 73,
+  "total_bytes": 12921135,
+  "excluded_candidate_count": 1,
   "manifest_excluded_from_hashes": "tfm-manifest.json",
   "files": [
     {
@@ -39,8 +39,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 10403,
-      "sha256": "ff37fdeff935c65042c1cdce668929da4ba62a0dae951e02aa5b01925fe6031e"
+      "bytes": 10402,
+      "sha256": "173e26485746eaabf79c828fe5d4413fa6adee4de2e38a099100223df985017e"
     },
     {
       "path": "apps/monolith/.dependency-cruiser.cjs",
@@ -314,8 +314,8 @@
     },
     {
       "path": "apps/monolith/src/modules/assistant/infrastructure/postgres-budget.ts",
-      "bytes": 2707,
-      "sha256": "a56c8acd8f22a7e7620678aea547835c2cb446164f53e2f302a29a09819cf28f"
+      "bytes": 2708,
+      "sha256": "a9e873401a1cbf6933e0e9f2e5beb6df28b9b842a290470c1cd1e895ce88914e"
     },
     {
       "path": "apps/monolith/src/modules/assistant/infrastructure/postgres-settings.ts",
@@ -749,8 +749,8 @@
     },
     {
       "path": "apps/monolith/src/postgres-adapters.integration.test.ts",
-      "bytes": 16716,
-      "sha256": "589c1e1106c9d24bc83a93c5d3d1567db2ec23589a9b880b3d056cb60279b766"
+      "bytes": 18862,
+      "sha256": "14578df73608e90e9bdff6865b0d68881bc8b24726a5b74373107ee53796362c"
     },
     {
       "path": "apps/monolith/src/scheduler/cron.test.ts",
@@ -1139,8 +1139,8 @@
     },
     {
       "path": "apps/web/src/components/BoeBotPanel.tsx",
-      "bytes": 20902,
-      "sha256": "207d1926dabd73fdc65293ad540b3fc7108092085b9fd945a050e640c1352a65"
+      "bytes": 20904,
+      "sha256": "73f170f8926de2c5b018922d81b23027492f64b5a93d54167197cdab8cbd445e"
     },
     {
       "path": "apps/web/src/components/BulletinImpact.tsx",
@@ -1554,13 +1554,13 @@
     },
     {
       "path": "docs/tfm/source/guia.json",
-      "bytes": 24345,
-      "sha256": "5d8db71242e4455ed2108f38eda0d7b419c9f0b085e0ca91352139ddc4060c48"
+      "bytes": 24344,
+      "sha256": "8e2e3c8048406755501d36269eee9bca505ef04c7507bdc9b67a2eede7714c3e"
     },
     {
       "path": "docs/tfm/source/memoria.json",
-      "bytes": 63513,
-      "sha256": "722e8e86d4b76d5a36a5f94441b01806b8e94bf022c6cbd1e4fae82c51b32fe5"
+      "bytes": 63512,
+      "sha256": "07dae3aebd3244c561524418bde71e5f407299b29f9486be72a7023dce59b6d6"
     },
     {
       "path": "docs/tfm/source/navegador-ficha.json",
@@ -1589,13 +1589,13 @@
     },
     {
       "path": "output/pdf/Guia-Evaluacion-Grabacion-Entrega.pdf",
-      "bytes": 98328,
-      "sha256": "7dc966f4de5ebf14426c3b8d6c02f976cbc1a0cda7774416d4ea295c06a04c1d"
+      "bytes": 98327,
+      "sha256": "25245a3ecd2c691459a5053308bcdec83179c9975007106180f6ff9179ad37b8"
     },
     {
       "path": "output/pdf/Memoria-Agente-BOE.pdf",
-      "bytes": 2851527,
-      "sha256": "73dd31514764ab06f2f33b436d2014d62bbc1464a639867fd60ef6a71b5ceda0"
+      "bytes": 2851524,
+      "sha256": "0dbdf8d1506f20953e8fa4c5be552119e883566b76655d4a05354fadf28e7b1a"
     },
     {
       "path": "output/pdf/Presentacion-Agente-BOE.pdf",
