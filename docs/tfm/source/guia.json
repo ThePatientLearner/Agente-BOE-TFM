@@ -74,6 +74,14 @@
       }
     },
     {
+      "title": "2.1. Uso real e interconexión comercial",
+      "paragraphs": [
+        "Durante la evaluación, distingue la demo local de la operación pública. El autor aporta una captura del canal AgenteBoe + Finanfocus con 1.560 suscriptores y una captura de Vercel con historial de visitantes y desgloses de páginas y referentes. La memoria incorpora los originales y transcribe cifras legibles: 683 Visitors en la portada, 48 en Pensiones, 46 en Subvenciones y 44 en el juego. El intervalo global no aparece en el recorte.",
+        "Para demostrar el embudo comercial, abre el menú de https://agenteboe.com y localiza FinanFocus. Muestra que el enlace conduce a https://finanfocus.com; después enseña sus opciones de prueba, cuenta gratuita y planes. El juego de AgenteBOE también anuncia un premio FinanFocus PRO. No hace falta registrarse, comprar ni revelar datos de una cuenta real para explicar el recorrido. Puedes mostrar también el regreso desde el menú Tendencias de FinanFocus a AgenteBOE.",
+        "Explica la secuencia: contenido gratuito para captar interés, avisos y comunidad para mantener el vínculo, enlace a FinanFocus para presentar el producto y posible suscripción PRO. Las capturas acreditan audiencia y conexiones visibles; no acreditan cuántos visitantes compraron. No sumes cifras de Telegram y Vercel como si fueran usuarios distintos."
+      ]
+    },
+    {
       "title": "3. Arrancar la demo local",
       "paragraphs": [
         "Requisitos: Git, Node.js 22 o posterior y npm. Se necesita conexión para descargar las dependencias. Después, la demostración utiliza la API de prueba local. Ejecuta los siguientes comandos desde una carpeta de trabajo; no es necesario crear un archivo .env.",
@@ -117,6 +125,7 @@
         "Empieza en la portada. Identifica el boletín mostrado, localiza una disposición y abre su ficha. Señala el título oficial, el enlace a boe.es, la fecha visible y la separación entre fuente y resumen generado. Explica que la clasificación de impacto pertenece al sistema y no al BOE.",
         "En la web pública puedes recorrer los boletines y filtros disponibles. En la demo hay un catálogo pequeño y controlado: no lo presentes como cobertura de todos los boletines. Abre la fuente oficial si tienes conexión y comprueba que el identificador coincide con el de la ficha.",
         "Abre BoeBot e inicia sesión con la cuenta de demostración adecuada al entorno. En la demo local formula una pregunta breve sobre la disposición y muestra la respuesta identificada como ejemplo. Explica qué datos recibe realmente el asistente en producción: resúmenes en el contexto de archivo y texto oficial en el de una ficha.",
+        "Para mostrar la actualización del 7 de octubre, usa la web pública con una conversación y pulsa «Continuar en otra IA», junto a «Salir». Enseña las cuatro opciones. Elegir una copia la conversación con contexto y fuentes y abre su web; después hay que pegarla. Puedes cerrar el destino sin enviar nada. La copia no añade consumo a BoeBot. No des por incorporada la función en una copia académica descargada antes de esa fecha.",
         "Termina este recorrido señalando que una respuesta con fuentes sigue necesitando contraste. El sistema facilita la lectura; la documentación no lo presenta como asesor jurídico ni como buscador exhaustivo de legislación vigente."
       ],
       "table": {
@@ -140,6 +149,10 @@
           [
             "Consultar en demo",
             "Respuesta de ejemplo explícita, sin presentarla como salida real de IA."
+          ],
+          [
+            "Continuar en otra IA",
+            "Con conversación en curso, selector de Grok, Claude, ChatGPT y Gemini. Copia al portapapeles y apertura del destino; pegado manual."
           ],
           [
             "Cerrar sesión",
@@ -191,8 +204,10 @@
       "paragraphs": [
         "La portada, el catálogo y las fichas de https://agenteboe.com/ se consultan sin sesión. La cuenta dedicada que ya figura en la documentación del servicio permite demostrar el asistente con permisos de usuario normal. No es una cuenta de administración ni habilita Electricidad.",
         "Usuario: tfm_demo\nContraseña: Lectura del boletin TFM 2026!",
-        "Las diez consultas diarias de esa cuenta se comparten entre todas las personas que la utilicen. Una consulta real puede consumir cuota del servicio. Para repetir tomas, ensayar o evaluar Electricidad, utiliza la demo local, que no depende de ese límite ni genera llamadas de pago.",
-        "Si el servicio público no responde durante la defensa, muestra la demo local y declara el cambio de entorno. No presentes una respuesta simulada como resultado en vivo del proveedor. Las capturas de la memoria indican su procedencia."
+        "La cuenta pública tiene diez consultas al día en la actualización de producción del 7 de octubre. El límite se comparte entre todas las personas que la utilicen. Una consulta real puede consumir cuota del servicio. Para repetir tomas, ensayar o evaluar Electricidad, utiliza la demo local, que no depende de ese límite ni genera llamadas de pago.",
+        "Si el servicio público no responde durante la defensa, muestra la demo local y declara el cambio de entorno. No presentes una respuesta simulada como resultado en vivo del proveedor. Las capturas de la memoria indican su procedencia.",
+        "En móvil, la portada y /electricidad publican iconos y manifiestos para añadir accesos con el emblema de Agente BOE y el rayo de Electricidad. No se ha comprobado cada versión de iOS o Android. Un acceso antiguo puede mantener su icono en caché; antes de eliminar una webapp o cambiar de navegador, exporta el progreso de Electricidad porque permanece en almacenamiento local.",
+        "La web incorpora estos dos cambios desde el 7 de octubre de 2026 con despliegues de Vercel confirmados. La edición documental del 7 de octubre incorpora las capturas de audiencia y la interconexión con FinanFocus. El código académico mantiene la revisión del núcleo validada el 6 de octubre; la revisión de documentos no incorpora automáticamente los cambios posteriores de producción."
       ]
     },
     {
@@ -245,7 +260,8 @@
         "La grabación corresponde al autor y debe incluir su propia explicación y captura de pantalla. Mostrar la cara es opcional según el documento de requisitos. Este guion es un apoyo para comprender y exponer el trabajo; evita leerlo literalmente sin revisar lo que vas a defender.",
         "Como propuesta de edición, prepara entre 10 y 15 minutos. No es una duración exigida por el máster: el PDF de requisitos no fija una. Ajusta el ritmo al contenido y a las instrucciones de tu edición del curso.",
         "Antes de grabar: arranca la demo, abre la presentación PDF, prepara una ficha del BOE y una sección de Electricidad, comprueba el micrófono y realiza una toma de 20 segundos. Usa un navegador limpio, un tamaño de texto legible y cierra terminales o paneles que muestren configuración personal.",
-        "Reserva la mayor parte de la explicación para el problema, el flujo BOE, el diseño y la evidencia. Electricidad debe ocupar un bloque final claramente identificado como ampliación. El vídeo no necesita enseñar todas las páginas ni todo el código."
+        "Reserva la mayor parte de la explicación para el problema, el flujo BOE, el diseño y la evidencia. Electricidad debe ocupar un bloque final claramente identificado como ampliación. El vídeo no necesita enseñar todas las páginas ni todo el código.",
+        "Añade un bloque de 1-2 minutos sobre uso real y embudo comercial: captura Telegram, histórico Vercel, menú de AgenteBOE y llegada a FinanFocus. Si amplías el recorrido, puedes ajustar la duración propuesta. La evidencia de tráfico no se presenta como ventas."
       ],
       "table": {
         "headers": [
@@ -287,11 +303,13 @@
       "paragraphs": [
         "Apertura. «Presento AgenteBOE, una aplicación que facilita la lectura de disposiciones del Boletín Oficial del Estado. El proyecto conserva la relación con la fuente oficial y utiliza IA para ofrecer una primera explicación. Además, incorpora un área de estudio de Electricidad como ampliación de la misma plataforma». Adapta estas palabras a tu forma de hablar.",
         "Problema y alcance. Explica por qué organizas el contenido por boletines y fichas y qué puede hacer un visitante sin cuenta. Muestra una disposición y localiza el documento oficial antes de comentar el resumen. Distingue el texto del BOE de la interpretación generada.",
+        "Uso real y finalidad comercial. «La aplicación está abierta al público y forma parte de un ecosistema con FinanFocus. Esta captura del canal conjunto muestra 1.560 suscriptores. En Vercel se observa el histórico de visitantes y 683 Visitors en la portada para el intervalo seleccionado. Muestro ahora cómo el menú lleva a FinanFocus. AgenteBOE aporta contenido gratuito y comunidad; FinanFocus ofrece la prueba del producto, registro gratuito y planes. Este es el embudo comercial previsto, pero estas capturas no miden las ventas atribuibles».",
         "Demostración. Recorre el catálogo, abre una ficha y utiliza el asistente. Di en voz alta si estás en producción o en la demo local. Si utilizas la demo: «Esta respuesta está simulada para que el recorrido sea reproducible y no necesite una clave; el código del proveedor real está incluido y el servicio público usa la integración real».",
         "Diseño. Con el diagrama, sigue la ingesta y EntryIngested; después, el alta del catálogo y la generación del resumen; y finalmente SummaryGenerated, la actualización del catálogo y los avisos. Explica por qué los módulos poseen sus datos y se comunican mediante contratos. Señala que el bus está en memoria y que la recuperación de pendientes no equivale a una garantía transaccional de procesamiento exactamente una vez.",
+        "Continuidad y experiencia móvil. «Puedo copiar esta conversación con sus fuentes y continuar en la IA que prefiera. El botón abre la web elegida y yo pego el texto: no hay una consulta adicional al modelo de BoeBot ni una transferencia automática por API. También he definido los iconos y los manifiestos para distinguir Agente BOE y Electricidad desde la pantalla de inicio del móvil». Muestra estas mejoras en la web pública y señala que una exportación no valida jurídicamente una respuesta.",
         "IA. Describe la estructura del resumen y sus revisiones, y los tres contextos del asistente. Explica una limitación concreta: la información recuperada puede ser incompleta y la revisión del mismo modelo no es una comprobación independiente de verdad jurídica.",
         "Ampliación. Abre Electricidad dentro de la demo. Explica el permiso de estudio, muestra una ficha y el tutor contextual, y termina con un test o la selección de simulacro. Aclara que el progreso permanece en el navegador y que el material es de aprendizaje.",
-        "Evidencia y cierre. Muestra el informe final de pruebas y explica qué se comprobó y qué quedó fuera, sin atribuirte métricas de usuarios o experimentos que no se realizaron. Termina con la aportación del proyecto y una mejora prioritaria. Presenta los enlaces a código, web y documentación."
+        "Evidencia y cierre. Muestra el informe final de pruebas y explica qué se comprobó y qué quedó fuera, distinguiendo la audiencia documentada de las métricas de ventas o experimentos que no se realizaron. Termina con la aportación del proyecto y una mejora prioritaria. Presenta los enlaces a código, web y documentación."
       ]
     },
     {
@@ -313,6 +331,14 @@
           [
             "¿El bot conoce toda la legislación?",
             "No. Depende del archivo, del documento abierto o del curso. Ni el catálogo ni el modelo garantizan exhaustividad o vigencia."
+          ],
+          [
+            "¿Transferir la conversación consume más tokens de BoeBot?",
+            "No. Copia el texto en el navegador y abre el destino. Las siguientes consultas allí dependen de la cuenta y condiciones de esa otra IA. El contexto enviado por BoeBot sigue limitado a cuatro mensajes."
+          ],
+          [
+            "¿Los accesos móviles convierten el sitio en una app nativa?",
+            "No. Configuran la identidad y apertura de la web desde la pantalla de inicio. No se ha añadido caché de las páginas privadas ni funcionamiento offline del curso."
           ],
           [
             "¿Por qué Electricidad pertenece al TFM?",

@@ -1,5 +1,5 @@
 {
-  "revision_date": "2026-10-06",
+  "revision_date": "2026-10-07",
   "project": "AgenteBOE",
   "complement": "Electricidad integrado",
   "repository_url": "https://github.com/ThePatientLearner/Agente-BOE-TFM",
@@ -9,5 +9,30 @@
   "video_status": "El autor realizará y publicará la grabación con voz propia y pantalla.",
   "academic_submission": "Pendiente: confirmar datos académicos y enviar el formulario del campus tras incorporar el vídeo.",
   "production_code_updated": false,
-  "delivery_code": "Copia académica pública depurada con demo aislada y corrección de notificaciones."
+  "delivery_code": "Copia académica pública depurada con demo aislada y corrección de notificaciones.",
+  "frontend_update": {
+    "date": "2026-10-07",
+    "features": [
+      "Iconos de Agente BOE y Electricidad para accesos móviles",
+      "Continuar la conversación de BoeBot en Grok, Claude, ChatGPT o Gemini"
+    ],
+    "production_commits": [
+      "811c5d2bead23bb92be48a2945a628c1678a9176",
+      "f74e946c8a8b20d939cb279cd0d37e67b73e7100"
+    ],
+    "vercel_status": "Despliegues de producción confirmados en la sesión.",
+    "academic_publication": "Documentación incluida en la revisión del 7 de octubre. Código académico del núcleo conservado en la revisión validada el 6 de octubre; sin incorporar cambios posteriores de aplicación."
+  },
+  "commercial_evidence": {
+    "revision_date": "2026-10-07",
+    "telegram_subscribers_visible": 1560,
+    "vercel_screenshot_period": "Selector global no visible; se conserva el original sin inventar el intervalo.",
+    "interconnection": "Enlaces públicos AgenteBOE-FinanFocus en ambos sentidos; comunidad y premio compartidos.",
+    "conversion_or_revenue": "No cuantificados en esta entrega.",
+    "record": "docs/tfm/source/uso-real-finanfocus.json"
+  },
+  "academic_code_reference": {
+    "commit": "c66782a7a724826f54a5ec3749424a83cfbced70",
+    "note": "Se conserva la revisión pública previa que amplió BoeBot a diez consultas diarias. La revisión documental no modifica ese código."
+  }
 }

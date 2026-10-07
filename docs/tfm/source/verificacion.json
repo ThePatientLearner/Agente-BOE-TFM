@@ -514,7 +514,8 @@
     "La comprobación de tipos pasó en ambos workspaces y dependency-cruiser no detectó infracciones en 134 módulos y 432 dependencias. El monolito compiló después del último cambio de la demo. La compilación web también pasó y generó 19 páginas estáticas en una copia sin .env y con conexiones fetch bloqueadas; sus fuentes no cambiaron después. Esos resultados confirman la compilación, no el contenido de un catálogo de producción ni la calidad factual de la IA.",
     "Las pruebas de demo y origen local añaden siete casos, ya incluidos en los 414. Incluyen el recorrido de ambas fichas con fragmentos oficiales parciales y una respuesta identificada como simulada. La demo usa cuentas y datos en memoria y un proveedor simulado. No se ejecutaron integración con PostgreSQL, migraciones, planificadores, generación IA real ni notificaciones de producción. Tampoco se midieron carga, latencia, disponibilidad o cobertura porcentual; no se acredita un mecanismo automático de noindex por datos personales.",
     "La revisión en navegador recorrió acceso, consulta simulada, curso, tutor, respuesta de test, corrección y cierre de sesión. No aparecieron errores JavaScript en los recorridos registrados y el curso no desbordó horizontalmente a 390 píxeles. Son comprobaciones funcionales acotadas, no una certificación de accesibilidad. La web y el health público respondieron HTTP 200; también funcionaron login, me y logout de tfm_demo, sin enviar consultas de IA. La cuenta pública confirmó rol student y ausencia de permiso de estudio. Evidencias: navegador.json, navegador-ficha.json y servicio-publico.json.",
-    "La copia pública depurada se instaló por separado desde cero, sin modificar el lockfile. Repitió las 414 pruebas, tipos, fronteras y compilación del monolito; sus 260 archivos de aplicación comparados coincidieron con la versión revisada. El lanzador de esa copia superó además 15 comprobaciones HTTP de cuentas, fichas, asistente, curso, tutor y restricciones. Esta repetición verifica la exportación y no aumenta el número de casos unitarios. Evidencia: copia-publica.json."
+    "La copia pública depurada se instaló por separado desde cero, sin modificar el lockfile. Repitió las 414 pruebas, tipos, fronteras y compilación del monolito; sus 260 archivos de aplicación comparados coincidieron con la versión revisada. El lanzador de esa copia superó además 15 comprobaciones HTTP de cuentas, fichas, asistente, curso, tutor y restricciones. Esta repetición verifica la exportación y no aumenta el número de casos unitarios. Evidencia: copia-publica.json.",
+    "Actualización de web del 7 de octubre de 2026: los logos móviles y la opción de continuar la conversación en otra IA se publicaron en Vercel. Se comprobó TypeScript para el botón, los iconos y manifiestos servidos en producción y la disponibilidad de sus estilos. Esta actualización no vuelve a ejecutar las 414 pruebas de la edición del día 6 ni acredita el portapapeles en todos los navegadores, la instalación en dispositivos móviles o la publicación remota de los nuevos PDF."
   ],
   "table": {
     "headers": [
@@ -576,5 +577,39 @@
     "valor": "03e8680842476a9a3f69b7bbf6d92059fe1c4107c61d27ad55cf2949b9d71f12",
     "metodo": "SHA-256 de la concatenación ruta UTF-8 + byte NUL + contenido + byte NUL, por archivo ordenado por ruta relativa.",
     "archivos": 260
+  },
+  "actualizacion_frontend_2026_10_07": {
+    "alcance": "Publicación de logos móviles y botón de continuidad en otra IA; revisión documental local posterior.",
+    "commit_iconos": "811c5d2bead23bb92be48a2945a628c1678a9176",
+    "commit_boton": "f74e946c8a8b20d939cb279cd0d37e67b73e7100",
+    "vercel_production": {
+      "iconos": {
+        "deployment_id": 6906284989,
+        "state": "success"
+      },
+      "boton": {
+        "deployment_id": 6906545588,
+        "state": "success"
+      }
+    },
+    "comprobaciones": [
+      "TypeScript de la web correcto para el botón.",
+      "Portada y /electricidad: HTTP 200 con manifiestos y apple-touch-icon correctos.",
+      "Ocho PNG: HTTP 200, image/png y dimensiones previstas.",
+      "Estilos del nuevo botón disponibles en la web publicada."
+    ],
+    "no_realizado": [
+      "Nueva ejecución de la suite de 414 pruebas.",
+      "Prueba del portapapeles y apertura de destinos con cuenta autenticada en todos los navegadores.",
+      "Comprobación de instalación de los accesos en dispositivos iOS y Android.",
+      "Push de esta revisión documental al repositorio académico."
+    ],
+    "vps": "Cambios de frontend; no se reconstruye la API."
+  },
+  "documentary_revision_2026_10_07": {
+    "scope": "Uso real, audiencia y embudo hacia FinanFocus. Sin modificación ni nueva validación del código académico.",
+    "evidence": "docs/tfm/source/uso-real-finanfocus.json",
+    "navigation": "docs/tfm/source/interconexion-webs.json",
+    "pdf_inventory": "docs/tfm/source/documentos-verificados.json"
   }
 }

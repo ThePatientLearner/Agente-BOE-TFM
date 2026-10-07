@@ -8,6 +8,7 @@
       "title": "1. Resumen del proyecto",
       "paragraphs": [
         "AgenteBOE es un servicio web independiente que obtiene disposiciones del Boletín Oficial del Estado, conserva su texto y metadatos, genera resúmenes con inteligencia artificial y los presenta junto a los enlaces oficiales. El catálogo web, el asistente conversacional y los avisos de Telegram y Discord ofrecen distintas formas de acceder a la misma información. El texto publicado por el BOE sigue siendo la referencia oficial.",
+        "AgenteBOE se presenta como un servicio en operación para usuarios reales y, a la vez, como canal de captación hacia FinanFocus, el producto financiero del mismo ecosistema. La revisión del 7 de octubre de 2026 incorpora las capturas de comunidad y analítica proporcionadas por el autor, junto a comprobaciones de la navegación pública entre ambas webs. La audiencia observada y la finalidad comercial se distinguen de las ventas, que no se han cuantificado en esta entrega.",
         "El proyecto principal es AgenteBOE. Electricidad se integra como un complemento ya implementado dentro del mismo servicio: comparte cuentas y sesiones, exige autorización específica y ofrece un curso privado con ejercicios, simulacros y un tutor contextual. Su inclusión permite demostrar cómo se amplía la plataforma sin mezclar el flujo editorial del BOE con las funciones de estudio.",
         "La solución combina un monolito modular en TypeScript, una API Fastify, una base de datos PostgreSQL y un frontend Next.js. Un bus de eventos conecta la ingesta, la generación de resúmenes, la proyección del catálogo y las notificaciones. El asistente recupera información del archivo antes de consultar al modelo; no realiza una búsqueda libre por Internet ni garantiza conocer la situación jurídica actual de una norma.",
         "Esta memoria se apoya en el código inspeccionado, sus instrucciones de trabajo y los resultados documentados de verificación. Distingue comportamiento implementado, configuración por defecto y estado de los servicios externos. No atribuye autoría histórica, horas invertidas o resultados de impacto que no estén acreditados.",
@@ -21,6 +22,175 @@
         "Los usuarios del catálogo pueden consultar fichas y abrir el documento oficial sin iniciar sesión. Los usuarios del asistente necesitan una cuenta activa. El administrador controla el proveedor del bot y los permisos de estudio. Los alumnos autorizados acceden al complemento Electricidad para estudiar, practicar y conservar su progreso local.",
         "El alcance central comprende ingesta de la Sección I por defecto, resumen estructurado con revisión, catálogo consultable, notificaciones configurables y asistente con fuentes. Se añaden paneles de subvenciones, radiografías fiscales y de pensiones, titulares de prensa y un juego. Estos componentes amplían la experiencia de la web, pero no intervienen todos en el flujo de publicación del BOE.",
         "No se promete cobertura de todo el ordenamiento, consulta exhaustiva de vigencia, asesoramiento jurídico, notificación infalible o disponibilidad continua. El complemento Electricidad es educativo y no certifica instalaciones ni cualificaciones profesionales. Estas delimitaciones forman parte del producto y de su explicación académica."
+      ]
+    },
+    {
+      "title": "2.1. Uso real y evidencia de audiencia",
+      "paragraphs": [
+        "El autor informa de que la aplicación se utiliza con público real, además de su función académica. Esa dimensión operativa se documenta con el servicio público, una comunidad compartida y un historial de tráfico. Las pruebas de la demo local y sus respuestas simuladas se mantienen separadas de estos datos de audiencia.",
+        "La primera captura muestra el canal «AgenteBoe + Finanfocus» con 1.560 suscriptores. Acredita el contador visible de una comunidad vinculada a ambas marcas en el momento de esa captura. Es una cifra de suscriptores del canal, no un contador de cuentas registradas en AgenteBOE o clientes de pago de FinanFocus. El canal público https://t.me/EscudoFinanciero se comprobó también el 7 de octubre: conserva ese nombre y ese contador, y su descripción menciona las dos webs.",
+        "La segunda captura, atribuida por el autor a Vercel Analytics de AgenteBOE, muestra una serie temporal de visitantes, las páginas consultadas y sus procedencias. El punto seleccionado indica 17 Visitors el 20 de septiembre; el gráfico conserva etiquetas de septiembre y octubre. El recorte no incluye el nombre del proyecto, el año ni el selector de intervalo global: por eso se conserva como evidencia aportada, sin inventar un rango completo.",
+        "La tabla transcribe únicamente números legibles de las capturas recibidas el 7 de octubre de 2026. Las filas pertenecen a desgloses y no se suman como si fueran un total de personas diferentes. Las cuentas autenticadas, los suscriptores y los visitantes son unidades distintas."
+      ],
+      "table": {
+        "headers": [
+          "Indicador observado",
+          "Valor",
+          "Lectura correcta"
+        ],
+        "widths": [
+          0.39,
+          0.12,
+          0.49
+        ],
+        "rows": [
+          [
+            "Comunidad Telegram compartida",
+            "1.560",
+            "Suscriptores visibles en la captura del canal."
+          ],
+          [
+            "Visitors en la portada /",
+            "683",
+            "Valor de esa página en el intervalo seleccionado, no visible completo."
+          ],
+          [
+            "Visitors en /pensiones",
+            "48",
+            "Desglose por página."
+          ],
+          [
+            "Visitors en /subvenciones",
+            "46",
+            "Desglose por página."
+          ],
+          [
+            "Visitors en /juego",
+            "44",
+            "Desglose por página; no demuestra ventas del premio."
+          ],
+          [
+            "Visitors en /d/BOE-A-2026-20266",
+            "36",
+            "Visitors asociados a esa ficha del BOE."
+          ],
+          [
+            "Visitors en /d/BOE-A-2026-20385",
+            "35",
+            "Visitors asociados a otra ficha."
+          ],
+          [
+            "Punto del histórico: 20 de septiembre",
+            "17",
+            "Visitors del punto seleccionado; año no visible en el recorte."
+          ]
+        ]
+      },
+      "tables": [
+        {
+          "headers": [
+            "Procedencia visible",
+            "Visitors",
+            "Interpretación"
+          ],
+          "widths": [
+            0.39,
+            0.12,
+            0.49
+          ],
+          "rows": [
+            [
+              "google.com",
+              "237",
+              "Llegadas atribuidas a ese referente."
+            ],
+            [
+              "t.co",
+              "66",
+              "Llegadas desde enlaces de X."
+            ],
+            [
+              "search.brave.com",
+              "26",
+              "Llegadas desde el buscador Brave."
+            ],
+            [
+              "bing.com",
+              "8",
+              "Llegadas desde Bing."
+            ],
+            [
+              "app.raindrop.io",
+              "7",
+              "Llegadas desde Raindrop."
+            ],
+            [
+              "gemini.google.com",
+              "3",
+              "Referente visible; no prueba una integración con su API."
+            ]
+          ]
+        }
+      ],
+      "bullets": [
+        "La documentación de Vercel distingue visitantes y páginas vistas. Sus identificadores de visitante se reinician a diario y no permiten seguir a una persona entre webs. Fuente: [Vercel Web Analytics](https://vercel.com/docs/analytics).",
+        "El histórico muestra actividad registrada a lo largo de varios días. No es un historial nominal de personas ni una auditoría de ventas.",
+        "No se calcula una tasa de conversión o retención ni se extrapolan ingresos a partir de estas capturas."
+      ]
+    },
+    {
+      "title": "2.2. Interconexión y embudo comercial hacia FinanFocus",
+      "paragraphs": [
+        "AgenteBOE cumple una doble función: facilita información gratuita de interés recurrente y atrae audiencia hacia finanfocus.com. La finalidad de embudo de ventas procede de la estrategia descrita por el autor; las conexiones de navegación y marca pueden observarse en el producto público.",
+        "La captación comienza en buscadores y redes con contenidos del BOE y paneles de dinero público. La lectura gratuita aporta utilidad antes de la propuesta comercial. Los avisos de Telegram y Discord buscan facilitar que el visitante vuelva, y el canal «AgenteBoe + Finanfocus» mantiene una identidad compartida.",
+        "El menú de AgenteBOE incluye un enlace externo a https://finanfocus.com. El juego refuerza esa relación mediante la promoción de FinanFocus PRO como premio. Estas son puertas visibles entre el contenido gratuito y el producto financiero, no una fusión técnica de sus bases de datos o de sus sesiones.",
+        "FinanFocus se presenta como una herramienta para reunir patrimonio, ahorro e inversión. La página pública ofrece probar con datos de ejemplo, crear una cuenta gratuita y consultar planes y precios. Ese recorrido permite pasar del descubrimiento a la consideración del producto y a una posible suscripción PRO. En su menú «Tendencias» se ha observado además un enlace de regreso a AgenteBOE: la navegación entre webs es bidireccional."
+      ],
+      "diagram": "funnel",
+      "table": {
+        "headers": [
+          "Etapa del embudo",
+          "Elemento implementado",
+          "Evidencia"
+        ],
+        "widths": [
+          0.23,
+          0.43,
+          0.34
+        ],
+        "rows": [
+          [
+            "Descubrimiento",
+            "Contenido BOE, fichas y paneles públicos.",
+            "Captura Vercel: páginas y referentes."
+          ],
+          [
+            "Vínculo recurrente",
+            "Avisos y canal compartido.",
+            "CTA de Telegram y captura de 1.560 suscriptores."
+          ],
+          [
+            "Paso entre webs",
+            "AgenteBOE → FinanFocus; Tendencias → AgenteBOE.",
+            "Enlaces verificados y capturas de ambos menús."
+          ],
+          [
+            "Incentivo de marca",
+            "Premio FinanFocus PRO en el juego.",
+            "Captura pública del juego."
+          ],
+          [
+            "Consideración y venta",
+            "Prueba, cuenta gratuita y planes en FinanFocus.",
+            "Oferta observable; compras atribuibles no cuantificadas."
+          ]
+        ]
+      },
+      "paragraphs_after": [],
+      "bullets": [
+        "La interconexión demostrada es comercial, de navegación y de comunidad. No se ha acreditado inicio de sesión compartido, intercambio de datos personales o integración entre las API de las dos webs.",
+        "Los datos disponibles demuestran audiencia y vías de derivación. Para evaluar eficacia comercial faltan clics a FinanFocus, registros atribuibles y compras confirmadas en un mismo periodo.",
+        "Como evolución, se propone medir clics y campañas con parámetros de origen y contrastarlos con registros y suscripciones agregados de FinanFocus. Es una propuesta de medición, no una instrumentación cruzada ya verificada."
       ]
     },
     {
@@ -296,7 +466,8 @@
         "La portada permite explorar el BOE diario mediante tarjetas agrupadas por boletín. La API devuelve hasta quince días disponibles y la interfaz presenta inicialmente dos, con opción de mostrar más. El buscador local filtra el conjunto descargado por texto, fechas e impacto; no debe confundirse con una consulta de todo el archivo. Los temas y la explicación de los niveles de impacto facilitan decidir qué abrir.",
         "La búsqueda completa es un acceso separado protegido por configuración del servidor. Tras desbloquearla, la web consulta la API con los filtros y un límite de resultados. Ese mecanismo no es la misma sesión que utiliza el asistente. Si falta configuración o el acceso no es válido, debe mostrarse un error en lugar de simular una búsqueda exhaustiva.",
         "Al abrir una disposición, la ficha muestra publicación, actualización, departamento y acceso al texto oficial HTML y PDF. Después aparece el resumen, claramente identificado como IA. Se puede desplegar el título literal, imprimir o compartir la ficha y seguir lecturas relacionadas. Si aún no existe resumen, se indica que está pendiente y se mantiene el enlace oficial.",
-        "El recorrido recomendado es localizar un tema, abrir la ficha, leer el resumen como orientación y contrastar los detalles relevantes en el documento oficial. Una etiqueta de impacto o un resultado de búsqueda no sustituye esa comprobación. Las lecturas relacionadas se calculan por coincidencias temáticas en el catálogo disponible; no pretenden representar todas las relaciones jurídicas entre normas."
+        "El recorrido recomendado es localizar un tema, abrir la ficha, leer el resumen como orientación y contrastar los detalles relevantes en el documento oficial. Una etiqueta de impacto o un resultado de búsqueda no sustituye esa comprobación. Las lecturas relacionadas se calculan por coincidencias temáticas en el catálogo disponible; no pretenden representar todas las relaciones jurídicas entre normas.",
+        "Los accesos añadidos a la pantalla de inicio tienen identidad propia: Agente BOE utiliza su emblema y Electricidad su rayo dorado. Se proporcionan PNG de 192 y 512 píxeles, una variante maskable para el recorte de Android y apple-touch-icon de 180 píxeles para iPhone. El manifiesto activo de Next.js identifica la aplicación principal; Electricidad añade su manifiesto y etiquetas a sus HTML privados porque se sirve fuera del layout de Next.js. La identidad móvil no altera sesión, permisos ni el contenido protegido."
       ]
     },
     {
@@ -308,7 +479,10 @@
         "Si el documento cabe en 40.000 caracteres y 48.000 bytes, el contexto aporta su texto completo. Si no cabe, selecciona pasajes buscando en todo su contenido, incluidos anexos y artículos finales; una pregunta por un artículo concreto lo prioriza. El contexto indica si la cobertura es completa o parcial. Cuando no puede obtener texto, devuelve un error reconocible y no simula haberlo leído.",
         "La configuración por defecto del bot es MiniMax-M3, con OpenAI como alternativa habilitada solo si dispone de clave. El ajuste persistido permite elegir el proveedor para toda la aplicación desde la cuenta administrativa autorizada. Si el seleccionado no está habilitado, se resuelve el primero disponible; no es una conmutación automática ante cualquier error de red. Resumidor y bot utilizan adaptadores y claves independientes.",
         "ReviewedAssistant aplica una redacción y hasta tres repasos configurables, dos por defecto. El límite de 42 segundos se impone al conjunto de llamadas del modelo, incluso con cero repasos. La recuperación previa de datos queda fuera de ese plazo. Si falla un repaso se conserva la mejor respuesta disponible; si la redacción inicial no produjo respuesta no se inventa una salida. Los tokens de todas las pasadas forman parte del presupuesto.",
-        "Las fuentes proporcionadas por el servidor aparecen antes de la respuesta y pueden desplegarse para consultar fechas y enlaces. Sin resultados no se llama al modelo, aunque cuenta la consulta. El servicio aclara que la ausencia en el archivo no prueba inexistencia de una norma y que no comprueba automáticamente su vigencia. La autorrevisión por IA no constituye una verificación independiente."
+        "Las fuentes proporcionadas por el servidor aparecen antes de la respuesta y pueden desplegarse para consultar fechas y enlaces. Sin resultados no se llama al modelo, aunque cuenta la consulta. El servicio aclara que la ausencia en el archivo no prueba inexistencia de una norma y que no comprueba automáticamente su vigencia. La autorrevisión por IA no constituye una verificación independiente.",
+        "Desde el 7 de octubre de 2026, el chat de BoeBot ofrece «Continuar en otra IA» junto a «Salir» cuando hay una conversación. El usuario elige Grok, Claude, ChatGPT o Gemini; el navegador copia los turnos de la sesión actual y abre la web del destino. El usuario debe pegar el contenido en su chat. Es una exportación voluntaria de texto, sin integración con las API de esas plataformas ni envío automático de la conversación.",
+        "La copia incluye el contexto de la disposición, las preguntas y respuestas, el aviso de contenido generado por IA y, antes de cada respuesta, las fuentes oficiales aceptadas con identificador, título, URL, publicación y actualización registrada. Conservar referencias facilita el contraste posterior; otra IA puede interpretar el contenido de forma diferente y no garantiza por ello exactitud o vigencia.",
+        "La interfaz conserva todos los turnos de la conversación abierta para copiarlos completos. El contexto de las consultas de BoeBot sigue limitado a los cuatro últimos mensajes, con un máximo de 1.000 caracteres por mensaje. Copiar y abrir el destino no invoca el modelo de BoeBot ni consume una consulta adicional. La exportación no proporciona historial persistente: «Nueva consulta», cerrar el panel o salir elimina esa conversación de la interfaz."
       ],
       "table": {
         "headers": [
@@ -562,9 +736,10 @@
       "paragraphs": [
         "La IA forma parte del producto: genera resúmenes y respuestas del bot. También se ha utilizado asistencia de Codex para inspeccionar el repositorio, contrastar documentación y preparar esta entrega. Son usos distintos. Esta fase documenta el estado observado y los materiales de explicación; no inventa la historia completa del desarrollo ni atribuye todo el código preexistente a una única sesión o herramienta.",
         "El diseño sitúa las fuentes oficiales antes de la explicación derivada y avisa de que el servicio es independiente. Las condiciones del BOE requieren, entre otros aspectos, atribución, identificación de adaptaciones y ausencia de apariencia oficial; también tratan la conservación de metadatos y datos personales. Estas son referencias de diseño, no una declaración de cumplimiento jurídico integral [F2].",
-        "LEGAL.md se identifica expresamente como un borrador y contiene aspectos que necesitan revisión. Esta memoria no lo transforma en un dictamen legal. El envío del texto del BOE para resumir y el envío de preguntas del usuario al asistente son flujos diferentes: el segundo puede contener información introducida por la persona. La política debe corresponder al proveedor realmente habilitado y sus condiciones, sin prometer retención cero a partir de un único parámetro de API.",
+        "LEGAL.md recoge criterios y aspectos que necesitan revisión; su redacción no acredita por sí sola su aplicación completa. Esta memoria no lo transforma en un dictamen legal. El envío del texto del BOE para resumir y el envío de preguntas del usuario al asistente son flujos diferentes: el segundo puede contener información introducida por la persona. La política debe corresponder al proveedor realmente habilitado y sus condiciones, sin prometer retención cero a partir de un único parámetro de API.",
         "La documentación académica omite IP de infraestructura, configuración real, tokens, códigos de invitación y cuentas personales. README y la guía incluyen solo el acceso limitado destinado a la demostración. La cuenta local no accede a producción. La publicación de código para evaluación no sustituye la identificación de licencias del software, las condiciones de fuentes reutilizadas o la procedencia del material didáctico.",
-        "El borrador LEGAL.md contiene obligaciones previstas que no constituyen evidencia de implementación. Por ejemplo, no se ha acreditado una clasificación automática de datos personales con noindex en todas las fichas públicas. Las cabeceras de privacidad de las rutas del curso sí forman parte de su servidor. Esta distinción evita confundir una intención documental con una garantía aplicada.",
+        "La opción «Continuar en otra IA» actúa después de una decisión del usuario: escribe el texto en su portapapeles y abre el sitio seleccionado. El contenido solo se introduce en esa otra plataforma cuando el usuario lo pega. Si el navegador deniega la copia, la interfaz informa del fallo; si bloquea la pestaña, ofrece un enlace para abrirla. La función no transmite contraseñas, tokens de sesión ni claves del servicio.",
+        "LEGAL.md contiene obligaciones previstas que no constituyen evidencia de implementación. Por ejemplo, no se ha acreditado una clasificación automática de datos personales con noindex en todas las fichas públicas. Las cabeceras de privacidad de las rutas del curso sí forman parte de su servidor. Esta distinción evita confundir una intención documental con una garantía aplicada.",
         "El contenido eléctrico es material de preparación con referencias, no un texto normativo oficial. Las normas UNE remitidas no se reproducen íntegramente y los materiales de terceros no se presentan como escritos o validados por el autor sin evidencia. Cada requisito de instalación o convocatoria debe contrastarse en la fuente aplicable; esta memoria no evalúa ni certifica la exactitud normativa de todas las preguntas.",
         "[F1] Agencia Estatal Boletín Oficial del Estado. API de datos abiertos y documentación de acceso. https://www.boe.es/datosabiertos/api/",
         "[F2] Agencia Estatal Boletín Oficial del Estado. Aviso legal y condiciones de reutilización. https://www.boe.es/informacion/aviso_legal/index.php",
@@ -578,6 +753,7 @@
       "paragraphs": [
         "La topología de producción documentada separa la web en Vercel del monolito y PostgreSQL en un servidor, con un túnel que publica la API. La construcción de la web y el despliegue del backend son operaciones distintas. La existencia de un commit, una copia pública o un build local no demuestra que ambos servicios estén ejecutando esa misma revisión.",
         "https://agenteboe.com corresponde al servicio existente y se ha consultado en modo lectura durante la preparación. La entrega actualiza la copia académica pública en https://github.com/ThePatientLearner/Agente-BOE-TFM. No afirma que las nuevas correcciones o el modo de demostración se hayan desplegado en el entorno operativo. El manifiesto final identifica enlaces y alcance verificados.",
+        "Actualización del 7 de octubre de 2026: los logos móviles y «Continuar en otra IA» sí se publicaron en la web operativa mediante commits a main del repositorio original y despliegues de Vercel confirmados. Los cambios se limitan a la web y no requieren reconstruir la API del VPS. Se comprobó el tipado del botón y la disponibilidad HTTP de los iconos y manifiestos; no se realizó una prueba de portapapeles en todos los dispositivos. La edición documental actual incorpora estas mejoras observadas en la web operativa. El código de evaluación conserva la revisión del núcleo validada el 6 de octubre; la actualización de sus PDF no acredita que los cambios posteriores de la web estén incluidos en esa copia. Las validaciones del 6 de octubre conservan su fecha y alcance.",
         "El evaluador puede revisar primero la portada pública y las fichas, leer los tres PDF y consultar el código de la copia pública. El modo local demuestra además el asistente y Electricidad con una cuenta limitada y respuestas simuladas explícitas. El acceso de demostración del servicio existente no concede por sí solo estudio; para reproducir el curso completo se usa el entorno indicado en README.",
         "Los HTML de Electricidad se mantienen en private y se entregan a través de rutas que comprueban sesión y permiso. La copia académica conserva esa integración: no crea un sitio abierto independiente del cuaderno. El tutor usa el mismo contrato de aplicación y el material curado del servidor, con proveedores reales en la configuración normal y un adaptador de demostración en el recorrido local.",
         "La presentación y la guía ordenan la defensa alrededor del problema, la ingesta, las fuentes, la transformación con IA y la experiencia de usuario. El complemento se muestra después como ampliación real de la plataforma. El vídeo debe grabarlo el alumno y publicarlo con acceso verificable; su URL se añade a README y al formulario junto al resto de enlaces. Hasta entonces no se presenta como un requisito completado."
@@ -589,8 +765,9 @@
         "El límite informativo principal es que un resumen o una respuesta puede ser incorrecto o incompleto. La revisión por el mismo modelo no ofrece contraste independiente. El menú se apoya en resúmenes de hasta seis resultados; la ficha puede seleccionar pasajes de un solo documento; el tutor emplea apuntes. Ninguno de esos alcances equivale a consultar todo el ordenamiento o certificar vigencia.",
         "En operación, el bus en memoria, las escrituras separadas y los proveedores externos dejan ventanas de recuperación y posibles duplicados. Deben medirse y vigilarse; no basta con afirmar idempotencia. La actualización de datos curados y la semántica de fechas de respaldo también necesitan control editorial para que una aplicación que sigue funcionando no muestre información envejecida como actual.",
         "En Electricidad, el usuario puede inspeccionar respuestas y modificar el progreso local. La cuenta controla acceso al recurso y al tutor, pero no convierte los resultados en certificaciones antifraude. Los intervalos de repaso se basan en autodeclaración y los cálculos necesitan revisión del procedimiento. El contenido requiere contraste con fuentes y formación apropiadas; la aplicación no habilita para ejecutar trabajos reales.",
-        "La demostración aislada favorece una evaluación reproducible sin cuentas de proveedores ni envíos, pero no mide latencia, coste real o fidelidad del modelo. Los tests de acceso y contrato tampoco equivalen a una auditoría de seguridad completa. La accesibilidad, los proveedores, los datos curados y los borradores legales requieren revisiones específicas que no se han sustituido por una certificación genérica.",
+        "La demostración aislada favorece una evaluación reproducible sin cuentas de proveedores ni envíos, pero no mide latencia, coste real o fidelidad del modelo. Los tests de acceso y contrato tampoco equivalen a una auditoría de seguridad completa. La accesibilidad, los proveedores, los datos curados y los documentos legales requieren revisiones específicas que no se han sustituido por una certificación genérica.",
         "Las mejoras prioritarias son reforzar reconciliación y trazabilidad de eventos, diferenciar metadatos oficiales de valores de respaldo, evaluar fidelidad de resúmenes con un conjunto de referencia y mantener sincronizadas configuración y política de privacidad. Después conviene ampliar auditoría de accesibilidad, pruebas de integración aisladas y revisión especializada del complemento educativo.",
+        "La evidencia de comunidad y tráfico amplía la evaluación del servicio más allá de la demo académica. Todavía no permite cuantificar qué visitantes pasan a FinanFocus o compran PRO. Por ello, la evolución comercial debe incorporar medición de clics, registros y ventas atribuibles, manteniendo separados los datos de audiencia de cada plataforma.",
         "La aportación demostrable es una plataforma integrada: obtiene información oficial, la transforma de forma identificable, conserva fuentes, permite consulta y distribuye avisos; además, incorpora un área de estudio privada con autorización propia. La defensa debe explicar ese funcionamiento real y sus decisiones, con evidencia de pruebas y sin convertir posibilidades futuras en funciones ya entregadas."
       ]
     }

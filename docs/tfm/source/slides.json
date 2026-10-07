@@ -21,6 +21,42 @@
       "callout": "La fuente oficial sigue siendo la referencia."
     },
     {
+      "title": "Uso real: comunidad y visitantes",
+      "eyebrow": "EVIDENCIA APORTADA POR EL AUTOR · 7 OCTUBRE 2026",
+      "image": "docs/tfm/capturas/21-comunidad-telegram-autor.png",
+      "bullets": [
+        "1.560 suscriptores del canal AgenteBoe + Finanfocus.",
+        "Vercel: 683 Visitors en la portada; 48 en Pensiones y 46 en Subvenciones.",
+        "Suscriptores y visitantes son métricas distintas; no acreditan cuántos son clientes de pago."
+      ]
+    },
+    {
+      "title": "Histórico de visitantes en Vercel",
+      "eyebrow": "CAPTURA ORIGINAL · DATOS AGREGADOS",
+      "wide_image": "docs/tfm/capturas/22-vercel-historico-autor.png",
+      "callout": "Punto seleccionado: 20 septiembre, 17 Visitors. El intervalo global no aparece en el recorte; no se calcula un total único."
+    },
+    {
+      "title": "Interconexión en ambos sentidos",
+      "eyebrow": "ENLACE PÚBLICO VERIFICADO · ORIGEN Y DESTINO",
+      "screens": [
+        {
+          "label": "AgenteBOE → enlace FinanFocus",
+          "path": "docs/tfm/capturas/20-detalle-enlace-finanfocus-publico.png"
+        },
+        {
+          "label": "FinanFocus → enlace AgenteBOE",
+          "path": "docs/tfm/capturas/23-detalle-retorno-agenteboe-publico.png"
+        }
+      ],
+      "callout": "AgenteBOE enlaza a FinanFocus; Tendencias ofrece el regreso. La navegación no acredita una sesión compartida."
+    },
+    {
+      "title": "AgenteBOE como embudo hacia FinanFocus",
+      "eyebrow": "UTILIDAD GRATUITA → COMUNIDAD → PRODUCTO FINANCIERO",
+      "diagram": "funnel"
+    },
+    {
       "title": "De un boletín a una ficha con fuentes",
       "image": "docs/tfm/capturas/02-ficha-publica.png",
       "bullets": [
@@ -62,6 +98,17 @@
       ]
     },
     {
+      "title": "Continuar la conversación en otra IA",
+      "eyebrow": "BOEBOT · EXPORTACIÓN VOLUNTARIA",
+      "bullets": [
+        "El botón aparece junto a «Salir» cuando hay una conversación.",
+        "Elegir Grok, Claude, ChatGPT o Gemini copia el chat y abre su web.",
+        "El texto conserva el contexto, los turnos y las fuentes oficiales con fechas.",
+        "El usuario lo pega en el destino; copiar no consume consultas de BoeBot."
+      ],
+      "callout": "Sin conexión entre API ni garantía de que la otra IA valide la respuesta."
+    },
+    {
       "title": "Cuentas compartidas, permisos específicos",
       "bullets": [
         "La consulta pública no requiere iniciar sesión.",
@@ -70,6 +117,25 @@
         "El alumno de la demo no dispone de administración."
       ],
       "callout": "El progreso de Electricidad se guarda por cuenta en ese navegador."
+    },
+    {
+      "title": "Identidad reconocible en el móvil",
+      "eyebrow": "AGENTE BOE Y ELECTRICIDAD · ACCESOS DE INICIO",
+      "app_icons": [
+        {
+          "path": "docs/tfm/capturas/logo-agente-boe-512-v1.png",
+          "label": "Agente BOE"
+        },
+        {
+          "path": "docs/tfm/capturas/logo-electricidad-512-v1.png",
+          "label": "Electricidad"
+        }
+      ],
+      "bullets": [
+        "El emblema y el rayo dorado sustituyen las iniciales A y E.",
+        "PNG para iPhone y Android, con variantes para los recortes del sistema.",
+        "Manifiestos propios: la identidad visual conserva los controles de acceso."
+      ]
     },
     {
       "title": "Electricidad amplía AgenteBOE",
@@ -109,14 +175,14 @@
       "callout": "El entorno de demostración no arranca ingesta, cron ni avisos."
     },
     {
-      "title": "Verificación de la versión entregada",
+      "title": "Verificación del núcleo · 6 de octubre",
       "bullets": [
         "414 pruebas aprobadas en 44 archivos.",
         "TypeScript correcto y 0 infracciones entre módulos.",
         "API y web compilan; 19 páginas estáticas generadas.",
         "Demo local de cuentas, ficha BOE y tutor con respuestas simuladas."
       ],
-      "callout": "Validación local: sin integrar PostgreSQL ni invocar IA o canales reales."
+      "callout": "Resultados de esa edición; las mejoras web del día 7 tienen comprobaciones separadas."
     },
     {
       "title": "Límites concretos, siguientes pasos claros",

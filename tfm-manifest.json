@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "created_at": "2026-10-06T08:58:22+00:00",
+  "created_at": "2026-10-07T14:49:35+00:00",
   "selection": "git ls-files --cached --others --exclude-standard; allowlist export_tfm.py",
-  "file_count": 327,
-  "total_bytes": 12921135,
+  "file_count": 346,
+  "total_bytes": 19143896,
   "excluded_candidate_count": 1,
   "manifest_excluded_from_hashes": "tfm-manifest.json",
   "files": [
@@ -39,8 +39,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 10402,
-      "sha256": "173e26485746eaabf79c828fe5d4413fa6adee4de2e38a099100223df985017e"
+      "bytes": 12161,
+      "sha256": "d9cbb6dc16ee422719f300011a1940686c84c3c11c2707e08a431a6e37715967"
     },
     {
       "path": "apps/monolith/.dependency-cruiser.cjs",
@@ -1528,14 +1528,69 @@
       "sha256": "0afe3c77c4099c64f00fe463258059fff48ba72a8fbe8748bee87971ff514ef6"
     },
     {
+      "path": "docs/tfm/capturas/15-menu-finanfocus-publico.png",
+      "bytes": 646679,
+      "sha256": "299a11052f98ba046585c315f0be948f351dd598defe69979bf247c1846e22d8"
+    },
+    {
+      "path": "docs/tfm/capturas/16-comunidad-telegram-publica.png",
+      "bytes": 345015,
+      "sha256": "2023033742b51a62a6fc2113340feec694cbdc94857082758b3f3ddc9cf3ec72"
+    },
+    {
+      "path": "docs/tfm/capturas/17-juego-premio-finanfocus-publico.png",
+      "bytes": 308609,
+      "sha256": "822a97e885e1a3d8b1a2d85daae90301424629db527eb9333e3608577926fe8a"
+    },
+    {
+      "path": "docs/tfm/capturas/18-finanfocus-portada-publica.png",
+      "bytes": 230158,
+      "sha256": "616e53f439ec3476a818bcbdad8892fef6a7d2e78970d1a8c104366d96873108"
+    },
+    {
+      "path": "docs/tfm/capturas/19-finanfocus-retorno-agenteboe-publico.png",
+      "bytes": 283490,
+      "sha256": "629c7b90f6b4fab8678d8528148475f56ba8d27012c001891a5667d03d924c0e"
+    },
+    {
+      "path": "docs/tfm/capturas/20-detalle-enlace-finanfocus-publico.png",
+      "bytes": 29667,
+      "sha256": "4435a7ed8b5b077decb4674fc5545c7508b48711d26c3110dc6e2c5de44049b2"
+    },
+    {
+      "path": "docs/tfm/capturas/21-comunidad-telegram-autor.png",
+      "bytes": 24223,
+      "sha256": "94c36cb5b897db9dc1227a2042b5999b28550c914779cdf0c4cf3a126c9cbfa6"
+    },
+    {
+      "path": "docs/tfm/capturas/22-vercel-historico-autor.png",
+      "bytes": 256458,
+      "sha256": "fafa0b0b37e9e9e5d8bbb1ec288facd4ba1d5dcab8901ea9962eb01cb03e123c"
+    },
+    {
+      "path": "docs/tfm/capturas/23-detalle-retorno-agenteboe-publico.png",
+      "bytes": 15983,
+      "sha256": "e51d2109b6031dcc1dacb4a90a54bb3d9e7d9da3a1b7dc832e60aa3bb24e3d71"
+    },
+    {
+      "path": "docs/tfm/capturas/logo-agente-boe-512-v1.png",
+      "bytes": 534921,
+      "sha256": "b285520d83b72c2eba0d87753bbec2048fcaf4a1b11593615b6602410015d018"
+    },
+    {
+      "path": "docs/tfm/capturas/logo-electricidad-512-v1.png",
+      "bytes": 20110,
+      "sha256": "25dd1726767043d312fa6f15efed4b209cdd82d3c683a35d2626bbfd4b5b75a7"
+    },
+    {
       "path": "docs/tfm/source/capturas-publicas.json",
       "bytes": 666,
       "sha256": "7aca29d51413ff429d643c11e19900220c91f4d5c916cb622f086808e470cfb5"
     },
     {
       "path": "docs/tfm/source/capturas.json",
-      "bytes": 2090,
-      "sha256": "f694c79c76eae5ea4c2d67c77c0902ed578f914d0899efdf8c4acbde530d3996"
+      "bytes": 5176,
+      "sha256": "cea6a132ed68c8170a130e4de60bf917d899df2b1e4c198cba62d150f0a66b86"
     },
     {
       "path": "docs/tfm/source/copia-publica.json",
@@ -1544,23 +1599,33 @@
     },
     {
       "path": "docs/tfm/source/documentos-verificados.json",
-      "bytes": 1242,
-      "sha256": "098b6331a37fed763a6113cfe915d995ba66984091c5cb0ba58ac7c62e54e6cc"
+      "bytes": 1895,
+      "sha256": "bc9b54d23dd7ac9c436ff8376c6bba2c92f3322e1bd62399c7b0e28dc83e84ef"
     },
     {
       "path": "docs/tfm/source/entrega.json",
-      "bytes": 732,
-      "sha256": "973ccd416f0556fe6d14ef652918fb3495fe1bc2e416b5b9a594f439f598148f"
+      "bytes": 2097,
+      "sha256": "6ab23c32b3349f2a5f621db868e270eec45f5db3579f8861609652f0cf24ecb3"
     },
     {
       "path": "docs/tfm/source/guia.json",
-      "bytes": 24344,
-      "sha256": "8e2e3c8048406755501d36269eee9bca505ef04c7507bdc9b67a2eede7714c3e"
+      "bytes": 29263,
+      "sha256": "a1de597e8e7c47ac03f9ac2e5b1b251de9d033db6bf74ba46d9218f42fecad60"
+    },
+    {
+      "path": "docs/tfm/source/guion-grabacion.json",
+      "bytes": 15171,
+      "sha256": "52568c6e273877c81e815494c36c9dfe05dbc12b34b3cb2c0a27ad051fe04666"
+    },
+    {
+      "path": "docs/tfm/source/interconexion-webs.json",
+      "bytes": 11346,
+      "sha256": "2016d8f955a35c5a115df86e42668d01db20f3f6c5501c0daf2995e0080b831c"
     },
     {
       "path": "docs/tfm/source/memoria.json",
-      "bytes": 63512,
-      "sha256": "07dae3aebd3244c561524418bde71e5f407299b29f9486be72a7023dce59b6d6"
+      "bytes": 75552,
+      "sha256": "c7163d5277d4f704e94d304f4c273b3720db66f34a38ac82740888da6b523da7"
     },
     {
       "path": "docs/tfm/source/navegador-ficha.json",
@@ -1573,34 +1638,59 @@
       "sha256": "cbbd21be8f3fbcd20e3f939af15527c0c784b8b6bbdf8c3fc3eb4a45983c6e2e"
     },
     {
+      "path": "docs/tfm/source/pasos-finalizar.json",
+      "bytes": 2240,
+      "sha256": "e62d7faf3a97944b528b0a0ac1293d79792f7529b91662b2ce0af72bd15fdc54"
+    },
+    {
+      "path": "docs/tfm/source/qa-documental-uso-real.json",
+      "bytes": 2573,
+      "sha256": "15a13957d5aa0b1aadd950da3a9b0f2c9a0ff409671c956284baf472a4c1cb44"
+    },
+    {
       "path": "docs/tfm/source/servicio-publico.json",
       "bytes": 593,
       "sha256": "0763fd53c2d20f15f7b17622db7fff2e7471134f1bdc5dec78c3bff9a0c44d6c"
     },
     {
       "path": "docs/tfm/source/slides.json",
-      "bytes": 6018,
-      "sha256": "bde8c1a292f4940b2a34dfd9f2c9e4e95d9de499ffb315999f1e3081a310200b"
+      "bytes": 8866,
+      "sha256": "675a45bb10d2b1e1cf44802b6fc1f362d6099391004c94bc711a7a11f1fec4f8"
+    },
+    {
+      "path": "docs/tfm/source/uso-real-finanfocus.json",
+      "bytes": 2469,
+      "sha256": "d75367c2bbbeacd9197a72cbed812753b4a3cd1792169454fe12be4291f0c794"
     },
     {
       "path": "docs/tfm/source/verificacion.json",
-      "bytes": 22251,
-      "sha256": "94117ae70a9557499d41b6d97cb48431f266279fa1a2f38df7704151849f128d"
+      "bytes": 24328,
+      "sha256": "9d209e76521eac7e8a590d38f5dc4f92aab529a01518aeba59c5c4c9a571c2c0"
     },
     {
       "path": "output/pdf/Guia-Evaluacion-Grabacion-Entrega.pdf",
-      "bytes": 98327,
-      "sha256": "25245a3ecd2c691459a5053308bcdec83179c9975007106180f6ff9179ad37b8"
+      "bytes": 103920,
+      "sha256": "59636d8e2b79997aef2693bd99010c77e8ff008b77f09aff8379202b01ce8fec"
+    },
+    {
+      "path": "output/pdf/Guion-Grabacion-Agente-BOE.pdf",
+      "bytes": 78404,
+      "sha256": "1f12a0220e7e008f3563d5d002e7b7a6427d6c70e5292d8e7c39b5ba89d7d7e3"
     },
     {
       "path": "output/pdf/Memoria-Agente-BOE.pdf",
-      "bytes": 2851524,
-      "sha256": "0dbdf8d1506f20953e8fa4c5be552119e883566b76655d4a05354fadf28e7b1a"
+      "bytes": 5244576,
+      "sha256": "14c8b11792770a59f14b651783e6711b0a55c301a4b5c7acc69c3241ee473566"
+    },
+    {
+      "path": "output/pdf/Pasos-Finalizar-TFM-Agente-BOE.pdf",
+      "bytes": 67121,
+      "sha256": "616551a5b1bfe2ae5d5d23616578b302ab56a0623ce062c24877d77a0c3fb465"
     },
     {
       "path": "output/pdf/Presentacion-Agente-BOE.pdf",
-      "bytes": 937134,
-      "sha256": "cbbe3d3e405c5109bdd24698db151818ea180461e1e5a75ef6ac8a9df4e9934b"
+      "bytes": 1849655,
+      "sha256": "abb893883714fa511f942fcf53f7e866185379bd17e66d51b89e5b89a224eb8b"
     },
     {
       "path": "package-lock.json",
@@ -1614,13 +1704,18 @@
     },
     {
       "path": "scripts/build_tfm_docs.py",
-      "bytes": 13357,
-      "sha256": "4dd50234db412f07632d035042b04cfc761f5d4e28e91a0be32f5b857e518449"
+      "bytes": 18092,
+      "sha256": "57160c4ea788102e75fcec23db702fc75f82f1b649866f6918974695dc4eddb2"
+    },
+    {
+      "path": "scripts/build_tfm_personal.py",
+      "bytes": 3447,
+      "sha256": "86005a0f5a699dad7092de2530541b4f4edce1832f4f2eefa44f40ca3157164b"
     },
     {
       "path": "scripts/export_tfm.py",
-      "bytes": 10772,
-      "sha256": "916ffa6e2988928af5d227362b40118ac6374d3e9abb54c257bbd97f0f7bcf54"
+      "bytes": 10801,
+      "sha256": "474ee01840748469d53655748db1850d31dc1ad8f694cf10a088686b632ae2cb"
     },
     {
       "path": "scripts/generate-electricidad-context.mjs",

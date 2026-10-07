@@ -38,6 +38,45 @@
       "title": "Anexo visual 7. Simulacros",
       "image": "docs/tfm/capturas/09-simulacros-demo.png",
       "caption": "Selector de ocho simulacros: cuatro de cuarenta preguntas básicas y cuatro de diez de especialista. Demo local autenticada."
+    },
+    {
+      "title": "Anexo visual 8. Comunidad AgenteBoe + Finanfocus",
+      "page_break": true,
+      "paragraphs": [
+        "Comprobación pública del canal el 7 de octubre de 2026. Corrobora el recorte aportado por el autor y conserva visibles el nombre conjunto, el contador y las menciones de las dos webs."
+      ],
+      "image": "docs/tfm/capturas/16-comunidad-telegram-publica.png",
+      "caption": "Canal https://t.me/EscudoFinanciero: 1.560 suscriptores visibles en la consulta. El contador no acredita cuántos tienen cuenta en AgenteBOE o han comprado en FinanFocus. El recorte original aportado por el autor se conserva en las fuentes y en la presentación."
+    },
+    {
+      "title": "Anexo visual 9. Histórico de visitantes en Vercel",
+      "landscape": true,
+      "image": "docs/tfm/capturas/22-vercel-historico-autor.png",
+      "caption": "Original aportado por el autor el 7 de octubre de 2026 y atribuido a AgenteBOE. Contiene serie temporal, páginas y referentes. El punto seleccionado indica 17 Visitors el 20 de septiembre; el intervalo global, año y nombre del proyecto no están visibles."
+    },
+    {
+      "title": "Anexo visual 10. Puerta de AgenteBOE hacia FinanFocus",
+      "image": "docs/tfm/capturas/15-menu-finanfocus-publico.png",
+      "caption": "Menú de https://agenteboe.com/ comprobado el 7 de octubre de 2026. El enlace FinanFocus dirige a https://finanfocus.com/.",
+      "detail_image": "docs/tfm/capturas/20-detalle-enlace-finanfocus-publico.png",
+      "detail_caption": "Detalle ampliado del menú: enlace a FinanFocus. Captura directa del navegador en la misma revisión."
+    },
+    {
+      "title": "Anexo visual 11. FinanFocus, destino del embudo",
+      "image": "docs/tfm/capturas/18-finanfocus-portada-publica.png",
+      "caption": "Página pública de https://finanfocus.com/, comprobada el 7 de octubre de 2026. Muestra la propuesta del producto y sus opciones de prueba y cuenta gratuita."
+    },
+    {
+      "title": "Anexo visual 12. Incentivo comercial en el juego",
+      "image": "docs/tfm/capturas/17-juego-premio-finanfocus-publico.png",
+      "caption": "Vista pública de https://agenteboe.com/juego, comprobada el 7 de octubre de 2026. El premio FinanFocus PRO conecta la marca comercial con una función de AgenteBOE; la promoción no prueba ventas realizadas. El contador de 205 personas incluye 200 de cortesía según el código: no se utiliza como cifra de jugadores reales."
+    },
+    {
+      "title": "Anexo visual 13. FinanFocus enlaza de vuelta a AgenteBOE",
+      "image": "docs/tfm/capturas/19-finanfocus-retorno-agenteboe-publico.png",
+      "caption": "Menú Tendencias de FinanFocus comprobado el 7 de octubre de 2026, en modo DEMO con datos de ejemplo. El enlace AgenteBoe permite volver al servicio del BOE. No se muestran datos financieros de usuarios reales.",
+      "detail_image": "docs/tfm/capturas/23-detalle-retorno-agenteboe-publico.png",
+      "detail_caption": "Detalle ampliado de Tendencias: enlace de regreso a AgenteBoe. Captura directa del navegador en modo DEMO."
     }
   ]
 }

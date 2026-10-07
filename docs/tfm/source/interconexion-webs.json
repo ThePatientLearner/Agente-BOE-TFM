@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "titulo": "Interconexión pública AgenteBOE, comunidad Telegram y FinanFocus",
+  "fecha": "2026-10-07T16:30:10+02:00",
+  "metodo": "Navegador Chrome con Playwright, contexto nuevo sin cuenta autenticada. Lectura de interfaz y href; clic AgenteBOE a FinanFocus; modo demo sin registro; menús desplegados. No se modificó aplicación ni documentación.",
+  "navegador": "154.0.8037.98",
+  "capturas": [
+    {
+      "archivo": "docs/tfm/capturas/15-menu-finanfocus-publico.png",
+      "url": "https://agenteboe.com/",
+      "descripcion": "Menú público de AgenteBOE con enlace a FinanFocus. Clic verificado: abre https://finanfocus.com/ en otra pestaña.",
+      "ancho_px": 1280,
+      "alto_px": 900,
+      "sha256": "299a11052f98ba046585c315f0be948f351dd598defe69979bf247c1846e22d8",
+      "origen": "Captura directa del navegador público, sin sesión autenticada. Sin composición ni retoque de contenido."
+    },
+    {
+      "archivo": "docs/tfm/capturas/16-comunidad-telegram-publica.png",
+      "url": "https://t.me/EscudoFinanciero",
+      "descripcion": "Canal público compartido AgenteBoe + Finanfocus: contador visible de 1.560 suscriptores el 7 de octubre de 2026. No equivale a clientes ni a usuarios activos.",
+      "ancho_px": 900,
+      "alto_px": 780,
+      "sha256": "2023033742b51a62a6fc2113340feec694cbdc94857082758b3f3ddc9cf3ec72",
+      "origen": "Captura directa del navegador público, sin sesión autenticada. Sin composición ni retoque de contenido."
+    },
+    {
+      "archivo": "docs/tfm/capturas/17-juego-premio-finanfocus-publico.png",
+      "url": "https://agenteboe.com/juego",
+      "descripcion": "Promoción del premio FinanFocus PRO de por vida en el juego. El contador visible no es una métrica válida de participantes: el código añade una base de 200.",
+      "ancho_px": 1280,
+      "alto_px": 900,
+      "sha256": "822a97e885e1a3d8b1a2d85daae90301424629db527eb9333e3608577926fe8a",
+      "origen": "Captura directa del navegador público, sin sesión autenticada. Sin composición ni retoque de contenido."
+    },
+    {
+      "archivo": "docs/tfm/capturas/18-finanfocus-portada-publica.png",
+      "url": "https://finanfocus.com/",
+      "descripcion": "Destino del enlace: marca FinanFocus, propuesta de gestión patrimonial, acceso sin registro y cuenta gratis. No se realizó registro ni compra.",
+      "ancho_px": 1280,
+      "alto_px": 900,
+      "sha256": "616e53f439ec3476a818bcbdad8892fef6a7d2e78970d1a8c104366d96873108",
+      "origen": "Captura directa del navegador público, sin sesión autenticada. Sin composición ni retoque de contenido."
+    },
+    {
+      "archivo": "docs/tfm/capturas/19-finanfocus-retorno-agenteboe-publico.png",
+      "url": "https://finanfocus.com/",
+      "descripcion": "Menú Tendencias de FinanFocus con enlace visible de retorno a AgenteBoe. Pantalla con datos de ejemplo y banner DEMO.",
+      "ancho_px": 1280,
+      "alto_px": 900,
+      "sha256": "629c7b90f6b4fab8678d8528148475f56ba8d27012c001891a5667d03d924c0e",
+      "origen": "Captura directa del navegador público, sin sesión autenticada. Sin composición ni retoque de contenido."
+    },
+    {
+      "archivo": "docs/tfm/capturas/20-detalle-enlace-finanfocus-publico.png",
+      "url": "https://agenteboe.com/",
+      "descripcion": "Detalle de Enlaces externos del menú de AgenteBOE: fuente oficial y FinanFocus. Complementa la figura completa15.",
+      "ancho_px": 318,
+      "alto_px": 205,
+      "clip_css_px": {
+        "x": 29,
+        "y": 490,
+        "width": 318,
+        "height": 205
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "elemento": "Menú abierto, grupo Enlaces externos, enlace oficial y enlace FinanFocus",
+      "href": "https://finanfocus.com",
+      "fecha": "2026-10-07T14:32:31.286Z",
+      "sha256": "4435a7ed8b5b077decb4674fc5545c7508b48711d26c3110dc6e2c5de44049b2",
+      "origen": "Captura nativa del navegador mediante clip; sin edición de imágenes ni reconstrucción de texto."
+    },
+    {
+      "archivo": "docs/tfm/capturas/23-detalle-retorno-agenteboe-publico.png",
+      "url": "https://finanfocus.com/",
+      "descripcion": "Detalle de Tendencias de FinanFocus con su tarjeta AgenteBoe. Complementa la figura completa19; procede del modo demo sin cuenta.",
+      "ancho_px": 238,
+      "alto_px": 109,
+      "clip_css_px": {
+        "x": 934,
+        "y": 101,
+        "width": 238,
+        "height": 109
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "elemento": "#trendingMenu: título Tendencias y a[href=\"https://agenteboe.com/\"]",
+      "href": "https://agenteboe.com/",
+      "fecha": "2026-10-07T14:32:31.300Z",
+      "sha256": "e51d2109b6031dcc1dacb4a90a54bb3d9e7d9da3a1b7dc832e60aa3bb24e3d71",
+      "origen": "Captura nativa del navegador mediante clip; sin edición de imágenes ni reconstrucción de texto."
+    }
+  ],
+  "verificacion_navegacion": {
+    "origen": "https://agenteboe.com/",
+    "accion": "Clic en FinanFocus del menú público",
+    "url_final": "https://finanfocus.com/",
+    "title": "FinanFocus · App de patrimonio neto, ahorro e inversiones",
+    "abrio_nueva_pestana": true,
+    "oferta_visible": true
+  },
+  "relaciones": [
+    {
+      "origen": "https://agenteboe.com/",
+      "superficie": "Menú abierto → FinanFocus / Finanzas personales",
+      "tipo": "hipervinculo",
+      "href": "https://finanfocus.com/",
+      "visible": true,
+      "navegado": true,
+      "destino_identificado": "FinanFocus · App de patrimonio neto, ahorro e inversiones"
+    },
+    {
+      "origen": "https://agenteboe.com/#seguir-boe",
+      "superficie": "Panel de avisos → Seguir en Telegram",
+      "tipo": "hipervinculo",
+      "href": "https://t.me/EscudoFinanciero",
+      "visible": true,
+      "destino_consultado_en_pagina_publica": true
+    },
+    {
+      "origen": "https://agenteboe.com/juego",
+      "superficie": "Cabecera del juego",
+      "tipo": "referencia_promocional_textual",
+      "texto": "finanfocus.com PRO gratis de por vida",
+      "es_hipervinculo_en_esa_cabecera": false
+    },
+    {
+      "origen": "https://finanfocus.com/",
+      "superficie": "Modo demo → menú Tendencias → AgenteBoe",
+      "tipo": "hipervinculo",
+      "href": "https://agenteboe.com/",
+      "visible": true,
+      "texto": "BOE\nAgenteBoe\nLive\nDatos impactantes de España · BOE resumido en tiempo real",
+      "navegado": false
+    },
+    {
+      "origen": "https://finanfocus.com/",
+      "superficie": "Planes y precios",
+      "tipo": "hipervinculo",
+      "href": "https://finanfocus.com/planes.html",
+      "destino_http": 200
+    },
+    {
+      "origen": "https://finanfocus.com/planes.html",
+      "superficie": "Crear cuenta gratis / Empezar con mi cuenta",
+      "tipo": "hipervinculo",
+      "href": "https://finanfocus.com/?signup=1",
+      "navegado": false
+    },
+    {
+      "origen": "https://finanfocus.com/planes.html",
+      "superficie": "Explorar la demo",
+      "tipo": "hipervinculo",
+      "href": "https://finanfocus.com/?demo=1",
+      "modo_demo_sin_registro_probado": true
+    },
+    {
+      "origen": "https://finanfocus.com/",
+      "superficie": "Contacto Telegram",
+      "tipo": "hipervinculo",
+      "href": "https://t.me/FinanFocus",
+      "nota": "Destino distinto del canal EscudoFinanciero; no se envió mensaje ni se comprobó pertenencia o equivalencia entre cuentas."
+    }
+  ],
+  "comunidad_publica": {
+    "fecha": "2026-10-07T14:28:31.556Z",
+    "url": "https://t.me/EscudoFinanciero",
+    "title": "AgenteBoe + Finanfocus🛡📈 / ECONOMÍA, CRECIMIENTO PERSONAL Y VALUE INVESTING! 🚀",
+    "subscribers": "1 560 subscribers",
+    "description": "Notificaciones gratuitas relevantes sobre el BOE y Alertas de volatilidad del mercado con sus respectivas noticias.\n\nAgenteBoe.com\n\nFinanFocus.com",
+    "captura": "16-comunidad-telegram-publica.png",
+    "suscriptores_visibles": 1560,
+    "lectura": "Contador público de suscriptores en ese instante, sin prueba de actividad, identidad única entre productos, ingresos o conversiones.",
+    "menciones_textuales": [
+      "AgenteBoe.com",
+      "FinanFocus.com"
+    ],
+    "nota_enlaces": "Las menciones de ambos dominios en la descripción se extrajeron como texto; no se presentarán como href verificados de la página de Telegram."
+  },
+  "oferta_publicada": {
+    "url": "https://finanfocus.com/planes.html",
+    "observado": "Free de 0 EUR; Pro de 4,99 EUR/mes o 49 EUR/año. Página accesible sin sesión.",
+    "limite": "Oferta visible en la fecha de consulta; no se probó contratación, cobro, renovación, registro ni disponibilidad de todas las funciones privadas.",
+    "premio": "AgenteBOE anuncia un acceso PRO de por vida como premio. No se acredita adjudicación, concesión efectiva ni fecha de cierre del concurso."
+  },
+  "advertencia_contador_juego": {
+    "valor_visible": 205,
+    "no_usar_como_participantes_reales": true,
+    "base_artificial_en_codigo": 200,
+    "evidencia_codigo": [
+      "apps/monolith/src/modules/juego/domain/contador.ts:13",
+      "apps/monolith/src/modules/juego/infrastructure/postgres-partida-repository.ts:84"
+    ],
+    "limite": "No se inspeccionó la base de producción ni se infirió un número de personas únicas. La captura se usa exclusivamente para acreditar promoción cruzada."
+  },
+  "capturas_autor_revisadas": {
+    "telegram": "Recorte aportado por el autor muestra la marca compartida y 1.560 suscriptores; la cifra se verificó también en la página pública actual.",
+    "analitica": "La imagen aportada muestra una serie temporal, páginas y referidores, pero no un periodo completo ni dominio identificable en el recorte. No se accedió al panel privado ni se derivó una tasa de conversión."
+  },
+  "conclusiones": [
+    "Se verifican enlaces públicos en ambos sentidos entre AgenteBOE y FinanFocus.",
+    "AgenteBOE ofrece entrada a una comunidad Telegram cuya página pública reúne ambas marcas.",
+    "El juego comunica un incentivo hacia FinanFocus; la página receptora ofrece demo, registro gratuito y planes.",
+    "Estas evidencias prueban un recorrido de captación implementado y una audiencia pública visible. No prueban atribución de tráfico, conversiones, clientes de pago ni ingresos."
+  ],
+  "no_verificado": [
+    "Cuentas privadas, datos financieros personales, registros y compras.",
+    "Número de clics entre productos o tasa de conversión.",
+    "Usuarios activos, identidad única entre canales, ingresos y clientes de pago.",
+    "Entrega o cumplimiento del premio anunciado.",
+    "Analítica privada y completitud del periodo de la captura aportada."
+  ],
+  "controles": {
+    "env_leido": false,
+    "formulario_enviado": false,
+    "cuenta_creada": false,
+    "consulta_IA": false,
+    "mensaje_enviado": false,
+    "compra": false,
+    "partida_iniciada": false,
+    "puntuacion_enviada": false,
+    "codigo_o_documentacion_editados": false,
+    "imagenes_previas_sobrescritas": false,
+    "nuevas_capturas": 7
+  },
+  "auxiliar_no_incluido_en_anexos": {
+    "panel_telegram": "tmp/tfm/draft-16-panel-telegram.png",
+    "nota": "Recorte directo del panel de AgenteBOE disponible si se prefiere sustituir una figura; se limita la entrega principal a cinco nuevas capturas."
+  }
+}

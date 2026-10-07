@@ -1,0 +1,20 @@
+{
+  "title": "Pasos para terminar el TFM",
+  "subtitle": "Código y documentación preparados. Falta el vídeo y el envío académico.",
+  "steps": [
+    {"title": "Revisa el material", "text": "Lee la memoria y repasa la presentación y el guion. Identifica qué vas a mostrar y qué debes explicar con tus propias palabras."},
+    {"title": "Ensaya el recorrido", "text": "Comprueba la web pública y la demo local. Recorre una ficha, BoeBot y Electricidad. En la demo, explica que las respuestas de IA son simuladas."},
+    {"title": "Prepara la grabación", "text": "Abre las pantallas necesarias, amplía el texto y realiza una prueba de audio de 20 segundos."},
+    {"title": "Graba tu explicación", "text": "Incluye tu voz y la captura de pantalla. Tu cara es opcional. El guion propone 10-15 minutos; el documento de requisitos no fija duración."},
+    {"title": "Publica y prueba el vídeo", "text": "Sube la grabación con acceso por enlace. Ábrela en una ventana privada, sin iniciar sesión, para comprobar que el profesor puede verla."},
+    {"title": "Incorpora el enlace a la entrega", "text": "Pásame la URL real del vídeo para añadirla al README y actualizar el paquete de entrega. Conserva el archivo original de la grabación."},
+    {"title": "Completa el formulario del campus", "text": "En la lección Proyecto Final, introduce tu nombre completo y correo de matrícula; los enlaces al repositorio, la web, la presentación y el vídeo; y las credenciales de evaluación de la guía."},
+    {"title": "Comprueba, envía y guarda", "text": "Revisa todos los enlaces antes de enviar. Consulta la fecha límite en el campus y guarda el justificante, el ZIP final y el vídeo."}
+  ],
+  "resources": [
+    {"label": "Repositorio público", "url": "https://github.com/ThePatientLearner/Agente-BOE-TFM"},
+    {"label": "Aplicación pública", "url": "https://agenteboe.com/"},
+    {"label": "Presentación para el formulario", "url": "https://github.com/ThePatientLearner/Agente-BOE-TFM/blob/main/output/pdf/Presentacion-Agente-BOE.pdf"},
+    {"label": "Guía y credenciales de evaluación", "url": "https://github.com/ThePatientLearner/Agente-BOE-TFM/blob/main/output/pdf/Guia-Evaluacion-Grabacion-Entrega.pdf"}
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "revision_date": "2026-10-07",
+  "author_claim": "Uso con público real y finalidad de embudo de ventas hacia finanfocus.com.",
+  "screenshots_supplied": [
+    {
+      "file": "docs/tfm/capturas/21-comunidad-telegram-autor.png",
+      "sha256": "94c36cb5b897db9dc1227a2042b5999b28550c914779cdf0c4cf3a126c9cbfa6",
+      "origin": "Captura proporcionada por el autor en este chat el 7 de octubre de 2026.",
+      "capture_timestamp_visible": false,
+      "modification": "Copia intacta; no se ha reconstruido ni alterado la gráfica."
+    },
+    {
+      "file": "docs/tfm/capturas/22-vercel-historico-autor.png",
+      "sha256": "fafa0b0b37e9e9e5d8bbb1ec288facd4ba1d5dcab8901ea9962eb01cb03e123c",
+      "origin": "Captura proporcionada por el autor en este chat el 7 de octubre de 2026.",
+      "capture_timestamp_visible": false,
+      "modification": "Copia intacta; no se ha reconstruido ni alterado la gráfica."
+    }
+  ],
+  "telegram": {
+    "channel_label": "AgenteBoe + Finanfocus",
+    "subscribers_visible": 1560,
+    "channel_url_not_visible": true,
+    "public_verification": {
+      "date": "2026-10-07",
+      "url": "https://t.me/EscudoFinanciero",
+      "subscribers": 1560,
+      "screenshot": "docs/tfm/capturas/16-comunidad-telegram-publica.png"
+    }
+  },
+  "vercel": {
+    "project_attribution": "Declaración del autor; nombre del proyecto no visible en recorte.",
+    "metric_label": "Visitors",
+    "period_selector_visible": false,
+    "year_visible": false,
+    "selected_point": {
+      "label": "Sep 20 · Sun",
+      "visitors": 17
+    },
+    "pages": {
+      "/": 683,
+      "/pensiones": 48,
+      "/subvenciones": 46,
+      "/juego": 44,
+      "/d/BOE-A-2026-20266": 36,
+      "/d/BOE-A-2026-20385": 35
+    },
+    "referrers": {
+      "google.com": 237,
+      "t.co": 66,
+      "search.brave.com": 26,
+      "bing.com": 8,
+      "app.raindrop.io": 7,
+      "gemini.google.com": 3
+    }
+  },
+  "not_established": [
+    "Total de personas únicas del intervalo completo",
+    "Personas identificadas o listado nominal",
+    "Clics atribuibles AgenteBOE-FinanFocus",
+    "Registros o compras atribuibles",
+    "Facturación o tasa de conversión",
+    "Sesión o base de datos compartida entre webs"
+  ],
+  "primary_sources": [
+    "https://agenteboe.com/",
+    "https://agenteboe.com/juego",
+    "https://finanfocus.com/",
+    "https://vercel.com/docs/analytics"
+  ],
+  "web_evidence_record": "docs/tfm/source/interconexion-webs.json"
+}

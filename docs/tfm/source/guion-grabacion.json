@@ -1,0 +1,192 @@
+{
+  "title": "Guion para la grabación",
+  "subtitle": "AgenteBOE como proyecto principal · Electricidad como ampliación integrada",
+  "pages": [
+    {
+      "title": "1. Preparación y apertura",
+      "eyebrow": "Antes de grabar · Apertura: 1-2 minutos",
+      "sections": [
+        {
+          "heading": "Deja todo preparado",
+          "bullets": [
+            "Abre la presentación, la web pública, FinanFocus y la demo local. Prepara la captura del canal, el histórico de Vercel, una ficha del BOE y una sección de Electricidad.",
+            "Si la demo no está abierta, entra en la carpeta Agente-BOE-TFM y ejecuta npm run demo:tfm. Si aún no has instalado sus dependencias, ejecuta antes npm ci.",
+            "Usa la demo en http://127.0.0.1:3100 durante todo el recorrido local. Usuario: alumno_demo. Contraseña: AulaLocal!2026-TFM.",
+            "Prueba el micrófono con una toma de 20 segundos. Amplía el texto de pantalla y cierra pestañas o paneles que contengan datos personales.",
+            "Graba tu voz y la pantalla. Mostrar tu cara es opcional. El recorrido propone 10-15 minutos; puedes ampliarlo 1-2 minutos para este bloque. Los requisitos facilitados no fijan una duración."
+          ]
+        },
+        {
+          "heading": "Presenta el proyecto",
+          "action": "Muestra las primeras diapositivas y la portada de AgenteBOE.",
+          "speech": [
+            "Soy Roberto Casabán y presento AgenteBOE, una aplicación que facilita la lectura de disposiciones del Boletín Oficial del Estado. Organiza la información por boletines y fichas y utiliza inteligencia artificial para ofrecer una primera explicación del contenido.",
+            "El punto de partida es siempre la fuente oficial. El servicio es independiente del BOE y distingue el documento original del resumen generado. La explicación ayuda a orientarse, pero requiere contrastar la fuente.",
+            "El proyecto principal es AgenteBOE. Como ampliación, integra un área de estudio de Electricidad que comparte la plataforma, las cuentas y el asistente contextual. Primero mostraré el núcleo del proyecto y después este complemento."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. Demostración de AgenteBOE",
+      "eyebrow": "Recorrido principal: 3-4 minutos",
+      "sections": [
+        {
+          "heading": "Portada, ficha y fuente",
+          "action": "En la web pública, abre una disposición. Señala su título, el enlace oficial, la fecha visible y el resumen.",
+          "speech": [
+            "La portada permite consultar el catálogo. Al abrir una ficha, puedo identificar la disposición y acceder al texto oficial. El enlace a la fuente aparece antes del resumen para facilitar su comprobación.",
+            "Aquí distingo los datos del documento y el contenido generado por IA. La clasificación de impacto pertenece a la aplicación. Ni esa clasificación ni el resumen son información emitida por el BOE."
+          ]
+        },
+        {
+          "heading": "BoeBot en la demo local",
+          "action": "Cambia a la demo local, inicia sesión y abre BoeBot en el archivo o en una ficha. Formula una pregunta breve y enseña la respuesta y sus referencias.",
+          "speech": [
+            "Ahora estoy en la demo local. Utiliza un catálogo pequeño y respuestas simuladas para que el recorrido se pueda repetir sin configurar un proveedor de IA. Lo que aparece aquí demuestra la interfaz y el contexto; no es una respuesta generada en directo por un modelo.",
+            "En la implementación real, BoeBot recibe información distinta según dónde se abre. En el archivo trabaja con resúmenes del catálogo. En una ficha puede utilizar el texto oficial del documento, con un mecanismo de respaldo si no se recupera la fuente.",
+            "Las referencias ayudan a contrastar la respuesta, pero no garantizan que la información recuperada sea completa o que represente toda la legislación vigente."
+          ]
+        },
+        {
+          "heading": "Continuar la conversación en otra IA",
+          "action": "En la web pública, con una conversación abierta, señala el botón junto a Salir y despliega sus cuatro opciones. Elige un destino solo si quieres mostrar la copia; explica el pegado manual.",
+          "speech": [
+            "He añadido una forma de continuar la consulta fuera de BoeBot. Puedo elegir Grok, Claude, ChatGPT o Gemini. La conversación se copia con sus preguntas, respuestas y fuentes oficiales, y se abre la web que he elegido. Después tengo que pegar el texto en su chat.",
+            "Esta acción se resuelve en el navegador y no genera otra llamada al modelo de BoeBot. El historial que envío en una consulta sigue acotado a cuatro mensajes; conservar el chat completo para copiarlo no amplía ese contexto. La otra IA puede responder de manera distinta y sigue siendo necesario contrastar la fuente."
+          ]
+        },
+        {
+          "heading": "Qué dejar visible",
+          "bullets": [
+            "Una ficha con fuente oficial y resumen claramente separados.",
+            "El cambio de entorno: web pública y demo local.",
+            "La etiqueta de respuesta simulada y el contexto que recibe el asistente.",
+            "La copia conserva las fuentes y el destino necesita que el usuario pegue la conversación."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. Uso real y conexión con FinanFocus",
+      "eyebrow": "BLOQUE ADICIONAL · 1-2 MINUTOS",
+      "sections": [
+        {
+          "heading": "Enseña la audiencia del servicio",
+          "action": "Muestra la diapositiva del canal compartido y la captura original del histórico de Vercel.",
+          "speech": [
+            "AgenteBOE se utiliza como servicio público, además de servir para esta entrega académica. Esta captura del canal AgenteBoe + Finanfocus muestra 1.560 suscriptores y una comunidad vinculada a ambas marcas.",
+            "La analítica de Vercel muestra un historial de visitantes y sus páginas consultadas. En el recorte aparecen 683 Visitors para la portada, 48 para Pensiones, 46 para Subvenciones y 44 para el juego. El punto seleccionado marca 17 Visitors el 20 de septiembre. Como el intervalo global no se ve, no presento estas cifras como un total único de personas."
+          ]
+        },
+        {
+          "heading": "Recorre la conexión entre las webs",
+          "action": "Abre el menú de AgenteBOE, señala FinanFocus y sigue el enlace. En el destino muestra su marca, la prueba y la creación de cuenta. Si lo tienes preparado, enseña también el premio PRO del juego. Enseña el menú Tendencias de FinanFocus con el enlace de regreso a AgenteBOE.",
+          "speech": [
+            "AgenteBOE funciona también como embudo hacia FinanFocus. Ofrece contenido gratuito que atrae interés y avisos que buscan facilitar nuevas visitas. El canal conjunto mantiene la relación con la comunidad.",
+            "El menú conduce a finanfocus.com y el juego promociona FinanFocus PRO como premio. En FinanFocus, el visitante puede conocer el producto financiero, probar con datos de ejemplo, crear su cuenta gratuita y consultar planes. FinanFocus también enlaza de vuelta a AgenteBOE desde Tendencias, por lo que la relación entre webs funciona en ambos sentidos.",
+            "La interconexión que muestro es de navegación, marca y comunidad. Las webs mantienen sus propias funciones. Las capturas demuestran audiencia y vías comerciales visibles; no cuantifican cuántos visitantes terminaron comprando."
+          ]
+        },
+        {
+          "heading": "Qué mantener claro",
+          "bullets": [
+            "La cifra de Telegram cuenta suscriptores; Vercel muestra visitantes, no un listado nominal de usuarios.",
+            "El objetivo es conducir hacia el producto de FinanFocus; medir registros y ventas atribuibles queda como siguiente mejora.",
+            "No te registres ni realices pagos durante esta demostración."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4. Mejoras de continuidad y acceso móvil",
+      "eyebrow": "ACTUALIZACIÓN PUBLICADA · 7 DE OCTUBRE DE 2026",
+      "sections": [
+        {
+          "heading": "Explica los logos del móvil",
+          "action": "Muestra la nueva diapositiva con el emblema de Agente BOE y el rayo de Electricidad. Si tienes un móvil preparado, enseña sus accesos de inicio.",
+          "speech": [
+            "Antes los accesos del móvil podían aparecer como A y E. Ahora cada zona tiene un logo reconocible: el emblema de Agente BOE y el rayo dorado de Electricidad. He configurado iconos PNG y manifiestos, con formatos para iPhone y para el recorte de Android.",
+            "Electricidad entrega HTML privados después de comprobar los permisos; por eso sus etiquetas de icono y manifiesto se añaden a ese HTML. La mejora cambia la identidad del acceso, pero conserva la autenticación y el contenido protegido. No convierte el sitio en una aplicación nativa ni añade acceso offline."
+          ]
+        },
+        {
+          "heading": "Distingue publicación de comprobación",
+          "speech": [
+            "Estos cambios se publicaron en GitHub y Vercel el 7 de octubre. Como afectan solo a la web, no requieren reconstruir la API del VPS. Se comprobó el tipado y que los recursos móviles se sirven en producción; no afirmo haber probado todas las versiones de iOS y Android."
+          ]
+        },
+        {
+          "heading": "No pierdas el progreso de estudio",
+          "bullets": [
+            "Un acceso antiguo puede conservar su icono en caché. Guarda una exportación del progreso de Electricidad antes de eliminar una webapp o cambiar de navegador.",
+            "Los PDF que estás utilizando incorporan esta explicación; una copia académica anterior puede no contener aún estos componentes."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "5. Diseño, IA y comprobaciones",
+      "eyebrow": "Explicación técnica: 2-3 minutos",
+      "sections": [
+        {
+          "heading": "Sigue el flujo del diagrama",
+          "action": "Muestra la diapositiva de arquitectura. Si deseas enseñar código, prepara antes composition.ts y evita recorrer muchas carpetas.",
+          "speech": [
+            "La solución combina una web en Next.js y React con una API en Fastify y TypeScript. La persistencia real utiliza PostgreSQL. El backend es un monolito modular: cada módulo posee sus datos y se comunica con los demás mediante contratos.",
+            "El flujo comienza con la ingesta del BOE. El evento EntryIngested permite registrar la disposición en el catálogo y generar su resumen. Después, SummaryGenerated actualiza el catálogo y activa los avisos configurados.",
+            "El catálogo se prepara como una proyección de lectura. El orden de las suscripciones importa: el documento debe existir antes de incorporar su resumen. El bus está en memoria; la recuperación de pendientes no garantiza por sí sola un procesamiento transaccional exactamente una vez."
+          ]
+        },
+        {
+          "heading": "Explica el uso de IA",
+          "speech": [
+            "La IA interviene en los resúmenes y en el asistente. Hay tres contextos: el archivo, la ficha de una disposición y el tema de estudio de Electricidad. Las revisiones del mismo modelo pueden mejorar un borrador, pero no constituyen una verificación independiente de su verdad.",
+            "También se ha utilizado asistencia de IA para preparar y revisar código y documentación. Las afirmaciones de la entrega se apoyan en las comprobaciones documentadas."
+          ]
+        },
+        {
+          "heading": "Muestra la evidencia",
+          "action": "Abre la diapositiva de verificación o su apartado en la memoria.",
+          "speech": [
+            "La edición del núcleo comprobada el 6 de octubre pasó 414 pruebas automatizadas, las comprobaciones de tipos, los límites entre módulos y las compilaciones documentadas. También se comprobó el recorrido en navegador y la demo de la copia pública.",
+            "Estas pruebas verifican comportamientos concretos. No equivalen a una certificación jurídica o de seguridad. No se ejecutaron pruebas de carga ni una evaluación de fidelidad del modelo real con un conjunto de referencia.",
+            "Los cambios web del día 7 tienen evidencia separada de tipado y despliegue. No he vuelto a ejecutar esa suite para documentar las nuevas diapositivas."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "6. Electricidad y cierre",
+      "eyebrow": "Ampliación: 2-3 minutos · Cierre: 1 minuto",
+      "sections": [
+        {
+          "heading": "Muestra el complemento integrado",
+          "action": "En la demo local, abre /electricidad con alumno_demo. Enseña una sección y una ficha, abre el tutor, responde un test corto y muestra su corrección. Termina en /electricidadTest, seleccionando un simulacro.",
+          "speech": [
+            "Electricidad es la ampliación de AgenteBOE para estudiar y practicar. Comparte la plataforma y la sesión, pero exige un permiso de estudio. El servidor comprueba ese permiso antes de entregar el contenido.",
+            "El cuaderno incluye explicaciones, preguntas y fórmulas. Al abrir el tutor desde una sección, el servidor prepara el contexto con el material del tema. En esta demo, la respuesta sigue siendo simulada.",
+            "Los tests permiten practicar y ver la corrección. Los ocho simulacros reúnen 200 preguntas en total: cuatro de 40 para la parte básica y cuatro de 10 para la de especialista. Para enseñar el funcionamiento basta un fragmento.",
+            "El progreso se guarda en el navegador, separado por cuenta, y no se sincroniza entre dispositivos. Es una herramienta de aprendizaje: la puntuación no constituye una certificación."
+          ]
+        },
+        {
+          "heading": "Cierra con la aportación y una mejora",
+          "action": "Vuelve a la última diapositiva. Muestra los enlaces del repositorio, la aplicación y la documentación.",
+          "speech": [
+            "La aportación principal es conectar una fuente oficial con un catálogo consultable, resúmenes identificados y un asistente que utiliza el contexto disponible. Electricidad amplía esa plataforma con estudio y práctica.",
+            "Como mejora prioritaria, planteo evaluar la fidelidad de las respuestas con un conjunto de referencia y reforzar la trazabilidad del procesamiento. El repositorio público incluye el código, la demo reproducible, la memoria, la presentación y la guía de evaluación."
+          ]
+        },
+        {
+          "heading": "Antes de dar la toma por terminada",
+          "bullets": [
+            "Comprueba que se oye tu explicación y se leen las pantallas.",
+            "Revisa que AgenteBOE ocupa la parte principal y Electricidad aparece como complemento.",
+            "Confirma que has identificado las respuestas simuladas. Adapta el texto a tu forma de hablar y defiende solo lo que comprendas."
+          ]
+        }
+      ]
+    }
+  ]
+}

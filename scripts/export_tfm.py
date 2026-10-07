@@ -41,6 +41,7 @@ WEB_FILES = frozenset({
 SCRIPT_FILES = frozenset({
     "tfm-demo.mjs", "generate-electricidad-context.mjs", "build_tfm_docs.py",
     "export_tfm.py", "test-electricidad-accounts.mjs",
+    "build_tfm_personal.py",
 })
 FORBIDDEN_PARTS = frozenset({
     ".git", "node_modules", "dist", ".next", "__pycache__", "coverage",

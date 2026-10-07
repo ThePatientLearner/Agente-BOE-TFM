@@ -18,14 +18,34 @@ es la referencia. El complemento Electricidad es material de aprendizaje.
 - [Memoria técnica en PDF](output/pdf/Memoria-Agente-BOE.pdf): alcance, arquitectura, manual, decisiones, evidencia y límites.
 - [Presentación en PDF](output/pdf/Presentacion-Agente-BOE.pdf).
 - [Guía de evaluación, grabación y entrega en PDF](output/pdf/Guia-Evaluacion-Grabacion-Entrega.pdf): cuentas, recorrido reproducible, guion y ficha para el formulario.
+- [Guion de grabación en PDF](output/pdf/Guion-Grabacion-Agente-BOE.pdf): texto de apoyo y pantallas, incluido el bloque de uso real y FinanFocus.
+- [Pasos para completar el TFM en PDF](output/pdf/Pasos-Finalizar-TFM-Agente-BOE.pdf): lista personal de grabación y envío.
 - [Salud de la API pública](https://api.agenteboe.com/health).
 - **Vídeo personal:** pendiente de grabación y publicación por el autor; debe incluir su explicación y captura de pantalla. Añadir aquí la URL real cuando esté disponible.
 
-Esta edición del **6 de octubre de 2026** incluye Electricidad. Los PDF de
+Esta edición del **7 de octubre de 2026** incluye Electricidad. Los PDF de
 `output/pdf` son la documentación de referencia de esta entrega y sustituyen los
 materiales académicos anteriores. El despliegue público y la copia de evaluación
 son entornos distintos: un cambio en este repositorio no despliega el backend de
 producción.
+
+## Uso real y conexión con FinanFocus
+
+AgenteBOE se utiliza como servicio público y como vía de captación hacia
+[FinanFocus](https://finanfocus.com/). La revisión documental del 7 de octubre
+incluye la captura del canal **AgenteBoe + Finanfocus**, con **1.560 suscriptores**,
+y el histórico de visitantes aportado por el autor desde Vercel. En el desglose
+de páginas se leen **683 Visitors para la portada**, 48 para Pensiones, 46 para
+Subvenciones y 44 para el juego. El intervalo global no aparece en el recorte;
+las cifras no se suman como un total único ni equivalen a ventas.
+
+El menú de AgenteBOE enlaza a FinanFocus, cuyo menú Tendencias devuelve a AgenteBOE, y el juego promociona FinanFocus PRO
+como premio. El recorrido comercial es contenido gratuito → comunidad y avisos
+→ presentación del producto financiero → posible cuenta y suscripción PRO.
+La memoria y la presentación muestran las dos webs, el diagrama del embudo y
+las capturas originales. La interconexión demostrada es de navegación, marca y
+comunidad; no se afirma una sesión o base de datos compartida. Los registros y
+las compras atribuibles quedan pendientes de medición.
 
 ## Probar en local sin claves ni base de datos
 
@@ -87,7 +107,8 @@ En [agenteboe.com](https://agenteboe.com/), abrir BoeBot → Entrar:
 - Contraseña: `Lectura del boletin TFM 2026!`
 
 Es una cuenta dedicada ya documentada para evaluación, con diez consultas
-ordinarias diarias compartidas entre sus usuarios. **No tiene administración ni
+ordinarias diarias compartidas entre sus usuarios según la revisión del servicio
+público del 7 de octubre. **No tiene administración ni
 permiso de Electricidad**. Para demostrar el complemento y repetir ensayos sin
 consumir cuota, usar la cuenta de la demo local. Las credenciales de un entorno
 no son válidas necesariamente en el otro.
@@ -191,6 +212,10 @@ corrige el orden de fuente y fecha en avisos y añade una demostración aislada;
 no atribuye esas modificaciones al despliegue público sin evidencia.
 
 ## Regenerar la documentación
+
+La revisión del 7 de octubre explica los logos de los accesos móviles y la opción
+«Continuar en otra IA» de BoeBot. Ambos cambios están publicados en la web; esta
+actualización de documentos no publica por sí sola la copia académica en GitHub.
 
 Con Python, `reportlab` y una fuente Arial o DejaVu Sans disponible:
 

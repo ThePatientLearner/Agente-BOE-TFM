@@ -1,35 +1,44 @@
 {
-  "date": "2026-10-06",
+  "date": "2026-10-07",
+  "scope": "Revisión documental de uso real, comunidad y embudo AgenteBOE-FinanFocus. La publicación se verifica por separado.",
   "documents": [
     {
-      "file": "output/pdf/Guia-Evaluacion-Grabacion-Entrega.pdf",
-      "pages": 11,
-      "bytes": 98328,
-      "sha256": "7dc966f4de5ebf14426c3b8d6c02f976cbc1a0cda7774416d4ea295c06a04c1d",
-      "links": [
-        "https://agenteboe.com/",
-        "https://github.com/ThePatientLearner/Agente-BOE-TFM",
-        "https://github.com/ThePatientLearner/Agente-BOE-TFM/blob/main/output/pdf/Presentacion-Agente-BOE.pdf"
-      ]
-    },
-    {
       "file": "output/pdf/Memoria-Agente-BOE.pdf",
-      "pages": 31,
-      "bytes": 2851527,
-      "sha256": "73dd31514764ab06f2f33b436d2014d62bbc1464a639867fd60ef6a71b5ceda0",
+      "pages": 42,
+      "bytes": 5244576,
+      "sha256": "14c8b11792770a59f14b651783e6711b0a55c301a4b5c7acc69c3241ee473566",
       "links": [
+        "https://vercel.com/docs/analytics",
         "https://agenteboe.com/d/BOE-A-2026-20587"
       ]
     },
     {
       "file": "output/pdf/Presentacion-Agente-BOE.pdf",
-      "pages": 15,
-      "bytes": 937134,
-      "sha256": "cbbe3d3e405c5109bdd24698db151818ea180461e1e5a75ef6ac8a9df4e9934b",
+      "pages": 21,
+      "bytes": 1849655,
+      "sha256": "abb893883714fa511f942fcf53f7e866185379bd17e66d51b89e5b89a224eb8b",
+      "links": []
+    },
+    {
+      "file": "output/pdf/Guia-Evaluacion-Grabacion-Entrega.pdf",
+      "pages": 13,
+      "bytes": 103920,
+      "sha256": "59636d8e2b79997aef2693bd99010c77e8ff008b77f09aff8379202b01ce8fec",
+      "links": [
+        "https://github.com/ThePatientLearner/Agente-BOE-TFM",
+        "https://agenteboe.com/",
+        "https://github.com/ThePatientLearner/Agente-BOE-TFM/blob/main/output/pdf/Presentacion-Agente-BOE.pdf"
+      ]
+    },
+    {
+      "file": "output/pdf/Guion-Grabacion-Agente-BOE.pdf",
+      "pages": 6,
+      "bytes": 78404,
+      "sha256": "1f12a0220e7e008f3563d5d002e7b7a6427d6c70e5292d8e7c39b5ba89d7d7e3",
       "links": []
     }
   ],
-  "visual_review": "Todas las páginas revisadas mediante renders PNG; revisiones finales de capturas, diagramas, tablas, fuentes y enlaces completadas.",
-  "formats": "A4 para memoria y guía; 16:9 para presentación; tipografías incrustadas.",
-  "missing_readme_links": []
+  "visual_review": "Todas las páginas renderizadas. Presentación revisada completa; ampliación de diapositivas3-6. Memoria y guía/guion revisados además de manera independiente; resultados de QA adjuntos en source.",
+  "formats": "Memoria A4 con anexo Vercel horizontal; guía y guion A4; presentación16:9; tipografías incrustadas.",
+  "previous_validation": "La revisión documental no cambia la aplicación de la copia académica ni reejecuta sus pruebas. La validación del núcleo conserva la fecha del 6 de octubre de 2026."
 }
