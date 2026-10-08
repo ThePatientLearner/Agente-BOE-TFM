@@ -61,7 +61,7 @@
   "presentacion": {
     "file": "output/pdf/Presentacion-Agente-BOE.pdf",
     "pages": 21,
-    "sha256": "abb893883714fa511f942fcf53f7e866185379bd17e66d51b89e5b89a224eb8b",
+    "sha256": "489fb523674ee99397d06ecf2d2a00cdda0306ed4136dccff7b341d7e7e376f0",
     "reviewed_pages": [
       1,
       2,
@@ -86,7 +86,14 @@
       21
     ],
     "status": "passed",
-    "details": "Diapositivas3-6 revisadas individualmente: comunidad, histórico, enlaces ampliados y embudo. Resto revisado en hojas de contacto."
+    "details": "Diapositivas3-6 revisadas individualmente: comunidad, histórico, enlaces ampliados y embudo. Resto revisado en hojas de contacto.",
+    "last_adjustment": {
+      "date": "2026-10-08",
+      "page": 9,
+      "change": "Explicar eventos, persistencia y recuperación con frases conectadas y lenguaje natural.",
+      "review": "Página 9 renderizada y revisada. Las otras 20 páginas tienen streams de contenido idénticos a la versión revisada el 7 de octubre.",
+      "status": "passed"
+    }
   },
   "guia": {
     "file": "output/pdf/Guia-Evaluacion-Grabacion-Entrega.pdf",

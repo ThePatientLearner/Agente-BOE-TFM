@@ -15,8 +15,8 @@
     {
       "file": "output/pdf/Presentacion-Agente-BOE.pdf",
       "pages": 21,
-      "bytes": 1849655,
-      "sha256": "abb893883714fa511f942fcf53f7e866185379bd17e66d51b89e5b89a224eb8b",
+      "bytes": 1849874,
+      "sha256": "489fb523674ee99397d06ecf2d2a00cdda0306ed4136dccff7b341d7e7e376f0",
       "links": []
     },
     {
@@ -40,5 +40,12 @@
   ],
   "visual_review": "Todas las páginas renderizadas. Presentación revisada completa; ampliación de diapositivas3-6. Memoria y guía/guion revisados además de manera independiente; resultados de QA adjuntos en source.",
   "formats": "Memoria A4 con anexo Vercel horizontal; guía y guion A4; presentación16:9; tipografías incrustadas.",
-  "previous_validation": "La revisión documental no cambia la aplicación de la copia académica ni reejecuta sus pruebas. La validación del núcleo conserva la fecha del 6 de octubre de 2026."
+  "previous_validation": "La revisión documental no cambia la aplicación de la copia académica ni reejecuta sus pruebas. La validación del núcleo conserva la fecha del 6 de octubre de 2026.",
+  "revisions": [
+    {
+      "date": "2026-10-08",
+      "document": "output/pdf/Presentacion-Agente-BOE.pdf",
+      "scope": "Redacción natural de la diapositiva 9. Revisión visual sin recortes ni solapamientos; las otras 20 páginas conservan exactamente sus streams de contenido."
+    }
+  ]
 }

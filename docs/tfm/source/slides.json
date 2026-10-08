@@ -72,11 +72,11 @@
     {
       "title": "Eventos, persistencia y recuperación",
       "bullets": [
-        "Ingesta y resumen publican eventos; catálogo y notificaciones reaccionan a ellos.",
-        "Cada módulo posee sus datos. El catálogo se suscribe antes que el resumidor.",
-        "La recuperación revisa estados pendientes. El bus en memoria deja ventanas de fallo."
+        "Cuando llega una disposición, la ingesta avisa al catálogo y al resumidor. Una vez generado el resumen, otro evento actualiza el catálogo y activa las notificaciones.",
+        "Cada módulo guarda sus propios datos. El catálogo se suscribe primero para registrar la disposición antes de recibir el resumen.",
+        "Si el proceso se interrumpe, la recuperación consulta lo que ya está guardado e intenta retomar las tareas pendientes. Los eventos circulan en memoria y pueden perderse ante un fallo."
       ],
-      "callout": "No se afirma procesamiento transaccional exactamente una vez."
+      "callout": "Este mecanismo ayuda a retomar el trabajo, pero no garantiza que cada operación se complete una sola vez."
     },
     {
       "title": "La IA recibe un contexto delimitado",

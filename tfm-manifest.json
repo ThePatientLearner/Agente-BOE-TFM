@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "created_at": "2026-10-07T14:49:35+00:00",
+  "created_at": "2026-10-08T17:51:45+00:00",
   "selection": "git ls-files --cached --others --exclude-standard; allowlist export_tfm.py",
   "file_count": 346,
-  "total_bytes": 19143896,
-  "excluded_candidate_count": 1,
+  "total_bytes": 19145061,
+  "excluded_candidate_count": 2,
   "manifest_excluded_from_hashes": "tfm-manifest.json",
   "files": [
     {
@@ -1599,8 +1599,8 @@
     },
     {
       "path": "docs/tfm/source/documentos-verificados.json",
-      "bytes": 1895,
-      "sha256": "bc9b54d23dd7ac9c436ff8376c6bba2c92f3322e1bd62399c7b0e28dc83e84ef"
+      "bytes": 2192,
+      "sha256": "5198224389d6df88fd9c0b0c5695a65c2ed92ab36e64668e48f58d8c55f7626c"
     },
     {
       "path": "docs/tfm/source/entrega.json",
@@ -1644,8 +1644,8 @@
     },
     {
       "path": "docs/tfm/source/qa-documental-uso-real.json",
-      "bytes": 2573,
-      "sha256": "15a13957d5aa0b1aadd950da3a9b0f2c9a0ff409671c956284baf472a4c1cb44"
+      "bytes": 2937,
+      "sha256": "0d1588b02d5e94797508dad29e0daf836cef59b0397092d4db20d2aad3f98218"
     },
     {
       "path": "docs/tfm/source/servicio-publico.json",
@@ -1654,8 +1654,8 @@
     },
     {
       "path": "docs/tfm/source/slides.json",
-      "bytes": 8866,
-      "sha256": "675a45bb10d2b1e1cf44802b6fc1f362d6099391004c94bc711a7a11f1fec4f8"
+      "bytes": 9151,
+      "sha256": "6235911204548f1cbc95b9ac219f52e425c07404f1d67c5979c6ac465fe72be8"
     },
     {
       "path": "docs/tfm/source/uso-real-finanfocus.json",
@@ -1689,8 +1689,8 @@
     },
     {
       "path": "output/pdf/Presentacion-Agente-BOE.pdf",
-      "bytes": 1849655,
-      "sha256": "abb893883714fa511f942fcf53f7e866185379bd17e66d51b89e5b89a224eb8b"
+      "bytes": 1849874,
+      "sha256": "489fb523674ee99397d06ecf2d2a00cdda0306ed4136dccff7b341d7e7e376f0"
     },
     {
       "path": "package-lock.json",
